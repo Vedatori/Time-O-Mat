@@ -1034,6 +1034,11 @@
     (uuid fd8d4188-57d6-41f7-a4bd-a67eef6ff7bd)
   )
 
+  (text "Nebo asi stejný footprint\n918-418K2023S40001" (at 54.61 110.49 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 29d472a1-c0d6-42c9-b2e5-a264b93a7ff1)
+  )
+
   (label "D+" (at 87.63 76.2 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 268d1876-420f-4c0b-ad0e-2d97b7330180)
