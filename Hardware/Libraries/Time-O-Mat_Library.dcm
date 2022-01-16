@@ -1,0 +1,13 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP FS8205A
+F IPC 7351B
+$ENDCMP
+#
+$CMP TCRT5000
+D Reflective Optical Sensor with Transistor Output
+K Reflective Optical Sensor Opto
+F https://www.vishay.com/docs/83751/cny70.pdf
+$ENDCMP
+#
+#End Doc Library
