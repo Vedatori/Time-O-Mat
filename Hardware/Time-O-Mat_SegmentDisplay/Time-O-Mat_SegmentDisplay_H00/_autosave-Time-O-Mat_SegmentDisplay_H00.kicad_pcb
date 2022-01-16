@@ -2550,6 +2550,9 @@
   (gr_line (start -15 81.631371) (end 15 81.631371) (layer "Edge.Cuts") (width 0.1) (tstamp eabf8a4c-0fa4-4340-97f4-9fa42fe6866f))
   (gr_line (start 18.565685 -4.5) (end 18.565685 -41.631371) (layer "Edge.Cuts") (width 0.1) (tstamp f41e4c05-0e99-458b-9ab8-02cf11d5f8ca))
   (gr_line (start 18.565685 41.631371) (end -18.565685 41.631371) (layer "Edge.Cuts") (width 0.1) (tstamp fd0be62d-bbd3-4747-a469-547112a5377c))
+  (gr_text "Time-O-Mat_SegmentDisplay_H00" (at 0 55.9) (layer "F.SilkS") (tstamp 2429f127-72fc-47b4-bb47-bf3bcc13fd5b)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
 
   (segment (start -6.581371 -47.731371) (end -10.55 -47.731371) (width 0.254) (layer "F.Cu") (net 1) (tstamp 2c186cbf-9cac-4388-adb2-6d310baf89db))
   (segment (start -3.381371 -44.531371) (end -6.581371 -47.731371) (width 0.254) (layer "F.Cu") (net 1) (tstamp 8e606922-08c7-4d14-8e6b-d1873e169fc8))
