@@ -1,1653 +1,960 @@
-387124716660021
-Package_TO_SOT_THT
-Analog_TO-46-4_ThermalShield
-TO-46-4 with Valox case, based on https://www.analog.com/media/en/technical-documentation/data-sheets/199399fc.pdf
-TO-46-4 LM399
-0
-4
-4
-Package_TO_SOT_THT
-Fairchild_TO-220F-6L
-Fairchild TO-220F-6L, http://www.mouser.com/ds/2/149/FSL136MRT-113334.pdf
-Fairchild TO-220F-6L
-0
-6
-6
-Package_TO_SOT_THT
-Heraeus_TO-92-2
-TO-92 2-pin variant by Heraeus, drill 0.75mm (http://www.produktinfo.conrad.com/datenblaetter/175000-199999/181293-da-01-de-TO92_Temperatursensor_PT1000_32209225.pdf)
-to-92
-0
-2
-2
-Package_TO_SOT_THT
-NEC_Molded_7x4x9mm
-Molded Japan Transistor Package 7x4x9mm^3, http://rtellason.com/transdata/2sb734.pdf
-Japan transistor
-0
-3
-3
-Package_TO_SOT_THT
-PowerIntegrations_TO-220-7C
-Non Isolated Modified TO-220 7pin Package, see http://www.farnell.com/datasheets/5793.pdf
-Power Integration Y Package
-0
-6
-6
-Package_TO_SOT_THT
-SIPAK-1EP_Horizontal_TabDown
-SIPAK, Horizontal, RM 2.286mm
-SIPAK Horizontal RM 2.286mm
-0
-4
-4
-Package_TO_SOT_THT
-SIPAK_Vertical
-SIPAK, Vertical, RM 2.286mm
-SIPAK Vertical RM 2.286mm
-0
-3
-3
-Package_TO_SOT_THT
-SOD-70_P2.54mm
-Plastic near cylindrical package Sod-70 see: https://www.nxp.com/docs/en/data-sheet/KTY81_SER.pdf  [StepUp generated footprint]
-Sod-70
-0
-2
-2
-Package_TO_SOT_THT
-SOD-70_P5.08mm
-Plastic near cylindrical package Sod-70 see: https://www.nxp.com/docs/en/data-sheet/KTY81_SER.pdf  [StepUp generated footprint]
-Sod-70
-0
-2
-2
-Package_TO_SOT_THT
-SOT-227
-SOT-227 / SOT-227B / ISOTOP, M4 mounting screws (https://www.vishay.com/docs/95423/sot227g2.pdf, https://www.vishay.com/docs/95793/vs-fc420sa10.pdf)
-sot 227 isotop
-0
-8
-4
-Package_TO_SOT_THT
-TO-3
-Transistor TO-3
-TR TO-3 TO3 TO-204
-0
-4
-3
-Package_TO_SOT_THT
-TO-3P-3_Horizontal_TabDown
-TO-3P-3, Horizontal, RM 5.45mm, , see https://toshiba.semicon-storage.com/ap-en/design-support/package/detail.TO-3P(N).html
-TO-3P-3 Horizontal RM 5.45mm 
-0
-3
-3
-Package_TO_SOT_THT
-TO-3P-3_Horizontal_TabUp
-TO-3P-3, Horizontal, RM 5.45mm, , see https://toshiba.semicon-storage.com/ap-en/design-support/package/detail.TO-3P(N).html
-TO-3P-3 Horizontal RM 5.45mm 
-0
-3
-3
-Package_TO_SOT_THT
-TO-3P-3_Vertical
-TO-3P-3, Vertical, RM 5.45mm, , see https://toshiba.semicon-storage.com/ap-en/design-support/package/detail.TO-3P(N).html
-TO-3P-3 Vertical RM 5.45mm 
-0
-3
-3
-Package_TO_SOT_THT
-TO-3PB-3_Horizontal_TabDown
-TO-3PB-3, Horizontal, RM 5.45mm, , see http://www.onsemi.com/pub/Collateral/340AC.PDF
-TO-3PB-3 Horizontal RM 5.45mm 
-0
-3
-3
-Package_TO_SOT_THT
-TO-3PB-3_Horizontal_TabUp
-TO-3PB-3, Horizontal, RM 5.45mm, , see http://www.onsemi.com/pub/Collateral/340AC.PDF
-TO-3PB-3 Horizontal RM 5.45mm 
-0
-3
-3
-Package_TO_SOT_THT
-TO-3PB-3_Vertical
-TO-3PB-3, Vertical, RM 5.45mm, , see http://www.onsemi.com/pub/Collateral/340AC.PDF
-TO-3PB-3 Vertical RM 5.45mm 
-0
-3
-3
-Package_TO_SOT_THT
-TO-5-2
-TO-5-2
-TO-5-2
-0
-2
-2
-Package_TO_SOT_THT
-TO-5-2_Window
-TO-5-2_Window, Window
-TO-5-2_Window Window
-0
-2
-2
-Package_TO_SOT_THT
-TO-5-3
-TO-5-3
-TO-5-3
-0
-3
-3
-Package_TO_SOT_THT
-TO-5-3_Window
-TO-5-3_Window, Window
-TO-5-3_Window Window
-0
-3
-3
-Package_TO_SOT_THT
-TO-5-4
-TO-5-4
-TO-5-4
-0
-4
-4
-Package_TO_SOT_THT
-TO-5-4_Window
-TO-5-4_Window, Window
-TO-5-4_Window Window
-0
-4
-4
-Package_TO_SOT_THT
-TO-5-6
-TO-5-6
-TO-5-6
-0
-6
-6
-Package_TO_SOT_THT
-TO-5-6_Window
-TO-5-6_Window, Window
-TO-5-6_Window Window
-0
-6
-6
-Package_TO_SOT_THT
-TO-5-8
-TO-5-8
-TO-5-8
-0
-8
-8
-Package_TO_SOT_THT
-TO-5-8_PD5.08
-TO-5-8_PD5.08
-TO-5-8_PD5.08
-0
-8
-8
-Package_TO_SOT_THT
-TO-5-8_PD5.08_Window
-TO-5-8_PD5.08_Window, Window
-TO-5-8_PD5.08_Window Window
-0
-8
-8
-Package_TO_SOT_THT
-TO-5-8_Window
-TO-5-8_Window, Window
-TO-5-8_Window Window
-0
-8
-8
-Package_TO_SOT_THT
-TO-5-10
-TO-5-10
-TO-5-10
-0
-10
-10
-Package_TO_SOT_THT
-TO-5-10_Window
-TO-5-10_Window, Window
-TO-5-10_Window Window
-0
-10
-10
-Package_TO_SOT_THT
-TO-8-2
-TO-8-2
-TO-8-2
-0
-2
-2
-Package_TO_SOT_THT
-TO-8-2_Window
-TO-8-2_Window, Window
-TO-8-2_Window Window
-0
-2
-2
-Package_TO_SOT_THT
-TO-8-3
-TO-8-3
-TO-8-3
-0
-3
-3
-Package_TO_SOT_THT
-TO-8-3_Window
-TO-8-3_Window, Window
-TO-8-3_Window Window
-0
-3
-3
-Package_TO_SOT_THT
-TO-11-2
-TO-11-2
-TO-11-2
-0
-2
-2
-Package_TO_SOT_THT
-TO-11-2_Window
-TO-11-2_Window, Window
-TO-11-2_Window Window
-0
-2
-2
-Package_TO_SOT_THT
-TO-11-3
-TO-11-3
-TO-11-3
-0
-3
-3
-Package_TO_SOT_THT
-TO-11-3_Window
-TO-11-3_Window, Window
-TO-11-3_Window Window
-0
-3
-3
-Package_TO_SOT_THT
-TO-12-4
-TO-12-4
-TO-12-4
-0
-4
-4
-Package_TO_SOT_THT
-TO-12-4_Window
-TO-12-4_Window, Window
-TO-12-4_Window Window
-0
-4
-4
-Package_TO_SOT_THT
-TO-17-4
-TO-17-4
-TO-17-4
-0
-4
-4
-Package_TO_SOT_THT
-TO-17-4_Window
-TO-17-4_Window, Window
-TO-17-4_Window Window
-0
-4
-4
-Package_TO_SOT_THT
-TO-18-2
-TO-18-2
-TO-18-2
-0
-2
-2
-Package_TO_SOT_THT
-TO-18-2_Lens
-TO-18-2_Lens, Lens
-TO-18-2_Lens Lens
-0
-2
-2
-Package_TO_SOT_THT
-TO-18-2_Window
-TO-18-2_Window, Window
-TO-18-2_Window Window
-0
-2
-2
-Package_TO_SOT_THT
-TO-18-3
-TO-18-3
-TO-18-3
-0
-3
-3
-Package_TO_SOT_THT
-TO-18-3_Lens
-TO-18-3_Lens, Lens
-TO-18-3_Lens Lens
-0
-3
-3
-Package_TO_SOT_THT
-TO-18-3_Window
-TO-18-3_Window, Window
-TO-18-3_Window Window
-0
-3
-3
-Package_TO_SOT_THT
-TO-18-4
-TO-18-4
-TO-18-4
-0
-4
-4
-Package_TO_SOT_THT
-TO-18-4_Lens
-TO-18-4_Lens, Lens
-TO-18-4_Lens Lens
-0
-4
-4
-Package_TO_SOT_THT
-TO-18-4_Window
-TO-18-4_Window, Window
-TO-18-4_Window Window
-0
-4
-4
-Package_TO_SOT_THT
-TO-33-4
-TO-33-4
-TO-33-4
-0
-4
-4
-Package_TO_SOT_THT
-TO-33-4_Window
-TO-33-4_Window, Window
-TO-33-4_Window Window
-0
-4
-4
-Package_TO_SOT_THT
-TO-38-2
-TO-38-2
-TO-38-2
-0
-2
-2
-Package_TO_SOT_THT
-TO-38-2_Window
-TO-38-2_Window, Window
-TO-38-2_Window Window
-0
-2
-2
-Package_TO_SOT_THT
-TO-38-3
-TO-38-3
-TO-38-3
-0
-3
-3
-Package_TO_SOT_THT
-TO-38-3_Window
-TO-38-3_Window, Window
-TO-38-3_Window Window
-0
-3
-3
-Package_TO_SOT_THT
-TO-39-2
-TO-39-2
-TO-39-2
-0
-2
-2
-Package_TO_SOT_THT
-TO-39-2_Window
-TO-39-2_Window, Window
-TO-39-2_Window Window
-0
-2
-2
-Package_TO_SOT_THT
-TO-39-3
-TO-39-3
-TO-39-3
-0
-3
-3
-Package_TO_SOT_THT
-TO-39-3_Window
-TO-39-3_Window, Window
-TO-39-3_Window Window
-0
-3
-3
-Package_TO_SOT_THT
-TO-39-4
-TO-39-4
-TO-39-4
-0
-4
-4
-Package_TO_SOT_THT
-TO-39-4_Window
-TO-39-4_Window, Window
-TO-39-4_Window Window
-0
-4
-4
-Package_TO_SOT_THT
-TO-39-6
-TO-39-6
-TO-39-6
-0
-6
-6
-Package_TO_SOT_THT
-TO-39-6_Window
-TO-39-6_Window, Window
-TO-39-6_Window Window
-0
-6
-6
-Package_TO_SOT_THT
-TO-39-8
-TO-39-8
-TO-39-8
-0
-8
-8
-Package_TO_SOT_THT
-TO-39-8_Window
-TO-39-8_Window, Window
-TO-39-8_Window Window
-0
-8
-8
-Package_TO_SOT_THT
-TO-39-10
-TO-39-10
-TO-39-10
-0
-10
-10
-Package_TO_SOT_THT
-TO-39-10_Window
-TO-39-10_Window, Window
-TO-39-10_Window Window
-0
-10
-10
-Package_TO_SOT_THT
-TO-46-2
-TO-46-2
-TO-46-2
-0
-2
-2
-Package_TO_SOT_THT
-TO-46-2_Pin2Center
-TO-46-2, Pin2 at center of package, Thorlabs photodiodes
-TO-46-2 Thorlabs
-0
-2
-2
-Package_TO_SOT_THT
-TO-46-2_Pin2Center_Window
-TO-46-2, Pin2 at center of package, Thorlabs photodiodes
-TO-46-2 Thorlabs
-0
-2
-2
-Package_TO_SOT_THT
-TO-46-2_Window
-TO-46-2_Window, Window
-TO-46-2_Window Window
-0
-2
-2
-Package_TO_SOT_THT
-TO-46-3
-TO-46-3
-TO-46-3
-0
-3
-3
-Package_TO_SOT_THT
-TO-46-3_Pin2Center
-TO-46-3, Pin2 at center of package, Thorlabs photodiodes, https://www.thorlabs.de/drawings/374b6862eb3b5a04-9360B5F6-5056-2306-D912111C06C3F830/FDGA05-SpecSheet.pdf
-TO-46-3 Thorlabs
-0
-3
-3
-Package_TO_SOT_THT
-TO-46-3_Pin2Center_Window
-TO-46-3, Pin2 at center of package, Thorlabs photodiodes, https://www.thorlabs.de/drawings/374b6862eb3b5a04-9360B5F6-5056-2306-D912111C06C3F830/FDGA05-SpecSheet.pdf
-TO-46-3 Thorlabs
-0
-3
-3
-Package_TO_SOT_THT
-TO-46-3_Window
-TO-46-3_Window, Window
-TO-46-3_Window Window
-0
-3
-3
-Package_TO_SOT_THT
-TO-46-4
-TO-46-4
-TO-46-4
-0
-4
-4
-Package_TO_SOT_THT
-TO-46-4_Window
-TO-46-4_Window, Window
-TO-46-4_Window Window
-0
-4
-4
-Package_TO_SOT_THT
-TO-52-2
-TO-52-2
-TO-52-2
-0
-2
-2
-Package_TO_SOT_THT
-TO-52-2_Window
-TO-52-2_Window, Window
-TO-52-2_Window Window
-0
-2
-2
-Package_TO_SOT_THT
-TO-52-3
-TO-52-3
-TO-52-3
-0
-3
-3
-Package_TO_SOT_THT
-TO-52-3_Window
-TO-52-3_Window, Window
-TO-52-3_Window Window
-0
-3
-3
-Package_TO_SOT_THT
-TO-72-4
-TO-72-4
-TO-72-4
-0
-4
-4
-Package_TO_SOT_THT
-TO-72-4_Window
-TO-72-4_Window, Window
-TO-72-4_Window Window
-0
-4
-4
-Package_TO_SOT_THT
-TO-75-6
-TO-75-6
-TO-75-6
-0
-6
-6
-Package_TO_SOT_THT
-TO-75-6_Window
-TO-75-6_Window, Window
-TO-75-6_Window Window
-0
-6
-6
-Package_TO_SOT_THT
-TO-78-6
-TO-78-6
-TO-78-6
-0
-6
-6
-Package_TO_SOT_THT
-TO-78-6_Window
-TO-78-6_Window, Window
-TO-78-6_Window Window
-0
-6
-6
-Package_TO_SOT_THT
-TO-78-8
-TO-78-8
-TO-78-8
-0
-8
-8
-Package_TO_SOT_THT
-TO-78-8_Window
-TO-78-8_Window, Window
-TO-78-8_Window Window
-0
-8
-8
-Package_TO_SOT_THT
-TO-78-10
-TO-78-10
-TO-78-10
-0
-10
-10
-Package_TO_SOT_THT
-TO-78-10_Window
-TO-78-10_Window, Window
-TO-78-10_Window Window
-0
-10
-10
-Package_TO_SOT_THT
-TO-92
-TO-92 leads molded, narrow, drill 0.75mm (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92-2
-TO-92 2-pin leads in-line, narrow, oval pads, drill 0.75mm (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 diode SOD70
-0
-2
-2
-Package_TO_SOT_THT
-TO-92-2_Horizontal1
-2-pin TO-92 horizontal, leads molded, narrow, drill 0.75mm (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 temperature sensor diode
-0
-2
-2
-Package_TO_SOT_THT
-TO-92-2_Horizontal2
-2-pin TO-92 horizontal, leads molded, narrow, drill 0.75mm (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 temperature sensor diode
-0
-2
-2
-Package_TO_SOT_THT
-TO-92-2_W4.0mm_Horizontal_FlatSideDown
-TO-92 horizontal, leads in-line, narrow, oval pads, drill 0.75mm (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 transistor
-0
-2
-2
-Package_TO_SOT_THT
-TO-92-2_W4.0mm_Horizontal_FlatSideUp
-TO-92 horizontal, leads in-line, narrow, oval pads, drill 0.75mm (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 transistor
-0
-2
-2
-Package_TO_SOT_THT
-TO-92-2_Wide
-TO-92 2-pin leads in-line, wide, drill 0.75mm
-to-92 sc-43 sc-43a sot54 PA33 diode SOD70
-0
-2
-2
-Package_TO_SOT_THT
-TO-92Flat
-TO-92Flat package, often used for hall sensors, drill 0.75mm (see e.g. http://www.ti.com/lit/ds/symlink/drv5023.pdf)
-to-92Flat hall sensor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92L
-TO-92L leads in-line (large body variant of TO-92), also known as TO-226, wide, drill 0.75mm (see https://www.diodes.com/assets/Package-Files/TO92L.pdf and http://www.ti.com/lit/an/snoa059/snoa059.pdf)
-TO-92L Molded Narrow transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92L_HandSolder
-TO-92L leads in-line (large body variant of TO-92), also known as TO-226, wide, drill 0.75mm, hand-soldering variant with enlarged pads (see https://www.diodes.com/assets/Package-Files/TO92L.pdf and http://www.ti.com/lit/an/snoa059/snoa059.pdf)
-to-92 sc-43 sc-43a sot54 PA33 transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92L_Inline
-TO-92L leads in-line (large body variant of TO-92), also known as TO-226, wide, drill 0.75mm (see https://www.diodes.com/assets/Package-Files/TO92L.pdf and http://www.ti.com/lit/an/snoa059/snoa059.pdf)
-TO-92L Inline Wide transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92L_Inline_Wide
-TO-92L leads in-line (large body variant of TO-92), also known as TO-226, wide, drill 0.75mm (see https://www.diodes.com/assets/Package-Files/TO92L.pdf and http://www.ti.com/lit/an/snoa059/snoa059.pdf)
-TO-92L Inline Wide transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92L_Wide
-TO-92L leads in-line (large body variant of TO-92), also known as TO-226, wide, drill 0.75mm (see https://www.diodes.com/assets/Package-Files/TO92L.pdf and http://www.ti.com/lit/an/snoa059/snoa059.pdf)
-TO-92L Molded Wide transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92Mini-2
-TO-92Mini package, drill 0.6mm (https://media.digikey.com/pdf/Data%20Sheets/Infineon%20PDFs/KT,KTY.pdf)
-to-92Mini transistor 
-0
-2
-2
-Package_TO_SOT_THT
-TO-92S
-TO-92S package, drill 0.75mm (https://www.diodes.com/assets/Package-Files/TO92S%20(Type%20B).pdf)
-to-92S transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92S-2
-TO-92S package, 2-pin, drill 0.75mm (https://www.diodes.com/assets/Package-Files/TO92S%20(Type%20B).pdf)
-to-92S transistor
-0
-2
-2
-Package_TO_SOT_THT
-TO-92S_Wide
-TO-92S_Wide package, drill 0.75mm (https://www.diodes.com/assets/Package-Files/TO92S%20(Type%20B).pdf)
-TO-92S_Wide transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92_HandSolder
-TO-92 leads molded, narrow, drill 0.75mm, handsoldering variant with enlarged pads (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92_Horizontal1
-TO-92 horizontal, leads molded, narrow, drill 0.75mm (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92_Horizontal2
-TO-92 horizontal, leads molded, narrow, drill 0.75mm (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92_Inline
-TO-92 leads in-line, narrow, oval pads, drill 0.75mm (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92_Inline_Horizontal1
-TO-92 horizontal, leads in-line, narrow, oval pads, drill 0.75mm (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92_Inline_Horizontal2
-TO-92 horizontal, leads in-line, narrow, oval pads, drill 0.75mm (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92_Inline_W4.0mm_Horizontal_FlatSideDown
-TO-92 horizontal, leads in-line, narrow, oval pads, drill 0.75mm (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92_Inline_W4.0mm_Horizontal_FlatSideUp
-TO-92 horizontal, leads in-line, narrow, oval pads, drill 0.75mm (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92_Inline_Wide
-TO-92 leads in-line, wide, drill 0.75mm (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92_W4.0mm_StaggerEven_Horizontal_FlatSideDown
-TO-92 horizontal, leads molded, narrow, drill 0.75mm (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92_W4.0mm_StaggerEven_Horizontal_FlatSideUp
-TO-92 horizontal, leads molded, narrow, drill 0.75mm (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-92_Wide
-TO-92 leads molded, wide, drill 0.75mm (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 transistor
-0
-3
-3
-Package_TO_SOT_THT
-TO-99-6
-TO-99-6
-TO-99-6
-0
-6
-6
-Package_TO_SOT_THT
-TO-99-6_Window
-TO-99-6_Window, Window
-TO-99-6_Window Window
-0
-6
-6
-Package_TO_SOT_THT
-TO-99-8
-TO-99-8
-TO-99-8
-0
-8
-8
-Package_TO_SOT_THT
-TO-99-8_Window
-TO-99-8_Window, Window
-TO-99-8_Window Window
-0
-8
-8
-Package_TO_SOT_THT
-TO-100-10
-TO-100-10
-TO-100-10
-0
-10
-10
-Package_TO_SOT_THT
-TO-100-10_Window
-TO-100-10_Window, Window
-TO-100-10_Window Window
-0
-10
-10
-Package_TO_SOT_THT
-TO-126-2_Horizontal_TabDown
-TO-126-2, Horizontal, RM 5.08mm, see https://www.diodes.com/assets/Package-Files/TO126.pdf
-TO-126-2 Horizontal RM 5.08mm
-0
-2
-2
-Package_TO_SOT_THT
-TO-126-2_Horizontal_TabUp
-TO-126-2, Horizontal, RM 5.08mm, see https://www.diodes.com/assets/Package-Files/TO126.pdf
-TO-126-2 Horizontal RM 5.08mm
-0
-2
-2
-Package_TO_SOT_THT
-TO-126-2_Vertical
-TO-126-2, Vertical, RM 5.08mm, see https://www.diodes.com/assets/Package-Files/TO126.pdf
-TO-126-2 Vertical RM 5.08mm
-0
-2
-2
-Package_TO_SOT_THT
-TO-126-3_Horizontal_TabDown
-TO-126-3, Horizontal, RM 2.54mm, see https://www.diodes.com/assets/Package-Files/TO126.pdf
-TO-126-3 Horizontal RM 2.54mm
-0
-3
-3
-Package_TO_SOT_THT
-TO-126-3_Horizontal_TabUp
-TO-126-3, Horizontal, RM 2.54mm, see https://www.diodes.com/assets/Package-Files/TO126.pdf
-TO-126-3 Horizontal RM 2.54mm
-0
-3
-3
-Package_TO_SOT_THT
-TO-126-3_Vertical
-TO-126-3, Vertical, RM 2.54mm, see https://www.diodes.com/assets/Package-Files/TO126.pdf
-TO-126-3 Vertical RM 2.54mm
-0
-3
-3
-Package_TO_SOT_THT
-TO-218-2_Horizontal_TabDown
-TO-218-2, Horizontal, RM 10.95mm, SOT-93, see https://www.vishay.com/docs/95214/fto218.pdf
-TO-218-2 Horizontal RM 10.95mm SOT-93
-0
-2
-2
-Package_TO_SOT_THT
-TO-218-2_Horizontal_TabUp
-TO-218-2, Horizontal, RM 10.95mm, SOT-93, see https://www.vishay.com/docs/95214/fto218.pdf
-TO-218-2 Horizontal RM 10.95mm SOT-93
-0
-2
-2
-Package_TO_SOT_THT
-TO-218-2_Vertical
-TO-218-2, Vertical, RM 10.95mm, SOT-93, see https://www.vishay.com/docs/95214/fto218.pdf
-TO-218-2 Vertical RM 10.95mm SOT-93
-0
-2
-2
-Package_TO_SOT_THT
-TO-218-3_Horizontal_TabDown
-TO-218-3, Horizontal, RM 5.475mm, SOT-93, see https://www.vishay.com/docs/95214/fto218.pdf
-TO-218-3 Horizontal RM 5.475mm SOT-93
-0
-3
-3
-Package_TO_SOT_THT
-TO-218-3_Horizontal_TabUp
-TO-218-3, Horizontal, RM 5.475mm, SOT-93, see https://www.vishay.com/docs/95214/fto218.pdf
-TO-218-3 Horizontal RM 5.475mm SOT-93
-0
-3
-3
-Package_TO_SOT_THT
-TO-218-3_Vertical
-TO-218-3, Vertical, RM 5.475mm, SOT-93, see https://www.vishay.com/docs/95214/fto218.pdf
-TO-218-3 Vertical RM 5.475mm SOT-93
-0
-3
-3
-Package_TO_SOT_THT
-TO-220-2_Horizontal_TabDown
-TO-220-2, Horizontal, RM 5.08mm, see https://www.centralsemi.com/PDFS/CASE/TO-220-2PD.PDF
-TO-220-2 Horizontal RM 5.08mm
-0
-2
-2
-Package_TO_SOT_THT
-TO-220-2_Horizontal_TabUp
-TO-220-2, Horizontal, RM 5.08mm, see https://www.centralsemi.com/PDFS/CASE/TO-220-2PD.PDF
-TO-220-2 Horizontal RM 5.08mm
-0
-2
-2
-Package_TO_SOT_THT
-TO-220-2_Vertical
-TO-220-2, Vertical, RM 5.08mm, see https://www.centralsemi.com/PDFS/CASE/TO-220-2PD.PDF
-TO-220-2 Vertical RM 5.08mm
-0
-2
-2
-Package_TO_SOT_THT
-TO-220-3_Horizontal_TabDown
-TO-220-3, Horizontal, RM 2.54mm, see https://www.vishay.com/docs/66542/to-220-1.pdf
-TO-220-3 Horizontal RM 2.54mm
-0
-3
-3
-Package_TO_SOT_THT
-TO-220-3_Horizontal_TabUp
-TO-220-3, Horizontal, RM 2.54mm, see https://www.vishay.com/docs/66542/to-220-1.pdf
-TO-220-3 Horizontal RM 2.54mm
-0
-3
-3
-Package_TO_SOT_THT
-TO-220-3_Vertical
-TO-220-3, Vertical, RM 2.54mm, see https://www.vishay.com/docs/66542/to-220-1.pdf
-TO-220-3 Vertical RM 2.54mm
-0
-3
-3
-Package_TO_SOT_THT
-TO-220-4_Horizontal_TabDown
-TO-220-4, Horizontal, RM 2.54mm
-TO-220-4 Horizontal RM 2.54mm
-0
-4
-4
-Package_TO_SOT_THT
-TO-220-4_Horizontal_TabUp
-TO-220-4, Horizontal, RM 2.54mm
-TO-220-4 Horizontal RM 2.54mm
-0
-4
-4
-Package_TO_SOT_THT
-TO-220-4_P5.08x2.54mm_StaggerEven_Lead3.8mm_Vertical
-TO-220-4, Vertical, RM 2.54mm, staggered type-2
-TO-220-4 Vertical RM 2.54mm staggered type-2
-0
-4
-4
-Package_TO_SOT_THT
-TO-220-4_P5.08x2.54mm_StaggerEven_Lead5.84mm_TabDown
-TO-220-4, Horizontal, RM 2.54mm, staggered type-2
-TO-220-4 Horizontal RM 2.54mm staggered type-2
-0
-4
-4
-Package_TO_SOT_THT
-TO-220-4_P5.08x2.54mm_StaggerOdd_Lead3.8mm_Vertical
-TO-220-4, Vertical, RM 2.54mm, staggered type-1
-TO-220-4 Vertical RM 2.54mm staggered type-1
-0
-4
-4
-Package_TO_SOT_THT
-TO-220-4_P5.08x2.54mm_StaggerOdd_Lead5.84mm_TabDown
-TO-220-4, Horizontal, RM 2.54mm, staggered type-1
-TO-220-4 Horizontal RM 2.54mm staggered type-1
-0
-4
-4
-Package_TO_SOT_THT
-TO-220-4_Vertical
-TO-220-4, Vertical, RM 2.54mm
-TO-220-4 Vertical RM 2.54mm
-0
-4
-4
-Package_TO_SOT_THT
-TO-220-5_Horizontal_TabDown
-TO-220-5, Horizontal, RM 1.7mm, Pentawatt, Multiwatt-5, see http://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/ltc-legacy-to-220/to-220_5_05-08-1421_straight_lead.pdf
-TO-220-5 Horizontal RM 1.7mm Pentawatt Multiwatt-5
-0
-5
-5
-Package_TO_SOT_THT
-TO-220-5_Horizontal_TabUp
-TO-220-5, Horizontal, RM 1.7mm, Pentawatt, Multiwatt-5, see http://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/ltc-legacy-to-220/to-220_5_05-08-1421_straight_lead.pdf
-TO-220-5 Horizontal RM 1.7mm Pentawatt Multiwatt-5
-0
-5
-5
-Package_TO_SOT_THT
-TO-220-5_P3.4x3.7mm_StaggerEven_Lead3.8mm_Vertical
-TO-220-5, Vertical, RM 1.7mm, Pentawatt, Multiwatt-5, staggered type-2, see http://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/ltc-legacy-to-220/to-220_5_05-08-1421.pdf?domain=www.linear.com, https://www.diodes.com/assets/Package-Files/TO220-5.pdf
-TO-220-5 Vertical RM 1.7mm Pentawatt Multiwatt-5 staggered type-2
-0
-5
-5
-Package_TO_SOT_THT
-TO-220-5_P3.4x3.7mm_StaggerOdd_Lead3.8mm_Vertical
-TO-220-5, Vertical, RM 1.7mm, Pentawatt, Multiwatt-5, staggered type-1, see http://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/ltc-legacy-to-220/to-220_5_05-08-1421.pdf?domain=www.linear.com, https://www.diodes.com/assets/Package-Files/TO220-5.pdf
-TO-220-5 Vertical RM 1.7mm Pentawatt Multiwatt-5 staggered type-1
-0
-5
-5
-Package_TO_SOT_THT
-TO-220-5_P3.4x3.8mm_StaggerEven_Lead7.13mm_TabDown
-TO-220-5, Horizontal, RM 1.7mm, Pentawatt, Multiwatt-5, staggered type-2, see http://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/ltc-legacy-to-220/to-220_5_05-08-1421.pdf?domain=www.linear.com, https://www.diodes.com/assets/Package-Files/TO220-5.pdf
-TO-220-5 Horizontal RM 1.7mm Pentawatt Multiwatt-5 staggered type-2
-0
-5
-5
-Package_TO_SOT_THT
-TO-220-5_P3.4x3.8mm_StaggerOdd_Lead7.13mm_TabDown
-TO-220-5, Horizontal, RM 1.7mm, Pentawatt, Multiwatt-5, staggered type-1, see http://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/ltc-legacy-to-220/to-220_5_05-08-1421.pdf?domain=www.linear.com, https://www.diodes.com/assets/Package-Files/TO220-5.pdf
-TO-220-5 Horizontal RM 1.7mm Pentawatt Multiwatt-5 staggered type-1
-0
-5
-5
-Package_TO_SOT_THT
-TO-220-5_Vertical
-TO-220-5, Vertical, RM 1.7mm, Pentawatt, Multiwatt-5, see http://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/ltc-legacy-to-220/to-220_5_05-08-1421_straight_lead.pdf
-TO-220-5 Vertical RM 1.7mm Pentawatt Multiwatt-5
-0
-5
-5
-Package_TO_SOT_THT
-TO-220-7_P2.54x3.7mm_StaggerEven_Lead3.8mm_Vertical
-TO-220-7, Vertical, RM 1.27mm, Multiwatt-7, staggered type-2
-TO-220-7 Vertical RM 1.27mm Multiwatt-7 staggered type-2
-0
-7
-7
-Package_TO_SOT_THT
-TO-220-7_P2.54x3.7mm_StaggerOdd_Lead3.8mm_Vertical
-TO-220-7, Vertical, RM 1.27mm, Multiwatt-7, staggered type-1
-TO-220-7 Vertical RM 1.27mm Multiwatt-7 staggered type-1
-0
-7
-7
-Package_TO_SOT_THT
-TO-220-7_P2.54x3.8mm_StaggerEven_Lead5.85mm_TabDown
-TO-220-7, Horizontal, RM 1.27mm, Multiwatt-7, staggered type-2
-TO-220-7 Horizontal RM 1.27mm Multiwatt-7 staggered type-2
-0
-7
-7
-Package_TO_SOT_THT
-TO-220-7_P2.54x3.8mm_StaggerOdd_Lead5.85mm_TabDown
-TO-220-7, Horizontal, RM 1.27mm, Multiwatt-7, staggered type-1
-TO-220-7 Horizontal RM 1.27mm Multiwatt-7 staggered type-1
-0
-7
-7
-Package_TO_SOT_THT
-TO-220-8_Vertical
-TO-220-8 (Multiwatt8), Vertical, 2.54mm Pitch (http://www.st.com/resource/en/datasheet/tda7264.pdf)
-TO-220-9 Vertical 2.54mm Pitch Multiwatt 8
-0
-8
-8
-Package_TO_SOT_THT
-TO-220-9_P1.94x3.7mm_StaggerEven_Lead3.8mm_Vertical
-TO-220-9, Vertical, RM 0.97mm, Multiwatt-9, staggered type-2
-TO-220-9 Vertical RM 0.97mm Multiwatt-9 staggered type-2
-0
-9
-9
-Package_TO_SOT_THT
-TO-220-9_P1.94x3.7mm_StaggerOdd_Lead3.8mm_Vertical
-TO-220-9, Vertical, RM 0.97mm, Multiwatt-9, staggered type-1
-TO-220-9 Vertical RM 0.97mm Multiwatt-9 staggered type-1
-0
-9
-9
-Package_TO_SOT_THT
-TO-220-9_P1.94x3.8mm_StaggerEven_Lead5.85mm_TabDown
-TO-220-9, Horizontal, RM 0.97mm, Multiwatt-9, staggered type-2
-TO-220-9 Horizontal RM 0.97mm Multiwatt-9 staggered type-2
-0
-9
-9
-Package_TO_SOT_THT
-TO-220-9_P1.94x3.8mm_StaggerOdd_Lead5.85mm_TabDown
-TO-220-9, Horizontal, RM 0.97mm, Multiwatt-9, staggered type-1
-TO-220-9 Horizontal RM 0.97mm Multiwatt-9 staggered type-1
-0
-9
-9
-Package_TO_SOT_THT
-TO-220-11_P3.4x2.54mm_StaggerEven_Lead5.84mm_TabDown
-TO-220-11, Horizontal, RM 1.7mm, staggered type-2, see http://www.st.com/resource/en/datasheet/tda7391lv.pdf
-TO-220-11 Horizontal RM 1.7mm staggered type-2
-0
-11
-11
-Package_TO_SOT_THT
-TO-220-11_P3.4x2.54mm_StaggerOdd_Lead5.84mm_TabDown
-TO-220-11, Horizontal, RM 1.7mm, staggered type-1, see http://www.st.com/resource/en/datasheet/tda7391lv.pdf
-TO-220-11 Horizontal RM 1.7mm staggered type-1
-0
-11
-11
-Package_TO_SOT_THT
-TO-220-11_P3.4x5.08mm_StaggerEven_Lead4.58mm_Vertical
-TO-220-11, Vertical, RM 1.7mm, staggered type-2, see http://www.st.com/resource/en/datasheet/tda7391lv.pdf
-TO-220-11 Vertical RM 1.7mm staggered type-2
-0
-11
-11
-Package_TO_SOT_THT
-TO-220-11_P3.4x5.08mm_StaggerOdd_Lead4.85mm_Vertical
-TO-220-11, Vertical, RM 1.7mm, staggered type-1, see http://www.st.com/resource/en/datasheet/tda7391lv.pdf
-TO-220-11 Vertical RM 1.7mm staggered type-1
-0
-11
-11
-Package_TO_SOT_THT
-TO-220-11_P3.4x5.08mm_StaggerOdd_Lead8.45mm_TabDown
-TO-220-11, Horizontal, RM 1.7mm, staggered type-1, see http://www.ti.com/lit/ds/symlink/lmd18200.pdf
-TO-220-11 Horizontal RM 1.7mm staggered type-1
-0
-11
-11
-Package_TO_SOT_THT
-TO-220-15_P2.54x2.54mm_StaggerEven_Lead4.58mm_Vertical
-TO-220-15, Vertical, RM 1.27mm, staggered type-2, see http://www.st.com/resource/en/datasheet/l298.pdf
-TO-220-15 Vertical RM 1.27mm staggered type-2
-0
-15
-15
-Package_TO_SOT_THT
-TO-220-15_P2.54x2.54mm_StaggerEven_Lead5.84mm_TabDown
-TO-220-15, Horizontal, RM 1.27mm, staggered type-2, see http://www.st.com/resource/en/datasheet/l298.pdf
-TO-220-15 Horizontal RM 1.27mm staggered type-2
-0
-15
-15
-Package_TO_SOT_THT
-TO-220-15_P2.54x2.54mm_StaggerOdd_Lead4.58mm_Vertical
-TO-220-15, Vertical, RM 1.27mm, staggered type-1, see http://www.st.com/resource/en/datasheet/l298.pdf
-TO-220-15 Vertical RM 1.27mm staggered type-1
-0
-15
-15
-Package_TO_SOT_THT
-TO-220-15_P2.54x2.54mm_StaggerOdd_Lead5.84mm_TabDown
-TO-220-15, Horizontal, RM 1.27mm, staggered type-1, see http://www.st.com/resource/en/datasheet/l298.pdf
-TO-220-15 Horizontal RM 1.27mm staggered type-1
-0
-15
-15
-Package_TO_SOT_THT
-TO-220F-2_Horizontal_TabDown
-TO-220F-2, Horizontal, RM 5.08mm, see http://www.onsemi.com/pub/Collateral/FFPF10F150S-D.pdf
-TO-220F-2 Horizontal RM 5.08mm
-0
-2
-2
-Package_TO_SOT_THT
-TO-220F-2_Horizontal_TabUp
-TO-220F-2, Horizontal, RM 5.08mm, see http://www.onsemi.com/pub/Collateral/FFPF10F150S-D.pdf
-TO-220F-2 Horizontal RM 5.08mm
-0
-2
-2
-Package_TO_SOT_THT
-TO-220F-2_Vertical
-TO-220F-2, Vertical, RM 5.08mm, see http://www.onsemi.com/pub/Collateral/FFPF10F150S-D.pdf
-TO-220F-2 Vertical RM 5.08mm
-0
-2
-2
-Package_TO_SOT_THT
-TO-220F-3_Horizontal_TabDown
-TO-220F-3, Horizontal, RM 2.54mm, see http://www.st.com/resource/en/datasheet/stp20nm60.pdf
-TO-220F-3 Horizontal RM 2.54mm
-0
-3
-3
-Package_TO_SOT_THT
-TO-220F-3_Horizontal_TabUp
-TO-220F-3, Horizontal, RM 2.54mm, see http://www.st.com/resource/en/datasheet/stp20nm60.pdf
-TO-220F-3 Horizontal RM 2.54mm
-0
-3
-3
-Package_TO_SOT_THT
-TO-220F-3_Vertical
-TO-220F-3, Vertical, RM 2.54mm, see http://www.st.com/resource/en/datasheet/stp20nm60.pdf
-TO-220F-3 Vertical RM 2.54mm
-0
-3
-3
-Package_TO_SOT_THT
-TO-220F-4_Horizontal_TabDown
-TO-220F-4, Horizontal, RM 2.54mm, see https://www.njr.com/semicon/PDF/package/TO-220F-4_E.pdf
-TO-220F-4 Horizontal RM 2.54mm
-0
-4
-4
-Package_TO_SOT_THT
-TO-220F-4_Horizontal_TabUp
-TO-220F-4, Horizontal, RM 2.54mm, see https://www.njr.com/semicon/PDF/package/TO-220F-4_E.pdf
-TO-220F-4 Horizontal RM 2.54mm
-0
-4
-4
-Package_TO_SOT_THT
-TO-220F-4_P5.08x2.05mm_StaggerEven_Lead1.85mm_Vertical
-TO-220F-4, Vertical, RM 2.54mm, staggered type-2, see https://www.njr.com/semicon/PDF/package/TO-220F-4_E.pdf
-TO-220F-4 Vertical RM 2.54mm staggered type-2
-0
-4
-4
-Package_TO_SOT_THT
-TO-220F-4_P5.08x2.05mm_StaggerOdd_Lead1.85mm_Vertical
-TO-220F-4, Vertical, RM 2.54mm, staggered type-1, see https://www.njr.com/semicon/PDF/package/TO-220F-4_E.pdf
-TO-220F-4 Vertical RM 2.54mm staggered type-1
-0
-4
-4
-Package_TO_SOT_THT
-TO-220F-4_P5.08x3.7mm_StaggerEven_Lead3.5mm_Vertical
-TO-220F-4, Vertical, RM 2.54mm, staggered type-2, see https://www.njr.com/semicon/PDF/package/TO-220F-4_E.pdf
-TO-220F-4 Vertical RM 2.54mm staggered type-2
-0
-4
-4
-Package_TO_SOT_THT
-TO-220F-4_P5.08x3.7mm_StaggerOdd_Lead3.5mm_Vertical
-TO-220F-4, Vertical, RM 2.54mm, staggered type-1, see https://www.njr.com/semicon/PDF/package/TO-220F-4_E.pdf
-TO-220F-4 Vertical RM 2.54mm staggered type-1
-0
-4
-4
-Package_TO_SOT_THT
-TO-220F-4_Vertical
-TO-220F-4, Vertical, RM 2.54mm, see https://www.njr.com/semicon/PDF/package/TO-220F-4_E.pdf
-TO-220F-4 Vertical RM 2.54mm
-0
-4
-4
-Package_TO_SOT_THT
-TO-220F-5_Horizontal_TabDown
-TO-220F-5, Horizontal, RM 1.7mm, PentawattF-, MultiwattF-5
-TO-220F-5 Horizontal RM 1.7mm PentawattF- MultiwattF-5
-0
-5
-5
-Package_TO_SOT_THT
-TO-220F-5_Horizontal_TabUp
-TO-220F-5, Horizontal, RM 1.7mm, PentawattF-, MultiwattF-5
-TO-220F-5 Horizontal RM 1.7mm PentawattF- MultiwattF-5
-0
-5
-5
-Package_TO_SOT_THT
-TO-220F-5_P3.4x2.06mm_StaggerEven_Lead1.86mm_Vertical
-TO-220F-5, Vertical, RM 1.7mm, PentawattF-, MultiwattF-5, staggered type-2
-TO-220F-5 Vertical RM 1.7mm PentawattF- MultiwattF-5 staggered type-2
-0
-5
-5
-Package_TO_SOT_THT
-TO-220F-5_P3.4x2.06mm_StaggerOdd_Lead1.86mm_Vertical
-TO-220F-5, Vertical, RM 1.7mm, PentawattF-, MultiwattF-5, staggered type-1
-TO-220F-5 Vertical RM 1.7mm PentawattF- MultiwattF-5 staggered type-1
-0
-5
-5
-Package_TO_SOT_THT
-TO-220F-5_P3.4x3.7mm_StaggerEven_Lead3.5mm_Vertical
-TO-220F-5, Vertical, RM 1.7mm, PentawattF-, MultiwattF-5, staggered type-2
-TO-220F-5 Vertical RM 1.7mm PentawattF- MultiwattF-5 staggered type-2
-0
-5
-5
-Package_TO_SOT_THT
-TO-220F-5_P3.4x3.7mm_StaggerOdd_Lead3.5mm_Vertical
-TO-220F-5, Vertical, RM 1.7mm, PentawattF-, MultiwattF-5, staggered type-1
-TO-220F-5 Vertical RM 1.7mm PentawattF- MultiwattF-5 staggered type-1
-0
-5
-5
-Package_TO_SOT_THT
-TO-220F-5_Vertical
-TO-220F-5, Vertical, RM 1.7mm, PentawattF-, MultiwattF-5
-TO-220F-5 Vertical RM 1.7mm PentawattF- MultiwattF-5
-0
-5
-5
-Package_TO_SOT_THT
-TO-220F-7_P2.54x3.7mm_StaggerEven_Lead3.5mm_Vertical
-TO-220F-7, Vertical, RM 1.27mm, staggered type-2
-TO-220F-7 Vertical RM 1.27mm staggered type-2
-0
-7
-7
-Package_TO_SOT_THT
-TO-220F-7_P2.54x3.7mm_StaggerOdd_Lead3.5mm_Vertical
-TO-220F-7, Vertical, RM 1.27mm, staggered type-1
-TO-220F-7 Vertical RM 1.27mm staggered type-1
-0
-7
-7
-Package_TO_SOT_THT
-TO-220F-9_P1.8x3.7mm_StaggerEven_Lead3.5mm_Vertical
-TO-220F-9, Vertical, RM 0.9mm, staggered type-2
-TO-220F-9 Vertical RM 0.9mm staggered type-2
-0
-9
-9
-Package_TO_SOT_THT
-TO-220F-9_P1.8x3.7mm_StaggerOdd_Lead3.5mm_Vertical
-TO-220F-9, Vertical, RM 0.9mm, staggered type-1
-TO-220F-9 Vertical RM 0.9mm staggered type-1
-0
-9
-9
-Package_TO_SOT_THT
-TO-220F-11_P3.4x5.08mm_StaggerEven_Lead5.08mm_Vertical
-TO-220F-11, Vertical, RM 1.7mm, MultiwattF-11, staggered type-2, see http://www.ti.com/lit/ds/symlink/lm3886.pdf
-TO-220F-11 Vertical RM 1.7mm MultiwattF-11 staggered type-2
-0
-11
-11
-Package_TO_SOT_THT
-TO-220F-11_P3.4x5.08mm_StaggerOdd_Lead5.08mm_Vertical
-TO-220F-11, Vertical, RM 1.7mm, MultiwattF-11, staggered type-1, see http://www.ti.com/lit/ds/symlink/lm3886.pdf
-TO-220F-11 Vertical RM 1.7mm MultiwattF-11 staggered type-1
-0
-11
-11
-Package_TO_SOT_THT
-TO-220F-15_P2.54x5.08mm_StaggerEven_Lead5.08mm_Vertical
-TO-220F-15, Vertical, RM 1.27mm, MultiwattF-15, staggered type-2
-TO-220F-15 Vertical RM 1.27mm MultiwattF-15 staggered type-2
-0
-15
-15
-Package_TO_SOT_THT
-TO-220F-15_P2.54x5.08mm_StaggerOdd_Lead5.08mm_Vertical
-TO-220F-15, Vertical, RM 1.27mm, MultiwattF-15, staggered type-1
-TO-220F-15 Vertical RM 1.27mm MultiwattF-15 staggered type-1
-0
-15
-15
-Package_TO_SOT_THT
-TO-247-2_Horizontal_TabDown
-TO-247-2, Horizontal, RM 10.9mm, see https://toshiba.semicon-storage.com/us/product/mosfet/to-247-4l.html
-TO-247-2 Horizontal RM 10.9mm
-0
-2
-2
-Package_TO_SOT_THT
-TO-247-2_Horizontal_TabUp
-TO-247-2, Horizontal, RM 10.9mm, see https://toshiba.semicon-storage.com/us/product/mosfet/to-247-4l.html
-TO-247-2 Horizontal RM 10.9mm
-0
-2
-2
-Package_TO_SOT_THT
-TO-247-2_Vertical
-TO-247-2, Vertical, RM 10.9mm, see https://toshiba.semicon-storage.com/us/product/mosfet/to-247-4l.html
-TO-247-2 Vertical RM 10.9mm
-0
-2
-2
-Package_TO_SOT_THT
-TO-247-3_Horizontal_TabDown
-TO-247-3, Horizontal, RM 5.45mm, see https://toshiba.semicon-storage.com/us/product/mosfet/to-247-4l.html
-TO-247-3 Horizontal RM 5.45mm
-0
-3
-3
-Package_TO_SOT_THT
-TO-247-3_Horizontal_TabUp
-TO-247-3, Horizontal, RM 5.45mm, see https://toshiba.semicon-storage.com/us/product/mosfet/to-247-4l.html
-TO-247-3 Horizontal RM 5.45mm
-0
-3
-3
-Package_TO_SOT_THT
-TO-247-3_Vertical
-TO-247-3, Vertical, RM 5.45mm, see https://toshiba.semicon-storage.com/us/product/mosfet/to-247-4l.html
-TO-247-3 Vertical RM 5.45mm
-0
-3
-3
-Package_TO_SOT_THT
-TO-247-4_Horizontal_TabDown
-TO-247-4, Horizontal, RM 2.54mm, see https://toshiba.semicon-storage.com/us/product/mosfet/to-247-4l.html
-TO-247-4 Horizontal RM 2.54mm
-0
-4
-4
-Package_TO_SOT_THT
-TO-247-4_Horizontal_TabUp
-TO-247-4, Horizontal, RM 2.54mm, see https://toshiba.semicon-storage.com/us/product/mosfet/to-247-4l.html
-TO-247-4 Horizontal RM 2.54mm
-0
-4
-4
-Package_TO_SOT_THT
-TO-247-4_Vertical
-TO-247-4, Vertical, RM 2.54mm, see https://toshiba.semicon-storage.com/us/product/mosfet/to-247-4l.html
-TO-247-4 Vertical RM 2.54mm
-0
-4
-4
-Package_TO_SOT_THT
-TO-247-5_Horizontal_TabDown
-TO-247-5, Horizontal, RM 2.54mm, see http://ww1.microchip.com/downloads/en/DeviceDoc/20005685A.pdf
-TO-247-5 Horizontal RM 2.54mm
-0
-5
-5
-Package_TO_SOT_THT
-TO-247-5_Horizontal_TabUp
-TO-247-5, Horizontal, RM 2.54mm, see http://ww1.microchip.com/downloads/en/DeviceDoc/20005685A.pdf
-TO-247-5 Horizontal RM 2.54mm
-0
-5
-5
-Package_TO_SOT_THT
-TO-247-5_Vertical
-TO-247-5, Vertical, RM 2.54mm, see http://ww1.microchip.com/downloads/en/DeviceDoc/20005685A.pdf
-TO-247-5 Vertical RM 2.54mm
-0
-5
-5
-Package_TO_SOT_THT
-TO-251-2-1EP_Horizontal_TabDown
-TO-251-2, Horizontal, RM 4.58mm, IPAK, see https://www.diodes.com/assets/Package-Files/TO251.pdf
-TO-251-2 Horizontal RM 4.58mm IPAK
-0
-3
-3
-Package_TO_SOT_THT
-TO-251-2_Vertical
-TO-251-2, Vertical, RM 4.58mm, IPAK, see https://www.diodes.com/assets/Package-Files/TO251.pdf
-TO-251-2 Vertical RM 4.58mm IPAK
-0
-2
-2
-Package_TO_SOT_THT
-TO-251-3-1EP_Horizontal_TabDown
-TO-251-3, Horizontal, RM 2.29mm, IPAK, see https://www.diodes.com/assets/Package-Files/TO251.pdf
-TO-251-3 Horizontal RM 2.29mm IPAK
-0
-4
-4
-Package_TO_SOT_THT
-TO-251-3_Vertical
-TO-251-3, Vertical, RM 2.29mm, IPAK, see https://www.diodes.com/assets/Package-Files/TO251.pdf
-TO-251-3 Vertical RM 2.29mm IPAK
-0
-3
-3
-Package_TO_SOT_THT
-TO-262-3-1EP_Horizontal_TabDown
-TO-262-3, Horizontal, RM 2.54mm, IIPAK, I2PAK, see http://www.onsemi.com/pub/Collateral/EN8586-D.PDF
-TO-262-3 Horizontal RM 2.54mm IIPAK I2PAK
-0
-4
-4
-Package_TO_SOT_THT
-TO-262-3_Vertical
-TO-262-3, Vertical, RM 2.54mm, IIPAK, I2PAK, see http://www.onsemi.com/pub/Collateral/EN8586-D.PDF
-TO-262-3 Vertical RM 2.54mm IIPAK I2PAK
-0
-3
-3
-Package_TO_SOT_THT
-TO-262-5-1EP_Horizontal_TabDown
-TO-262-5, Horizontal, RM 1.7mm, IIPAK, I2PAK, see http://pdf.datasheetcatalog.com/datasheet/irf/iris4011.pdf
-TO-262-5 Horizontal RM 1.7mm IIPAK I2PAK
-0
-6
-6
-Package_TO_SOT_THT
-TO-262-5_Vertical
-TO-262-5, Vertical, RM 1.7mm, IIPAK, I2PAK, see http://pdf.datasheetcatalog.com/datasheet/irf/iris4011.pdf
-TO-262-5 Vertical RM 1.7mm IIPAK I2PAK
-0
-5
-5
-Package_TO_SOT_THT
-TO-264-2_Horizontal_TabDown
-TO-264-2, Horizontal, RM 10.9mm, see https://www.fairchildsemi.com/package-drawings/TO/TO264A03.pdf
-TO-264-2 Horizontal RM 10.9mm
-0
-2
-2
-Package_TO_SOT_THT
-TO-264-2_Horizontal_TabUp
-TO-264-2, Horizontal, RM 10.9mm, see https://www.fairchildsemi.com/package-drawings/TO/TO264A03.pdf
-TO-264-2 Horizontal RM 10.9mm
-0
-2
-2
-Package_TO_SOT_THT
-TO-264-2_Vertical
-TO-264-2, Vertical, RM 10.9mm, see https://www.fairchildsemi.com/package-drawings/TO/TO264A03.pdf
-TO-264-2 Vertical RM 10.9mm
-0
-2
-2
-Package_TO_SOT_THT
-TO-264-3_Horizontal_TabDown
-TO-264-3, Horizontal, RM 5.45mm, see https://www.fairchildsemi.com/package-drawings/TO/TO264A03.pdf
-TO-264-3 Horizontal RM 5.45mm
-0
-3
-3
-Package_TO_SOT_THT
-TO-264-3_Horizontal_TabUp
-TO-264-3, Horizontal, RM 5.45mm, see https://www.fairchildsemi.com/package-drawings/TO/TO264A03.pdf
-TO-264-3 Horizontal RM 5.45mm
-0
-3
-3
-Package_TO_SOT_THT
-TO-264-3_Vertical
-TO-264-3, Vertical, RM 5.45mm, see https://www.fairchildsemi.com/package-drawings/TO/TO264A03.pdf
-TO-264-3 Vertical RM 5.45mm
-0
-3
-3
-Package_TO_SOT_THT
-TO-264-5_Horizontal_TabDown
-TO-264-5, Horizontal, RM 3.81mm, see https://www.onsemi.com/pub/Collateral/NJL3281D-D.PDF
-TO-264-5 Horizontal RM 3.81mm
-0
-5
-5
-Package_TO_SOT_THT
-TO-264-5_Horizontal_TabUp
-TO-264-5, Horizontal, RM 3.81mm, see https://www.onsemi.com/pub/Collateral/NJL3281D-D.PDF
-TO-264-5 Horizontal RM 3.81mm
-0
-5
-5
-Package_TO_SOT_THT
-TO-264-5_Vertical
-TO-264-5, Vertical, RM 3.81mm, see https://www.onsemi.com/pub/Collateral/NJL3281D-D.PDF
-TO-264-5 Vertical RM 3.81mm
-0
-5
-5
+224965659415377
+Symbol
+CE-Logo_8.5x6mm_SilkScreen
+CE marking
+Logo CE certification
+0
+0
+0
+Symbol
+CE-Logo_11.2x8mm_SilkScreen
+CE marking
+Logo CE certification
+0
+0
+0
+Symbol
+CE-Logo_16.8x12mm_SilkScreen
+CE marking
+Logo CE certification
+0
+0
+0
+Symbol
+CE-Logo_28x20mm_SilkScreen
+CE marking
+Logo CE certification
+0
+0
+0
+Symbol
+CE-Logo_42x30mm_SilkScreen
+CE marking
+Logo CE certification
+0
+0
+0
+Symbol
+CE-Logo_56.1x40mm_SilkScreen
+CE marking
+Logo CE certification
+0
+0
+0
+Symbol
+ESD-Logo_6.6x6mm_SilkScreen
+Electrostatic discharge Logo
+Logo ESD
+0
+0
+0
+Symbol
+ESD-Logo_8.9x8mm_SilkScreen
+Electrostatic discharge Logo
+Logo ESD
+0
+0
+0
+Symbol
+ESD-Logo_13.2x12mm_SilkScreen
+Electrostatic discharge Logo
+Logo ESD
+0
+0
+0
+Symbol
+ESD-Logo_22x20mm_SilkScreen
+Electrostatic discharge Logo
+Logo ESD
+0
+0
+0
+Symbol
+ESD-Logo_33x30mm_SilkScreen
+Electrostatic discharge Logo
+Logo ESD
+0
+0
+0
+Symbol
+ESD-Logo_44.1x40mm_SilkScreen
+Electrostatic discharge Logo
+Logo ESD
+0
+0
+0
+Symbol
+FCC-Logo_7.3x6mm_SilkScreen
+FCC marking
+Logo FCC certification
+0
+0
+0
+Symbol
+FCC-Logo_9.6x8mm_SilkScreen
+FCC marking
+Logo FCC certification
+0
+0
+0
+Symbol
+FCC-Logo_14.6x12mm_SilkScreen
+FCC marking
+Logo FCC certification
+0
+0
+0
+Symbol
+FCC-Logo_24.2x20mm_SilkScreen
+FCC marking
+Logo FCC certification
+0
+0
+0
+Symbol
+FCC-Logo_36.3x30mm_SilkScreen
+FCC marking
+Logo FCC certification
+0
+0
+0
+Symbol
+FCC-Logo_48.3x40mm_SilkScreen
+FCC marking
+Logo FCC certification
+0
+0
+0
+Symbol
+KiCad-Logo2_5mm_Copper
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo2_5mm_SilkScreen
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo2_6mm_Copper
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo2_6mm_SilkScreen
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo2_8mm_Copper
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo2_8mm_SilkScreen
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo2_12mm_Copper
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo2_12mm_SilkScreen
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo2_20mm_Copper
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo2_20mm_SilkScreen
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo2_30mm_Copper
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo2_30mm_SilkScreen
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo2_40mm_Copper
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo2_40mm_SilkScreen
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo_5mm_Copper
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo_5mm_SilkScreen
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo_6mm_Copper
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo_6mm_SilkScreen
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo_8mm_Copper
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo_8mm_SilkScreen
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo_12mm_Copper
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo_12mm_SilkScreen
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo_20mm_Copper
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo_20mm_SilkScreen
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo_30mm_Copper
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo_30mm_SilkScreen
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo_40mm_Copper
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+KiCad-Logo_40mm_SilkScreen
+KiCad Logo
+Logo KiCad
+0
+0
+0
+Symbol
+OSHW-Logo2_7.3x6mm_Copper
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Logo2_7.3x6mm_SilkScreen
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Logo2_9.8x8mm_Copper
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Logo2_9.8x8mm_SilkScreen
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Logo2_14.6x12mm_Copper
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Logo2_14.6x12mm_SilkScreen
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Logo2_24.3x20mm_Copper
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Logo2_24.3x20mm_SilkScreen
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Logo2_36.5x30mm_Copper
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Logo2_36.5x30mm_SilkScreen
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Logo2_48.7x40mm_Copper
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Logo2_48.7x40mm_SilkScreen
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Logo_5.7x6mm_Copper
+Open Source Hardware Logo
+Logo OSHW
+0
+0
+0
+Symbol
+OSHW-Logo_5.7x6mm_SilkScreen
+Open Source Hardware Logo
+Logo OSHW
+0
+0
+0
+Symbol
+OSHW-Logo_7.5x8mm_Copper
+Open Source Hardware Logo
+Logo OSHW
+0
+0
+0
+Symbol
+OSHW-Logo_7.5x8mm_SilkScreen
+Open Source Hardware Logo
+Logo OSHW
+0
+0
+0
+Symbol
+OSHW-Logo_11.4x12mm_Copper
+Open Source Hardware Logo
+Logo OSHW
+0
+0
+0
+Symbol
+OSHW-Logo_11.4x12mm_SilkScreen
+Open Source Hardware Logo
+Logo OSHW
+0
+0
+0
+Symbol
+OSHW-Logo_19x20mm_Copper
+Open Source Hardware Logo
+Logo OSHW
+0
+0
+0
+Symbol
+OSHW-Logo_19x20mm_SilkScreen
+Open Source Hardware Logo
+Logo OSHW
+0
+0
+0
+Symbol
+OSHW-Logo_28.5x30mm_Copper
+Open Source Hardware Logo
+Logo OSHW
+0
+0
+0
+Symbol
+OSHW-Logo_28.5x30mm_SilkScreen
+Open Source Hardware Logo
+Logo OSHW
+0
+0
+0
+Symbol
+OSHW-Logo_38.1x40mm_Copper
+Open Source Hardware Logo
+Logo OSHW
+0
+0
+0
+Symbol
+OSHW-Logo_38.1x40mm_SilkScreen
+Open Source Hardware Logo
+Logo OSHW
+0
+0
+0
+Symbol
+OSHW-Symbol_6.7x6mm_Copper
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Symbol_6.7x6mm_SilkScreen
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Symbol_8.9x8mm_Copper
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Symbol_8.9x8mm_SilkScreen
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Symbol_13.4x12mm_Copper
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Symbol_13.4x12mm_SilkScreen
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Symbol_22.3x20mm_Copper
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Symbol_22.3x20mm_SilkScreen
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Symbol_33.5x30mm_Copper
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Symbol_33.5x30mm_SilkScreen
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Symbol_44.5x40mm_Copper
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+OSHW-Symbol_44.5x40mm_SilkScreen
+Open Source Hardware Symbol
+Logo Symbol OSHW
+0
+0
+0
+Symbol
+Polarity_Center_Negative_6mm_SilkScreen
+Polarity Logo, Center Negative
+Logo Polarity Center Negative
+0
+0
+0
+Symbol
+Polarity_Center_Negative_8mm_SilkScreen
+Polarity Logo, Center Negative
+Logo Polarity Center Negative
+0
+0
+0
+Symbol
+Polarity_Center_Negative_12mm_SilkScreen
+Polarity Logo, Center Negative
+Logo Polarity Center Negative
+0
+0
+0
+Symbol
+Polarity_Center_Negative_20mm_SilkScreen
+Polarity Logo, Center Negative
+Logo Polarity Center Negative
+0
+0
+0
+Symbol
+Polarity_Center_Negative_30mm_SilkScreen
+Polarity Logo, Center Negative
+Logo Polarity Center Negative
+0
+0
+0
+Symbol
+Polarity_Center_Negative_40mm_SilkScreen
+Polarity Logo, Center Negative
+Logo Polarity Center Negative
+0
+0
+0
+Symbol
+Polarity_Center_Positive_6mm_SilkScreen
+Polarity Logo, Center Positive
+Logo Polarity Center Positive
+0
+0
+0
+Symbol
+Polarity_Center_Positive_8mm_SilkScreen
+Polarity Logo, Center Positive
+Logo Polarity Center Positive
+0
+0
+0
+Symbol
+Polarity_Center_Positive_12mm_SilkScreen
+Polarity Logo, Center Positive
+Logo Polarity Center Positive
+0
+0
+0
+Symbol
+Polarity_Center_Positive_20mm_SilkScreen
+Polarity Logo, Center Positive
+Logo Polarity Center Positive
+0
+0
+0
+Symbol
+Polarity_Center_Positive_30mm_SilkScreen
+Polarity Logo, Center Positive
+Logo Polarity Center Positive
+0
+0
+0
+Symbol
+Polarity_Center_Positive_40mm_SilkScreen
+Polarity Logo, Center Positive
+Logo Polarity Center Positive
+0
+0
+0
+Symbol
+RoHS-Logo_6mm_SilkScreen
+Restriction of Hazardous Substances Directive Logo
+Logo RoHS
+0
+0
+0
+Symbol
+RoHS-Logo_8mm_SilkScreen
+Restriction of Hazardous Substances Directive Logo
+Logo RoHS
+0
+0
+0
+Symbol
+RoHS-Logo_12mm_SilkScreen
+Restriction of Hazardous Substances Directive Logo
+Logo RoHS
+0
+0
+0
+Symbol
+RoHS-Logo_20mm_SilkScreen
+Restriction of Hazardous Substances Directive Logo
+Logo RoHS
+0
+0
+0
+Symbol
+RoHS-Logo_30mm_SilkScreen
+Restriction of Hazardous Substances Directive Logo
+Logo RoHS
+0
+0
+0
+Symbol
+RoHS-Logo_40mm_SilkScreen
+Restriction of Hazardous Substances Directive Logo
+Logo RoHS
+0
+0
+0
+Symbol
+Symbol_Attention_CopperTop_Big
+Symbol, Attention, Copper Top, Big,
+Symbol, Attention, Copper Top, Big,
+0
+0
+0
+Symbol
+Symbol_Attention_CopperTop_Small
+Symbol, Attention, Copper Top, Small,
+Symbol, Attention, Copper Top, Small,
+0
+0
+0
+Symbol
+Symbol_Barrel_Polarity
+Barrel connector polarity indicator
+barrel polarity
+0
+0
+0
+Symbol
+Symbol_CC-Attribution_CopperTop_Big
+Symbol, CC-Attribution, Copper Top, Big,
+Symbol, CC-Attribution, Copper Top, Big,
+0
+0
+0
+Symbol
+Symbol_CC-Attribution_CopperTop_Small
+Symbol, CC-Share Alike, Copper Top, Small,
+Symbol, CC-Share Alike, Copper Top, Small,
+0
+0
+0
+Symbol
+Symbol_CC-Noncommercial_CopperTop_Big
+Symbol, CC-Noncommercial, Copper Top, Big,
+Symbol, CC-Noncommercial, Copper Top, Big,
+0
+0
+0
+Symbol
+Symbol_CC-Noncommercial_CopperTop_Small
+Symbol, CC-Noncommercial Alike, Copper Top, Small,
+Symbol, CC-Noncommercial Alike, Copper Top, Small,
+0
+0
+0
+Symbol
+Symbol_CC-PublicDomain_CopperTop_Big
+Symbol, CC-PublicDomain, Copper Top, Big,
+Symbol, CC-PublicDomain, Copper Top, Big,
+0
+0
+0
+Symbol
+Symbol_CC-PublicDomain_CopperTop_Small
+Symbol, CC-Public Domain, Copper Top, Small,
+Symbol, CC-Public Domain, Copper Top, Small,
+0
+0
+0
+Symbol
+Symbol_CC-PublicDomain_SilkScreenTop_Big
+Symbol, CC-PublicDomain, SilkScreen Top, Big,
+Symbol, CC-PublicDomain, SilkScreen Top, Big,
+0
+0
+0
+Symbol
+Symbol_CC-ShareAlike_CopperTop_Big
+Symbol, CC-Share Alike, Copper Top, Big,
+Symbol, CC-Share Alike, Copper Top, Big,
+0
+0
+0
+Symbol
+Symbol_CC-ShareAlike_CopperTop_Small
+Symbol, CC-Share Alike, Copper Top, Small,
+Symbol, CC-Share Alike, Copper Top, Small,
+0
+0
+0
+Symbol
+Symbol_CreativeCommonsPublicDomain_CopperTop_Small
+Symbol, Creative Commons Public Domain, CopperTop, Small,
+Symbol, Creative Commons Public Domain, CopperTop, Small,
+0
+0
+0
+Symbol
+Symbol_CreativeCommonsPublicDomain_SilkScreenTop_Small
+Symbol, Creative Commons Public Domain, SilkScreenTop, Small,
+Symbol, Creative Commons Public Domain, SilkScreen Top, Small,
+0
+0
+0
+Symbol
+Symbol_CreativeCommons_CopperTop_Type1_Big
+Symbol, Creative Commons, CopperTop, Type 1, Big,
+Symbol, Creative Commons, CopperTop, Type 1, Big,
+0
+0
+0
+Symbol
+Symbol_CreativeCommons_CopperTop_Type2_Big
+Symbol, Creative Commons, CopperTop, Type 2, Big,
+Symbol, Creative Commons, CopperTop, Type 2, Big,
+0
+0
+0
+Symbol
+Symbol_CreativeCommons_CopperTop_Type2_Small
+Symbol, Creative Commons, CopperTop, Type 2, Small,
+Symbol, Creative Commons, CopperTop, Type 2, Small,
+0
+0
+0
+Symbol
+Symbol_CreativeCommons_SilkScreenTop_Type2_Big
+Symbol, Creative Commons, SilkScreen Top, Type 2, Big,
+Symbol, Creative Commons, SilkScreen Top, Type 2, Big,
+0
+0
+0
+Symbol
+Symbol_Danger_CopperTop_Big
+Symbol, Danger, CopperTop, Big,
+Symbol, Danger, CopperTop, Big,
+0
+0
+0
+Symbol
+Symbol_Danger_CopperTop_Small
+Symbol, Danger, Copper Top, Small,
+Symbol, Danger, Copper Top, Small,
+0
+0
+0
+Symbol
+Symbol_ESD-Logo-Text_CopperTop
+
+
+0
+0
+0
+Symbol
+Symbol_ESD-Logo_CopperTop
+ESD-Logo, similar JEDEC-14, without text, ohne Text, Copper Top,
+ESD-Logo, similar JEDEC-14, without text, ohne Text, Copper Top,
+0
+0
+0
+Symbol
+Symbol_GNU-GPL_CopperTop_Big
+Symbol, GNU-GPL, Copper Top, Big,
+Symbol, GNU-GPL, Copper Top, Big,
+0
+0
+0
+Symbol
+Symbol_GNU-GPL_CopperTop_Small
+Symbol, GNU-GPL, Copper Top, Small,
+Symbol, GNU-GPL, Copper Top, Small,
+0
+0
+0
+Symbol
+Symbol_GNU-Logo_CopperTop
+GNU-Logo, GNU-Head, GNU-Kopf, Copper Top,
+GNU-Logo, GNU-Head, GNU-Kopf, Copper Top,
+0
+0
+0
+Symbol
+Symbol_GNU-Logo_SilkscreenTop
+GNU-Logo, GNU-Head, GNU-Kopf, Silkscreen,
+GNU-Logo, GNU-Head, GNU-Kopf, Silkscreen,
+0
+0
+0
+Symbol
+Symbol_HighVoltage_Type1_CopperTop_Big
+Symbol, HighVoltage, Type1, Copper Top, Big,
+Symbol, HighVoltage, Type1, Copper Top, Big,
+0
+0
+0
+Symbol
+Symbol_HighVoltage_Type2_CopperTop_Big
+Symbol, HighVoltage, Type2, Copper Top, Big,
+Symbol, HighVoltage, Type2, Copper Top, Big,
+0
+0
+0
+Symbol
+Symbol_HighVoltage_Type2_CopperTop_VerySmall
+Symbol, High Voltage, Type 2, Copper Top, Very Small,
+Symbol, High Voltage, Type 2, Copper Top, Very Small,
+0
+0
+0
+Symbol
+Symbol_Highvoltage_Type1_CopperTop_Small
+Symbol, Highvoltage, Type 1, Copper Top, Small,
+Symbol, Highvoltage, Type 1, Copper Top, Small,
+0
+0
+0
+Symbol
+Symbol_Highvoltage_Type2_CopperTop_Small
+Symbol, Highvoltage, Type 2, Copper Top, Small,
+Symbol, Highvoltage, Type 2, Copper Top, Small,
+0
+0
+0
+Symbol
+WEEE-Logo_4.2x6mm_SilkScreen
+Waste Electrical and Electronic Equipment Directive
+Logo WEEE
+0
+0
+0
+Symbol
+WEEE-Logo_5.6x8mm_SilkScreen
+Waste Electrical and Electronic Equipment Directive
+Logo WEEE
+0
+0
+0
+Symbol
+WEEE-Logo_8.4x12mm_SilkScreen
+Waste Electrical and Electronic Equipment Directive
+Logo WEEE
+0
+0
+0
+Symbol
+WEEE-Logo_14x20mm_SilkScreen
+Waste Electrical and Electronic Equipment Directive
+Logo WEEE
+0
+0
+0
+Symbol
+WEEE-Logo_21x30mm_SilkScreen
+Waste Electrical and Electronic Equipment Directive
+Logo WEEE
+0
+0
+0
+Symbol
+WEEE-Logo_28.1x40mm_SilkScreen
+Waste Electrical and Electronic Equipment Directive
+Logo WEEE
+0
+0
+0
