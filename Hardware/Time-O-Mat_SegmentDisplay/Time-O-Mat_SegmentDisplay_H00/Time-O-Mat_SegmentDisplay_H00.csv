@@ -1,0 +1,6 @@
+Comment,Designator,Footprint,LCSC
+"100nF","C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21","Capacitor_SMD:C_0402_1005Metric","C1525"
+"10uF","C22","Capacitor_SMD:C_0603_1608Metric","C19702"
+"WS2812E","D1,D2,D3,D4,D5,D6,D7,D8,D9,D10,D11,D12,D13,D14,D15,D16,D17,D18,D19,D20,D21","LED_SMD:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm","C139127"
+"Conn_02x04_Odd_Even","J1","Connector_PinSocket_2.54mm:PinSocket_2x04_P2.54mm_Horizontal",""
+"75R","R1","Resistor_SMD:R_0603_1608Metric","C4275"
