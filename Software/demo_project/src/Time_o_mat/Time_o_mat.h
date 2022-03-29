@@ -4,7 +4,7 @@
 #include "Preferences.h"
 
 #include "Music.h"
-
+#include "Display_TM.h"
 
 namespace TM {
 
@@ -32,7 +32,8 @@ class Time_o_mat_class {
     unsigned long melodyLastMillis = 0;
 
 public:
-    Time_o_mat_class();
+    Display_TM display;
+
     void begin();
 
     bool buttonRead();
@@ -42,9 +43,6 @@ public:
     void playMelody(const int * aMelody, const int size, const int tempo = 180);
     void stopMelody();
     void handleMelody();
-
-    void ledWrite(uint8_t id, bool state);
-    void ledWriteAnalog(uint8_t id, uint8_t brightness);    // brightness 0-100
 };
 
 extern Time_o_mat_class Time_o_mat;

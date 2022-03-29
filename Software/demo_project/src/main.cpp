@@ -1,12 +1,24 @@
 #include "Time_o_mat/Time_o_mat.h"
-#include "Adafruit_NeoPixel.h"
+
+#include <WiFi.h>
+#include "time.h"
+#include "sntp.h"
+
+const char* ssid       = "";
+const char* password   = "";
+
+const char* ntpServer1 = "pool.ntp.org";
+const char* ntpServer2 = "time.nist.gov";
+const long  gmtOffset_sec = 3600;
+const int   daylightOffset_sec = 3600;
+
+const char* time_zone = "CET-1CEST,M3.5.0,M10.5.0/3";  // TimeZone rule for Europe/Rome including daylight adjustment rules (optional)
+
 #include "OneWire.h"
 #include "DallasTemperature.h"
 
-const uint8_t CONTROL_PERIOD = 200;
+const uint16_t CONTROL_PERIOD = 1000;
 uint32_t prevControlTime = 0;
-
-Adafruit_NeoPixel pixels(86, 16, NEO_GRB + NEO_KHZ800);
 
 uint8_t buttonPin[] = {18, 19, 21};
 
@@ -17,11 +29,20 @@ uint8_t touchPads[] = {12, 14, 27, 33, 32};
 
 void setup() {
     Time_o_mat.begin();
-    pixels.begin();
 
     for(uint8_t i = 0; i < 3; ++i) {
         pinMode(buttonPin[i], INPUT_PULLUP);
     }
+
+    configTime(gmtOffset_sec, daylightOffset_sec, ntpServer1, ntpServer2);
+
+    printf("Connecting to %s ", ssid);
+    WiFi.begin(ssid, password);
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(500);
+        printf(".");
+    }
+    printf("connected\n");
 }
 
 void loop() {
@@ -34,10 +55,14 @@ void loop() {
         printf("temp: %f ", sensors.getTempCByIndex(0)); 
 
         for(uint8_t i = 0; i < 5; ++i) {
-            uint16_t touch_value = 0;
-            
             printf("touch%d: %d ", i, touchRead(touchPads[i]));
         }
+
+        struct tm time;
+        if(!getLocalTime(&time)){
+            printf("No time available (yet)\n");
+        }
+        printf("time: %02d:%02d", time.tm_hour, time.tm_min);
 
         printf("\n");
 
@@ -45,10 +70,16 @@ void loop() {
             Time_o_mat.playMelody(takeonme, sizeof(takeonme), takeonme_tempo);
         }
 
-        pixels.clear();
-        for(uint8_t i = 0; i < 86; ++i) {
-            pixels.setPixelColor(i, pixels.Color(50, 0, 0));
-        }
-        pixels.show();
+        char timeDisp[4];
+        sprintf(timeDisp, "%02d%02d", time.tm_hour, time.tm_min);
+        //Time_o_mat.display.setChar(2, '3', red);
+        Time_o_mat.display.setText(timeDisp, red);
+
+        static bool colonState = 0;
+        if(colonState)
+            Time_o_mat.display.setColon(red, red);
+        else
+            Time_o_mat.display.setColon(black, black);
+        colonState = !colonState;
     }
 }

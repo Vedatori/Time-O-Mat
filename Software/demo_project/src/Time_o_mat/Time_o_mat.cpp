@@ -1,7 +1,4 @@
 #include "Time_o_mat.h"
-#include "Preferences.h"
-
-#include "DisplayCharactersSet.h"
 
 void TM::updateEnc(void * parameter) {
     for(;;) {
@@ -10,19 +7,13 @@ void TM::updateEnc(void * parameter) {
     }
 }
 
-Time_o_mat_class::Time_o_mat_class(void) {
-}
-
 void Time_o_mat_class::begin() {
     
     xTaskCreatePinnedToCore(TM::updateEnc, "updateEnc", 10000 , (void*) 0, 1, NULL, 1);
 
     ledcSetup(TM::BUZZER_CHANNEL, 1000, 10);
-}
 
-bool Time_o_mat_class::buttonRead() {
-    // 0-not pressed, 1-pressed
-    return !digitalRead(TM::BUTTON);
+    display.begin();
 }
 
 void Time_o_mat_class::soundTone(float freq) {
