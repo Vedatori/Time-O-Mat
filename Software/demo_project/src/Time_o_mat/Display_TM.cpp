@@ -12,13 +12,12 @@ void Display_TM::begin() {
 }
 
 void Display_TM::setLED(const int16_t letter, const int16_t position, const Color color) {
-    int16_t ledID = 0;
-
     if(letter < 0 || letter > 4)
         return;
     if(position < 0 || position > 20)
         return;
-
+    
+    int16_t ledID = 0;
     if(letter < 2)
         ledID = letter*21 + charToIndexMap[position];
     else if(letter < 4)
@@ -34,6 +33,11 @@ void Display_TM::setLED(const int16_t letter, const int16_t position, const Colo
 }
 
 void Display_TM::setChar(const int16_t letter, const char character, const Color color) {
+    if(letter < 0 || letter > 3)
+        return;
+    if(character < 40 || character > 91)
+        return;
+
     for(uint8_t i = 0; i < 21; ++i) {
         if(characterSet[character - 40][i]) {
             setLED(letter, i, color);
