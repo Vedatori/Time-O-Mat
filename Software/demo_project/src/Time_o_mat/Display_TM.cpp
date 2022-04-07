@@ -4,46 +4,60 @@
 
 Adafruit_NeoPixel pixels(86, 16, NEO_GRB + NEO_KHZ800);
 
-Color red = {50, 0, 0};
 Color black = {0, 0, 0};
+Color red = {50, 0, 0};
+Color green = {0, 50, 0};
+Color blue = {0, 0, 50};
+Color cyan = {0, 5, 50};
+Color magenta = {50, 0, 50};
+Color yellow = {50, 50, 0};
+Color white = {50, 50, 50};
 
 void Display_TM::begin() {
     pixels.begin();
 }
 
-void Display_TM::setLED(const int16_t letter, const int16_t position, const Color color) {
-    if(letter < 0 || letter > 4)
+void Display_TM::update() {
+    for(uint8_t ledID = 0; ledID < 86; ++ledID) {
+        uint32_t color = pixels.Color(desiredState[ledID].red, desiredState[ledID].green, desiredState[ledID].blue);
+        pixels.setPixelColor(ledID, color);
+    }
+    pixels.show();
+}
+
+void Display_TM::setLED(const int16_t digitIndex, const int16_t position, const Color color) {
+    if(digitIndex < 0 || digitIndex > 4)
         return;
     if(position < 0 || position > 20)
         return;
     
     int16_t ledID = 0;
-    if(letter < 2)
-        ledID = letter*21 + charToIndexMap[position];
-    else if(letter < 4)
-        ledID = letter*21 + charToIndexMap[position] + 2;   // center colon offset
+    if(digitIndex < 2)
+        ledID = digitIndex*21 + charToIndexMap[position];
+    else if(digitIndex < 4)
+        ledID = digitIndex*21 + charToIndexMap[position] + 2;   // center colon offset
     else
         ledID = position + 42;
 
     if(ledID < 0 || ledID > 85) {
         return;
     }
-    pixels.setPixelColor(ledID, pixels.Color(color.red, color.green, color.blue));
-    pixels.show();
+    
+    desiredState[ledID] = color;
 }
 
-void Display_TM::setChar(const int16_t letter, const char character, const Color color) {
-    if(letter < 0 || letter > 3)
+void Display_TM::setChar(const int16_t digitIndex, const char character, const Color color) {
+    if(digitIndex < 0 || digitIndex > 3)
         return;
     if(character < 40 || character > 91)
         return;
 
     for(uint8_t i = 0; i < 21; ++i) {
         if(characterSet[character - 40][i]) {
-            setLED(letter, i, color);
+            setLED(digitIndex, i, color);
         }
         else {
-            setLED(letter, i, black);
+            setLED(digitIndex, i, black);
         }
     }
 }
@@ -59,6 +73,8 @@ void Display_TM::setText(const String text, const Color color) {
     }
 }
 
+Color Display_TM::currentState[86] = {black, };
+Color Display_TM::desiredState[86] = {black, };
 uint8_t Display_TM::charToIndexMap[21] = {0, 1, 2, 17, 3, 16, 4, 15, 5, 18, 19, 20, 14, 6, 13, 7, 12, 8, 11, 10, 9};
 bool Display_TM::characterSet[51][21] = {
     {   // "("

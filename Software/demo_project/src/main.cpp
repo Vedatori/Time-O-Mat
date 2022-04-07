@@ -81,5 +81,7 @@ void loop() {
         else
             Time_o_mat.display.setColon(black, black);
         colonState = !colonState;
+
+        Time_o_mat.display.update();
     }
 }
