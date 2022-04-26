@@ -9,3 +9,14 @@ If the USB C standard in the cable and power adapter in use is properly implemen
   <li><strong>1,68V</strong> - 3000mA</li>
 </ul>
 The order of CC pins (e.g. if CC1 is 0V and CC2 is one of the three voltages or vice versa) is determined by the orientation of the cable and does not matter in our application.
+
+
+<h2>To do list for next HW revision</h2>
+<ul>
+  <li>Zener diodes for power rails protection</li>
+  <li>multi board wide power connector for testing</li>
+  <li>add I2C header if possible</li>
+  <li>buzzer pin spacing too wide</li>
+  <li>Touch connector to JST, possibly without ground</li>
+
+</ul>
