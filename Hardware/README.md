@@ -18,5 +18,11 @@ The order of CC pins (e.g. if CC1 is 0V and CC2 is one of the three voltages or 
   <li>add I2C header if possible</li>
   <li>buzzer pin spacing too wide</li>
   <li>Touch connector to JST, possibly without ground</li>
+  <li>Fotorezistory - jeden na prostředek před dvojtečokou kolmo z desky, druhej ve stejné výčce</li>
+  <li>lišta 240 mm</li>
+  <li>díry 4 dolů a dvě mezi osmičky</li>
+  <li>konektor na ws pásek k hraně</li>
+  <li>reset possibly šroubovákem</li>
+  <li>smdčka u segmentů bokem</li>
 
 </ul>
