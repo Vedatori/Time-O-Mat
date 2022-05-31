@@ -408,7 +408,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "Time-O-Mat_TouchBar_H01.step",
       "vrml": ""
     },
     "page_layout_descr_file": "${KICAD_USER_TEMPLATE_DIR}/kicad sheet optimized.kicad_wks"
