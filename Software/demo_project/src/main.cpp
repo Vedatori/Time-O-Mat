@@ -27,6 +27,10 @@ DallasTemperature sensors(&oneWire);
 
 uint8_t touchPads[] = {12, 14, 27, 33, 32};
 
+uint8_t CCPin[] = {36, 39};
+
+uint8_t lightPin[] = {35, 34};
+
 void setup() {
     Time_o_mat.begin();
 
@@ -62,7 +66,15 @@ void loop() {
         if(!getLocalTime(&time)){
             printf("No time available (yet)\n");
         }
-        printf("time: %02d:%02d", time.tm_hour, time.tm_min);
+        printf("time: %02d:%02d ", time.tm_hour, time.tm_min);
+
+        for(uint8_t i = 0; i < 2; ++i) {
+            printf("CC%d: %d ", i + 1, analogRead(CCPin[i]));
+        }
+
+        for(uint8_t i = 0; i < 2; ++i) {
+            printf("light%d: %d ", i + 1, analogRead(lightPin[i]));
+        }
 
         printf("\n");
 
