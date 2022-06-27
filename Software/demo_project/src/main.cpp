@@ -4,8 +4,8 @@
 #include "time.h"
 #include "sntp.h"
 
-const char* ssid       = "";
-const char* password   = "";
+const char* ssid       = "MH259_234_byt1";
+const char* password   = "24409599";
 
 const char* ntpServer1 = "pool.ntp.org";
 const char* ntpServer2 = "time.nist.gov";
@@ -47,6 +47,7 @@ void setup() {
         printf(".");
     }
     printf("connected\n");
+    Time_o_mat.display.setTransition(Linear, 0.5);
 }
 
 void loop() {
@@ -85,15 +86,15 @@ void loop() {
         char timeDisp[4];
         sprintf(timeDisp, "%02d%02d", time.tm_hour, time.tm_min);
         //Time_o_mat.display.setChar(2, '3', red);
-        Time_o_mat.display.setText(timeDisp, red);
+        Time_o_mat.display.setText(timeDisp, red, 50);
 
         static bool colonState = 0;
         if(colonState)
-            Time_o_mat.display.setColon(red, red);
+            Time_o_mat.display.setColon(red, red, 50);
         else
-            Time_o_mat.display.setColon(black, black);
+            Time_o_mat.display.setColon(black, black, 50);
         colonState = !colonState;
-
-        Time_o_mat.display.update();
     }
+    Time_o_mat.display.update();
+    delay(20);
 }

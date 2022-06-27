@@ -18,11 +18,31 @@ void Display_TM::begin() {
 }
 
 void Display_TM::update() {
+    static uint32_t prevTime = millis();
     for(uint8_t ledID = 0; ledID < 86; ++ledID) {
-        uint32_t color = pixels.Color(desiredState[ledID].red, desiredState[ledID].green, desiredState[ledID].blue);
+        switch(transitionType) {
+            case Linear: {
+                float deviation = desiredState[ledID].red - currentState[ledID][0];
+                if(abs(deviation) < 1.0) {
+                    currentState[ledID][0] = desiredState[ledID].red;
+                }
+                else {
+                    int8_t sign = deviation > 0 ? 1 : -1;
+                    currentState[ledID][0] += sign * transitionRate * (millis() - prevTime) / 1000.0 * 255.0;
+                }
+            } break;
+            case InfiniteImpulseResponse:
+            case None:
+            default:
+                currentState[ledID][0] = desiredState[ledID].red;
+                currentState[ledID][1] = desiredState[ledID].green;
+                currentState[ledID][2] = desiredState[ledID].blue;
+        }
+        uint32_t color = pixels.Color(round(currentState[ledID][0]), round(currentState[ledID][1]), round(currentState[ledID][2]));
         pixels.setPixelColor(ledID, color);
     }
     pixels.show();
+    prevTime = millis();
 }
 
 void Display_TM::setLED(const int16_t digitIndex, const int16_t position, const Color color, int16_t brightness) {
@@ -81,8 +101,15 @@ Color Display_TM::transformColorBrightness(Color color, int16_t brightness) {
     return color;
 }
 
-Color Display_TM::currentState[86] = {black, };
+void Display_TM::setTransition(TransitionType aTransitionType, float aTransitionRate) {
+    transitionType = aTransitionType;
+    transitionRate = aTransitionRate;
+}
+
+float Display_TM::currentState[86][3] = {0.0, };
 Color Display_TM::desiredState[86] = {black, };
+TransitionType Display_TM::transitionType = None;
+float Display_TM::transitionRate = 1.0;
 uint8_t Display_TM::charToIndexMap[21] = {0, 1, 2, 17, 3, 16, 4, 15, 5, 18, 19, 20, 14, 6, 13, 7, 12, 8, 11, 10, 9};
 bool Display_TM::characterSet[51][21] = {
     {   // "("
