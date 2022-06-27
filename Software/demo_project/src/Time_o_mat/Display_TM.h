@@ -9,13 +9,13 @@ typedef struct color {
     uint8_t blue;
 } Color;
 
-extern Color black;
 extern Color red;
 extern Color green;
 extern Color blue;
 extern Color cyan;
 extern Color magenta;
 extern Color yellow;
+extern Color black;
 extern Color white;
 
 class Display_TM {
@@ -27,10 +27,12 @@ class Display_TM {
 public:
     void begin();
     void update();
-    void setLED(const int16_t digitIndex, const int16_t position, const Color color);
-    void setChar(const int16_t digitIndex, const char character, const Color color);
-    void setColon(const Color colorTop, const Color colorBottom);
-    void setText(const String text, const Color color);
+    void setLED(const int16_t digitIndex, const int16_t position, const Color color, int16_t brightness = 255);
+    void setChar(const int16_t digitIndex, const char character, const Color color, int16_t brightness = 255);
+    void setColon(const Color colorTop, const Color colorBottom, int16_t brightness = 255);
+    void setText(const String text, const Color color, int16_t brightness = 255);
+
+    static Color transformColorBrightness(Color color, int16_t brightness);
 };
 
 #endif // _DISPLAY_H_
