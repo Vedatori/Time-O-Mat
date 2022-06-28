@@ -47,6 +47,7 @@ void setup() {
         printf(".");
     }
     printf("connected\n");
+    Time_o_mat.display.setBrightness(50);
     Time_o_mat.display.setTransition(Linear, 0.5);
 }
 
@@ -86,13 +87,13 @@ void loop() {
         char timeDisp[4];
         sprintf(timeDisp, "%02d%02d", time.tm_hour, time.tm_min);
         //Time_o_mat.display.setChar(2, '3', red);
-        Time_o_mat.display.setText(timeDisp, red, 50);
+        Time_o_mat.display.setText(timeDisp, red);
 
         static bool colonState = 0;
         if(colonState)
-            Time_o_mat.display.setColon(red, red, 50);
+            Time_o_mat.display.setColon(red, red);
         else
-            Time_o_mat.display.setColon(black, black, 50);
+            Time_o_mat.display.setColon(black, black);
         colonState = !colonState;
     }
     Time_o_mat.display.update();

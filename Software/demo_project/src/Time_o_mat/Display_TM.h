@@ -29,18 +29,20 @@ class Display_TM {
     static bool characterSet[51][21];
     static float currentState[86][3];
     static Color desiredState[86];
+    static int16_t brightness;
     static TransitionType transitionType;
     static float transitionRate;
 
 public:
     static void begin();
     static void update();
-    static void setLED(const int16_t digitIndex, const int16_t position, const Color color, int16_t brightness = 255);
-    static void setChar(const int16_t digitIndex, const char character, const Color color, int16_t brightness = 255);
-    static void setColon(const Color colorTop, const Color colorBottom, int16_t brightness = 255);
-    static void setText(const String text, const Color color, int16_t brightness = 255);
+    static void setLED(const int16_t digitIndex, const int16_t position, const Color color);
+    static void setChar(const int16_t digitIndex, const char character, const Color color);
+    static void setColon(const Color colorTop, const Color colorBottom);
+    static void setText(const String text, const Color color);
 
     static Color transformColorBrightness(Color color, int16_t brightness);
+    static void setBrightness(int16_t aBrightness);
     static void setTransition(TransitionType aTransitionType, float aTransitionRate);
 };
 

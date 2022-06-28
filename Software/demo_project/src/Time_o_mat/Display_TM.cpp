@@ -23,12 +23,13 @@ void Display_TM::update() {
         switch(transitionType) {
             case Linear: {
                 float deviation = desiredState[ledID].red - currentState[ledID][0];
-                if(abs(deviation) < 1.0) {
+                float step = transitionRate * (millis() - prevTime) / 1000.0 * 255.0;
+                if(abs(deviation) < (step + 1.0)) {
                     currentState[ledID][0] = desiredState[ledID].red;
                 }
                 else {
                     int8_t sign = deviation > 0 ? 1 : -1;
-                    currentState[ledID][0] += sign * transitionRate * (millis() - prevTime) / 1000.0 * 255.0;
+                    currentState[ledID][0] += sign * step;
                 }
             } break;
             case InfiniteImpulseResponse:
@@ -43,14 +44,14 @@ void Display_TM::update() {
     }
     pixels.show();
     prevTime = millis();
+    printf("%f\n", currentState[0][0]);
 }
 
-void Display_TM::setLED(const int16_t digitIndex, const int16_t position, const Color color, int16_t brightness) {
+void Display_TM::setLED(const int16_t digitIndex, const int16_t position, const Color color) {
     if(digitIndex < 0 || digitIndex > 4)
         return;
     if(position < 0 || position > 20)
         return;
-    brightness = constrain(brightness, 0, 255);
     
     int16_t ledID = 0;
     if(digitIndex < 2)
@@ -67,7 +68,7 @@ void Display_TM::setLED(const int16_t digitIndex, const int16_t position, const 
     desiredState[ledID] = transformColorBrightness(color, brightness);
 }
 
-void Display_TM::setChar(const int16_t digitIndex, const char character, const Color color, int16_t brightness) {
+void Display_TM::setChar(const int16_t digitIndex, const char character, const Color color) {
     if(digitIndex < 0 || digitIndex > 3)
         return;
     if(character < 40 || character > 91)
@@ -75,22 +76,22 @@ void Display_TM::setChar(const int16_t digitIndex, const char character, const C
 
     for(uint8_t i = 0; i < 21; ++i) {
         if(characterSet[character - 40][i]) {
-            setLED(digitIndex, i, color, brightness);
+            setLED(digitIndex, i, color);
         }
         else {
-            setLED(digitIndex, i, black, brightness);
+            setLED(digitIndex, i, black);
         }
     }
 }
 
-void Display_TM::setColon(const Color colorTop, const Color colorBottom, int16_t brightness) {
-    setLED(4, 1, colorTop, brightness);
-    setLED(4, 0, colorBottom, brightness);
+void Display_TM::setColon(const Color colorTop, const Color colorBottom) {
+    setLED(4, 1, colorTop);
+    setLED(4, 0, colorBottom);
 }
 
-void Display_TM::setText(const String text, const Color color, int16_t brightness) {
+void Display_TM::setText(const String text, const Color color) {
     for(uint8_t i = 0; i < 4; ++i) {
-        setChar(i, text[i], color, brightness);
+        setChar(i, text[i], color);
     }
 }
 
@@ -101,6 +102,10 @@ Color Display_TM::transformColorBrightness(Color color, int16_t brightness) {
     return color;
 }
 
+void Display_TM::setBrightness(int16_t aBrightness) {
+    brightness = constrain(aBrightness, 0, 255);
+}
+
 void Display_TM::setTransition(TransitionType aTransitionType, float aTransitionRate) {
     transitionType = aTransitionType;
     transitionRate = aTransitionRate;
@@ -108,6 +113,7 @@ void Display_TM::setTransition(TransitionType aTransitionType, float aTransition
 
 float Display_TM::currentState[86][3] = {0.0, };
 Color Display_TM::desiredState[86] = {black, };
+int16_t Display_TM::brightness = 255;
 TransitionType Display_TM::transitionType = None;
 float Display_TM::transitionRate = 1.0;
 uint8_t Display_TM::charToIndexMap[21] = {0, 1, 2, 17, 3, 16, 4, 15, 5, 18, 19, 20, 14, 6, 13, 7, 12, 8, 11, 10, 9};
