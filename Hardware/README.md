@@ -26,3 +26,14 @@ The order of CC pins (e.g. if CC1 is 0V and CC2 is one of the three voltages or 
   <li>smdčka u segmentů bokem</li>
 
 </ul>
+
+<h2>To do list for next (H02) HW revision</h2>
+<ul>
+  <li>Add JST-XH connectors for the photoresistor in the back and backlight LED strip.</li>
+  <li>Change touchbar graphics</li>
+  <li>Lower supercapacitor resistor value</li>
+  <li>Add 100k resistors in series between CC and Sensor V pins</li>
+  <li>Maybye move the temperature sensor to the bottom</li>
+  <li>Add LPF to photoresistor inputs</li>
+  <li>Bigger Vedatori logo on the bottom, change to silk layer instead of copper.</li>
+</ul>
