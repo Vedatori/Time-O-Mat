@@ -17,24 +17,27 @@ const char* time_zone = "CET-1CEST,M3.5.0,M10.5.0/3";  // TimeZone rule for Euro
 #include "OneWire.h"
 #include "DallasTemperature.h"
 
-const uint16_t CONTROL_PERIOD = 1000;
-uint32_t prevControlTime = 0;
+const int CONTROL_PERIOD = 500;
+int prevControlTime = 0;
 
-uint8_t buttonPin[] = {18, 19, 21};
+int buttonPin[] = {18, 19, 21};
 
 OneWire oneWire(22);
 DallasTemperature sensors(&oneWire);
 
-uint8_t touchPads[] = {12, 14, 27, 33, 32};
+int touchPads[] = {33, 27, 14, 12, 32};
 
-uint8_t CCPin[] = {36, 39};
+int CCPin[] = {36, 39};
 
-uint8_t lightPin[] = {35, 34};
+int lightPin[] = {35, 34};
+
+//ColorRGB myColor = {255, 0, 0};
+ColorHSV myColor = {0, 1, 1};
 
 void setup() {
     Time_o_mat.begin();
 
-    for(uint8_t i = 0; i < 3; ++i) {
+    for(int i = 0; i < 3; ++i) {
         pinMode(buttonPin[i], INPUT_PULLUP);
     }
 
@@ -47,18 +50,22 @@ void setup() {
         printf(".");
     }
     printf("connected\n");
+    Time_o_mat.display.setBrightnessFront(0.5);
+    Time_o_mat.display.setBrightnessBack(0.2);
+    Time_o_mat.display.setTransition(Linear, 0.5);
+    Time_o_mat.display.setBacklight(white);
 }
 
 void loop() {
     if(millis() > prevControlTime + CONTROL_PERIOD) {
         prevControlTime = millis();
-        for(uint8_t i = 0; i < 3; ++i) {
+        for(int i = 0; i < 3; ++i) {
             printf("btn%d: %d ", i + 1, !digitalRead(buttonPin[i]));
         }
         sensors.requestTemperatures(); 
         printf("temp: %f ", sensors.getTempCByIndex(0)); 
 
-        for(uint8_t i = 0; i < 5; ++i) {
+        for(int i = 0; i < 5; ++i) {
             printf("touch%d: %d ", i, touchRead(touchPads[i]));
         }
 
@@ -68,11 +75,11 @@ void loop() {
         }
         printf("time: %02d:%02d ", time.tm_hour, time.tm_min);
 
-        for(uint8_t i = 0; i < 2; ++i) {
+        for(int i = 0; i < 2; ++i) {
             printf("CC%d: %d ", i + 1, analogRead(CCPin[i]));
         }
 
-        for(uint8_t i = 0; i < 2; ++i) {
+        for(int i = 0; i < 2; ++i) {
             printf("light%d: %d ", i + 1, analogRead(lightPin[i]));
         }
 
@@ -84,16 +91,17 @@ void loop() {
 
         char timeDisp[4];
         sprintf(timeDisp, "%02d%02d", time.tm_hour, time.tm_min);
-        //Time_o_mat.display.setChar(2, '3', red);
-        Time_o_mat.display.setText(timeDisp, red);
+        //sprintf(timeDisp, "%2.0f%2.0f", analogRead(CCPin[0])/4095.0*33.0, analogRead(CCPin[1])/4095.0*33.0);
+        printf("%s\n", timeDisp);
+        Time_o_mat.display.setText(timeDisp, myColor);
 
         static bool colonState = 0;
         if(colonState)
-            Time_o_mat.display.setColon(red, red);
+            Time_o_mat.display.setColon(myColor);
         else
-            Time_o_mat.display.setColon(black, black);
+            Time_o_mat.display.setColon(black);
         colonState = !colonState;
-
-        Time_o_mat.display.update();
     }
+    Time_o_mat.display.update();
+    delay(20);
 }
