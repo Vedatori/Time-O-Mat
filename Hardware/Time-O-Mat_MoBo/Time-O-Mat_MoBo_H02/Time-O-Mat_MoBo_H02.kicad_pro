@@ -379,7 +379,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "Time-O-Mat_MoBo_H01.kicad_pro",
+    "filename": "Time-O-Mat_MoBo_H02.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -413,7 +413,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "Time-O-Mat_MoBo_H01.step",
+      "step": "Time-O-Mat_MoBo_H02.step",
       "vrml": ""
     },
     "page_layout_descr_file": "${KICAD_USER_TEMPLATE_DIR}/kicad sheet optimized.kicad_wks"
