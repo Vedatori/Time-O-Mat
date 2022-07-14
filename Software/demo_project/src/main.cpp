@@ -32,7 +32,9 @@ int CCPin[] = {36, 39};
 int lightPin[] = {35, 34};
 
 //ColorRGB myColor = {255, 0, 0};
-ColorHSV myColor = {0, 1, 1};
+float myHue = 0;
+float myValue = 1;
+ColorHSV myColor = {myHue, 1, myValue};
 
 void setup() {
     Time_o_mat.begin();
@@ -57,6 +59,15 @@ void setup() {
 }
 
 void loop() {
+    myHue = myHue + 0.05;
+    myValue = map(analogRead(lightPin[1]), 0, 4095, 200, 1000);
+    myValue = myValue/1000;
+
+    if(myHue > 360){
+        myHue = 0;
+    }
+    myColor = {myHue, 1, myValue};
+
     if(millis() > prevControlTime + CONTROL_PERIOD) {
         prevControlTime = millis();
         for(int i = 0; i < 3; ++i) {
@@ -102,6 +113,7 @@ void loop() {
             Time_o_mat.display.setColon(black);
         colonState = !colonState;
     }
+
     Time_o_mat.display.update();
     delay(20);
 }
