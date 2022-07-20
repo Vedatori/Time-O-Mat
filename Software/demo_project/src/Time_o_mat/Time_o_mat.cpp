@@ -1,19 +1,38 @@
 #include "Time_o_mat.h"
 
-void TM::updateEnc(void * parameter) {
+#include "OneWire.h"
+#include "DallasTemperature.h"
+
+OneWire oneWire(TM::ONE_WIRE);
+DallasTemperature sensors(&oneWire);
+
+void TM::refreshTaskQuick(void * parameter) {
     for(;;) {
         Time_o_mat.handleMelody();
-        delayMicroseconds(500);
+        Time_o_mat.display.update();
+        //delayMicroseconds(500);
+        delay(20);
+    }
+}
+
+void TM::refreshTaskSlow(void * parameter) {
+    for(;;) {
+        sensors.requestTemperatures();
+        printf("temp: %f \n", sensors.getTempCByIndex(0));
+        delay(1000);
     }
 }
 
 void Time_o_mat_class::begin() {
-    
-    xTaskCreatePinnedToCore(TM::updateEnc, "updateEnc", 10000 , (void*) 0, 1, NULL, 1);
-
-    ledcSetup(TM::BUZZER_CHANNEL, 1000, 10);
 
     display.begin();
+
+    //sensors.begin();
+    
+    xTaskCreatePinnedToCore(TM::refreshTaskQuick, "refreshTaskQuick", 10000 , NULL, 3, NULL, 1);
+    //xTaskCreatePinnedToCore(TM::refreshTaskSlow, "refreshTaskSlow", 10000 , NULL, 0, NULL, 0);
+
+    ledcSetup(TM::BUZZER_CHANNEL, 1000, 10);
 }
 
 void Time_o_mat_class::soundTone(float freq) {

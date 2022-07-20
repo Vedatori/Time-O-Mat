@@ -10,6 +10,7 @@ namespace TM {
 
 const uint8_t BUTTON = 18;
 const uint8_t BUZZER = 17;
+const uint8_t ONE_WIRE = 22;
 
 const uint8_t BUZZER_CHANNEL = 3;
 
@@ -19,7 +20,8 @@ const uint16_t lettersSwapTimeout = 500;
 const uint16_t lettersBlankTimeout = 50;
 const uint16_t lettersSweepTimeout =  100;
 
-void updateEnc(void * param);
+void refreshTaskQuick(void * param);
+void refreshTaskSlow(void * param);
 }
 
 class Time_o_mat_class {
