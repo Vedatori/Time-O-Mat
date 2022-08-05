@@ -17,7 +17,7 @@ THT součástky budeme pájet následujícím způsobem:
 * [Potřebné nástroje](#nastroje)
 * [Číslice - digity](#digity)
 * [Hlavní PCB - horní strana](#hlavni_pcb_horni)
-* [Hlavní deska elektroniky - spodní strana](#hlavni_pcb_spodni)
+* [Hlavní PCB - spodní strana](#hlavni_pcb_spodni)
 
 <!-- _________________________________________________________________ -->
 ## <a name = dily>Potřebné díly</a>
