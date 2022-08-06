@@ -98,16 +98,13 @@ THT součástky budeme pájet následujícím způsobem:
 ![alt](SupportFiles/IMG_3269.jpeg)
 1. Opatrně otočíme hlavní PCB a konektory zapájíme.
 ![alt](SupportFiles/IMG_3277.jpeg)
-1. Nasadíme konektor s 6 piny na hlavní PCB.
-![alt](SupportFiles/IMG_3287.jpeg)
-![alt](SupportFiles/IMG_3295.jpeg)
-1. Opatrně otočíme hlavní PCB a konektor zapájíme.
-![alt](SupportFiles/IMG_3307.jpeg)
 1. Nasadíme 3 tlačítka na hlavní PCB.
 ![alt](SupportFiles/IMG_3319.jpeg)
 ![alt](SupportFiles/IMG_3324.jpeg)
 1. Zapájíme tlačítka na hlavní PCB.
 ![alt](SupportFiles/IMG_3337.jpeg)
+1. U tlačítka 3 zakrátíme vývody.
+![alt](SupportFiles/IMG_2587.jpg)
 1. Pomocí štípacích kleště nastříháme konektorovou lištu na 5 kusů o rozměrech 2x4 piny. Vzniknou konektory digitů.
 ![alt](SupportFiles/IMG_3170.jpeg)
 ![alt](SupportFiles/IMG_3180.jpeg)
@@ -123,7 +120,12 @@ THT součástky budeme pájet následujícím způsobem:
 ![alt](SupportFiles/IMG_3263.jpeg)
 1. Tímto způsobem zapájíme všech 5 konektorů digitů. Pozor, aby byl hlavní PCB při pájení vždy v rovině.
 ![alt](SupportFiles/IMG_3267.jpeg)
-1. Nasadíme oba kondenzátory na hlavní PCB. Dbáme na polaritu! Delší nožička patří do otvoru označeného plusem.
+1. Nasadíme konektor s 6 piny na hlavní PCB.
+![alt](SupportFiles/IMG_3287.jpeg)
+![alt](SupportFiles/IMG_3295.jpeg)
+1. Opatrně otočíme hlavní PCB a konektor zapájíme.
+![alt](SupportFiles/IMG_3307.jpeg)
+1. Nasadíme oba kondenzátory na hlavní PCB. Dbáme na polaritu! Delší nožička patří do otvoru s černým okolím.
 ![alt](SupportFiles/IMG_3366.jpeg)
 ![alt](SupportFiles/IMG_3376.jpeg)
 1. Kondenzátory zapájíme.
