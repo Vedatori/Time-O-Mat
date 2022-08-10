@@ -18,6 +18,7 @@ THT součástky budeme pájet následujícím způsobem:
 * [Číslice - digity](#digity)
 * [Hlavní PCB - horní strana](#hlavni_pcb_horni)
 * [Hlavní PCB - spodní strana](#hlavni_pcb_spodni)
+* [Díly na konektorech](#na_konektorech)
 
 <!-- _________________________________________________________________ -->
 ## <a name = dily>Potřebné díly</a>
@@ -185,3 +186,69 @@ THT součástky budeme pájet následujícím způsobem:
 ![alt](SupportFiles/IMG_3671.jpeg)
 1. Pomocí štípacích kleští ustřiheneme zbytky nožiček co nejblíže k PCB.
 ![alt](SupportFiles/IMG_3681.jpeg)
+
+<!-- _________________________________________________________________ -->
+## <a name = na_konektorech>Díly na konektorech</a>
+
+**LED pásek**
+
+**Potřebujeme:**
+* LED pásek
+* 3pin konektor s drátovými vývody
+* Páječku
+
+![alt](SupportFiles/IMG_2046.jpg)
+
+**Postup:**
+1. LED pásek a konce drátů sesouhlasíme v pořadí, v jakém je vidět na obrázku. Důležité je, aby šipky mezi LED směřovaly pryč od drátků a aby barvy drátků byly ve stejném pořadí, jako na fotce.
+![alt](SupportFiles/IMG_2046.jpg)
+1. Odizolované konce drátků zapájíme.
+![alt](SupportFiles/IMG_2051.jpg)
+![alt](SupportFiles/IMG_2053.jpg)
+
+
+**Dotyková lišta**
+
+**Potřebujeme:**
+* Dotykovou lištu
+* 6pin konektor s drátovými vývody
+* Páječku
+
+
+**Postup:**
+1. Na všechny plošky na spodní straně lišty předem naneseme pájku.
+![alt](SupportFiles/IMG_2140.jpg)
+1. Postupně zapájíme drátky. Zelený připojíme na plošku s popisem GND, ostatní připojujeme tak, jak jsou zasunuté v konektoru (žádné se nesmí křížit). Je nutné dodržet orientaci podle fotky. Také je možné si podle ní zkontrolovat pořadí barev.
+![alt](SupportFiles/IMG_2150.jpg)
+![alt](SupportFiles/IMG_2154.jpg)
+
+
+**Zadní fotorezistor**
+
+**Potřebujeme:**
+* Fotorezistor
+* 2pin konektor s drátovými vývody
+* 2x cca 0,8 cm dlouhý kousek smršťovací bužírky
+* 3D tištěný díl pro oporu fotorezistoru
+* stahovací pásku
+* Páječku
+* Zdroj tepla (zapalovač)
+
+![alt](SupportFiles/IMG_2205.jpg)
+
+**Postup:**
+1. Vývody fotorezistoru provlékneme skrz 3D tištěný díl. Výstupek v součástce směřuje směrem k těle součástky.
+![alt](SupportFiles/IMG_2208.jpg)
+1. Na oba drátky nasuneme smršťovací bužírku.
+![alt](SupportFiles/IMG_2211.jpg)
+1. Vývody fotorezistoru zkrátíme tak, aby o cca 7 mm vyčuhovaly z 3D tištěného dílu.
+![alt](SupportFiles/IMG_2215.jpg)
+1. K oběma vývodům fotorezistoru připájíme drátky. Na polaritě nezáleží.
+![alt](SupportFiles/IMG_2217.jpg)
+1. Oba vývody ohneme směrem ke ztenčené části 3D tištěného držáku. Smršťovací bužírku nasuneme co nejvíce přes pájené spoje. Pod dozorem vedoucího teplem smrštíme. Pozor, pracujete s otevřeným plamenem!
+![alt](SupportFiles/IMG_2221.jpg)
+1. Kolem ztenčené části držáku utáhneme stahovací pásku tak, aby její hlava směřovala k drátkům. Stahovací pásku poté zstřihneme.
+![alt](SupportFiles/IMG_2223.jpg)
+![alt](SupportFiles/IMG_2226.jpg)
+1. Finální pohled na díl:
+![alt](SupportFiles/IMG_2228.jpg)
