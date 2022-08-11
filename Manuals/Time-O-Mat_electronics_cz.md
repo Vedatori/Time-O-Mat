@@ -12,6 +12,7 @@ THT součástky budeme pájet následujícím způsobem:
 1. Součástku pájíme ze strany, na kterou trčí její vývody. Tzn. z opačné strany, než je její bílý obrys na silkscreenu.
 1. Vývody po zapájení zastřihneme.
 
+___
 # Obsah
 * [Číslice - digity](#digity)
 * [Hlavní PCB - horní strana](#hlavni_pcb_horni)
@@ -19,6 +20,7 @@ THT součástky budeme pájet následujícím způsobem:
 * [LED pásek](#led_pasek)
 * [Dotyková lišta](#dotykova_lista)
 * [Zadní fotorezistor](#zadni_fotorezistor)
+___
 
 <!-- _________________________________________________________________ -->
 # <a name = digity>Číslice - digity</a>

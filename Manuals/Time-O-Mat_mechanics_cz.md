@@ -1,6 +1,12 @@
-Tento dokument je návodem k sestavení mechanické části hodin Time-O-Mat. HOdiny jsou sestaveny z dílů vytištěných na 3D tiskárně, řezaných laserem (plexisklo a dřevo), spojovacího materiálu a dalších doplňků.
-Do postupu poprvé přidáváme lepení dílů, takže je potřeba tomu uzpůsobit styl práce. Pokud si před zalepením dílu nejste něčím jistí, je dobré si to buďto vyzkoušet ještě před nanesením lepidla a nebo zavolat vedoucího, který vám poradí. Používat budeme dvě lepidla - Herkules (disperzní vodou ředitelné) na dřevo. Doba zasychání záleží na objemu naneseného lepidla, obecně platí, že pomocí tečkování aplikátorem ho naneseme takové množství, aby moc nebo vůbec nevytékalo z lepeného spoje po jeho zmáčnutí. Nanášíme pouze na jednu lepenou plochu a tečky můžeme poté špičkou lepidla rozetřít do plochy. Druhým používaným je Chemoprén, ten se nanáší pomocí párátka na obě plochy a roztírá se po ploše. I tady platí, že by lepidlo nemělo vytékat z lepeného spoje nadměrně ven. Po nanesení máte několik minut na spojení ploch, takže ani v tomto případě nemusíte extrémně spěchat. Při práci je důležité mít pořád čisté ruce a pracovní podložku, abyste si dřevo neumazali.
-Další novinkou je lakování krabice. K tomu jsme vybrali polyurethanový lak, který je ředitelný vodou. Pro dobrý výsledek stačí nanést tenkou vrstvu laku tak, aby byla pokrytá celá lakovaná plocha (poznáte po naklonění plochy proti světlu). nanáší se dvě vrstvy, to je v návodu popsáno.
+Tento dokument je návodem k sestavení mechanické části hodin Time-O-Mat. Hodiny jsou sestaveny z dílů vytištěných na 3D tiskárně, řezaných laserem (plexisklo a dřevo), spojovacího materiálu (šrouby a matky) a dalších doplňků.
+Do postupu poprvé přidáváme lepení dílů, takže je potřeba tomu uzpůsobit styl práce. Pokud si před zalepením dílu nejste něčím jistí, je dobré si to buďto vyzkoušet ještě před nanesením lepidla a nebo zavolat vedoucího, který vám poradí. 
+
+Používat budeme dvě lepidla
+* **Herkules** - disperzní vodou ředitelné lepidlo na dřevo. Doba zasychání záleží na objemu naneseného lepidla, obecně platí, že pomocí tečkování aplikátorem ho naneseme takové množství, aby moc nebo vůbec nevytékalo z lepeného spoje po jeho zmáčnutí. Nanášíme pouze na jednu lepenou plochu a tečky můžeme poté špičkou lepidla rozetřít do plochy.
+* **Chemoprén** - ten se nanáší pomocí párátka na obě plochy a roztírá se po ploše. I tady platí, že by lepidlo nemělo vytékat z lepeného spoje nadměrně ven. Po nanesení máte několik minut na spojení ploch, takže ani v tomto případě nemusíte extrémně spěchat. 
+
+Při práci je důležité mít pořád čisté ruce a pracovní podložku, abyste si dřevo neumazali.
+Další novinkou je lakování krabice. K tomu jsme vybrali polyurethanový lak, který je ředitelný vodou. Pro dobrý výsledek stačí nanést tenkou vrstvu laku tak, aby byla pokrytá celá lakovaná plocha (poznáte po naklonění plochy proti světlu). Nanáší se dvě vrstvy, to je v návodu popsáno.
 
 ___
 # Obsah
@@ -15,7 +21,7 @@ ___
 * [Finální sestavení](#final)
 ___
 
-## <a name = preklizka>Příprava překližkových dílů</a>
+# <a name = preklizka>Příprava překližkových dílů</a>
 **Potřebné díly:**
 * všechny díly z překližky
 
@@ -36,7 +42,7 @@ ___
 1. Jemným (černým) smirkem obruste pohledové plochy dřevěných dílů. Pohledové plochy jsou ty, kde je něco vygravírováno nebo ty, které jsou méně opálené od laseru.
     ![alt](SupportFiles/IMG_2038.jpg) 
 
-## <a name = LEDpas>Vlepení LED pásku</a>
+# <a name = LEDpas>Vlepení LED pásku</a>
 **Potřebné díly:**
 
 * zadní strana krabice
@@ -67,7 +73,7 @@ Lepidlo Herkules
     ![alt](SupportFiles/IMG_2097.jpg)
 
 
-## <a name = lista>Ochrana dotykové lišty</a>
+# <a name = lista>Ochrana dotykové lišty</a>
 **Potřebné díly:**
 
 * Dotkyová lišta
@@ -87,7 +93,7 @@ Lepidlo Herkules
 
 
 
-## <a name = krabice>Slepení krabičky</a>
+# <a name = krabice>Slepení krabičky</a>
 **Potřebné díly:**
 * Všechny díly krabice kromě víka
 * Lepidlo Herkules
@@ -121,7 +127,7 @@ Lepidlo Herkules
     ![alt](SupportFiles/IMG_2132.jpg)
     ![alt](SupportFiles/IMG_2134.jpg)
 
-## <a name = osmicky>Vkládání difuzorů do segmentů</a>
+# <a name = osmicky>Vkládání difuzorů do segmentů</a>
 **Potřebné díly:**
 * 4x 7-segment hodin (osmička)
 * 28x Plexi segment hodin
@@ -150,7 +156,7 @@ Lepidlo Herkules
     ![alt](SupportFiles/IMG_2198.jpg)
     ![alt](SupportFiles/IMG_2199.jpg)
 
-## <a name = lak>Lakování krabičky</a>
+# <a name = lak>Lakování krabičky</a>
 **Potřebné díly:**
 * Polyuretanový lak
 * Slepená spodní část krabičky
@@ -173,7 +179,7 @@ Lepidlo Herkules
     ![alt](SupportFiles/IMG_2174.jpg)
 1. Štětec po dokončení lakování okamžitě ponořte do vody a vymyjte.
 
-## <a name = lak2>Druhá vrstva laku</a>
+# <a name = lak2>Druhá vrstva laku</a>
 **Potřebné díly:**
 * Horní víko krabičky
 * Spodní část krabičky
@@ -190,7 +196,7 @@ Lepidlo Herkules
 1. Přebroušené povrchy nalakujte druhou vrstvou laku. Lak nechte vyschnout tak, aby se lakované části nedotýkaly podkladu (jako minule). Lak naneste znovu i k LED pásku.
 1. Štětec po dokončení lakování okamžitě ponořte do vody a vymyjte.    
 
-## <a name = vlepeni>Vlepení lišty, fotorezistoru a spaceru</a>
+# <a name = vlepeni>Vlepení lišty, fotorezistoru a spaceru</a>
 **Potřebné díly:**
 * Fotorezistor napájený na přívodní kabel
 * Dotyková lišta s napájeným kabelem
@@ -223,7 +229,7 @@ Lepidlo Herkules
     ![alt](SupportFiles/IMG_2281.jpg)
 
 
-## <a name = final>Finální sestavení</a>
+# <a name = final>Finální sestavení</a>
 **Potřebné díly:**
 * 4x osmička
 * Dvojtečka
