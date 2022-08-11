@@ -76,7 +76,7 @@ Zapájíme tímto způsobem konektory na všechny digity a dvojtečku.
 <!-- _________________________________________________________________ -->
 # <a name = hlavni_pcb_horni>Hlavní PCB - horní strana</a>
 
-**Potřebujeme:**
+## Potřebujeme:
 * hlavní PCB
 * konektorovou lištu s piny 2x20
 * konektor s 2 piny - horizontální
@@ -94,85 +94,115 @@ Zapájíme tímto způsobem konektory na všechny digity a dvojtečku.
 
 ![alt](SupportFiles/IMG_3164.jpeg)
 
-**Postup:**
-1. Nasadíme horizontální konektory s 2 a 3 piny na hlavní PCB.
+## Postup:
+Nasadíme horizontální konektory s 2 a 3 piny na hlavní PCB.
 ![alt](SupportFiles/IMG_3268.jpeg)
 ![alt](SupportFiles/IMG_3269.jpeg)
-1. Opatrně otočíme hlavní PCB a konektory zapájíme. Dáváme pozor, aby zůstaly přitlačené co nejblíže k PCB.
+
+Opatrně otočíme hlavní PCB a konektory zapájíme. Dáváme pozor, aby zůstaly přitlačené co nejblíže k PCB.
 ![alt](SupportFiles/IMG_3277.jpeg)
-1. Nasadíme 3 tlačítka na hlavní PCB.
+
+Nasadíme 3 tlačítka na hlavní PCB.
 ![alt](SupportFiles/IMG_3319.jpeg)
 ![alt](SupportFiles/IMG_3324.jpeg)
-1. Zapájíme tlačítka na hlavní PCB.
+
+Zapájíme tlačítka na hlavní PCB.
 ![alt](SupportFiles/IMG_3337.jpeg)
-1. U tlačítka 3 zakrátíme vývody štípacími kleštěmi.
+
+U tlačítka 3 zakrátíme vývody štípacími kleštěmi.
 ![alt](SupportFiles/IMG_2587.jpg)
-1. Pomocí štípacích kleští nastříháme konektorovou lištu na 5 kusů o rozměrech 2x4 piny. Vzniknou konektory digitů.
+
+Pomocí štípacích kleští nastříháme konektorovou lištu na 5 kusů o rozměrech 2x4 piny. Vzniknou konektory digitů.
 ![alt](SupportFiles/IMG_3170.jpeg)
 ![alt](SupportFiles/IMG_3180.jpeg)
-1. Nasuneme konektory digitů do 3D tištěných držáků.
+
+Nasuneme konektory digitů do 3D tištěných držáků.
 ![alt](SupportFiles/IMG_3190.jpeg)
 ![alt](SupportFiles/IMG_3202.jpeg)
-1. Nasadíme držáky s konektory digitů na hlavní PCB.
+
+Nasadíme držáky s konektory digitů na hlavní PCB.
 ![alt](SupportFiles/IMG_3222.jpeg)
 ![alt](SupportFiles/IMG_3230.jpeg)
-1. Držáky konektorů digitů namáčkneme co nejblíže na hlavní PCB.
+
+Držáky konektorů digitů namáčkneme co nejblíže na hlavní PCB.
 ![alt](SupportFiles/IMG_3266.jpeg)
-1. Zapájíme všech 8 pinů každého konektoru digitu.
+
+Zapájíme všech 8 pinů každého konektoru digitu.
 ![alt](SupportFiles/IMG_3263.jpeg)
-1. Tímto způsobem zapájíme všech 5 konektorů digitů. Pozor, aby byl hlavní PCB při pájení vždy v rovině.
+
+Tímto způsobem zapájíme všech 5 konektorů digitů. Pozor, aby byl hlavní PCB při pájení vždy v rovině.
 ![alt](SupportFiles/IMG_3267.jpeg)
-1. Nasadíme konektor s 6 piny na hlavní PCB.
+
+Nasadíme konektor s 6 piny na hlavní PCB.
 ![alt](SupportFiles/IMG_3287.jpeg)
 ![alt](SupportFiles/IMG_3295.jpeg)
-1. Opatrně otočíme hlavní PCB a konektor zapájíme. Dáváme pozor, aby zůstal natlačený co nejblíže na PCB.
+
+Opatrně otočíme hlavní PCB a konektor zapájíme. Dáváme pozor, aby zůstal natlačený co nejblíže na PCB.
 ![alt](SupportFiles/IMG_3307.jpeg)
-1. Nasadíme oba kondenzátory na hlavní PCB. Dbáme na polaritu! Delší nožička (+) patří do otvoru s černým okolím a vyznačeným plusem.
+
+Nasadíme oba kondenzátory na hlavní PCB. Dbáme na polaritu! Delší nožička (+) patří do otvoru s černým okolím a vyznačeným plusem.
 ![alt](SupportFiles/IMG_3366.jpeg)
 ![alt](SupportFiles/IMG_3376.jpeg)
-1. Kondenzátory zapájíme.
+
+Kondenzátory zapájíme.
 ![alt](SupportFiles/IMG_3384.jpeg)
-1. Pomocí štípacích kleští ustřihneme nožičky kondenzátorů co nejblíže hlavnímu PCB.
+
+Pomocí štípacích kleští ustřihneme nožičky kondenzátorů co nejblíže hlavnímu PCB.
 ![alt](SupportFiles/IMG_3395.jpeg)
-1. Nasadíme piezoakustický měnič na hlavní PCB. Dbáme na polaritu! Plus na měniči musí odpovídat plusu na PCB.
+
+Nasadíme piezoakustický měnič na hlavní PCB. Dbáme na polaritu! Plus na měniči musí odpovídat plusu na PCB.
 ![alt](SupportFiles/IMG_3412.jpeg)
 ![alt](SupportFiles/IMG_3425.jpeg)
-1. Měnič zapájíme.
+
+Měnič zapájíme.
 ![alt](SupportFiles/IMG_3435.jpeg)
-1. Pomocí štípacích kleští ustřihneme nožičky měniče co nejblíže hlavnímu PCB.
+
+Pomocí štípacích kleští ustřihneme nožičky měniče co nejblíže hlavnímu PCB.
 ![alt](SupportFiles/IMG_3443.jpeg)
-1. Nasadíme krystal na hlavní PCB. Polarita je libovolná.
+
+Nasadíme krystal na hlavní PCB. Polarita je libovolná.
 ![alt](SupportFiles/IMG_3453.jpeg)
-1. Krystal zapájímě. Dbáme na to, aby byl krystal při pájení opřený o stůl, tedy dělila ho od PCB mezera.
+
+Krystal zapájímě. Dbáme na to, aby byl krystal při pájení opřený o stůl, tedy dělila ho od PCB mezera.
 ![alt](SupportFiles/IMG_3462.jpeg)
-1. Krystal ohneme k PCB do pozice vyznačené na silkscreen.
+
+Krystal ohneme k PCB do pozice vyznačené na silkscreen.
 ![alt](SupportFiles/IMG_3471.jpeg)
-1. Vybereme si jednu z ustřižených nožiček kondenzátorů z minulých kroků a v polovině ji ohneme.
+
+Vybereme si jednu z ustřižených nožiček kondenzátorů z minulých kroků a v polovině ji ohneme.
 ![alt](SupportFiles/IMG_3480.jpeg)
-1. Nožičku nasadíme do hlavní PCB do děr vedle krystalu.
+
+Nožičku nasadíme do hlavní PCB do děr vedle krystalu.
 ![alt](SupportFiles/IMG_3489.jpeg)
 ![alt](SupportFiles/IMG_3500.jpeg)
-1. Nožičku zapájíme ze spodní strany PCB.
+
+Nožičku zapájíme ze spodní strany PCB.
 ![alt](SupportFiles/IMG_3512.jpeg)
-1. Pomocí štípacích kleští ustřihneme zbytky nožičky co nejblíže PCB.
+
+Pomocí štípacích kleští ustřihneme zbytky nožičky co nejblíže PCB.
 ![alt](SupportFiles/IMG_3528.jpeg)
-1. Zapájíme nožičku ke krystalu na horní straně PCB.
+
+Zapájíme nožičku ke krystalu na horní straně PCB.
 ![alt](SupportFiles/IMG_3558.jpeg)
 ![alt](SupportFiles/IMG_3570.jpeg)
-1. Vsuneme fotorezistor do držáku fotorezistoru.
+
+Vsuneme fotorezistor do držáku fotorezistoru.
 ![alt](SupportFiles/IMG_3450.jpeg)
 ![alt](SupportFiles/IMG_3451.jpeg)
-1. Nasadíme držák s fotorezistorem na hlavní PCB. Na polaritě nezáleží. Dbáme, aby byl fotorezistor co nejvíce natlačen na PCB.
+
+Nasadíme držák s fotorezistorem na hlavní PCB. Na polaritě nezáleží. Dbáme, aby byl fotorezistor co nejvíce natlačen na PCB.
 ![alt](SupportFiles/IMG_3588.jpeg)
-1. Fotorezistor zapájíme.
+
+Fotorezistor zapájíme.
 ![alt](SupportFiles/IMG_3612.jpeg)
-1. Pomocí štípacích kleští ustřihneme zbytky nožiček co nejblíže PCB.
+
+Pomocí štípacích kleští ustřihneme zbytky nožiček co nejblíže PCB.
 ![alt](SupportFiles/IMG_3618.jpeg)
 
 <!-- _________________________________________________________________ -->
 # <a name = hlavni_pcb_spodni>Hlavní PCB - spodní strana</a>
 
-**Potřebujeme:**
+## Potřebujeme:
 * hlavní PCB
 * teploměr DS18B12
 * štípací kleště
@@ -180,50 +210,54 @@ Zapájíme tímto způsobem konektory na všechny digity a dvojtečku.
 
 ![alt](SupportFiles/IMG_3651.jpeg)
 
-**Postup:**
-1. Nasadíme teploměr za *spodní* strany PCB až skoro nejblíže k PCB.
+# Postup:
+Nasadíme teploměr za *spodní* strany PCB až skoro nejblíže k PCB.
 ![alt](SupportFiles/IMG_3660.jpeg)
-1. Teploměr zapájíme.
+
+Teploměr zapájíme.
 ![alt](SupportFiles/IMG_3671.jpeg)
-1. Pomocí štípacích kleští ustřiheneme zbytky nožiček co nejblíže k PCB.
+
+Pomocí štípacích kleští ustřiheneme zbytky nožiček co nejblíže k PCB.
 ![alt](SupportFiles/IMG_3681.jpeg)
 
 <!-- _________________________________________________________________ -->
 # <a name = led_pasek>LED pásek</a>
 
-**Potřebujeme:**
+## Potřebujeme:
 * LED pásek
 * konektor s 3 piny a drátovými vývody
 * páječku
 
 ![alt](SupportFiles/IMG_2046.jpg)
 
-**Postup:**
-1. LED pásek a konce drátů sesouhlasíme v pořadí tak, jak je vidět na obrázku. Důležité je, aby šipky mezi LED směřovaly pryč od drátků a aby barvy drátků byly ve stejném pořadí, jako na fotce.
+## Postup:
+LED pásek a konce drátů sesouhlasíme v pořadí tak, jak je vidět na obrázku. Důležité je, aby šipky mezi LED směřovaly pryč od drátků a aby barvy drátků byly ve stejném pořadí, jako na fotce.
 ![alt](SupportFiles/IMG_2046.jpg)
-1. Odizolované konce drátků zapájíme.
+
+Odizolované konce drátků zapájíme.
 ![alt](SupportFiles/IMG_2051.jpg)
 ![alt](SupportFiles/IMG_2053.jpg)
 
 <!-- _________________________________________________________________ -->
 # <a name = dotykova_lista>Dotyková lišta</a>
 
-**Potřebujeme:**
+## Potřebujeme:
 * dotykovou lištu
 * konektor s 6 piny a drátovými vývody
 * páječku
 
-**Postup:**
-1. Na všechny plošky na spodní straně lišty předem naneseme pájku.
+## Postup:
+Na všechny plošky na spodní straně lišty předem naneseme pájku.
 ![alt](SupportFiles/IMG_2140.jpg)
-1. Postupně zapájíme drátky. Zelený připojíme na plošku s popisem GND, ostatní připojujeme tak, jak jsou zasunuté v konektoru (žádné se nesmí křížit). Je nutné dodržet orientaci podle fotky. Také je možné si podle ní zkontrolovat pořadí barev.
+
+Postupně zapájíme drátky. Zelený připojíme na plošku s popisem GND, ostatní připojujeme tak, jak jsou zasunuté v konektoru (žádné se nesmí křížit). Je nutné dodržet orientaci podle fotky. Také je možné si podle ní zkontrolovat pořadí barev.
 ![alt](SupportFiles/IMG_2150.jpg)
 ![alt](SupportFiles/IMG_2154.jpg)
 
 <!-- _________________________________________________________________ -->
 # <a name = zadni_fotorezistor>Zadní fotorezistor</a>
 
-**Potřebujeme:**
+## Potřebujeme:
 * fotorezistor
 * konektor 2 piny a drátovými vývody
 * 2x cca 0,8 cm dlouhý kousek smršťovací bužírky
@@ -234,19 +268,25 @@ Zapájíme tímto způsobem konektory na všechny digity a dvojtečku.
 
 ![alt](SupportFiles/IMG_2205.jpg)
 
-**Postup:**
-1. Vývody fotorezistoru provlékneme skrz 3D tištěný držák. Výstupek v držáku směřuje směrem k tělu fotorezistoru.
+## Postup:
+Vývody fotorezistoru provlékneme skrz 3D tištěný držák. Výstupek v držáku směřuje směrem k tělu fotorezistoru.
 ![alt](SupportFiles/IMG_2208.jpg)
-1. Na oba drátky nasuneme smršťovací bužírku.
+
+Na oba drátky nasuneme smršťovací bužírku.
 ![alt](SupportFiles/IMG_2211.jpg)
-1. Vývody fotorezistoru zkrátíme tak, aby v délce cca 7 mm čněly z držáku.
+
+Vývody fotorezistoru zkrátíme tak, aby v délce cca 7 mm čněly z držáku.
 ![alt](SupportFiles/IMG_2215.jpg)
-1. K oběma vývodům fotorezistoru připájíme drátky. Na polaritě nezáleží.
+
+K oběma vývodům fotorezistoru připájíme drátky. Na polaritě nezáleží.
 ![alt](SupportFiles/IMG_2217.jpg)
-1. Oba vývody ohneme směrem ke ztenčené části 3D tištěného držáku. Smršťovací bužírku nasuneme co nejvíce přes pájené spoje. Pod dozorem vedoucího teplem smrštíme. Pozor, pracujete s otevřeným plamenem!
+
+Oba vývody ohneme směrem ke ztenčené části 3D tištěného držáku. Smršťovací bužírku nasuneme co nejvíce přes pájené spoje. Pod dozorem vedoucího teplem smrštíme. Pozor, pracujete s otevřeným plamenem!
 ![alt](SupportFiles/IMG_2221.jpg)
-1. Kolem zúžené části držáku utáhneme stahovací pásku tak, aby její hlava směřovala k drátkům. Stahovací pásku poté zastřihneme.
+
+Kolem zúžené části držáku utáhneme stahovací pásku tak, aby její hlava směřovala k drátkům. Stahovací pásku poté zastřihneme.
 ![alt](SupportFiles/IMG_2223.jpg)
 ![alt](SupportFiles/IMG_2226.jpg)
-1. Finální pohled na díl:
+
+Finální pohled na díl:
 ![alt](SupportFiles/IMG_2228.jpg)
