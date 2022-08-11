@@ -3,7 +3,7 @@ Pro tento návod si zavedeme následující pojmy:
 * DPS (Deska Plošných Spojů) - Laminátová deska pokrytá elektricky vodivými měděnými cestami, na kterou budeme nyní pájet součástky.
 * PCB (Printed Circuit Board) - To stejné, co DPS.
 * SMD (Surface Mount Device) - Tzv. bezvývodové elektronické součástky, které mají krátké nožičky. Tyto součástky jsou připájeny k DPS pouze z jedné strany. Tyto součástky byly osazevy strojově při výrobě DPS.
-* THT (Through-hole Technology) - Tzv. vývodové elekotronické součástky, které mají dlouhé nožičky. Tyto nožičky jsou před zapájením součástky prostrčeny skrz díry v DPS.
+* THT (Through-hole Technology) - Tzv. vývodové elekotronické součástky, které mají dlouhé nožičky. Tyto nožičky jsou před zapájením součástky prostrčeny skrz otvory v DPS.
 
 THT součástky budeme pájet následujícím způsobem:
 1. Součástku vkládáme ze strany, kde je její obrys naznačen bílou čárou, tzv. silkscreenem.
@@ -13,25 +13,15 @@ THT součástky budeme pájet následujícím způsobem:
 1. Vývody po zapájení zastřihneme.
 
 # Obsah
-* [Potřebné díly](#dily)
-* [Potřebné nástroje](#nastroje)
 * [Číslice - digity](#digity)
 * [Hlavní PCB - horní strana](#hlavni_pcb_horni)
 * [Hlavní PCB - spodní strana](#hlavni_pcb_spodni)
-* [Díly na konektorech](#na_konektorech)
+* [LED pásek](#led_pasek)
+* [Dotyková lišta](#dotykova_lista)
+* [Zadní fotorezistor](#zadni_fotorezistor)
 
 <!-- _________________________________________________________________ -->
-## <a name = dily>Potřebné díly</a>
-
-![alt](SupportFiles/IMG_3073.jpeg)
-
-<!-- _________________________________________________________________ -->
-## <a name = nastroje>Potřebné nástroje</a>
-
-![alt](SupportFiles/.jpeg)
-
-<!-- _________________________________________________________________ -->
-## <a name = digity>Číslice - digity</a>
+# <a name = digity>Číslice - digity</a>
 
 **Potřebujeme:**
 * PCB s digity a dvojtečkou
@@ -47,7 +37,7 @@ THT součástky budeme pájet následujícím způsobem:
 1. Opatrně proti stolu od sebe odlámeme jednotlivé digity a dvojtečku.
 ![alt](SupportFiles/IMG_3075.jpeg)
 ![alt](SupportFiles/IMG_3076.jpeg)
-1. Dáváme velký pozor, abychom lámali jen připravené můstky a nezlomili jsme samotnou dvojtečku.
+1. Dáváme velký pozor, abychom lámali jen připravené můstky a nezlomili samotnou dvojtečku.
 ![alt](SupportFiles/IMG_3082.jpeg)
 1. Postupně rozlámeme všechny připravené můstky.
 ![alt](SupportFiles/IMG_3094.jpeg)
@@ -73,20 +63,20 @@ THT součástky budeme pájet následujícím způsobem:
 
 
 <!-- _________________________________________________________________ -->
-## <a name = hlavni_pcb_horni>Hlavní PCB - horní strana</a>
+# <a name = hlavni_pcb_horni>Hlavní PCB - horní strana</a>
 
 **Potřebujeme:**
-* Hlavní PCB
-* Konektorovou lištu s piny 2x20
-* Konektor s 2 piny do L
-* Konektor s 3 piny do L
-* Konektor s 6 piny
+* hlavní PCB
+* konektorovou lištu s piny 2x20
+* konektor s 2 piny - horizontální
+* konektor s 3 piny - horizontální
+* konektor s 6 piny - vertikální
 * 2x kondenzátor
 * fotorezistor
 * krystal
 * piezoakustický měnič
 * 3x tlačítko
-* 2x 3D tištěné držáky konektorů digitů
+* 2x 3D tištěný držák konektorů digitů
 * 3D tištěný držák fotorezistoru
 * štípací kleště
 * páječka
@@ -94,19 +84,19 @@ THT součástky budeme pájet následujícím způsobem:
 ![alt](SupportFiles/IMG_3164.jpeg)
 
 **Postup:**
-1. Nasadíme konektory do L s 2 a 3 piny na hlavní PCB.
+1. Nasadíme horizontální konektory s 2 a 3 piny na hlavní PCB.
 ![alt](SupportFiles/IMG_3268.jpeg)
 ![alt](SupportFiles/IMG_3269.jpeg)
-1. Opatrně otočíme hlavní PCB a konektory zapájíme.
+1. Opatrně otočíme hlavní PCB a konektory zapájíme. Dáváme pozor, aby zůstaly přitlačené co nejblíže k PCB.
 ![alt](SupportFiles/IMG_3277.jpeg)
 1. Nasadíme 3 tlačítka na hlavní PCB.
 ![alt](SupportFiles/IMG_3319.jpeg)
 ![alt](SupportFiles/IMG_3324.jpeg)
 1. Zapájíme tlačítka na hlavní PCB.
 ![alt](SupportFiles/IMG_3337.jpeg)
-1. U tlačítka 3 zakrátíme vývody.
+1. U tlačítka 3 zakrátíme vývody štípacími kleštěmi.
 ![alt](SupportFiles/IMG_2587.jpg)
-1. Pomocí štípacích kleště nastříháme konektorovou lištu na 5 kusů o rozměrech 2x4 piny. Vzniknou konektory digitů.
+1. Pomocí štípacích kleští nastříháme konektorovou lištu na 5 kusů o rozměrech 2x4 piny. Vzniknou konektory digitů.
 ![alt](SupportFiles/IMG_3170.jpeg)
 ![alt](SupportFiles/IMG_3180.jpeg)
 1. Nasuneme konektory digitů do 3D tištěných držáků.
@@ -124,9 +114,9 @@ THT součástky budeme pájet následujícím způsobem:
 1. Nasadíme konektor s 6 piny na hlavní PCB.
 ![alt](SupportFiles/IMG_3287.jpeg)
 ![alt](SupportFiles/IMG_3295.jpeg)
-1. Opatrně otočíme hlavní PCB a konektor zapájíme.
+1. Opatrně otočíme hlavní PCB a konektor zapájíme. Dáváme pozor, aby zůstal natlačený co nejblíže na PCB.
 ![alt](SupportFiles/IMG_3307.jpeg)
-1. Nasadíme oba kondenzátory na hlavní PCB. Dbáme na polaritu! Delší nožička patří do otvoru s černým okolím.
+1. Nasadíme oba kondenzátory na hlavní PCB. Dbáme na polaritu! Delší nožička (+) patří do otvoru s černým okolím a vyznačeným plusem.
 ![alt](SupportFiles/IMG_3366.jpeg)
 ![alt](SupportFiles/IMG_3376.jpeg)
 1. Kondenzátory zapájíme.
@@ -161,7 +151,7 @@ THT součástky budeme pájet následujícím způsobem:
 1. Vsuneme fotorezistor do držáku fotorezistoru.
 ![alt](SupportFiles/IMG_3450.jpeg)
 ![alt](SupportFiles/IMG_3451.jpeg)
-1. Nasadíme držák s fotorezistorem na hlavní PCB. Na polaritě nezáleží.
+1. Nasadíme držák s fotorezistorem na hlavní PCB. Na polaritě nezáleží. Dbáme, aby byl fotorezistor co nejvíce natlačen na PCB.
 ![alt](SupportFiles/IMG_3588.jpeg)
 1. Fotorezistor zapájíme.
 ![alt](SupportFiles/IMG_3612.jpeg)
@@ -169,13 +159,13 @@ THT součástky budeme pájet následujícím způsobem:
 ![alt](SupportFiles/IMG_3618.jpeg)
 
 <!-- _________________________________________________________________ -->
-## <a name = hlavni_pcb_spodni>Hlavní PCB - spodní strana</a>
+# <a name = hlavni_pcb_spodni>Hlavní PCB - spodní strana</a>
 
 **Potřebujeme:**
-* Hlavní PCB
-* Teploměr DS18B12
-* Štípací kleště
-* Páječku
+* hlavní PCB
+* teploměr DS18B12
+* štípací kleště
+* páječku
 
 ![alt](SupportFiles/IMG_3651.jpeg)
 
@@ -188,32 +178,29 @@ THT součástky budeme pájet následujícím způsobem:
 ![alt](SupportFiles/IMG_3681.jpeg)
 
 <!-- _________________________________________________________________ -->
-## <a name = na_konektorech>Díly na konektorech</a>
-
-**LED pásek**
+# <a name = led_pasek>LED pásek</a>
 
 **Potřebujeme:**
 * LED pásek
-* 3pin konektor s drátovými vývody
-* Páječku
+* konektor s 3 piny a drátovými vývody
+* páječku
 
 ![alt](SupportFiles/IMG_2046.jpg)
 
 **Postup:**
-1. LED pásek a konce drátů sesouhlasíme v pořadí, v jakém je vidět na obrázku. Důležité je, aby šipky mezi LED směřovaly pryč od drátků a aby barvy drátků byly ve stejném pořadí, jako na fotce.
+1. LED pásek a konce drátů sesouhlasíme v pořadí tak, jak je vidět na obrázku. Důležité je, aby šipky mezi LED směřovaly pryč od drátků a aby barvy drátků byly ve stejném pořadí, jako na fotce.
 ![alt](SupportFiles/IMG_2046.jpg)
 1. Odizolované konce drátků zapájíme.
 ![alt](SupportFiles/IMG_2051.jpg)
 ![alt](SupportFiles/IMG_2053.jpg)
 
-
-**Dotyková lišta**
+<!-- _________________________________________________________________ -->
+# <a name = dotykova_lista>Dotyková lišta</a>
 
 **Potřebujeme:**
-* Dotykovou lištu
-* 6pin konektor s drátovými vývody
-* Páječku
-
+* dotykovou lištu
+* konektor s 6 piny a drátovými vývody
+* páječku
 
 **Postup:**
 1. Na všechny plošky na spodní straně lišty předem naneseme pájku.
@@ -222,32 +209,32 @@ THT součástky budeme pájet následujícím způsobem:
 ![alt](SupportFiles/IMG_2150.jpg)
 ![alt](SupportFiles/IMG_2154.jpg)
 
-
-**Zadní fotorezistor**
+<!-- _________________________________________________________________ -->
+# <a name = zadni_fotorezistor>Zadní fotorezistor</a>
 
 **Potřebujeme:**
-* Fotorezistor
-* 2pin konektor s drátovými vývody
+* fotorezistor
+* konektor 2 piny a drátovými vývody
 * 2x cca 0,8 cm dlouhý kousek smršťovací bužírky
-* 3D tištěný díl pro oporu fotorezistoru
+* 3D tištěný držák fotorezistoru
 * stahovací pásku
-* Páječku
-* Zdroj tepla (zapalovač)
+* páječku
+* zdroj tepla (zapalovač)
 
 ![alt](SupportFiles/IMG_2205.jpg)
 
 **Postup:**
-1. Vývody fotorezistoru provlékneme skrz 3D tištěný díl. Výstupek v součástce směřuje směrem k těle součástky.
+1. Vývody fotorezistoru provlékneme skrz 3D tištěný držák. Výstupek v držáku směřuje směrem k tělu fotorezistoru.
 ![alt](SupportFiles/IMG_2208.jpg)
 1. Na oba drátky nasuneme smršťovací bužírku.
 ![alt](SupportFiles/IMG_2211.jpg)
-1. Vývody fotorezistoru zkrátíme tak, aby o cca 7 mm vyčuhovaly z 3D tištěného dílu.
+1. Vývody fotorezistoru zkrátíme tak, aby v délce cca 7 mm čněly z držáku.
 ![alt](SupportFiles/IMG_2215.jpg)
 1. K oběma vývodům fotorezistoru připájíme drátky. Na polaritě nezáleží.
 ![alt](SupportFiles/IMG_2217.jpg)
 1. Oba vývody ohneme směrem ke ztenčené části 3D tištěného držáku. Smršťovací bužírku nasuneme co nejvíce přes pájené spoje. Pod dozorem vedoucího teplem smrštíme. Pozor, pracujete s otevřeným plamenem!
 ![alt](SupportFiles/IMG_2221.jpg)
-1. Kolem ztenčené části držáku utáhneme stahovací pásku tak, aby její hlava směřovala k drátkům. Stahovací pásku poté zstřihneme.
+1. Kolem zúžené části držáku utáhneme stahovací pásku tak, aby její hlava směřovala k drátkům. Stahovací pásku poté zastřihneme.
 ![alt](SupportFiles/IMG_2223.jpg)
 ![alt](SupportFiles/IMG_2226.jpg)
 1. Finální pohled na díl:

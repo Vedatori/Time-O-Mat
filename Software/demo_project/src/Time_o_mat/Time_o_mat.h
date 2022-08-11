@@ -1,10 +1,12 @@
-#pragma once
+#ifndef _TIME_O_MAT_
+#define _TIME_O_MAT_
 
 #include <Arduino.h>
 #include "Preferences.h"
 
 #include "Music.h"
 #include "Display_TM.h"
+#include "Time_module.h"
 
 namespace TM {
 
@@ -48,3 +50,5 @@ public:
 };
 
 extern Time_o_mat_class Time_o_mat;
+
+#endif // _TIME_O_MAT_
