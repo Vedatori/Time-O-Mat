@@ -21,6 +21,7 @@ ___
 * [Finální sestavení](#final)
 ___
 
+<!-- _________________________________________________________________ -->
 # <a name = preklizka>Příprava překližkových dílů</a>
 **Potřebné díly:**
 * všechny díly z překližky
@@ -42,6 +43,7 @@ ___
 1. Jemným (černým) smirkem obruste pohledové plochy dřevěných dílů. Pohledové plochy jsou ty, kde je něco vygravírováno nebo ty, které jsou méně opálené od laseru.
     ![alt](SupportFiles/IMG_2038.jpg) 
 
+<!-- _________________________________________________________________ -->
 # <a name = LEDpas>Vlepení LED pásku</a>
 **Potřebné díly:**
 
@@ -72,7 +74,7 @@ Lepidlo Herkules
 1. Slepené díly zatěžte a nechte uschnout.
     ![alt](SupportFiles/IMG_2097.jpg)
 
-
+<!-- _________________________________________________________________ -->
 # <a name = lista>Ochrana dotykové lišty</a>
 **Potřebné díly:**
 
@@ -91,8 +93,7 @@ Lepidlo Herkules
     ![alt](SupportFiles/IMG_2074.jpg)
     ![alt](SupportFiles/IMG_2075.jpg)
 
-
-
+<!-- _________________________________________________________________ -->
 # <a name = krabice>Slepení krabičky</a>
 **Potřebné díly:**
 * Všechny díly krabice kromě víka
@@ -118,7 +119,7 @@ Lepidlo Herkules
 1. Stejně slepte i další rohy.
     ![alt](SupportFiles/IMG_2113.jpg)
     ![alt](SupportFiles/IMG_2116.jpg)
-    ![alt](SupportFiles/IMG_2117.jpg)    
+    ![alt](SupportFiles/IMG_2117.jpg)
 1. Před přilepením spodního dílu se ujistěte, že je správně otočený - je v něm výřez, který musí být blíž přední straně (bez LED pásku). Obdobným způsobem slepte "ohrádku" se spodním dílem. Papírovou páskou uchyťte všechny rohy a třemi pásy pásky délky cca 10 cm spojte krabičku tak, jak je vidět na obrázku. Při spojování dílů páskou vždy přidržte spojované díly tak, aby mezi nimi nebyla mezera.
     ![alt](SupportFiles/IMG_2121.jpg)
     ![alt](SupportFiles/IMG_2123.jpg)
@@ -127,6 +128,7 @@ Lepidlo Herkules
     ![alt](SupportFiles/IMG_2132.jpg)
     ![alt](SupportFiles/IMG_2134.jpg)
 
+<!-- _________________________________________________________________ -->
 # <a name = osmicky>Vkládání difuzorů do segmentů</a>
 **Potřebné díly:**
 * 4x 7-segment hodin (osmička)
@@ -156,12 +158,12 @@ Lepidlo Herkules
     ![alt](SupportFiles/IMG_2198.jpg)
     ![alt](SupportFiles/IMG_2199.jpg)
 
+<!-- _________________________________________________________________ -->
 # <a name = lak>Lakování krabičky</a>
 **Potřebné díly:**
 * Polyuretanový lak
 * Slepená spodní část krabičky
 * Víko krabičky
-
 
 **Nástroje:**
 * Štětec
@@ -179,6 +181,7 @@ Lepidlo Herkules
     ![alt](SupportFiles/IMG_2174.jpg)
 1. Štětec po dokončení lakování okamžitě ponořte do vody a vymyjte.
 
+<!-- _________________________________________________________________ -->
 # <a name = lak2>Druhá vrstva laku</a>
 **Potřebné díly:**
 * Horní víko krabičky
@@ -196,6 +199,7 @@ Lepidlo Herkules
 1. Přebroušené povrchy nalakujte druhou vrstvou laku. Lak nechte vyschnout tak, aby se lakované části nedotýkaly podkladu (jako minule). Lak naneste znovu i k LED pásku.
 1. Štětec po dokončení lakování okamžitě ponořte do vody a vymyjte.    
 
+<!-- _________________________________________________________________ -->
 # <a name = vlepeni>Vlepení lišty, fotorezistoru a spaceru</a>
 **Potřebné díly:**
 * Fotorezistor napájený na přívodní kabel
@@ -215,7 +219,7 @@ Lepidlo Herkules
 1. Vlepte dotykovou lištu do vygravírované prohlubně. Naneste lepidlo na obě lepené plochy. Lepidlo nanášejte pomocí párátka a rozetřete. Zatěžte.    
     ![alt](SupportFiles/IMG_2237.jpg)
     ![alt](SupportFiles/IMG_2242.jpg)
-    ![alt](SupportFiles/IMG_2244.jpg)          
+    ![alt](SupportFiles/IMG_2244.jpg)
 1. Vlepte fotorezistor s jeho držákem. Lepidlo naneste na zadní a spodní plochu držáku i dřeva. Přimáčkněte nejlépe svorkou.
     ![alt](SupportFiles/IMG_2252.jpg)
     ![alt](SupportFiles/IMG_2257.jpg)
@@ -228,7 +232,7 @@ Lepidlo Herkules
     ![alt](SupportFiles/IMG_2278.jpg)
     ![alt](SupportFiles/IMG_2281.jpg)
 
-
+<!-- _________________________________________________________________ -->
 # <a name = final>Finální sestavení</a>
 **Potřebné díly:**
 * 4x osmička
@@ -256,20 +260,20 @@ Lepidlo Herkules
 1. Plastovou osmičku vsuňte do první pozice včetně plastového distančního dílu. 
     ![alt](SupportFiles/IMG_2289.jpg)
     ![alt](SupportFiles/IMG_2291.jpg)
-    ![alt](SupportFiles/IMG_2292.jpg)    
+    ![alt](SupportFiles/IMG_2292.jpg)
 1. Do díry u kraje desky zasuňte předem šroub M3x25 se zápustnou hlavou.
-    ![alt](SupportFiles/IMG_2294.jpg)  
+    ![alt](SupportFiles/IMG_2294.jpg)
 1. Nosník vložte k první plastové osmičce. Do díry vložte matku a do ní zašroubujte první šroub. Nedotahujte.
     ![alt](SupportFiles/IMG_2298.jpg)
     ![alt](SupportFiles/IMG_2299.jpg)
-    ![alt](SupportFiles/IMG_2301.jpg)    
+    ![alt](SupportFiles/IMG_2301.jpg)
 1. Stejný postup zopakujte s druhou částí nosníku a osmičkou na poslední pozici.
     ![alt](SupportFiles/IMG_2306.jpg)
     ![alt](SupportFiles/IMG_2308.jpg)
-    ![alt](SupportFiles/IMG_2309.jpg)  
+    ![alt](SupportFiles/IMG_2309.jpg)
 1. Vložte ostatní osmičky a dvojtečku, jejich desky plošných spojů a distanční díly, přidejte k nim matky a zašroubujte. Pořád neutahujte.
     ![alt](SupportFiles/IMG_2312.jpg)
-    ![alt](SupportFiles/IMG_2323.jpg)  
+    ![alt](SupportFiles/IMG_2323.jpg)
 1. Až jsou vložené všechny části, postupně šrouby utáhněte.
     ![alt](SupportFiles/IMG_2323.jpg) 
     ![alt](SupportFiles/IMG_2326.jpg)
@@ -278,16 +282,14 @@ Lepidlo Herkules
 1. Spojte hlavní desku s osmičkami a dvojtečkou.
     ![alt](SupportFiles/IMG_2336.jpg) 
     ![alt](SupportFiles/IMG_2341.jpg)
-    ![alt](SupportFiles/IMG_2345.jpg)    
+    ![alt](SupportFiles/IMG_2345.jpg)
 1. Zapojte fotorezistor a LED pásek.
     ![alt](SupportFiles/IMG_XXXX.jpg)
 1. Připevěte hlavní desku šroubem M3x20.
-    ![alt](SupportFiles/IMG_2348.jpg)  
+    ![alt](SupportFiles/IMG_2348.jpg)
 1. Vsuňte horní část sestavy do spodní, zasuňte na doraz. Pozor na kabely, neskřípněte je.
-    ![alt](SupportFiles/IMG_2352.jpg)  
+    ![alt](SupportFiles/IMG_2352.jpg)
 1. Na šrouby M3x30 nasuňte nožky. Šrouby s nožkami zašroubujte skrz díry ve spodní části krabice.
-    ![alt](SupportFiles/IMG_2357.jpg)  
+    ![alt](SupportFiles/IMG_2357.jpg)
 1. Až bude mechanika kompletní sundejte ochrannou pásku z dotykové lišty.
-    ![alt](SupportFiles/IMG_2364.jpg)  
-
-[*Elektronika je v samostatném návodu.*](Time-O-Mat_electronics_cz.md)
+    ![alt](SupportFiles/IMG_2364.jpg)

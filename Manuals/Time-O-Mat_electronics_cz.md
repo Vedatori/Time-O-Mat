@@ -25,7 +25,7 @@ ___
 <!-- _________________________________________________________________ -->
 # <a name = digity>Číslice - digity</a>
 
-**Potřebujeme:**
+## Potřebujeme:
 * PCB s digity a dvojtečkou
 * 5x female konektor 2x4 pinů do L
 * 3D tištěný držák pro pájení konektorů
@@ -35,34 +35,43 @@ ___
 
 ![alt](SupportFiles/IMG_3074.jpeg)
 
-**Postup:**
-1. Opatrně proti stolu od sebe odlámeme jednotlivé digity a dvojtečku.
+## Postup:
+Opatrně proti stolu od sebe odlámeme jednotlivé digity a dvojtečku.
 ![alt](SupportFiles/IMG_3075.jpeg)
 ![alt](SupportFiles/IMG_3076.jpeg)
-1. Dáváme velký pozor, abychom lámali jen připravené můstky a nezlomili samotnou dvojtečku.
+
+Dáváme velký pozor, abychom lámali jen připravené můstky a nezlomili samotnou dvojtečku.
 ![alt](SupportFiles/IMG_3082.jpeg)
-1. Postupně rozlámeme všechny připravené můstky.
+
+Postupně rozlámeme všechny připravené můstky.
 ![alt](SupportFiles/IMG_3094.jpeg)
-1. Pomocí štípacích kleští odštípeme všechny zbylé můstky.
+
+Pomocí štípacích kleští odštípeme všechny zbylé můstky.
 ![alt](SupportFiles/IMG_3101.jpeg)
 ![alt](SupportFiles/IMG_3113.jpeg)
-1. Pomocí pilníků zabrousíme všechny zbytky po můstcích do roviny.
+
+Pomocí pilníků zabrousíme všechny zbytky po můstcích do roviny.
 ![alt](SupportFiles/IMG_3134.jpeg)
 ![alt](SupportFiles/IMG_3141.jpeg)
-1. Připravíme si díly pro pájení konektoru na 1 digit.
+
+Připravíme si díly pro pájení konektoru na 1 digit.
 ![alt](SupportFiles/IMG_3147.jpeg)
-1. Konektor zasuneme do 3D tištěného držáku.
+
+Konektor zasuneme do 3D tištěného držáku.
 ![alt](SupportFiles/IMG_3148.jpeg)
-1. Konektor s držákem nasadíme na digit.
+
+Konektor s držákem nasadíme na digit.
 ![alt](SupportFiles/IMG_3149.jpeg)
 ![alt](SupportFiles/IMG_3150.jpeg)
-1. Protější (levou) stranu digitu podložíme do roviny
-![alt](SupportFiles/IMG_3151.jpeg)
-1. Zapájíme všechny piny konektoru.
-![alt](SupportFiles/IMG_3155.jpeg)
-1. Zapájíme tímto způsobem konektory na všechny digity a dvojtečku.
-![alt](SupportFiles/IMG_3163.jpeg)
 
+Protější (levou) stranu digitu podložíme do roviny
+![alt](SupportFiles/IMG_3151.jpeg)
+
+Zapájíme všechny piny konektoru.
+![alt](SupportFiles/IMG_3155.jpeg)
+
+Zapájíme tímto způsobem konektory na všechny digity a dvojtečku.
+![alt](SupportFiles/IMG_3163.jpeg)
 
 <!-- _________________________________________________________________ -->
 # <a name = hlavni_pcb_horni>Hlavní PCB - horní strana</a>
