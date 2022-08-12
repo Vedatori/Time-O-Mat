@@ -8,10 +8,6 @@ const char* password   = "";
 const int CONTROL_PERIOD = 500;
 int prevControlTime = 0;
 
-int buttonPin[] = {18, 19, 21};
-
-int touchPads[] = {33, 27, 14, 12, 32};
-
 int CCPin[] = {36, 39};
 
 int lightPin[] = {35, 34};
@@ -27,10 +23,6 @@ void setup() {
     Time_o_mat.display.setTransition(Linear, 0.5);
     Time_o_mat.display.setBacklight(white);
 
-    for(int i = 0; i < 3; ++i) {
-        pinMode(buttonPin[i], INPUT_PULLUP);
-    }
-
     printf("Connecting to %s ", ssid);
     WiFi.begin(ssid, password);
     while (WiFi.status() != WL_CONNECTED) {
@@ -44,12 +36,12 @@ void loop() {
     if(millis() > prevControlTime + CONTROL_PERIOD) {
         prevControlTime = millis();
         
-        for(int i = 0; i < 3; ++i) {
-            printf("btn%d: %d ", i + 1, !digitalRead(buttonPin[i]));
+        for(int i = 1; i <= 3; ++i) {
+            printf("btn%d: %d ", i, Time_o_mat.buttonRead(i));
         }
         
-        for(int i = 0; i < 5; ++i) {
-            printf("touch%d: %d ", i, touchRead(touchPads[i]));
+        for(int i = 1; i <= 5; ++i) {
+            printf("touch%d: %d ", i, Time_o_mat.touchBar.getRaw(i));
         }
 
         for(int i = 0; i < 2; ++i) {
@@ -60,7 +52,7 @@ void loop() {
             printf("light%d: %d ", i + 1, analogRead(lightPin[i]));
         }
         
-        if(!digitalRead(buttonPin[0])) {
+        if(Time_o_mat.buttonRead(1)) {
             Time_o_mat.playMelody(takeonme, sizeof(takeonme), takeonme_tempo);
         }
 

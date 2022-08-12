@@ -5,12 +5,12 @@
 #include "sntp.h"
 #include "time.h"
 
-extern const char* ntpServer1;
-extern const char* ntpServer2;
-extern const long gmtOffset_sec;
-extern const int daylightOffset_sec;
+const char ntpServer1[] = "pool.ntp.org";
+const char ntpServer2[] = "time.nist.gov";
+const long gmtOffset_sec = 3600;
+const int daylightOffset_sec = 3600;
 
-//const char* time_zone = "CET-1CEST,M3.5.0,M10.5.0/3";  // TimeZone rule for Europe/Rome including daylight adjustment rules (optional)
+//const char time_zone[] = "CET-1CEST,M3.5.0,M10.5.0/3";  // TimeZone rule for Europe/Rome including daylight adjustment rules (optional)
 
 class Time_module {
     struct tm time;

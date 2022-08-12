@@ -1,10 +1,5 @@
 #include "Time_module.h"
 
-const char* ntpServer1 = "pool.ntp.org";
-const char* ntpServer2 = "time.nist.gov";
-const long gmtOffset_sec = 3600;
-const int daylightOffset_sec = 3600;
-
 void Time_module::begin() {
     configTime(gmtOffset_sec, daylightOffset_sec, ntpServer1, ntpServer2);
 }

@@ -2,7 +2,7 @@
 
 #include "Adafruit_NeoPixel.h"
 
-Adafruit_NeoPixel pixels(LED_COUNT, 16, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel pixels(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 ColorRGB black = {0, 0, 0};
 ColorRGB white = {255, 255, 255};

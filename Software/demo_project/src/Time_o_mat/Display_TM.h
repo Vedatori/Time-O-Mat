@@ -3,6 +3,7 @@
 
 #include "Arduino.h"
 
+#define LED_PIN 16
 #define LED_COUNT 95
 
 typedef struct colorRGB {

@@ -11,6 +11,7 @@ void TM::refreshTaskQuick(void * parameter) {
         Time_o_mat.handleMelody();
         //Time_o_mat.display.update();
         //delayMicroseconds(500);
+        Time_o_mat.touchBar.update();
         delay(20);
     }
 }
@@ -27,6 +28,11 @@ void Time_o_mat_class::begin() {
 
     display.begin();
     time.begin();
+    touchBar.begin();
+
+    for(int i = 0; i < 3; ++i) {
+        pinMode(TM::BUTTON_PIN[i], INPUT_PULLUP);
+    }
 
     //sensors.begin();
     
@@ -36,12 +42,20 @@ void Time_o_mat_class::begin() {
     ledcSetup(TM::BUZZER_CHANNEL, 1000, 10);
 }
 
+bool Time_o_mat_class::buttonRead(int buttonID) {
+    if(buttonID < 1 || buttonID > 3) {
+        printf("Invalid button ID: %d\n", buttonID);
+        return 0;
+    }
+    return !digitalRead(TM::BUTTON_PIN[buttonID - 1]);  // 1 = pressed
+}
+
 void Time_o_mat_class::soundTone(float freq) {
-    ledcAttachPin(TM::BUZZER, TM::BUZZER_CHANNEL);
+    ledcAttachPin(TM::BUZZER_PIN, TM::BUZZER_CHANNEL);
     ledcWriteTone(TM::BUZZER_CHANNEL, freq);
 }
 void Time_o_mat_class::soundEnd() {
-    ledcDetachPin(TM::BUZZER);
+    ledcDetachPin(TM::BUZZER_PIN);
 }
 
 void Time_o_mat_class::playMelody(const int * aMelody, const int size, const int tempo)
