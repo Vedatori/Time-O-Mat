@@ -9,7 +9,7 @@ DallasTemperature sensors(&oneWire);
 void TM::refreshTaskQuick(void * parameter) {
     for(;;) {
         Time_o_mat.handleMelody();
-        Time_o_mat.display.update();
+        //Time_o_mat.display.update();
         //delayMicroseconds(500);
         delay(20);
     }
@@ -26,6 +26,7 @@ void TM::refreshTaskSlow(void * parameter) {
 void Time_o_mat_class::begin() {
 
     display.begin();
+    time.begin();
 
     //sensors.begin();
     

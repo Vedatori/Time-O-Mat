@@ -37,6 +37,7 @@ class Time_o_mat_class {
 
 public:
     Display_TM display;
+    Time_module time;
 
     void begin();
 

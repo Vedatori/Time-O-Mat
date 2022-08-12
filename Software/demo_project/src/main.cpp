@@ -1,18 +1,9 @@
 #include "Time_o_mat/Time_o_mat.h"
 
 #include <WiFi.h>
-#include "time.h"
-#include "sntp.h"
 
 const char* ssid       = "";
 const char* password   = "";
-
-const char* ntpServer1 = "pool.ntp.org";
-const char* ntpServer2 = "time.nist.gov";
-const long  gmtOffset_sec = 3600;
-const int   daylightOffset_sec = 3600;
-
-const char* time_zone = "CET-1CEST,M3.5.0,M10.5.0/3";  // TimeZone rule for Europe/Rome including daylight adjustment rules (optional)
 
 const int CONTROL_PERIOD = 500;
 int prevControlTime = 0;
@@ -31,11 +22,14 @@ ColorHSV myColor = {0, 1, 1};
 void setup() {
     Time_o_mat.begin();
 
+    Time_o_mat.display.setBrightnessFront(0.2);
+    Time_o_mat.display.setBrightnessBack(0.0);
+    Time_o_mat.display.setTransition(Linear, 0.5);
+    Time_o_mat.display.setBacklight(white);
+
     for(int i = 0; i < 3; ++i) {
         pinMode(buttonPin[i], INPUT_PULLUP);
     }
-
-    configTime(gmtOffset_sec, daylightOffset_sec, ntpServer1, ntpServer2);
 
     printf("Connecting to %s ", ssid);
     WiFi.begin(ssid, password);
@@ -44,12 +38,6 @@ void setup() {
         printf(".");
     }
     printf("connected\n");
-
-    Time_o_mat.display.setBrightnessFront(0.2);
-    Time_o_mat.display.setBrightnessBack(0.0);
-    Time_o_mat.display.setTransition(Linear, 0.5);
-    Time_o_mat.display.setBacklight(white);
-    Time_o_mat.display.setText("0000", myColor);
 }
 
 void loop() {
@@ -63,8 +51,6 @@ void loop() {
         for(int i = 0; i < 5; ++i) {
             printf("touch%d: %d ", i, touchRead(touchPads[i]));
         }
-        
-        
 
         for(int i = 0; i < 2; ++i) {
             printf("CC%d: %d ", i + 1, analogRead(CCPin[i]));
@@ -79,16 +65,10 @@ void loop() {
         }
 
         printf("Priority: %d ", uxTaskPriorityGet(NULL));
-        
-        struct tm time;
-        if(!getLocalTime(&time)){
-            printf("No time available (yet)\n");
-        }
 
-        char timeDisp[4];
-        sprintf(timeDisp, "%02d%02d", time.tm_hour, time.tm_min);
+        String timeDisp = Time_o_mat.time.getClockText();
         //sprintf(timeDisp, "%2.0f%2.0f", analogRead(CCPin[0])/4095.0*33.0, analogRead(CCPin[1])/4095.0*33.0);
-        printf("time: %s\n", timeDisp);
+        printf("time: %s\n", timeDisp.c_str());
         Time_o_mat.display.setText(timeDisp, myColor);
 
         static bool colonState = 0;
@@ -98,5 +78,6 @@ void loop() {
             Time_o_mat.display.setColon(black);
         colonState = !colonState;
     }
-    delay(50);
+    Time_o_mat.display.update();
+    delay(20);
 }
