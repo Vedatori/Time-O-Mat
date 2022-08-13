@@ -27,6 +27,7 @@ void TM::refreshTaskSlow(void * parameter) {
 }
 
 void ToMat_class::begin() {
+    beginCalled = true;
 
     power.update();
     illumination.update();
@@ -128,5 +129,85 @@ void ToMat_class::printDiagnostics() {
     String timeDisp = ToMat.time.getClockText();
     printf("time: %s\n", timeDisp.c_str());
 }
+
+
+void ToMat_class::startWiFiCaptain(String name, String password) {
+    if(!beginCalled) {
+        begin();
+    }
+
+    String ssid_final = "ToMat-";
+    if(name.isEmpty() || name == "<your_name>") {
+        ssid_final += WiFi.macAddress();
+    }
+    else {
+        ssid_final += name;
+    }
+    setApCredentials(ssid_final, password);
+    wifiCaptInit();
+    connectionEnabled = true;
+}
+
+void ToMat_class::checkConnection() {
+    if(!connectionEnabled) {
+        return;
+    }
+    if(millis() > prevCommunicationTime + TM::communicationTimeout) {
+        connectionActive = false;
+    }
+    else {
+        connectionActive = true;
+    }
+}
+
+String ToMat_class::commandGet() {
+    String command = String(commandGetCaptain());
+    command.toLowerCase();
+    return command;
+}
+
+String ToMat_class::commandGetIndexed(uint8_t index) {
+    char commandBuffer[64];
+    sprintf(commandBuffer, commandGetCaptain());
+    const char delimiter[2] = " ";
+    char *token;
+    token = strtok((char *)commandBuffer, delimiter);
+    for(uint8_t i = 0; i < index; ++i) {
+        token = strtok(NULL, delimiter);
+    }
+    String command = String(token);
+    command.toLowerCase();
+    return command;
+}
+
+void ToMat_class::commandClear() {
+    commandClearCaptain();
+}
+
+void ToMat_class::internCommandHandle() {
+    static uint8_t counter = 0;
+    if(counter < 20) {
+        counter++;
+        return;
+    }
+    else {
+        counter = 0;
+    }
+    if(ToMat.commandGetIndexed(0) == "reset" || ToMat.commandGetIndexed(0) == "restart") {
+        ESP.restart();
+    }
+    else if(ToMat.commandGet() == "encoder calibrate") {
+        ToMat.commandClear();
+    }
+}
+
+void ToMat_class::commandSend(String type, String text) {
+    commandSendCaptain(type, text);
+}
+
+void ToMat_class::commandDisp(String text) {
+    commandSend("commandDisp", text);
+}
+
 
 ToMat_class ToMat;

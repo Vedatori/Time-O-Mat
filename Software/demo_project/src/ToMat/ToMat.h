@@ -10,6 +10,7 @@
 #include "Touchbar_TM.h"
 #include "USB_C_power_module.h"
 #include "Illumination_module.h"
+#include "WiFiCaptain.h"
 
 namespace TM {
 
@@ -27,6 +28,11 @@ void refreshTaskSlow(void * param);
 }
 
 class ToMat_class {
+    bool beginCalled = false;
+    bool connectionEnabled = false;
+    bool connectionActive = false;
+    uint32_t prevCommunicationTime = 0;
+
     bool melodyPlaying = false;
     bool melodyPause = false;
     int melodyTempo = 180;
@@ -52,6 +58,15 @@ public:
     void handleMelody();
 
     void printDiagnostics();
+
+    void startWiFiCaptain(String name="", String password="");
+    void checkConnection();
+    String commandGet();
+    String commandGetIndexed(uint8_t index);
+    void commandClear();
+    void internCommandHandle();
+    void commandSend(String type, String text);
+    void commandDisp(String text);
 };
 
 extern ToMat_class ToMat;

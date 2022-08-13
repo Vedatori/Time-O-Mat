@@ -1,0 +1,147 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="theme-color" content="#404040"/>
+		<title>TrackJet</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<style>
+			body {
+				overflow : hidden;
+			}
+			</style>
+	</head>
+	<body>
+		<div class = "wrapper">
+			<div class="box1"><a href="http://wp.vedatori.com/" target="_blank"><img src="http://wp.vedatori.com/wp-content/uploads/2019/03/logo-2-e1551903315141.png" alt="vedatori.com" style="height:10vh;" align="middle"></a></div>
+			<div class="box2"><h1 style="font-size:3.5vh;text-align:center"><font face='verdana'>
+				<a href="https://github.com/vedatori/Time-O-Mat" target="_blank">Time-O-Mat</a><br>Control page
+			</font></h1></div>
+			<div class="box3" id="position">
+				<input type = "text" id = "commandInput" placeholder = "Command entry" autofocus="autofocus"/>
+				<input type = "button" value = "Enter" onclick = "commandEnter()"/>
+				<a href='/wifi'><input type = "button" value = "WiFi setup"/></a>
+				<a href='/status'><input type = "button" value = "Status"/></a>
+			</div>
+		</div>
+		
+		<script>
+			window.onorientationchange = function() { 
+				var orientation = window.orientation; 
+				switch(orientation) { 
+					case 0:
+					case 90:
+					case -90: window.location.reload(); 
+					break; 
+				} 
+			};
+
+			//_____________________________________________________________________________
+			// This is called when the page finishes loading
+			var clientURL;
+			var clientConnected = false;
+			function init() {
+				// Connect to WebSocket server
+				var str = window.location.href;
+				clientURL = str.substring(4, str.length - 1);
+				clientURL = "ws" + clientURL + ":1337";
+				wsConnect(clientURL);
+				console.log(clientURL);
+			}
+			// Call this to connect to the WebSocket server
+			function wsConnect(url) {
+				if(clientConnected == true) {
+					return;
+				}
+				
+				// Connect to WebSocket server
+				websocket = new WebSocket(url);
+				
+				// Assign callbacks
+				websocket.onopen = function(evt) { onOpen(evt) };
+				websocket.onclose = function(evt) { onClose(evt) };
+				websocket.onmessage = function(evt) { onMessage(evt) };
+				websocket.onerror = function(evt) { onError(evt) };
+			}
+
+			// Called when a WebSocket connection is established with the server
+			function onOpen(evt) {
+
+				// Log connection state
+				console.log("Connected");
+
+				clientConnected = true;
+			}
+
+			// Called when the WebSocket connection is closed
+			function onClose(evt) {
+
+				// Log disconnection state
+				console.log("Disconnected");
+
+				clientConnected = false;
+				
+				// Try to reconnect after a few seconds
+				setTimeout(function() { wsConnect(clientURL) }, 1000);
+			}
+
+			// Called when a message is received from the server
+			function onMessage(evt) {
+				var receivedMessage = evt.data;
+				var parsedMessage = receivedMessage.split(",");
+
+				console.log("Received: " + receivedMessage);
+				
+				switch(parsedMessage[0]) {
+					case "commandDisp":
+						document.getElementById('commandInput').placeholder = parsedMessage[1];
+						break;
+					default:
+						break;
+				}
+			}
+
+			// Called when a WebSocket error occurs
+			function onError(evt) {
+				console.log("ERROR: " + evt.data);
+			}
+
+			// Sends a message to the server (and prints it to the console)
+			function doSend(message) {
+				if(websocket.readyState == WebSocket.OPEN) {
+					console.log("Sending: " + message);
+					websocket.send(message);
+				}
+			}
+			
+			function commandEnter(){
+				var command = document.getElementById("commandInput");
+				var commandText = command.value;
+				if(commandText.length < 32) {
+					doSend("command," + commandText);
+				}
+				command.value = "";
+			}
+
+			document.getElementById("commandInput").addEventListener("keyup", function(e) {
+				if (e.keyCode == 13) {
+					commandEnter();
+				}
+			});
+
+			// Call the init function as soon as the page loads
+			window.addEventListener("load", init, false);
+
+			const view = document.getElementById('stream');
+			const WS_URL = "ws://" + window.location.host + ":82";
+			const ws = new WebSocket(WS_URL);
+					
+			ws.onmessage = message => {
+				if (message.data instanceof Blob) {
+				var urlObject = URL.createObjectURL(message.data);
+				view.src = urlObject;
+				}
+			};
+		</script>
+	</body>
+</html>

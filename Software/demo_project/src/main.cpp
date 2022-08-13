@@ -1,21 +1,15 @@
 #include "ToMat/ToMat.h"
 
-#include <WiFi.h>
-
-const char* ssid = "Vedatori1";
-const char* password = "Kytice15";
-
 const int CONTROL_PERIOD = 500;
 int prevControlTime = 0;
 
-//ColorRGB myColor = {255, 0, 0};
-ColorHSV myColor = {0, 1, 1};
+ColorRGB myColor = {255, 0, 0};
 
 void setup() {
     ToMat.begin();
 
     ToMat.display.setBrightnessFront(0.2);
-    ToMat.display.setBrightnessBack(0.0);
+    ToMat.display.setBrightnessBack(0.1);
     ToMat.display.setText("    ", myColor);
     ToMat.display.update();
     delay(500);
@@ -24,13 +18,7 @@ void setup() {
     ToMat.display.setTransition(Linear, 0.5);
     ToMat.display.setBacklight(white);
 
-    printf("Connecting to %s ", ssid);
-    WiFi.begin(ssid, password);
-    while (WiFi.status() != WL_CONNECTED) {
-        delay(500);
-        printf(".");
-    }
-    printf("connected\n");
+    ToMat.startWiFiCaptain("<your_name>");
 }
 
 void loop() {
