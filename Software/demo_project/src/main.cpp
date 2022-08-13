@@ -1,4 +1,4 @@
-#include "Time_o_mat/Time_o_mat.h"
+#include "ToMat/ToMat.h"
 
 #include <WiFi.h>
 
@@ -12,17 +12,17 @@ int prevControlTime = 0;
 ColorHSV myColor = {0, 1, 1};
 
 void setup() {
-    Time_o_mat.begin();
+    ToMat.begin();
 
-    Time_o_mat.display.setBrightnessFront(0.2);
-    Time_o_mat.display.setBrightnessBack(0.0);
-    Time_o_mat.display.setText("    ", myColor);
-    Time_o_mat.display.update();
+    ToMat.display.setBrightnessFront(0.2);
+    ToMat.display.setBrightnessBack(0.0);
+    ToMat.display.setText("    ", myColor);
+    ToMat.display.update();
     delay(500);
-    Time_o_mat.display.setText("----", myColor);
-    Time_o_mat.display.update();
-    Time_o_mat.display.setTransition(Linear, 0.5);
-    Time_o_mat.display.setBacklight(white);
+    ToMat.display.setText("----", myColor);
+    ToMat.display.update();
+    ToMat.display.setTransition(Linear, 0.5);
+    ToMat.display.setBacklight(white);
 
     printf("Connecting to %s ", ssid);
     WiFi.begin(ssid, password);
@@ -38,37 +38,37 @@ void loop() {
         prevControlTime = millis();
         
         for(int i = 1; i <= 3; ++i) {
-            printf("btn%d: %d ", i, Time_o_mat.buttonRead(i));
+            printf("btn%d: %d ", i, ToMat.buttonRead(i));
         }
         
         for(int i = 1; i <= 5; ++i) {
-            printf("touch%d: %d ", i, Time_o_mat.touchBar.getRaw(i));
+            printf("touch%d: %d ", i, ToMat.touchBar.getRaw(i));
         }
 
-        printf("%s", Time_o_mat.power.getVoltagesText().c_str());
-        printf("%s", Time_o_mat.illumination.getIlluminationText().c_str());
+        printf("%s", ToMat.power.getVoltagesText().c_str());
+        printf("%s", ToMat.illumination.getIlluminationText().c_str());
         
-        if(Time_o_mat.buttonRead(1)) {
-            Time_o_mat.playMelody(takeonme, sizeof(takeonme), takeonme_tempo);
+        if(ToMat.buttonRead(1)) {
+            ToMat.playMelody(takeonme, sizeof(takeonme), takeonme_tempo);
         }
-        if(Time_o_mat.buttonRead(3)) {
+        if(ToMat.buttonRead(3)) {
             ESP.restart();
         }
 
         printf("Priority: %d ", uxTaskPriorityGet(NULL));
 
-        String timeDisp = Time_o_mat.time.getClockText();
+        String timeDisp = ToMat.time.getClockText();
         //sprintf(timeDisp, "%2.0f%2.0f", analogRead(CCPin[0])/4095.0*33.0, analogRead(CCPin[1])/4095.0*33.0);
         printf("time: %s\n", timeDisp.c_str());
-        Time_o_mat.display.setText(timeDisp, myColor);
+        ToMat.display.setText(timeDisp, myColor);
 
         static bool colonState = 0;
         if(colonState)
-            Time_o_mat.display.setColon(myColor);
+            ToMat.display.setColon(myColor);
         else
-            Time_o_mat.display.setColon(black);
+            ToMat.display.setColon(black);
         colonState = !colonState;
     }
-    Time_o_mat.display.update();
+    ToMat.display.update();
     delay(20);
 }

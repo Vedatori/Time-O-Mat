@@ -26,7 +26,7 @@ void refreshTaskQuick(void * param);
 void refreshTaskSlow(void * param);
 }
 
-class Time_o_mat_class {
+class ToMat_class {
     bool melodyPlaying = false;
     bool melodyPause = false;
     int melodyTempo = 180;
@@ -53,6 +53,6 @@ public:
     void handleMelody();
 };
 
-extern Time_o_mat_class Time_o_mat;
+extern ToMat_class ToMat;
 
 #endif // _TIME_O_MAT_

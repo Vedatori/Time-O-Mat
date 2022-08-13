@@ -13,5 +13,4 @@ public:
     String getIlluminationText();
 };
 
-
 #endif // _ILLUMINATION_MODULE_
