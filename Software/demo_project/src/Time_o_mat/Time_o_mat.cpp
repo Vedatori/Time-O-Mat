@@ -3,7 +3,7 @@
 #include "OneWire.h"
 #include "DallasTemperature.h"
 
-OneWire oneWire(TM::ONE_WIRE);
+OneWire oneWire(TM::ONE_WIRE_PIN);
 DallasTemperature sensors(&oneWire);
 
 void TM::refreshTaskQuick(void * parameter) {
@@ -19,6 +19,7 @@ void TM::refreshTaskQuick(void * parameter) {
 void TM::refreshTaskSlow(void * parameter) {
     for(;;) {
         sensors.requestTemperatures();
+        Time_o_mat.power.update();
         printf("temp: %f \n", sensors.getTempCByIndex(0));
         delay(1000);
     }
@@ -26,6 +27,7 @@ void TM::refreshTaskSlow(void * parameter) {
 
 void Time_o_mat_class::begin() {
 
+    power.update();
     display.begin();
     time.begin();
     touchBar.begin();

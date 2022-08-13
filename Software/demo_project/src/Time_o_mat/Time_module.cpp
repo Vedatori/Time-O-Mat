@@ -12,7 +12,7 @@ struct tm Time_module::getTime() {
 }
 
 String Time_module::getClockText() {
-    static char clockText[4];
+    char clockText[4];
     getTime();
     sprintf(clockText, "%02d%02d", time.tm_hour, time.tm_min);
     return String(clockText);

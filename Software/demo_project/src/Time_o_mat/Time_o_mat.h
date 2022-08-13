@@ -8,12 +8,13 @@
 #include "Display_TM.h"
 #include "Time_module.h"
 #include "Touchbar_TM.h"
+#include "USB_C_power_module.h"
 
 namespace TM {
 
 const int BUTTON_PIN[3] = {18, 19, 21};
 const uint8_t BUZZER_PIN = 17;
-const uint8_t ONE_WIRE = 22;
+const uint8_t ONE_WIRE_PIN = 22;
 
 const uint8_t BUZZER_CHANNEL = 3;
 
@@ -37,6 +38,7 @@ public:
     Display_TM display;
     Time_module time;
     TouchBar_TM touchBar;
+    USB_C_power_module power;
 
     void begin();
 

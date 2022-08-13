@@ -2,13 +2,11 @@
 
 #include <WiFi.h>
 
-const char* ssid       = "";
-const char* password   = "";
+const char* ssid = "Vedatori1";
+const char* password = "Kytice15";
 
 const int CONTROL_PERIOD = 500;
 int prevControlTime = 0;
-
-int CCPin[] = {36, 39};
 
 int lightPin[] = {35, 34};
 
@@ -16,10 +14,16 @@ int lightPin[] = {35, 34};
 ColorHSV myColor = {0, 1, 1};
 
 void setup() {
+    printf("begin\n");
     Time_o_mat.begin();
 
     Time_o_mat.display.setBrightnessFront(0.2);
     Time_o_mat.display.setBrightnessBack(0.0);
+    Time_o_mat.display.setText("    ", myColor);
+    Time_o_mat.display.update();
+    delay(500);
+    Time_o_mat.display.setText("----", myColor);
+    Time_o_mat.display.update();
     Time_o_mat.display.setTransition(Linear, 0.5);
     Time_o_mat.display.setBacklight(white);
 
@@ -44,9 +48,7 @@ void loop() {
             printf("touch%d: %d ", i, Time_o_mat.touchBar.getRaw(i));
         }
 
-        for(int i = 0; i < 2; ++i) {
-            printf("CC%d: %d ", i + 1, analogRead(CCPin[i]));
-        }
+        printf("%s", Time_o_mat.power.getVoltagesText().c_str());
 
         for(int i = 0; i < 2; ++i) {
             printf("light%d: %d ", i + 1, analogRead(lightPin[i]));
@@ -54,6 +56,9 @@ void loop() {
         
         if(Time_o_mat.buttonRead(1)) {
             Time_o_mat.playMelody(takeonme, sizeof(takeonme), takeonme_tempo);
+        }
+        if(Time_o_mat.buttonRead(3)) {
+            ESP.restart();
         }
 
         printf("Priority: %d ", uxTaskPriorityGet(NULL));
