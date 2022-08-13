@@ -8,13 +8,10 @@ const char* password = "Kytice15";
 const int CONTROL_PERIOD = 500;
 int prevControlTime = 0;
 
-int lightPin[] = {35, 34};
-
 //ColorRGB myColor = {255, 0, 0};
 ColorHSV myColor = {0, 1, 1};
 
 void setup() {
-    printf("begin\n");
     Time_o_mat.begin();
 
     Time_o_mat.display.setBrightnessFront(0.2);
@@ -49,10 +46,7 @@ void loop() {
         }
 
         printf("%s", Time_o_mat.power.getVoltagesText().c_str());
-
-        for(int i = 0; i < 2; ++i) {
-            printf("light%d: %d ", i + 1, analogRead(lightPin[i]));
-        }
+        printf("%s", Time_o_mat.illumination.getIlluminationText().c_str());
         
         if(Time_o_mat.buttonRead(1)) {
             Time_o_mat.playMelody(takeonme, sizeof(takeonme), takeonme_tempo);

@@ -29,9 +29,7 @@ float USB_C_power_module::getAmpLimit() {
 }
 
 String USB_C_power_module::getVoltagesText() {
-
-    char voltagesText[20];
-    sprintf(voltagesText, "CC1: %.1f CC2: %.1f", pinVoltage[0], pinVoltage[1]);
+    char voltagesText[25];
+    sprintf(voltagesText, "CC1: %.1fV CC2: %.1fV ", pinVoltage[0], pinVoltage[1]);
     return String(voltagesText);
-
 }

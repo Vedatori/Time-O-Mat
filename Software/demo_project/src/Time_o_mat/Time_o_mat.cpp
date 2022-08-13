@@ -28,6 +28,7 @@ void TM::refreshTaskSlow(void * parameter) {
 void Time_o_mat_class::begin() {
 
     power.update();
+    illumination.update();
     display.begin();
     time.begin();
     touchBar.begin();

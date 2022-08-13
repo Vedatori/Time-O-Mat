@@ -9,6 +9,7 @@
 #include "Time_module.h"
 #include "Touchbar_TM.h"
 #include "USB_C_power_module.h"
+#include "Illumination_module.h"
 
 namespace TM {
 
@@ -39,6 +40,7 @@ public:
     Time_module time;
     TouchBar_TM touchBar;
     USB_C_power_module power;
+    Illumination_module illumination;
 
     void begin();
 
