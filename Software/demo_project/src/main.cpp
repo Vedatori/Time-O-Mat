@@ -36,18 +36,7 @@ void setup() {
 void loop() {
     if(millis() > prevControlTime + CONTROL_PERIOD) {
         prevControlTime = millis();
-        
-        for(int i = 1; i <= 3; ++i) {
-            printf("btn%d: %d ", i, ToMat.buttonRead(i));
-        }
-        
-        for(int i = 1; i <= 5; ++i) {
-            printf("touch%d: %d ", i, ToMat.touchBar.getRaw(i));
-        }
-
-        printf("%s", ToMat.power.getVoltagesText().c_str());
-        printf("%s", ToMat.illumination.getIlluminationText().c_str());
-        
+      
         if(ToMat.buttonRead(1)) {
             ToMat.playMelody(takeonme, sizeof(takeonme), takeonme_tempo);
         }
@@ -55,11 +44,7 @@ void loop() {
             ESP.restart();
         }
 
-        printf("Priority: %d ", uxTaskPriorityGet(NULL));
-
         String timeDisp = ToMat.time.getClockText();
-        //sprintf(timeDisp, "%2.0f%2.0f", analogRead(CCPin[0])/4095.0*33.0, analogRead(CCPin[1])/4095.0*33.0);
-        printf("time: %s\n", timeDisp.c_str());
         ToMat.display.setText(timeDisp, myColor);
 
         static bool colonState = 0;
@@ -68,6 +53,8 @@ void loop() {
         else
             ToMat.display.setColon(black);
         colonState = !colonState;
+
+        ToMat.printDiagnostics();
     }
     ToMat.display.update();
     delay(20);

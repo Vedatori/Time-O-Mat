@@ -1,5 +1,5 @@
-#ifndef _TIME_O_MAT_
-#define _TIME_O_MAT_
+#ifndef _TOMAT_
+#define _TOMAT_
 
 #include <Arduino.h>
 #include "Preferences.h"
@@ -43,7 +43,6 @@ public:
     Illumination_module illumination;
 
     void begin();
-
     bool buttonRead(int buttonID);
 
     void soundTone(float freq = 1000);
@@ -51,8 +50,10 @@ public:
     void playMelody(const int * aMelody, const int size, const int tempo = 180);
     void stopMelody();
     void handleMelody();
+
+    void printDiagnostics();
 };
 
 extern ToMat_class ToMat;
 
-#endif // _TIME_O_MAT_
+#endif // _TOMAT_

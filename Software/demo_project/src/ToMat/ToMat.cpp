@@ -10,17 +10,18 @@ void TM::refreshTaskQuick(void * parameter) {
     for(;;) {
         ToMat.handleMelody();
         //ToMat.display.update();
-        //delayMicroseconds(500);
         ToMat.touchBar.update();
+        //delayMicroseconds(500);
         delay(20);
     }
 }
 
 void TM::refreshTaskSlow(void * parameter) {
     for(;;) {
-        sensors.requestTemperatures();
         ToMat.power.update();
-        printf("temp: %f \n", sensors.getTempCByIndex(0));
+        ToMat.illumination.update();
+        //sensors.requestTemperatures();
+        //printf("temp: %f \n", sensors.getTempCByIndex(0));
         delay(1000);
     }
 }
@@ -40,7 +41,7 @@ void ToMat_class::begin() {
     //sensors.begin();
     
     xTaskCreatePinnedToCore(TM::refreshTaskQuick, "refreshTaskQuick", 10000 , NULL, 3, NULL, 1);
-    //xTaskCreatePinnedToCore(TM::refreshTaskSlow, "refreshTaskSlow", 10000 , NULL, 0, NULL, 0);
+    xTaskCreatePinnedToCore(TM::refreshTaskSlow, "refreshTaskSlow", 10000 , NULL, 0, NULL, 0);
 
     ledcSetup(TM::BUZZER_CHANNEL, 1000, 10);
 }
@@ -108,6 +109,24 @@ void ToMat_class::handleMelody(){
         ToMat_class::melodyPause=false;
         ToMat_class::melodyLastMillis = millis();
     }
+}
+
+void ToMat_class::printDiagnostics() {
+    for(int i = 1; i <= 3; ++i) {
+        printf("btn%d: %d ", i, buttonRead(i));
+    }
+    
+    for(int i = 1; i <= 5; ++i) {
+        printf("touch%d: %d ", i, touchBar.getRaw(i));
+    }
+
+    printf("%s", power.getVoltagesText().c_str());
+    printf("%s", illumination.getIlluminationText().c_str());
+
+    printf("Priority: %d ", uxTaskPriorityGet(NULL));
+
+    String timeDisp = ToMat.time.getClockText();
+    printf("time: %s\n", timeDisp.c_str());
 }
 
 ToMat_class ToMat;
