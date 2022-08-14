@@ -14,7 +14,7 @@ ___
 * [Vlepení LED pásku](#LEDpas)
 * [Ochrana dotykové lišty](#lista)
 * [Slepení krabičky](#krabice)
-* [Příprava držáků motorů](#osmicky)
+* [Vkládání difuzorů do segmentů](#osmicky)
 * [Lakování krabičky](#lak)
 * [Druhá vrstva laku](#lak2)
 * [Vlepení lišty a fotorezistou](#vlepeni)
@@ -44,7 +44,9 @@ Výsledek po broušení tmavě gravírovaného prostoru musí vypadat jako na ob
 ![alt](SupportFiles/IMG_2028.jpg)
 
 Jemným (černým) smirkem obruste pohledové plochy dřevěných dílů. Pohledové plochy jsou ty, kde je něco vygravírováno nebo ty, které jsou méně opálené od laseru.
-![alt](SupportFiles/IMG_2038.jpg) 
+![alt](SupportFiles/IMG_2038.jpg)
+
+Ukliďte si pracovní plochu po předchozích krocích, tj. setřete prach vzniklý broušením (nejlépe mokrou hadrou nebo kapesníkem).
 
 <!-- _________________________________________________________________ -->
 # <a name = LEDpas>Vlepení LED pásku</a>
@@ -193,6 +195,8 @@ Sundejte ze spodní části krabice všechny pásky, které je držely při lepe
 ![alt](SupportFiles/IMG_2174.jpg)
 
 Štětec po dokončení lakování okamžitě ponořte do vody a vymyjte.
+
+Ukliďte si pracovní plochu po předchozích krocích, tj. setřete prach vzniklý broušením (nejlépe mokrou hadrou nebo kapesníkem).
 
 <!-- _________________________________________________________________ -->
 # <a name = lak2>Druhá vrstva laku</a>
