@@ -141,11 +141,16 @@ Před přilepením spodního dílu se ujistěte, že je správně otočený - je
 * 2x Plexi segment dvojtečky
 * Kapesník / čistý hadr
 * Inbus klíč vel. cca 3
+* Jemný smirek (černý - 600)
 
 ![alt](SupportFiles/IMG_2176.jpg)
 ![alt](SupportFiles/IMG_2193.jpg)
 
 ## Postup:
+Zkontrolujte všechny segmenty, jestli se na jejich hranách nenachází otřepy. Případné otřepy zbruste jemným smirkem. Stačí 1-2 tahy smirkem přes hranu.
+![alt](SupportFiles/otrepy1.jpeg)
+![alt](SupportFiles/otrepy2.jpeg)
+
 Otřete kapesníkem všechny segmenty, které budete do osmiček a dvojtečky vkládat. 
 ![alt](SupportFiles/IMG_2180.jpg)
 
