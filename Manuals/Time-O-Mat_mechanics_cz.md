@@ -33,6 +33,8 @@ ___
 ![alt](SupportFiles/IMG_2036.jpg)
 
 ## Postup:
+Ukliďte si pracovní plochu po předchozích krocích, tj. odstraňte pájku, příslušenství k pájení a zbytky po něm.
+
 Obruste hrubým (zeleným) smirkem tmavě gravírovaný prostor pro dotykovou lištu. Odbrušte tmavé gravírování v zahloubení. Zelený smirek nepoužívejte pro další broušení!
 ![alt](SupportFiles/IMG_2018.jpg)
 ![alt](SupportFiles/IMG_2021.jpg)
