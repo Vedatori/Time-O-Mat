@@ -11,6 +11,7 @@
 #include "USB_C_power_module.h"
 #include "Illumination_module.h"
 #include "WiFiCaptain.h"
+#include "piezo/piezo.h"
 
 namespace TM {
 
@@ -47,15 +48,10 @@ public:
     TouchBar_TM touchBar;
     USB_C_power_module power;
     Illumination_module illumination;
+    Piezo piezo;
 
     void begin();
     bool buttonRead(int buttonID);
-
-    void soundTone(float freq = 1000);
-    void soundEnd();
-    void playMelody(const int * aMelody, const int size, const int tempo = 180);
-    void stopMelody();
-    void handleMelody();
 
     void printDiagnostics();
 
@@ -70,5 +66,6 @@ public:
 };
 
 extern ToMat_class ToMat;
+extern Melody themeMelody;
 
 #endif // _TOMAT_
