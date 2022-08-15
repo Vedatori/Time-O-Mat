@@ -15,11 +15,14 @@ ___
 * [Funkce](#funkce)
 * [LEDky](#ledky)
 * [Tlačítka](#tlacitka)
+* [Bzučák](#bzucak)
+* [Fotorezistory](#fotorezistory)
+* [Dotyková lišta](#lista)
+* [Teploměr](#teplomer)
 * [Sériová linka](#seriovka)
-* [Výpis textu na LED panel](#panelLed)
-* [Bzučák](#buzzer)
+* [Displej a podsvícení](#displej)
 * [WiFi](#wifi)
-* [Vzdálený příkazový řádek](#remoteCmd)
+* [Vzdálený příkazový řádek](#prikazy)
 ___
 
 <!-- _________________________________________________________________ -->
@@ -455,18 +458,14 @@ for(int pocet_bliku = 0; pocet_bliku < 10; pocet_bliku++){
 ```
 Vytvořili jsme proměnnou `pocet_bliku`, která obsahuje celé číslo 0. Dokud je hodnota této proměnné menší než 10, zvýší se její hodnota 1 a provede se kód uvnitř cyklu. Jakmile hodnota proměnné rovna 10, cyklus se ukončí a program pokračuje směrem dolů.
 
-<!---
-___
-# <a name = funkce>Funkce</a>
-**TODO**
--->
-
 <!-- _________________________________________________________________ -->
 # <a name = ledky>LEDky</a>
 V této kapitole si pořádně ukážeme ovládání LEDek na Time-O-Mat.
 
+TBD
+
 <!-- _________________________________________________________________ -->
-# <a name = tlacitko>Tlačítka</a>
+# <a name = tlacitka>Tlačítka</a>
 Nejjednodušším způsobem, jak můžete Time-O-Mat ovládat je pomocí tlačítek, které najdete na levé straně krabičky. Pro zjištění jestli je tlačítko zmáčknuto budeme používat příkaz `ToMat.buttonRead(int buttonID)` v náslející konstrukci.
 ```
 bool tlacitko_zmacknuto = Time-O-Mat.buttonRead(1);
@@ -492,6 +491,26 @@ void loop() {
     delay(20);
 }
 ```
+
+<!-- _________________________________________________________________ -->
+# <a name = bzucak>Bzučák</a>
+
+TBD
+
+<!-- _________________________________________________________________ -->
+# <a name = fotorezistory>Fotorezistory</a>
+
+TBD
+
+<!-- _________________________________________________________________ -->
+# <a name = lista>Dotyková lišta</a>
+
+TBD
+
+<!-- _________________________________________________________________ -->
+# <a name = teplomer>Teploměr</a>
+
+TBD
 
 <!-- _________________________________________________________________ -->
 # <a name = seriovka>Sériová linka</a>
@@ -553,17 +572,16 @@ void loop() {
 Funkce `millis()` nám vrací počet uplynulých milisekund od startu Time-O-Mat jako celé číslo. 
 
 <!-- _________________________________________________________________ -->
-# <a name = panelLed>Výpis textu na LED panel</a>
+# <a name = displej>Displej a podsvícení</a>
 
-<!-- _________________________________________________________________ -->
-# <a name = buzzer>Bzučák</a>
+TBD
 
 <!-- _________________________________________________________________ -->
 # <a name = wifi>WiFi</a>
 Pro spuštění WiFi a ovládací webové aplikace slouží funkce `ToMat.startWiFiCaptain("<your_name>")`. Po jejím zavolání bude postaráno o vytvoření WiFi přístupového bodu (AP) v Time-O-Mat a také o připojní k externí WiFi, jakmile má Time-O-Mat správné přihlašovací údaje a je v dosahu. Také je spuštěn server hostující webovou aplikaci pro dálkové ovládání Time-O-Mat.
 
 <!-- _________________________________________________________________ -->
-# <a name = remoteCmd>Vzdálený příkazový řádek</a>
+# <a name = prikazy>Vzdálený příkazový řádek</a>
 Pro dálkové ovládání Time-O-Mat můžete použít i textové příkazy. Ty budete zadávat do pole *Command entry* na webové stránce dálkového ovládání. Po stisku tlačítka *Enter* (funguje i na klávesnici) je zadaný příkaz odeslán do Time-O-Mat. K použítí přijatého příkazu budeme používat následující funkce:
 * `ToMat.commandGet()` - vrací textový řetězec (proměnnou typu *String*) obsahující aktuálně přijatý příkaz.
 * `ToMat.commandGetIndexed(index)` - vrací textový řetězec obsahující jedno slovo z přijatého příkazu. Slova jsou oddělena mezerami a číslována od 0.
