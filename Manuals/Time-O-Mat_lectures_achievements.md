@@ -32,13 +32,13 @@ Napište program, který bliká libovolnou LED pouze při stisknutém tlačítku
 Napište program, který bude stiskem tlačítka přepínat svícení dvou různých segmentů na dvou různách digitech. Vždy bude svítit pouze jeden segment, stiskem tlačítka se tento segment vypne a zapne se ten druhý. Dalším stiskem tlačítka se znovu zapne pouze ten původní segment a proces lze opakovat.
 
 # Lekce 3
-Přečteme hodnotu na fotorezistoru, ukážeme si číselnou proměnnou.
+Přečteme hodnotu na fotorezistoru, ukážeme si číselnou proměnnou. Hodnotu výstupu z fotorezistoru si zobrazíme na LED.
 
 ## Úkol 6 - Rychlost blikání
 Napište program, který bude blikat libovolným segmentem a rychlost tohoto blikání se zvětší, když se sníží intenzita osvětlení na předním fotorezistoru (např. bude zakrytý prstem).
 
 ## Úkol 7 - Počítadlo stisků tlačítka
-Napište program, který počítá, kolikrát bylo stisknuto tlačítko SW1. Při presetování programu se počítadlo vynuluje. Pokud chceme zjistit, kolikrát bylo tlačítko SW1 stisknuto, musíme stisknout tlačítko SW2 a program musí pípnout daným počtem pípnutí.
+Napište program, který počítá, kolikrát bylo stisknuto tlačítko SW1. Při resetování programu se počítadlo vynuluje. Pokud chceme zjistit, kolikrát bylo tlačítko SW1 stisknuto, musíme stisknout tlačítko SW2 a program musí pípnout daným počtem pípnutí.
 
 # Lekce 4
 Ukážeme si podmínku "if" na příkladu s LED. Pro ovládání se naučíme použít dotykovou lištu.

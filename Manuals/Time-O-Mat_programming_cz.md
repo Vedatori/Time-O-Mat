@@ -448,7 +448,7 @@ Funkce `setLED()` slouží k ovládání jednotlivých LED světel. Jedná se o 
 1. parametr udává, jakou barvou má daná LED svítit. Můžeme použít předdefinované barvy *red, green, blue, cyan, magenta, yellow, black, white*, nebo si definovat vlastní.
 
 2. parametr čísluje LEDky v jednotlivých digitech v následujícím pořadí:
-TBD
+![alt](SupportFiles/osmicka.jpg)
 
 Pro definování vlastní barvy použijeme kontrukci podobnou vytváření proměnných. Existují 2 formáty, pomocí kterých můžeme definovat vlastní barvu:
 * RGB (red-červená, green-zelená, blue-modrá) příkazem `ColorRGB cervena = {255, 0, 0};`
