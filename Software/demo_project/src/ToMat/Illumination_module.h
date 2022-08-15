@@ -3,7 +3,7 @@
 
 #include "Arduino.h"
 
-const int PHOTORES_PIN[2] = {36, 39};
+const int PHOTORES_PIN[2] = {34, 35};   // Front, back
 
 class Illumination_module {
     int rawData[2];

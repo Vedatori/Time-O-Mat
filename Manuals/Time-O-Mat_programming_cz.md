@@ -508,7 +508,7 @@ Pro snímání úrovně osvětlení v okolí Time-O-Mat slouží fotorezistory. 
 * Fotorezistor ID 0 je umístěn na horní straně krabice.
 * Fotorezistor ID 1 je umístěn na zadní straně krabice.
 
-Pro zjištění úrovně osvitu jednotlivých fotorezistorů použijeme příkaz `ToMat.illumination.getRaw(int photoresID);`. Vrácena je nám celočíselná hodnota v rozsahu 0 (svítí) až 4095 (nesvítí).
+Pro zjištění úrovně osvitu jednotlivých fotorezistorů použijeme příkaz `ToMat.illumination.getRaw(int photoresID);`. Vrácena je nám celočíselná hodnota v rozsahu 0 (tma) až 4095 (světlo).
 
 Následující příklad zjistí hodnotu osvitu fotorezistoru 0 a nastaví podle něj jas LEDky.
 ```
