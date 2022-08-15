@@ -67,8 +67,9 @@ void ToMat_class::printDiagnostics() {
         printf("btn%d: %d ", i, buttonRead(i));
     }
     
-    for(int i = 0; i <= 4; ++i) {
-        printf("touch%d: %d ", i, touchBar.getRaw(i));
+    printf("touchDigit: ");
+    for(int i = 0; i <= 7; ++i) {
+        printf("%d", touchBar.getPressed(i));
     }
 
     printf("%s", power.getVoltagesText().c_str());

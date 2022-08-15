@@ -62,6 +62,9 @@ public:
     static void setText(String text, ColorRGB color);
     static void setText(String text, ColorHSV color);
 
+    static void setFront(ColorRGB color);
+    static void setFront(ColorHSV color);
+
     static void setBacklight(ColorRGB color);
     static void setBacklight(ColorHSV color);
 

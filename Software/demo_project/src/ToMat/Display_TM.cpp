@@ -83,6 +83,9 @@ ColorHSV RGBtoHSV(ColorRGB color) {
 
 void Display_TM::begin() {
     pixels.begin();
+    setFront(black);
+    setBacklight(black);
+    update();
 }
 
 void Display_TM::update() {
@@ -217,6 +220,16 @@ void Display_TM::setText(String text, ColorRGB color) {
 void Display_TM::setText(String text, ColorHSV color) {
     ColorRGB colorRGB = HSVtoRGB(color);
     setText(text, colorRGB);
+}
+
+void Display_TM::setFront(ColorRGB color) {
+   setText("8888", color);
+   setColon(color);
+}
+
+void Display_TM::setFront(ColorHSV color) {
+   setText("8888", color);
+   setColon(color);
 }
 
 void Display_TM::setBacklight(ColorRGB color) {
