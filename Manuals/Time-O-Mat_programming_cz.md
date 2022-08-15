@@ -1,4 +1,4 @@
-Toto je návod na programování výrobekického pásového vozidla Time-O-Mat. Začneme instalací vývojového prostředí na váš PC, následně si ukážeme základní pravidla programovacího jazyka C++ a poté začneme využívat funkce výrobku Time-O-Mat.
+Toto je návod na programování hodin Time-O-Mat. Začneme instalací vývojového prostředí na váš PC, následně si ukážeme základní pravidla programovacího jazyka C++ a poté začneme využívat funkce výrobku Time-O-Mat.
 
 V tomto návodu se budeme zabývat programováním mikrokontroléru (mikropočítače) ESP32. K tomu je od výrobce ESP32 připraven framework (sada nástrojů urychlujících vývoj) ESP-IDF v jazyce C. Nadstavbou tohoto frameworku je další framework [arduino-esp32](https://github.com/espressif/arduino-esp32), který přidává další sadu nástrojů a je již napsán v jazyce C++. Arduino-esp32 používáme v našem projektu pro Time-O-Mat. Bylo k němu potřeba přidat množství kódu (knihovna *Time-O-Mat*), který se stará o *základní životní funkce* Time-O-Mat a umožňuje jednodušší používání jeho funkcionalit (z `main.cpp`). V tomto návodě se budeme zabývat jen uživatelským pohledem na používání knihovny *Time-O-Mat*.
 
@@ -571,7 +571,7 @@ Pro dálkové ovládání Time-O-Mat můžete použít i textové příkazy. Ty 
 
 Příklad: Následující program blikne LED po obdržení příkazu "blink":
 ```
-#include "Time-O-Mat/Time-O-Mat.h"
+#include "ToMat/ToMat.h"
 
 void setup() {
     ToMat.begin();
