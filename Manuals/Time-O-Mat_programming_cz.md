@@ -15,7 +15,7 @@ ___
 * [Funkce](#funkce)
 * [LEDky](#ledky)
 * [Tlačítka](#tlacitka)
-* [Bzučák](#bzucak)
+* [Piezoakustický měnič](#piezo)
 * [Fotorezistory](#fotorezistory)
 * [Dotyková lišta](#lista)
 * [Teploměr](#teplomer)
@@ -42,51 +42,61 @@ Pro naprogramování Time-O-Mat si stáhněte [tento repozitář](https://github
 Pokud vaše uživatelské jméno obsahuje diakritiku, tak nemůžete používat Plochu ani složku Dokumenty, ale musíte vytvořit například *C:/Vedatori/Time-O-Mat-main*.
 
 Ve VS Code otevřete nabídku *File*, klikněte na *Open Folder* a zvolte složku *Software/demo_project* z dříve rozbalené složky-repozitáře *Time-O-Mat-main*.
+
 ![alt](SupportFiles/prog_open_folder.png)
 
 Otevřete soubor *main.cpp* který je v cestě *demo_project/src/main.cpp*.
+
 ![alt](SupportFiles/prog_open_main.png)
 
 V souboru *main.cpp* upravte název výrobku "<your_name>" tak, aby byl poznatelný, např. jako "Franta" nebo "FrantaFlinta". 
 Je možné přidat i heslo pro přihlašování např. takto
 "`Time-O-Mat.startWiFiCaptain("<your_name>", "12345678");`".
 Heslo musí mít minimálně 8 znaků, jinak nebude použito.
+
 ![alt](SupportFiles/prog_set_name.png)
 
 Po otevření projektu bude VS Code chvíli pracovat. Pokud ještě pracuje, počkejte, dokud text na dolní liště nezmizí.
+
 ![alt](SupportFiles/Prog_wait_for_load.png)
 
 Připojte Time-O-Mat pomocí USB-C kabelu k PC.
 
 V dolní liště PlatformIO stiskněte šipku a tím nahrejte program do Time-O-Mat.
+
 [alt](SupportFiles/prog_upload.png)
 
 Počkejte, až se dokončí nahrávání a zobrazí v dolním terminálu *SUCCESS*.
+
 ![alt](SupportFiles/prog_success.png)
 
 V dolní liště PlatformIO stiskněte tlačítko úplně v pravo a tím spusťe PlatformIO terminál.
+
 ![alt](SupportFiles/prog_uploadFS1.png)
 
 Do nově otevřeného termínálu v dolní částí VS Code zadejte příkaz `pio run -t uploadfs` a stiskněte *ENTER*.
+
 ![alt](SupportFiles/prog_uploadFS2.png)
 
 Počkejte, až se dokončí nahrávání a zobrazí v dolním terminálu *SUCCESS*.
+
 ![alt](SupportFiles/prog_success.png)
 
 Nyní je výrobek plně naprogramován. Pro ovládání na svém chytrém zařízení vyhledejte WiFi síť s názvem *Time-O-Mat_<your_name>*. Zadejte do webového prohlížeče adresu *192.168.4.1* nebo jakoukoli jinou ve tvaru *www.neco.cz*. Načte se hlavní stránka pro ovládání Time-O-Mat.
 
 Pro přihlášení Time-O-Mat k externí WiFi síti klikněte na tlačítko *WiFi setup*. Po delší chvíli se zobrazí stránka s dostupnými WiFi sítěmi. Zde zadejte přihlašovací údaje od externí WiFi a potvrďte přihlášení.
+
 <img src="SupportFiles/prog_web_wifi.png" width="400"/>
 
-Pokud přihlášení k externí WiFi proběhne úspěšně, objeví se potvrzení *connected* a přidělená IP adresa. Tato síť bude uložena a vyhledána i po restartu. Připojte se se svým chytrým zařízením také na externí WiFi a zadejte do prohlížeče IP adresu přidělenou Time-O-Mat. V tomto případě *192.168.88.197*. 
+Pokud přihlášení k externí WiFi proběhne úspěšně, objeví se potvrzení *connected* a přidělená IP adresa. Tato síť bude uložena a vyhledána i po restartu. Připojte se se svým chytrým zařízením také na externí WiFi a zadejte do prohlížeče IP adresu přidělenou Time-O-Mat. V tomto případě *192.168.88.197*.
+
 <img src="SupportFiles/prog_web_connected.png" width="400"/>
 
 Načte se opět hlavní stránka ovládání Time-O-Mat. Tímto je vypnuta interní WiFi *Time-O-Mat_<your_name>*. Pro její opětovné zapnutí přejděte do nastavení WiFi a klikněte na tlačítko *Enable AP* nebo restartujte Time-O-Mat.
+
 <img src="SupportFiles/prog_web_softAP.png" width="400"/>
 
-<!-- Pro ovládání Time-O-Mat s připraveným programem můžete používat následující příkazy. Příkazy nejsou citlivé na velikost použitých písmen.
-* `blade <angle>` - Nastaví výšku radlice na daný úhel serva. 0-dole, 180-nahoře
-* `head <angle>` - Nastaví pozici serva LIDARu. 0-vpravo, 180-vlevo
+<!-- Pro ovládání Time-O-Mat s demo programem můžete používat následující příkazy. Příkazy nejsou citlivé na velikost použitých písmen.
 * `beep` - Zapne buzzer na 0,5 vteřiny na frekvenci 1000Hz
 * `take on me` - Zahraje píseň *Take on me* 
 * `silence` - Zastaví přehrávání písně -->
@@ -96,33 +106,16 @@ Načte se opět hlavní stránka ovládání Time-O-Mat. Tímto je vypnuta inter
 
 Vytvoříme nový projekt a nahrajeme program do Time-O-Mat.
 
-1. Vytvořte si na disku svého PC složku pro vaše budoucí programy, například *C:/Time-O-Mat-moje-programy*.
-1. Do této nové složky překopírujte složku *demo_project* ze stáhnutého repozitáře *Time-O-Mat-main*. Tato složka bude sloužit jako šablona tvých budoucích programů pro Time-O-Mat. 
-1. Překopírovanou složku *demo_project* přejmenuj novým názvem, například na *01_prvni_program*.
-1. Ve VS Code otevřete složku *01_prvni_program* pomocí *File*->*Open folder*.
-1. Ve VS Code otevřete soubor *main.cpp* a nahraď jeho obsah následujícím kódem šablony:
-    ```
-    #include "ToMat/ToMat.h"
+## Postup
+Vytvořte si na disku svého PC složku pro vaše budoucí programy, například *C:/Time-O-Mat-moje-programy*.
 
-    void setup() {
-        ToMat.begin();
-    }
+Do této nové složky překopírujte složku *demo_project* ze stáhnutého repozitáře *Time-O-Mat-main*. Tato složka bude sloužit jako šablona tvých budoucích programů pro Time-O-Mat. 
 
-    void loop() {
-        
-    }
-    ```
-1. Připojte Time-O-Mat pomocí USB-C kabelu k PC.
-1. V dolní liště PlatformIO stiskněte šipku (*Upload*) a tím nahrajte program do Time-O-Mat.
-    ![alt](SupportFiles/prog_upload.png)
-1. Počkejte až se dokončí nahrávání a zobrazí v dolním terminálu *SUCCESS*. Nyní je nový program nahrán.
-    ![alt](SupportFiles/prog_success.png)
+Překopírovanou složku *demo_project* přejmenuj novým názvem, například na *01_prvni_program*.
 
-<!-- _________________________________________________________________ -->
-# <a name = prvniProgram>První program</a>
-Rozebereme si každý řádek šablony a napíšeme náš první program.
+Ve VS Code otevřete složku *01_prvni_program* pomocí *File*->*Open folder*.
 
-Zde je kód šablony:
+Ve VS Code otevřete soubor *main.cpp* a nahraď jeho obsah následujícím kódem šablony:
 ```
 #include "ToMat/ToMat.h"
 
@@ -130,34 +123,36 @@ void setup() {
     ToMat.begin();
 }
 
-void loop() {
-    ToMat.display.update();
-    delay(20);
-}
+void loop() {}
 ```
+Jednotlivé řádky šablony mají následující význam:
+* `#include "ToMat/ToMat.h"` - Příkaz *#include* přidává do našeho programu kód z jiných míst. Nyní nám stačí přidání knihovny *ToMat.h* ze složky ToMat.
+* `void setup() {}` - Toto je definice funkce. Funkce jsou kusy kódu, které můžeš opakovaně spustit tak, že zavoláš jejich jméno. Kód (tělo) funkce je ohraničen složenými závorkami { a }, a mezi nimi odsazen. Tato funkce se jmenuje *setup* a je spuštěna jedenkrát po zapnutí Time-O-Mat. O to se postará arduino-esp32 framework.
+* `ToMat.begin();` - Toto je volání funkce z knihovny *Time-O-Mat*, která knihovnu inicializuje a připraví všechny její komponenty pro budoucí použití. Toto je třeba provést pouze jednou po startu výrobku, proto je příkaz umístěn ve funkci *setup*.
+* `void loop()` - Toto je definice funkce *loop*. Ta je spouštěna stále dokola dokud je Time-O-Mat zapnutý.
 
-1. `#include "ToMat/ToMat.h"` - Příkaz *#include* přidává do našeho programu kód z jiných míst. Nyní nám stačí přidání knihovny *ToMat.h* ze složky ToMat.
-1. `void setup() {}` - Toto je definice funkce. Funkce jsou kusy kódu, které můžeš opakovaně spustit tak, že zavoláš jejich jméno. Kód (tělo) funkce je ohraničen složenými závorkami { a }, a mezi nimi odsazen. Tato funkce se jmenuje *setup* a je spuštěna jedenkrát po zapnutí Time-O-Mat. O to se postará arduino-esp32 framework.
-1. `ToMat.begin();` - Toto je volání funkce z knihovny *Time-O-Mat*, která knihovnu inicializuje a připraví všechny její komponenty pro budoucí použití. Toto je třeba provést pouze jednou po startu výrobku, proto je příkaz umístěn ve funkci *setup*.
-1. `void loop()` - Toto je definice funkce *loop*. Ta je spouštěna stále dokola dokud je Time-O-Mat zapnutý.
-1. `delay(20);` - Toto je příkaz pro čekání-nic nedělání definovanou dobu, zde 20 milisekund.
+Připojte Time-O-Mat pomocí USB-C kabelu k PC.
 
-## Váš kód
-Nyní napíšete svůj první vlastní program pro Time-O-Mat. Na konec funkce *setup* připiště `ToMat.display.setLED(0, 0, white);`, tedy nad uzavírací závorku }. Tento příkaz zapříčiní, že se na digitu číslo 1 rozsvítí LED číslo 1 bílou barvou.
+V dolní liště PlatformIO stiskněte šipku (*Upload*) a tím nahrajte program do Time-O-Mat.
+![alt](SupportFiles/prog_upload.png)
+
+Počkejte až se dokončí nahrávání a zobrazí v dolním terminálu *SUCCESS*. Nyní je nový program nahrán.
+![alt](SupportFiles/prog_success.png)
+
+<!-- _________________________________________________________________ -->
+# <a name = prvniProgram>První program</a>
+
+Nyní napíšete svůj první vlastní program pro Time-O-Mat. Do šablony kódu na konec funkce *setup* připiště příkaz `ToMat.display.setLED(0, 0, white);`, tedy nad uzavírací závorku }. Tento příkaz vydá požadavek, aby se na digitu číslo 0 rozsvítila LED číslo 0 bílou barvou.
 
 Všimněte si, že při psaní vám VS Code napovídá. Stačí napsat `ToMat.` a uvidíte nabídku připravených funkcí z knihovny *Time-O-Mat*. Pokud se tak nestane, nabídku vyvoláte stisknutím *Ctrl + Space*.
 ![alt](SupportFiles/prog_hint.jpg)
 
-Funkce *setLed()* slouží k zapínání a vypínání LED světel na Time-O-Mat. Jedná se o volání funkce s parametry v kulatých závorkách ( a ).
-1. parametr udává, který digit chceme ovládat. Jsou číslovány zleva doprava od 0 po 3. Zadní LED pásek má index 4.
-1. parametr udává, kterou LED daného digitu chceme ovládat.
-1. parametr udává, jakou barvou má LED svítit. Můžeme použít předdefinované barvy *red, green, blue, cyan, magenta, yellow, black, white*.
-
 Dále dopíšeme příkaz `Tomat.display.update()`, který zajistí aktualizaci stavu LEDek.
 
-Nahrajte program do Time-O-Mat a počkejte, až se první LED rozsvítí. Gratulujeme, toto byl váš první vlastní program pro Time-O-Mat :-)
+Nahrajte program do Time-O-Mat a počkejte, až se LED rozsvítí. Gratulujeme, toto byl váš první vlastní program pro Time-O-Mat :-)
 
-Zde je výsledný kód programu:
+## Výsledný kód
+
 ```
 #include "ToMat/ToMat.h"
 
@@ -167,9 +162,7 @@ void setup() {
     ToMat.display.update();
 }
 
-void loop() {
-    delay(20);
-}
+void loop() {}
 ```
 
 <!-- _________________________________________________________________ -->
@@ -194,9 +187,7 @@ void setup() {
     víceřádkový komentář. */
 }
 
-void loop() {
-    delay(20);
-}
+void loop() {}
 ```
 
 <!-- _________________________________________________________________ -->
@@ -246,9 +237,7 @@ void setup() {
     // Nyní je v proměnné cele_cislo uložena hodnota 20
 }
 
-void loop() {
-    delay(20);
-}
+void loop() {}
 ```
 
 Zde jsou uvedeny příklady vytvoření proměnných zmíněných datových typů a uložení hodnoty do nich.
@@ -282,6 +271,7 @@ if(podminka) {
     ...kód který se provede, pokud je podmínka splněna (true)...
 }
 ```
+
 U `if` konstrukce docházi k vyhodnocení podmínky, tj. zjistí se, zda je podmínka pravdivá (`true`) nebo nepravdivá (`false(`). Pokud je pravdivá, provede se kód, který je za `if` uveden ve složených závorkách `{...kód...}`. V opačném případě program pokračuje až za `if`.
 
 ## Konstrukce `else`
@@ -309,7 +299,7 @@ else {
 }
 ```
 
-Poznámka: V jednotlivých konstrukcích větvení je možné libovolně vnořovat další konstrukce větvení.
+Poznámka: Do jednotlivých konstrukcí větvení je možné libovolně vnořovat další konstrukce větvení.
 
 ## Podmínka
 Podmínka dotazovaná při větvení určuje zda se bude daný úsek kódu provádět. K tomu je porovnávána s logickými hodnotami `true` a `false`. Tato hodnota může být uložena v pravdivostní proměnné typu `bool`:
@@ -374,14 +364,12 @@ void setup() {
     ToMat.display.update();
 }
 
-void loop() {
-    delay(20);
-}
+void loop() {}
 ```
 
 V tomto programu používáme příkaz *delay()* pro čekání na místu v kódu o určitý čas. Tento čas čekání je určen v milisekundách (1000 ms = 1s).
 
-Pro 3 bliknutí LEDkou poslouží tento program, ve kterém jsme pouze zopakovali příkazy z minulého:
+Pro 2 bliknutí LEDkou poslouží tento program, ve kterém jsme pouze zopakovali příkazy z minulého:
 ```
 #include "ToMat/ToMat.h"
 
@@ -397,19 +385,11 @@ void setup() {
     ToMat.display.setLED(0, 0, white);
     ToMat.display.update();
     delay(500);
-    ToMat.display.setLED(0, 0, black);
-    ToMat.display.update();
-    delay(500);
-    ToMat.display.setLED(0, 0, white);
-    ToMat.display.update();
-    delay(500);
-    ToMat.display.setLED(0, 0, black);
+    ToMat.display.setLED(0, 0, black);;
     ToMat.display.update();
 }
 
-void loop() {
-    delay(20);
-}
+void loop() {}
 ```
 
 Ale co kdybychom chtěli bliknout 1000 krát? Kód by nás přerostl. Cykly nám pomohou tento problém vyřešit. 
@@ -460,19 +440,43 @@ Vytvořili jsme proměnnou `pocet_bliku`, která obsahuje celé číslo 0. Dokud
 
 <!-- _________________________________________________________________ -->
 # <a name = ledky>LEDky</a>
-V této kapitole si pořádně ukážeme ovládání LEDek na Time-O-Mat.
+V této kapitole si podrobněji ukážeme ovládání LEDek na Time-O-Mat.
 
+Funkce `setLed()` slouží k ovládání jednotlivých LED světel. Jedná se o volání funkce s parametry v kulatých závorkách.
+1. parametr udává, který digit chceme ovládat. Jsou číslovány zleva doprava od 0 po 3. Zadní LED pásek má index 4.
+1. parametr udává, kterou LED daného digitu chceme ovládat.
+1. parametr udává, jakou barvou má daná LED svítit. Můžeme použít předdefinované barvy *red, green, blue, cyan, magenta, yellow, black, white*, nebo si definovat vlastní.
+
+2. parametr čísluje LEDky v jednotlivých digitech v následujícím pořadí:
 TBD
+
+Pro definování vlastní barvy použijeme kontrukci podobnou vytváření proměnných. Existují 2 formáty, pomocí kterých můžeme definovat vlastní barvu:
+* RGB (red-červená, green-zelená, blue-modrá) příkazem `ColorRGB cervena = {255, 0, 0};`
+* HSV (hue-chromatičnost, saturation-saturace, value-jas) příkazem `ColorHSV cervena = {0, 1, 1};`
+
+Oba formáty dokážou definovat jakoukoli barvu, kterou umí barevné LEDky vysvítit, ale každý má své výhody a nevýhody. RGB popisuje barvy podobně jako stroje, tj. jak intenzivně má svítit která barevná složka každé z LEDek. HSV naopak popisuje barvy podobně, jako lidé a je v mnoha případech pohodlnější k použití, např. pro změnu barvy při zachování jasu.
+
+Pomocí komentářů si v následujícím kódu vyberte jednu z definic barvy `cervena` a ověřte, že výsledkem je stejná červená barva.
+```
+#include "ToMat/ToMat.h"
+
+void setup() {
+    ToMat.begin();
+
+    ColorRGB cervena = {255, 0, 0};
+    ColorHSV cervena = {0, 1, 1};
+    ToMat.display.setLED(0, 0, cervena);
+    ToMat.display.update();
+}
+
+void loop() {}
+```
 
 <!-- _________________________________________________________________ -->
 # <a name = tlacitka>Tlačítka</a>
-Nejjednodušším způsobem, jak můžete Time-O-Mat ovládat je pomocí tlačítek, které najdete na levé straně krabičky. Pro zjištění jestli je tlačítko zmáčknuto budeme používat příkaz `ToMat.buttonRead(int buttonID)` v náslející konstrukci.
-```
-bool tlacitko_zmacknuto = Time-O-Mat.buttonRead(1);
-```
-Zde je vytvořena proměnná `tlacitko_zmacknuto` a následně do ní uložen stav tlačítka voláním příkazu `Time-O-Mat.buttonRead()`, který nabývá pravdivostní hodnoty `true` nebo `false`.
+Nejjednodušším způsobem, jak můžete Time-O-Mat ovládat je pomocí tlačítek, která najdete na levé straně krabičky. Pro zjištění jestli je tlačítko zmáčknuto, budeme používat příkaz `ToMat.buttonRead(int buttonID)`. Parametrem `buttonID` určujeme, na které tlačítko se ptáme. Tlačítka jsou číslována od 0 (blíže USB) po 2 (dále od USB).
 
-Příklad: Tento program rozsvítí LED při stisku tlačítka 1.
+Příklad: Tento program rozsvítí LED při stisku tlačítka 0.
 ```
 #include "ToMat/ToMat.h"
 
@@ -481,7 +485,7 @@ void setup() {
 }
 
 void loop() {
-    if(ToMat.buttonRead(1)) {
+    if(ToMat.buttonRead(0)) {
         ToMat.display.setLED(0, 0, white);
     }
     else {
@@ -493,7 +497,7 @@ void loop() {
 ```
 
 <!-- _________________________________________________________________ -->
-# <a name = bzucak>Bzučák</a>
+# <a name = piezo>Piezoakustický měnič</a>
 
 TBD
 

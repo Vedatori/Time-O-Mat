@@ -25,10 +25,10 @@ void loop() {
     if(millis() > prevControlTime + CONTROL_PERIOD) {
         prevControlTime = millis();
       
-        if(ToMat.buttonRead(1)) {
+        if(ToMat.buttonRead(0)) {
             ToMat.piezo.playMelody(themeMelody);
         }
-        if(ToMat.buttonRead(3)) {
+        if(ToMat.buttonRead(2)) {
             ESP.restart();
         }
 

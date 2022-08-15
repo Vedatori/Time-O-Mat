@@ -50,11 +50,11 @@ void ToMat_class::begin() {
 }
 
 bool ToMat_class::buttonRead(int buttonID) {
-    if(buttonID < 1 || buttonID > 3) {
+    if(buttonID < 0 || buttonID > 2) {
         printf("Invalid button ID: %d\n", buttonID);
         return 0;
     }
-    return !digitalRead(TM::BUTTON_PIN[buttonID - 1]);  // 1 = pressed
+    return !digitalRead(TM::BUTTON_PIN[buttonID]);  // 1 = pressed
 }
 
 void ToMat_class::printDiagnostics() {
