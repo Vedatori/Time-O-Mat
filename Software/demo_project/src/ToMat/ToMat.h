@@ -34,13 +34,7 @@ class ToMat_class {
     bool connectionActive = false;
     uint32_t prevCommunicationTime = 0;
 
-    bool melodyPlaying = false;
-    bool melodyPause = false;
-    int melodyTempo = 180;
-    const int * melody;
-    int melodythisNote = 0;
-    int melodySize = 0;
-    unsigned long melodyLastMillis = 0;
+    float temperature = 0.0;
 
 public:
     Display_TM display;
@@ -52,6 +46,8 @@ public:
 
     void begin();
     bool buttonRead(int buttonID);
+    void updateTemperature();
+    float getTemperature();
 
     void printDiagnostics();
 

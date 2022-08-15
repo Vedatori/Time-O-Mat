@@ -13,9 +13,9 @@ void TouchBar_TM::update() {
 }
 
 uint16_t TouchBar_TM::getRaw(int padID) {
-    if(padID < 1 || padID > 5) {
+    if(padID < 0 || padID > 4) {
         printf("Invalid pad ID: %d\n", padID);
         return 0;
     }
-    return rawData[padID - 1];
+    return rawData[padID];
 }

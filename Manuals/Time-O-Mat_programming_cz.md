@@ -442,7 +442,7 @@ Vytvořili jsme proměnnou `pocet_bliku`, která obsahuje celé číslo 0. Dokud
 # <a name = ledky>LEDky</a>
 V této kapitole si podrobněji ukážeme ovládání LEDek na Time-O-Mat.
 
-Funkce `setLed()` slouží k ovládání jednotlivých LED světel. Jedná se o volání funkce s parametry v kulatých závorkách.
+Funkce `setLED()` slouží k ovládání jednotlivých LED světel. Jedná se o volání funkce s parametry v kulatých závorkách.
 1. parametr udává, který digit chceme ovládat. Jsou číslovány zleva doprava od 0 po 3. Zadní LED pásek má index 4.
 1. parametr udává, kterou LED daného digitu chceme ovládat.
 1. parametr udává, jakou barvou má daná LED svítit. Můžeme použít předdefinované barvy *red, green, blue, cyan, magenta, yellow, black, white*, nebo si definovat vlastní.
@@ -504,7 +504,27 @@ TBD
 <!-- _________________________________________________________________ -->
 # <a name = fotorezistory>Fotorezistory</a>
 
-TBD
+Pro snímání úrovně osvětlení v okolí Time-O-Mat slouží fotorezistory. Hodiny jsou osazeny dvěma fotorezistory:
+* Fotorezistor ID 0 je umístěn na horní straně krabice.
+* Fotorezistor ID 1 je umístěn na zadní straně krabice.
+
+Pro zjištění úrovně osvitu jednotlivých fotorezistorů použijeme příkaz `ToMat.illumination.getRaw(int photoresID);`. Vrácena je nám celočíselná hodnota v rozsahu 0 (svítí) až 4095 (nesvítí).
+
+Následující příklad zjistí hodnotu osvitu fotorezistoru 0 a nastaví podle něj jas LEDky.
+```
+#include "ToMat/ToMat.h"
+
+void setup() {
+    ToMat.begin();
+}
+
+void loop() {
+    int osvit = ToMat.illumination.getRaw(0);
+    ColorRGB barva = {osvit/16, 0, 0};
+    ToMat.display.setLED(0, 0, barva);
+    delay(20);
+}
+```
 
 <!-- _________________________________________________________________ -->
 # <a name = lista>Dotyková lišta</a>
@@ -514,7 +534,29 @@ TBD
 <!-- _________________________________________________________________ -->
 # <a name = teplomer>Teploměr</a>
 
-TBD
+Pro zjištění teploty v okolí Time-O-Mat pomocí senzoru DS18B20 použijeme příkaz `ToMat.getTemperature();`. Vráceno je desetinné číslo reprezentující teplotu ve stupních Celsia.
+
+Následující příklad zjistí teplotu, uloží je do proměnné `teplota` a rozsvítí červenou LED pokud je vyšší než 25.
+```
+#include "ToMat/ToMat.h"
+
+void setup() {
+    ToMat.begin();
+}
+
+void loop() {
+    int teplota = ToMat.getTemperature();
+    if(teplota > 25.0) {
+        ToMat.display.setLED(0, 0, red);
+    }
+    else {
+        ToMat.display.setLED(0, 0, black);
+    }
+
+    ToMat.display.update();
+    delay(200);
+}
+```
 
 <!-- _________________________________________________________________ -->
 # <a name = seriovka>Sériová linka</a>

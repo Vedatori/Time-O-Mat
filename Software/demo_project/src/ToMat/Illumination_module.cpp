@@ -7,15 +7,15 @@ void Illumination_module::update() {
 }
 
 int Illumination_module::getRaw(int photoresID) {
-    if(photoresID < 1 || photoresID > 2) {
+    if(photoresID < 0 || photoresID > 1) {
         printf("Invalid photores ID: %d\n", photoresID);
         return 0;
     }
-    return rawData[photoresID - 1];
+    return rawData[photoresID];
 }
 
 String Illumination_module::getIlluminationText() {
     char illuminationText[32];
-    sprintf(illuminationText, "photo1: %d photo2: %d ", rawData[0], rawData[1]);
+    sprintf(illuminationText, "photo0: %d photo1: %d ", rawData[0], rawData[1]);
     return String(illuminationText);
 }

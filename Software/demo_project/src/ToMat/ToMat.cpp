@@ -7,7 +7,6 @@ OneWire oneWire(TM::ONE_WIRE_PIN);
 DallasTemperature sensors(&oneWire);
 Melody themeMelody("TEMPO=140 USECUTOFF=1 CUTOFFPERCENT=20 F5#/8 F5#/8 D5/8 B4/8 R/8 B4/8 R/8 E5/8 R/8 E5/8 R/8 E5/8 G5#/8 G5#/8 A5/8 B5/8 A5/8 A5/8 A5/8 E5/8 R/8 D5/8 R/8 F5#/8 R/8 F5#/8 R/8 F5#/8 E5/8 E5/8 F5#/8 E5/8 F5#/8 F5#/8 D5/8 B4/8 R/8 B4/8 R/8 E5/8 R/8 E5/8 R/8 E5/8 G5#/8 G5#/8 A5/8 B5/8 A5/8 A5/8 A5/8 E5/8 R/8 D5/8 R/8 F5#/8 R/8 F5#/8 R/8 F5#/8 E5/8 E5/8 F5#/8 E5/8 F5#/8 F5#/8 D5/8 B4/8 R/8 B4/8 R/8 E5/8 R/8 E5/8 R/8 E5/8 G5#/8 G5#/8 A5/8 B5/8 A5/8 A5/8 A5/8 E5/8 R/8 D5/8 R/8 F5#/8 R/8 F5#/8 R/8 F5#/8 E5/8 E5/8 F5#/8 E5/8");
 
-
 void TM::refreshTaskQuick(void * parameter) {
     for(;;) {
         //ToMat.display.update();
@@ -21,8 +20,7 @@ void TM::refreshTaskSlow(void * parameter) {
     for(;;) {
         ToMat.power.update();
         ToMat.illumination.update();
-        //sensors.requestTemperatures();
-        //printf("temp: %f \n", sensors.getTempCByIndex(0));
+        ToMat.updateTemperature();
         delay(1000);
     }
 }
@@ -41,12 +39,10 @@ void ToMat_class::begin() {
         pinMode(TM::BUTTON_PIN[i], INPUT_PULLUP);
     }
 
-    //sensors.begin();
+    sensors.begin();
     
     xTaskCreatePinnedToCore(TM::refreshTaskQuick, "refreshTaskQuick", 10000 , NULL, 3, NULL, 1);
     xTaskCreatePinnedToCore(TM::refreshTaskSlow, "refreshTaskSlow", 10000 , NULL, 0, NULL, 0);
-
-    ledcSetup(TM::BUZZER_CHANNEL, 1000, 10);
 }
 
 bool ToMat_class::buttonRead(int buttonID) {
@@ -57,22 +53,33 @@ bool ToMat_class::buttonRead(int buttonID) {
     return !digitalRead(TM::BUTTON_PIN[buttonID]);  // 1 = pressed
 }
 
+void ToMat_class::updateTemperature() {
+    sensors.requestTemperatures();
+    temperature = sensors.getTempCByIndex(0);
+}
+
+float ToMat_class::getTemperature() {
+    return temperature;
+}
+
 void ToMat_class::printDiagnostics() {
-    for(int i = 1; i <= 3; ++i) {
+    for(int i = 0; i <= 2; ++i) {
         printf("btn%d: %d ", i, buttonRead(i));
     }
     
-    for(int i = 1; i <= 5; ++i) {
+    for(int i = 0; i <= 4; ++i) {
         printf("touch%d: %d ", i, touchBar.getRaw(i));
     }
 
     printf("%s", power.getVoltagesText().c_str());
     printf("%s", illumination.getIlluminationText().c_str());
 
-    printf("Priority: %d ", uxTaskPriorityGet(NULL));
+    printf("priority: %d ", uxTaskPriorityGet(NULL));
 
     String timeDisp = ToMat.time.getClockText();
-    printf("time: %s\n", timeDisp.c_str());
+    printf("time: %s ", timeDisp.c_str());
+
+    printf("temperature: %f \n", temperature);
 }
 
 
