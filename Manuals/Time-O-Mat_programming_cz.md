@@ -508,7 +508,7 @@ Pro snímání úrovně osvětlení v okolí Time-O-Mat slouží fotorezistory. 
 * Fotorezistor ID 0 je umístěn na horní straně krabice.
 * Fotorezistor ID 1 je umístěn na zadní straně krabice.
 
-Pro zjištění úrovně osvitu jednotlivých fotorezistorů použijeme příkaz `ToMat.illumination.getRaw(int photoresID);`. Vrácena je nám celočíselná hodnota v rozsahu 0 (tma) až 4095 (světlo).
+Pro zjištění úrovně osvitu jednotlivých fotorezistorů použijeme příkaz `ToMat.illumination.getRaw(int photoresID);`, kde `photoresID` udává index fotorezistoru. Vrácena je nám celočíselná hodnota v rozsahu 0 (tma) až 4095 (světlo).
 
 Následující příklad zjistí hodnotu osvitu fotorezistoru 0 a nastaví podle něj jas LEDky.
 ```
@@ -529,7 +529,27 @@ void loop() {
 <!-- _________________________________________________________________ -->
 # <a name = lista>Dotyková lišta</a>
 
-TBD
+Pro detekci doteku prstu na horní dotykové liště použijeme příkaz `ToMat.touchBar.getPressed(int buttonID);`, kde `buttonID` udvává index dotykového tlačítka. Tlačítka jsou číslována od 0 (vlevo) po 7 (vpravo). Vrácena je binární hodnota 0 (nezmáčknuto) nebo 1 (zmáčknuto).
+
+Následující příklad rozsvítí LED při zmáčknutí levého dotykového tlačítka (0).
+```
+#include "ToMat/ToMat.h"
+
+void setup() {
+    ToMat.begin();
+}
+
+void loop() {
+    if(ToMat.touchBar.getPressed(0)) {
+        ToMat.display.setLED(0, 0, white);
+    }
+    else {
+        ToMat.display.setLED(0, 0, black);
+    }
+    ToMat.display.update();
+    delay(20);
+}
+```
 
 <!-- _________________________________________________________________ -->
 # <a name = teplomer>Teploměr</a>
