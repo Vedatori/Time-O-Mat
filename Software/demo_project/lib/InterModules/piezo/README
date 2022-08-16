@@ -1,0 +1,119 @@
+===== Piezo =====
+
+bool begin(uint8_t channel, int pin)							Must be called before using the object
+
+uint8_t getState();												Returns current state, 0 = silence, 1 = manual tone, 2 = melody playing
+	
+void tone(uint16_t freq)										Manual tone (state = 1)
+void stop();													Stops tone/melody (state = 0)
+
+void playMelody(int * melody, uint16_t size, uint16_t tempo);	Plays melody (state = 2), melody from https://github.com/robsoncouto/arduino-songs
+void playMelody(String melody);									Plays melody (state = 2), melody defined using string
+void playMelody(Melody melody);									Plays melody (state = 2), using already existing Melody object
+
+Melody getCurrentMelody();										Returns current Melody object
+
+
+
+===== Melody =====
+
+String toString()												Returns melody in String form
+Melody(String melody)											Construct melody from string
+Melody(int * melody, int size, int tempo)						Construct melody from https://github.com/robsoncouto/arduino-songs
+
+// Tuning settings
+bool useTuning = true											
+uint16_t tuningBaseFreq = 440
+int16_t tuningBaseNotePosition = 47								a4, you can convert note string to note position using Melody::noteToNotePosition(String note)
+
+// Tempo settings
+bool useTempo = true
+uint16_t tempo = 120
+
+// Cutoff settings
+bool useCutoff = true
+uint8_t cutoffPercent = 10
+
+
+
+
+
+// Internal data
+String data = ""
+
+// Sets parameter (tuning, settings, ...) - used internally
+bool setParameter(String name, int value)
+
+// Internally used functions
+static uint8_t noteToNotePosition(String note)
+static String notePositionToNote(uint8_t note)
+static String getThisToken(String data, uint16_t &startOfToken, bool updateCounter = true)
+static bool isMetaToken(String token)
+static bool parseMetaToken(String token, String &name_return, int &value_return)
+static bool parseNoteToken(String token, bool useTuning, int &note_return, bool useTempo, int &time_return)
+static int calculateNoteFrequency(int note, uint16_t baseFreq, uint8_t baseNote)
+
+
+
+===== Defining melody using string =====
+
+--- Parameters ---
+Parameters can be set in the string definition:
+Melody melody("tempo=100");
+or later:
+melody.tempo = 200;
+
+Paramenters are NOT case sensitive:
+tempo=100
+Tempo=100
+TEMPO=100
+TeMPo=100
+
+Only numbers are accepted:
+useTempo=1  -> true
+useTempo=0  -> false
+useTempo=23 -> true
+
+--- Melody itself ---
+Every note must be in this format:
+
+(note)/(duration)
+
+If useTuning is true:
+	(note) is a note (a4, c1, d3, ...)
+	Again it is NOT case sensitive (c2 = C2, d1 = D1, ...)
+	It can also contain a modifier (# s S), which adds a half note to the current note
+
+	Examples: a4 A2 c2s cs2 D#2 D2# g2S 
+
+If useTuning is false:
+	(note) is a frequency
+
+If useTempo is true:
+	(duration) is a fraction of a whole note (2 -> 1/2 of whole note, 16 -> 1/16 of whole note)
+	tempo is the number of 1/4 notes in a minute
+	It can also contain a modifier (. or *), which makes the duration half longer (multiplies the duration by 1.5)
+
+If useTempo is false:
+	(duration) is duration in milliseconds
+
+
+Examples (with both useTuning and useTempo true): a4/4 c#2/16* g1S/.8
+
+
+--- Cutoff explained ---
+if useCutoff is true:
+	Part of the note is silent
+
+	Example:
+		useCutoff = true
+		cutoffPercent = 10
+
+		90% of note will be played normally
+		10% will be silent
+
+if useCutoff is false:
+	Nothing happens
+
+
+

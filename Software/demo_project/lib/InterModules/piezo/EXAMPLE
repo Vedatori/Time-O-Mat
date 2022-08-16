@@ -1,0 +1,77 @@
+#include "piezo/piezo.h"
+
+int tempo2 = 120;
+int melody2[] = {
+  
+  // Dart Vader theme (Imperial March) - Star wars 
+  // Score available at https://musescore.com/user/202909/scores/1141521
+  // The tenor saxophone part was used
+  
+  NOTE_A4,-4, NOTE_A4,-4, NOTE_A4,16, NOTE_A4,16, NOTE_A4,16, NOTE_A4,16, NOTE_F4,8, REST,8,
+  NOTE_A4,-4, NOTE_A4,-4, NOTE_A4,16, NOTE_A4,16, NOTE_A4,16, NOTE_A4,16, NOTE_F4,8, REST,8,
+  NOTE_A4,4, NOTE_A4,4, NOTE_A4,4, NOTE_F4,-8, NOTE_C5,16,
+
+  NOTE_A4,4, NOTE_F4,-8, NOTE_C5,16, NOTE_A4,2,//4
+  NOTE_E5,4, NOTE_E5,4, NOTE_E5,4, NOTE_F5,-8, NOTE_C5,16,
+  NOTE_A4,4, NOTE_F4,-8, NOTE_C5,16, NOTE_A4,2,
+  
+  NOTE_A5,4, NOTE_A4,-8, NOTE_A4,16, NOTE_A5,4, NOTE_GS5,-8, NOTE_G5,16, //7 
+  NOTE_DS5,16, NOTE_D5,16, NOTE_DS5,8, REST,8, NOTE_A4,8, NOTE_DS5,4, NOTE_D5,-8, NOTE_CS5,16,
+
+  NOTE_C5,16, NOTE_B4,16, NOTE_C5,16, REST,8, NOTE_F4,8, NOTE_GS4,4, NOTE_F4,-8, NOTE_A4,-16,//9
+  NOTE_C5,4, NOTE_A4,-8, NOTE_C5,16, NOTE_E5,2,
+
+  NOTE_A5,4, NOTE_A4,-8, NOTE_A4,16, NOTE_A5,4, NOTE_GS5,-8, NOTE_G5,16, //7 
+  NOTE_DS5,16, NOTE_D5,16, NOTE_DS5,8, REST,8, NOTE_A4,8, NOTE_DS5,4, NOTE_D5,-8, NOTE_CS5,16,
+
+  NOTE_C5,16, NOTE_B4,16, NOTE_C5,16, REST,8, NOTE_F4,8, NOTE_GS4,4, NOTE_F4,-8, NOTE_A4,-16,//9
+  NOTE_A4,4, NOTE_F4,-8, NOTE_C5,16, NOTE_A4,2,
+  
+};
+
+Piezo piezo; 
+
+Melody takeOnMe("TEMPO=140 USECUTOFF=1 CUTOFFPERCENT=20 F5#/8 F5#/8 D5/8 B4/8 R/8 B4/8 R/8 E5/8 R/8 E5/8 R/8 E5/8 G5#/8 G5#/8 A5/8 B5/8 A5/8 A5/8 A5/8 E5/8 R/8 D5/8 R/8 F5#/8 R/8 F5#/8 R/8 F5#/8 E5/8 E5/8 F5#/8 E5/8 F5#/8 F5#/8 D5/8 B4/8 R/8 B4/8 R/8 E5/8 R/8 E5/8 R/8 E5/8 G5#/8 G5#/8 A5/8 B5/8 A5/8 A5/8 A5/8 E5/8 R/8 D5/8 R/8 F5#/8 R/8 F5#/8 R/8 F5#/8 E5/8 E5/8 F5#/8 E5/8 F5#/8 F5#/8 D5/8 B4/8 R/8 B4/8 R/8 E5/8 R/8 E5/8 R/8 E5/8 G5#/8 G5#/8 A5/8 B5/8 A5/8 A5/8 A5/8 E5/8 R/8 D5/8 R/8 F5#/8 R/8 F5#/8 R/8 F5#/8 E5/8 E5/8 F5#/8 E5/8");
+Melody imperialMarch(melody2, sizeof(melody2)/sizeof(melody2[0]), tempo2);
+
+void setup() {
+	piezo.begin(0,17); //channel, pin
+	Serial.begin(115200);
+}
+
+
+void loop() {
+	if(Serial.available()){
+		String cmd = Serial.readStringUntil('\n');
+		Serial.printf("Command: %s\n", cmd);
+		if(cmd.startsWith("stop")){
+			piezo.stop();
+		}else if(cmd.startsWith("takeonme")){
+			piezo.playMelody(takeOnMe);
+		}else if(cmd.startsWith("imperialmarch")){
+			piezo.playMelody(imperialMarch);
+		}else if(cmd.startsWith("tone")){
+			piezo.tone(144);
+		}
+
+
+	}
+
+		switch (piezo.getState())
+	{
+	case 0:
+		Serial.println("Silence");
+		break;
+	case 1:
+		Serial.println("Tone");
+		break;
+	case 2:
+		Serial.println("Melody");
+		break;
+	
+	default:
+		break;
+	}
+
+	delay(200);
+}
