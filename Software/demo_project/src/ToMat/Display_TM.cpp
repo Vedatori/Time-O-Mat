@@ -183,12 +183,18 @@ void Display_TM::setLED(int digitIndex, int ledID, ColorHSV color) {
 void Display_TM::setChar(int charID, char character, ColorRGB color) {
     if(charID < 0 || charID > 3)
         return;
-    if(character < 40 || character > 91)
-        return;
-
-    int segmentID = charID;
+	int segmentID = charID;
     if(segmentID >= 2)
         ++segmentID;    // center colon segment offset
+	
+	if(character == ' '){
+		for(uint8_t i = 0; i < 21; ++i) {
+			setLED(segmentID, i, black);
+		}
+	}
+
+    if((character < 40 || character > 91))
+        return;
     for(uint8_t i = 0; i < 21; ++i) {
         if(characterSet[character - 40][i]) {
             setLED(segmentID, i, color);
