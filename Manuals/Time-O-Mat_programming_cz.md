@@ -442,13 +442,15 @@ Vytvořili jsme proměnnou `pocet_bliku`, která obsahuje celé číslo 0. Dokud
 # <a name = ledky>LEDky</a>
 V této kapitole si podrobněji ukážeme ovládání LEDek na Time-O-Mat.
 
-Funkce `setLED()` slouží k ovládání jednotlivých LED světel. Jedná se o volání funkce s parametry v kulatých závorkách.
-1. parametr udává, který digit chceme ovládat. Jsou číslovány zleva doprava od 0 po 3. Zadní LED pásek má index 4.
-1. parametr udává, kterou LED daného digitu chceme ovládat.
-1. parametr udává, jakou barvou má daná LED svítit. Můžeme použít předdefinované barvy *red, green, blue, cyan, magenta, yellow, black, white*, nebo si definovat vlastní.
+Jednotlivé LEDky budeme ovládat pomocí příkazu `ToMat.display.setLED(int segmentID, int ledID, ColorRGB color)`. Jedná se o volání funkce s parametry v kulatých závorkách:
+* `segmentID` udává, který digit chceme ovládat. Jsou číslovány od 0 (vlevo) po 3 (vpravo). Zadní LED pásek má index 4.
+* `ledID` udává, kterou LED daného digitu chceme ovládat.
+* `color` udává, jakou barvou má daná LED svítit. Můžeme použít předdefinované barvy *red, green, blue, cyan, magenta, yellow, black, white*, nebo si definovat vlastní.
 
-2. parametr čísluje LEDky v jednotlivých digitech v následujícím pořadí:
+Parametr `ledID` čísluje LEDky v jednotlivých digitech v následujícím pořadí:
 ![alt](SupportFiles/osmicka.jpg)
+
+Parametr `ledID` čísluje LEDky na zadním LED pásku od 0 (vlevo) po 8 (vpravo) při pohledu na hodiny ze zadu.
 
 Pro definování vlastní barvy použijeme kontrukci podobnou vytváření proměnných. Existují 2 formáty, pomocí kterých můžeme definovat vlastní barvu:
 * RGB (red-červená, green-zelená, blue-modrá) příkazem `ColorRGB cervena = {255, 0, 0};`
@@ -586,7 +588,6 @@ nazevMelodie.tempo = 180;
 Ale pozor! `nazevMelodie.tempo = 180;` lze volat pouze uvnitř funkce (`void setup()`, `void loop()`, ... ). Proto doporučuji spíše první způsob.
 
 #### Přehrání
-
 Vlastní melodii přehrajeme pomocí `ToMat.piezo.playMelody(nazevMelodie);`.
 
 Příklad:
@@ -609,11 +610,6 @@ void loop() {
 * `0` -> nic nehraje
 * `1` -> stálý tón
 * `2` -> hraje melodie
-
-
-
-
-
 
 <!-- _________________________________________________________________ -->
 # <a name = fotorezistory>Fotorezistory</a>
@@ -753,8 +749,42 @@ Funkce `millis()` nám vrací počet uplynulých milisekund od startu Time-O-Mat
 
 <!-- _________________________________________________________________ -->
 # <a name = displej>Displej a podsvícení</a>
+Pro ovládání LEDek na displeji a na zadním podsvícení je možné použít i schopnější funkce než `.setLED()`, která umí ovládat pouze jednu LEDku.
 
-TBD
+Nastavit celý jeden digit z předního displeje je možné pomocí konstrukce `ToMat.display.setChar(int charID, char character, ColorRGB color);`. Jedná se o volání funkce s parametry v kulatých závorkách:
+* `charID` udává, který digit chceme ovládat. Jsou číslovány od 0 (vlevo) po 3 (vpravo).
+* `character` udává, jaké písmeno se má na digitu zobrazit. Hodnotou může být např. `"A"`.
+* `color` udává, jakou barvou má daná LED svítit.
+
+Pro ovládání dvojtečky slouží konstrukce `ToMat.display.setColon(ColorRGB color);`. Ta nastaví obě dvojtečky na barvu `color`.
+
+Konstrukce `ToMat.display.setText(String text, ColorRGB color);` slouží k nastavení všech 4 digitů na text definovaný v parametru `text` (typ String). Zobrazí se pouze první 4 písmena z parametru `text` a rozsvítí se barvou z parametru `color`.
+
+Konstrukce `ToMat.display.setFront(ColorRGB color);` rozsvítí všechny LEDky na předním panelu barvou `color`.
+
+Kontrukce `ToMat.display.setBack(ColorRGB color);` rozsvítí všechny LEDky na zadím LED pásku barvou `color`.
+
+Konstrukce `ToMat.display.setBrightnessFront(float brightness);` nastaví jas všech LEDek na předním panelu. Parametr `brightness` nastavuje hodnotu jasu v rozsahu 0 (nesvítí vůbec) po 1 (svítí naplno). Všechny následující příkazy nastavující jejich barvu předních LEDek budou nastavovat barvu se sníženým jasem.
+
+Obdobně lze použít konstrukci `ToMat.display.setBrightnessBack(float brightness);` pro nastavení jasu zadního LED pásku.
+
+Konstrukce `setTransition(TransitionType aTransitionType, float aTransitionRate);` slouží k nastavení přechodových animací, např. pro nastavení plynulých přechodů mezi různými stavy rozsvícení. Jedná se o volání funkce s parametry v kulatých závorkách:
+* `aTransitionType` udává druh přechodové animace, např. `Linear`.
+* `aTransitionRate` udává rychlost přechodové animace, např. `0.5`.
+
+Následující příklad nastaví jas předního displeje na `0.5`, plynulý přechod s rychlostí `0.5` a zobrazí červeně slovo `AHOJ` na předním displeji.
+```
+#include "ToMat/ToMat.h"
+
+void setup() {
+    ToMat.begin();
+    ToMat.display.setBrightnessFront(0.5);
+    ToMat.display.setTransition(Liner, 0.5);
+    ToMat.display.setText("AHOJ", red);
+}
+
+void loop() {}
+```
 
 <!-- _________________________________________________________________ -->
 # <a name = wifi>WiFi</a>

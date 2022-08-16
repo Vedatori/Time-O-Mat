@@ -5,13 +5,12 @@ int prevControlTime = 0;
 
 void setup() {
     ToMat.begin();
-
     ToMat.startWiFiCaptain("<your_name>");
 
     ToMat.display.setBrightnessFront(0.2);
     ToMat.display.setBrightnessBack(0.1);
     ToMat.display.setTransition(Linear, 0.5);
-    ToMat.display.setBacklight(white);
+    ToMat.display.setBack(white);
 }
 
 void loop() {

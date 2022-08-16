@@ -240,15 +240,15 @@ void Display_TM::setFront(ColorHSV color) {
    setColon(color);
 }
 
-void Display_TM::setBacklight(ColorRGB color) {
+void Display_TM::setBack(ColorRGB color) {
     for(int i = 0; i < 9; ++i) {
         setLED(5, i, color);
     }
 }
 
-void Display_TM::setBacklight(ColorHSV color) {
+void Display_TM::setBack(ColorHSV color) {
     ColorRGB colorRGB = HSVtoRGB(color);
-    setBacklight(colorRGB);
+    setBack(colorRGB);
 }
 
 void Display_TM::setBrightnessFront(float brightness) {
