@@ -95,37 +95,34 @@ void Display_TM::update() {
     for(uint8_t ledID = 0; ledID < LED_COUNT; ++ledID) {
         switch(transitionType) {
             case Linear: {
-				float step = transitionRate * (millis() - prevTime) / 1000.0 * 255.0;
+                float deviation;
+                float step = transitionRate * (millis() - prevTime) / 1000.0 * 255.0;
 
-				float deviationRed = desiredState[ledID].red - currentState[ledID][0];
-				float deviationGreen = desiredState[ledID].green - currentState[ledID][1];
-				float deviationBlue = desiredState[ledID].blue - currentState[ledID][2];
-
-				float maxDeviation = max(max(abs(deviationRed), abs(deviationGreen)), max(abs(deviationBlue), (float)(1)));
-
-				float redStep = deviationRed*step/maxDeviation;
-				float greenStep = deviationGreen*step/maxDeviation;
-				float blueStep = deviationBlue*step/maxDeviation;
-
-                if(abs(deviationRed) < (abs(redStep) + 1.0)) {
+                deviation = desiredState[ledID].red - currentState[ledID][0];
+                if(abs(deviation) < (step + 1.0)) {
                     currentState[ledID][0] = desiredState[ledID].red;
                 }
                 else {
-                    currentState[ledID][0] += redStep;
+                    int8_t sign = deviation > 0 ? 1 : -1;
+                    currentState[ledID][0] += sign * step;
                 }
 
-                if(abs(deviationGreen) < (abs(greenStep) + 1.0)) {
+                deviation = desiredState[ledID].green - currentState[ledID][1];
+                if(abs(deviation) < (step + 1.0)) {
                     currentState[ledID][1] = desiredState[ledID].green;
                 }
                 else {
-                    currentState[ledID][1] += greenStep;
+                    int8_t sign = deviation > 0 ? 1 : -1;
+                    currentState[ledID][1] += sign * step;
                 }
 
-                if(abs(deviationBlue) < (abs(blueStep) + 1.0)) {
+                deviation = desiredState[ledID].blue - currentState[ledID][2];
+                if(abs(deviation) < (step + 1.0)) {
                     currentState[ledID][2] = desiredState[ledID].blue;
                 }
                 else {
-                    currentState[ledID][2] += blueStep;
+                    int8_t sign = deviation > 0 ? 1 : -1;
+                    currentState[ledID][2] += sign * step;
                 }
             } break;
             case InfiniteImpulseResponse:
