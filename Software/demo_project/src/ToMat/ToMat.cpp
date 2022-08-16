@@ -89,6 +89,9 @@ void ToMat_class::startWiFiCaptain(String name, String password) {
         begin();
     }
 
+    display.setText("----", red);
+    display.update();
+
     String ssid_final = "ToMat-";
     if(name.isEmpty() || name == "<your_name>") {
         ssid_final += WiFi.macAddress();
