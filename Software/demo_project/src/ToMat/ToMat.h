@@ -4,14 +4,13 @@
 #include <Arduino.h>
 #include "Preferences.h"
 
-#include "Music.h"
 #include "Display_TM.h"
 #include "Time_module.h"
 #include "Touchbar_TM.h"
 #include "USB_C_power_module.h"
 #include "Illumination_module.h"
 #include "WiFiCaptain.h"
-#include "piezo/piezo.h"
+#include <piezo/piezo.h>
 
 namespace TM {
 
