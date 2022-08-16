@@ -102,7 +102,30 @@ Napište program, který bude blikat libovolným segmentem a rychlost tohoto bli
 Napište program, který počítá, kolikrát bylo stisknuto tlačítko SW1. Při resetování programu se počítadlo vynuluje. Pokud chceme zjistit, kolikrát bylo tlačítko SW1 stisknuto, musíme stisknout tlačítko SW2 a program musí pípnout daným počtem pípnutí.
 
 # Lekce 4
-Ukážeme si podmínku "if" na příkladu s LED. Pro ovládání se naučíme použít dotykovou lištu.
+Ukážeme si podmínku "if" na příkladu s LED. Pro ovládání se naučíme použít dotykovou lištu. 
+
+```
+#include "ToMat/ToMat.h"
+
+void setup() {
+    ToMat.begin();
+}
+
+void loop() {
+    ToMat.display.setFront(black);
+    if(ToMat.touchBar.getPressed(2)) {
+        ToMat.display.setLED(1, 0, green);
+    }
+    else if(ToMat.touchBar.getPressed(3)) {
+        ToMat.display.setLED(1, 2, green);
+    }
+    else {
+        ToMat.display.setLED(1, 1, red);
+    }
+    ToMat.display.update();
+    delay(20);
+}
+```
 
 ## Úkol 8 - Zvuková signaliazce tmy
 Napište program, který rozezní piezoakustický měnič, pokud Time-O-Mat vneseme do temnoty.
