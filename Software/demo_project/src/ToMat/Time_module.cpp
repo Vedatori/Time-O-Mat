@@ -15,5 +15,6 @@ String Time_module::getClockText() {
     char clockText[4];
     getTime();
     sprintf(clockText, "%02d%02d", time.tm_hour, time.tm_min);
+	if(clockText[0]=='0') clockText[0] = ' ';
     return String(clockText);
 }
