@@ -5,13 +5,33 @@ V tomto dokumentu se nachází rozpis programovacích lekcí a zadání programo
 **Programovací úkoly** jsou úkoly, které budete řešit samostatně. Ke každému úkolu potřebujete soubor znalostí, který je obsažen v některých z lekcí. Úkoly je však možné řešit i jen pomocí programovacího manuálu (pro pokročilé). Splnění úkolu bude kontrolovat vedoucí a odmění ho 2 - 4 Chotěcoiny. Po splnění úkolu si v tabulce na vašem řádku zaznačte křížkem jeho splnění. 
 
 # Lekce 0
-Zprovozníme programovací prostředí VS Code + PlatformIO tak, abyste mohli nahrát kód do TrckJet z vašeho PC.
+Zprovozníme programovací prostředí VS Code + PlatformIO tak, abyste mohli nahrát kód do Time-O-Mat z vašeho PC.
 
 ## Úkol 0 - Blikání LED
 Pomocí kódu z manuálu rozsvítit LED.
 
 # Lekce 1
 Rozblikáme LED na digitech nebo LED pásku.
+
+## Výsledný kód
+
+```
+#include "ToMat/ToMat.h"
+
+void setup() {
+    ToMat.begin();
+}
+
+void loop() {
+    ToMat.display.setLED(0, 5, blue);
+    ToMat.display.update();
+    delay(500);
+
+    ToMat.display.setLED(0, 5, black);
+    ToMat.display.update();
+    delay(500);    
+}
+```
 
 ## Úkol 1 - Blikání LED
 Napište program, který bude blikat druhou LED na nultém digitu. Doba svitu i doba zhasnutí je 300 ms.
@@ -25,6 +45,26 @@ Napište program, který bude blikat jako železniční přejezd. Blikat budou l
 # Lekce 2
 Přečteme stav tlačítka, ukážeme si binární proměnnou a v závislosti na ní rozezníme piezoakustický měnič.
 
+## Výsledný kód
+
+```
+#include "ToMat/ToMat.h"
+
+void setup() {
+    ToMat.begin();
+}
+
+void loop() {
+    if(ToMat.buttonRead(0)) {
+        ToMat.piezo.tone(100);
+    }
+    else {
+        ToMat.piezo.stop();
+    }
+    delay(20);
+}
+```
+
 ## Úkol 4 - Manuální blikání LED
 Napište program, který bliká libovolnou LED pouze při stisknutém tlačítku nejblíž USB konektoru. Doba svícení je 200 ms. Doba zhasnutí je 200 ms.
 
@@ -33,6 +73,27 @@ Napište program, který bude stiskem tlačítka přepínat svícení dvou různ
 
 # Lekce 3
 Přečteme hodnotu na fotorezistoru, ukážeme si číselnou proměnnou. Hodnotu výstupu z fotorezistoru si zobrazíme na LED.
+
+## Výsledný kód
+
+```
+#include "ToMat/ToMat.h"
+
+void setup() {
+    ToMat.begin();
+}
+
+int x;
+
+void loop() {
+    ToMat.display.setFront(black);
+    x = (ToMat.illumination.getRaw(0)/205);
+    ToMat.display.setLED(0, x, blue);
+    ToMat.display.update();
+    printf("%d \n ", x);
+    delay(20);
+}
+```
 
 ## Úkol 6 - Rychlost blikání
 Napište program, který bude blikat libovolným segmentem a rychlost tohoto blikání se zvětší, když se sníží intenzita osvětlení na předním fotorezistoru (např. bude zakrytý prstem).

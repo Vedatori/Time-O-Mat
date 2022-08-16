@@ -85,6 +85,8 @@ void Display_TM::begin() {
     pixels.begin();
     setFront(black);
     setBacklight(black);
+    setBrightnessFront(1.0);
+    setBrightnessBack(1.0);
     update();
 }
 

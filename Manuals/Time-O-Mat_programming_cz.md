@@ -498,8 +498,122 @@ void loop() {
 
 <!-- _________________________________________________________________ -->
 # <a name = piezo>Piezoakustický měnič</a>
+## Základy
+Time-O-Mat obsahuje tzv. piezoakustický měnič, pomocí kterého dokáže vydávat zvuk.
 
-TBD
+* Stálý tón zapneme pomocí `ToMat.piezo.tone(uint16_t freq);`, kde `freq` je freqence v Hz.
+* Veškerý zvuk vypneme pomocí `ToMat.piezo.stop();`.
+
+Následující příklad přerušovaně "pípá" na frekvenci 1kHz.
+```
+#include "ToMat/ToMat.h"
+
+void setup() {
+    ToMat.begin();
+}
+
+void loop() {
+    ToMat.piezo.tone(1000);
+    delay(500);
+    ToMat.piezo.stop();
+    delay(500);
+}
+```
+
+## Melodie
+Time-O-Mat zvládá i jednoduché melodie. Jen pamatujte na to, že nedokáže hrát více tónů zároveň.
+Pro spuštění melodie budeme používat `ToMat.piezo.playMelody(melodie);`.
+
+### Melodie z Arduino songs
+Asi nejjednoduším způsobem, jak přehrát melodii, je stáhnout ji z https://github.com/robsoncouto/arduino-songs.
+Tam si najděte melodii, otevřte ji a zkopírujte `int melody[] = { ...` a `int tempo = ...`.
+Melodii poté přehrajete pomocí `ToMat.piezo.playMelody(melody, sizeof(melody)/sizeof(melody[0]), tempo);`
+
+Následující příklad zahraje melodi Nokie.
+
+```
+#include "ToMat/ToMat.h"
+
+// Zkopírováno z Arduino songs
+int nokieTempo = 180;
+int nokieMelody[] = {
+
+  // Nokia Ringtone 
+  // Score available at https://musescore.com/user/29944637/scores/5266155
+  
+  NOTE_E5, 8, NOTE_D5, 8, NOTE_FS4, 4, NOTE_GS4, 4, 
+  NOTE_CS5, 8, NOTE_B4, 8, NOTE_D4, 4, NOTE_E4, 4, 
+  NOTE_B4, 8, NOTE_A4, 8, NOTE_CS4, 4, NOTE_E4, 4,
+  NOTE_A4, 2, 
+};
+
+void setup() {
+    ToMat.begin();
+    ToMat.piezo.playMelody(nokieMelody, sizeof(nokieMelody)/sizeof(nokieMelody[0]), nokieTempo);
+}
+
+void loop() {
+}
+```
+
+### Vlastní melodie
+Psaní vlastních melodií je trochu složitější, ale zvládnutelné.
+
+Vlastní melodii budeme zapisovat pomocí klasického notového zápisu, který v našem provedení vypadá následovně (celou melodii musíme psát do uvozovek): 
+`Melody nazevMelodie("F5#/8 F5#/8 D5/8 B4/8 R/8*");`
+
+Každá nota se skládá ze dvou částí.
+* Před lomítkem se udává výška noty. `#` zvedá notu o 1/2 noty. `R` znamená pauza.
+* Za lomítkem se udává délka noty. `*` prodlužuje notu o půlku.
+    * `1` -> celá nota
+    * `8` -> 1/8 celé noty
+    * `2*` -> 1/2 + 1/4 -> 3/4 celé noty
+
+#### Tempo
+Vlastní melodii musíme nastavit i tempo. To se udává v BPM (beats per minute), nebo-li počet čtvrtnot za minutu.
+Tempo lze nastavit dvěma způsoby.
+
+Při definici melodie: 
+```
+Melody nazevMelodie("TEMPO=180 F5#/8 F5#/8 D5/8 B4/8 R/8*");
+```
+
+Nebo později:
+```
+Melody nazevMelodie("F5#/8 F5#/8 D5/8 B4/8 R/8*");
+nazevMelodie.tempo = 180;
+```
+Ale pozor! `nazevMelodie.tempo = 180;` lze volat pouze uvnitř funkce (`void setup()`, `void loop()`, ... ). Proto doporučuji spíše první způsob.
+
+#### Přehrání
+
+Vlastní melodii přehrajeme pomocí `ToMat.piezo.playMelody(nazevMelodie);`.
+
+Příklad:
+```
+#include "ToMat/ToMat.h"
+
+Melody melodyTest("TEMPO=180 c3/4 d3/4 e3/4 f3/4 g3/4 g3/4 a3/4 h3/4 c4/2* c4#/1*");
+
+void setup() {
+    ToMat.begin();
+	ToMat.piezo.playMelody(melodyTest);
+}
+
+void loop() {
+}
+```
+
+## Další funkce ToMat.piezo
+`ToMat.piezo.getState();` vrací aktuální stav.
+* `0` -> nic nehraje
+* `1` -> stálý tón
+* `2` -> hraje melodie
+
+
+
+
+
 
 <!-- _________________________________________________________________ -->
 # <a name = fotorezistory>Fotorezistory</a>
