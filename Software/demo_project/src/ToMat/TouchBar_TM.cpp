@@ -2,20 +2,24 @@
 
 void TouchBar_TM::begin() {
     for(int i = 0; i < 5; ++i) {
-        rawData[i] = touchRead(TOUCH_PIN[i]);
-        rawDataIIR[i] = float(rawData[i]);
+        rawData[i][0] = touchRead(TOUCH_PIN[i]);
+        rawData[i][1] = rawData[i][0];
+        rawDataIIR[i] = float(getPadRaw(i));
         digitalData[i] = 0;
     }
 }
 
 void TouchBar_TM::update() {
     for(int i = 0; i < 5; ++i) {
-        rawData[i] = touchRead(TOUCH_PIN[i]);
+        rawData[i][1] = rawData[i][0];
+        rawData[i][0] = touchRead(TOUCH_PIN[i]);
 
-        digitalData[i] = rawData[i] < (rawDataIIR[i] - digitalThreshold);
+        uint8_t rawFiltered = getPadRaw(i);
+
+        digitalData[i] = rawFiltered < (rawDataIIR[i] - digitalThreshold);
 
         if(digitalData[i] == false) {
-            rawDataIIR[i] = coefIIR*rawData[i] + (1.0 - coefIIR)*rawDataIIR[i];
+            rawDataIIR[i] = coefIIR*rawFiltered + (1.0 - coefIIR)*rawDataIIR[i];
         }
     }
 }
@@ -25,7 +29,7 @@ uint16_t TouchBar_TM::getPadRaw(int padID) {
         printf("Invalid pad ID: %d\n", padID);
         return 0;
     }
-    return rawData[padID];
+    return max(rawData[padID][0], rawData[padID][1]);;
 }
 
 float TouchBar_TM::getPadRawIIR(int padID) {
