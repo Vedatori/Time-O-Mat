@@ -214,7 +214,7 @@ typ_promenne nazev_promenne = hodnota;
 * `float` označuje proměnnou pro ukládání desetinných čísel, například `3.14`.
 * `char` označuje jeden textový znak -> znak se udává v apostrofech, například `'c'` označuje znak *c*.
 * `bool` označuje pravdivostní hodnotu -> *true* pro pravdu a *false* pro nepravdu.
-* `std::string` označuje řetězec textových znaků -> řetězec se ohraničuje uvozovkami, například `"Ahoj svete"`.
+* `String` označuje řetězec textových znaků -> řetězec se ohraničuje uvozovkami, například `"Ahoj svete"`.
 
 ## Operace s proměnnými
 
@@ -443,12 +443,22 @@ Vytvořili jsme proměnnou `pocet_bliku`, která obsahuje celé číslo 0. Dokud
 V této kapitole si podrobněji ukážeme ovládání LEDek na Time-O-Mat.
 
 Jednotlivé LEDky budeme ovládat pomocí příkazu `ToMat.display.setLED(int segmentID, int ledID, ColorRGB color)`. Jedná se o volání funkce s parametry v kulatých závorkách:
-* `segmentID` udává, který digit chceme ovládat. Jsou číslovány od 0 (vlevo) po 3 (vpravo). Zadní LED pásek má index 4.
+* `segmentID` udává, který digit chceme ovládat.
 * `ledID` udává, kterou LED daného digitu chceme ovládat.
 * `color` udává, jakou barvou má daná LED svítit. Můžeme použít předdefinované barvy *red, green, blue, cyan, magenta, yellow, black, white*, nebo si definovat vlastní.
 
+Parametr `segmentID` nabývá následujících hodnot:
+* `0` pro první digit zleva.
+* `1` pro druhý digit zleva.
+* `2` pro dvojtečku uprostřed.
+* `3` pro třetí digit zleva.
+* `4` pro čtvrtý digit zleva.
+* `5` pro zadní LED pásek.
+
 Parametr `ledID` čísluje LEDky v jednotlivých digitech v následujícím pořadí:
 ![alt](SupportFiles/osmicka.jpg)
+
+Parametr  `ledID` čísluje LEDky na dvojtečce od 0 (nahoře) po 1 (dole).
 
 Parametr `ledID` čísluje LEDky na zadním LED pásku od 0 (vlevo) po 8 (vpravo) při pohledu na hodiny ze zadu.
 
@@ -721,10 +731,10 @@ Okolo textu, který chceme vypsat, je třeba vložit dvojité uvozovky `"text"`.
 
 ## Výpis hodnot proměnných
 Často potřebujeme vypsat i hodnotu některé z našich proměnných. V tomto případě můžeme použít takzvaná formátovací direktiva. V textu začínají znakem `%`:
-* %d - (decimal) označuje celé číslo
-* %f - (float) značí desetinné číslo
-* %c - (char) označuje znak
-* %s - (string) značí řetězec 
+* %d - (decimal) označuje proměnnou pro ukládání celých čísel, například `3`.
+* %f - (float) označuje proměnnou pro ukládání desetinných čísel, například `3.14`.
+* %c - (char) označuje jeden textový znak, například `'c'` označuje znak *c*.
+* %s - (string) označuje řetězec textových znaků -> řetězec se ohraničuje uvozovkami, například `"Ahoj svete"`.
 
 Pro úpravu formátu vypisovaných proměnných máme mnoho dalších možností, které jsou například na [Wiki](https://cs.wikipedia.org/wiki/Printf#Form%C3%A1tovac%C3%AD_%C5%99et%C4%9Bzec). Pro výpis celočíselné proměnné `cele_cislo` do sériové linky použijeme následující příkaz:
 ```
