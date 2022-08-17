@@ -6,12 +6,11 @@
 const int TOUCH_PIN[5] = {33, 27, 14, 12, 32};
 
 class TouchBar_TM {
-    uint16_t rawData[5];
+    uint16_t rawData[5][2];
     float rawDataIIR[5];
     bool digitalData[5];
     float coefIIR = 0.01;
     int digitalThreshold = 5.0;
-    uint32_t inactiveTime = 3000;
 
 public:
     void begin();

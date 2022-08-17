@@ -72,15 +72,15 @@ void ToMat_class::printDiagnostics() {
         printf("%d", touchBar.getPressed(i));
     }
 
-    printf("%s", power.getVoltagesText().c_str());
+    printf(" %s", power.getVoltagesText().c_str());
     printf("%s", illumination.getIlluminationText().c_str());
 
-    printf("priority: %d ", uxTaskPriorityGet(NULL));
+    //printf("priority: %d ", uxTaskPriorityGet(NULL));
 
     String timeDisp = ToMat.time.getClockText();
     printf("time: %s ", timeDisp.c_str());
 
-    printf("temperature: %f \n", temperature);
+    printf("temp: %f \n", temperature);
 }
 
 
