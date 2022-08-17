@@ -65,8 +65,8 @@ public:
     static void setFront(ColorRGB color);
     static void setFront(ColorHSV color);
 
-    static void setBacklight(ColorRGB color);
-    static void setBacklight(ColorHSV color);
+    static void setBack(ColorRGB color);
+    static void setBack(ColorHSV color);
 
     static void setBrightnessFront(float brightness);
     static void setBrightnessBack(float brightness);

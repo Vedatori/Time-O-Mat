@@ -84,7 +84,7 @@ ColorHSV RGBtoHSV(ColorRGB color) {
 void Display_TM::begin() {
     pixels.begin();
     setFront(black);
-    setBacklight(black);
+    setBack(black);
     setBrightnessFront(1.0);
     setBrightnessBack(1.0);
     update();
