@@ -123,7 +123,9 @@ void setup() {
     ToMat.begin();
 }
 
-void loop() {}
+void loop() {
+    
+}
 ```
 Jednotlivé řádky šablony mají následující význam:
 * `#include "ToMat/ToMat.h"` - Příkaz *#include* přidává do našeho programu kód z jiných míst. Nyní nám stačí přidání knihovny *ToMat.h* ze složky ToMat.

@@ -44,6 +44,8 @@ void ToMat_class::begin() {
     
     xTaskCreatePinnedToCore(TM::refreshTaskQuick, "refreshTaskQuick", 10000 , NULL, 3, NULL, 1);
     xTaskCreatePinnedToCore(TM::refreshTaskSlow, "refreshTaskSlow", 10000 , NULL, 0, NULL, 0);
+
+    displayRefreshActive = true;
 }
 
 bool ToMat_class::buttonRead(int buttonID) {
