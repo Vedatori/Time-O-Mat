@@ -132,6 +132,22 @@ Napište program, který při každém stisku jednoho z tlačítek na dotykové 
 # Lekce 5
 Time-O-Mat začne komunikovat s počítačem pomocí sériové linky. Vyčteme okolní teplotu.
 
+```
+#include "ToMat/ToMat.h"
+
+void setup() {
+    ToMat.begin();
+}
+
+int teplota;
+
+void loop() {
+    teplota = ToMat.getTemperature();
+    printf("%d\n", teplota);
+    delay(200);
+}
+```
+
 ## Úkol 10 - Vypsání hodnoty LED
 Přepracujte úkol 9 tak, aby Time-O-Mat přes sériovou linku přenášel číslo LED, která právě svítí.
 
