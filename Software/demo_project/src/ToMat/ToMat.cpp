@@ -13,6 +13,7 @@ void TM::refreshTaskQuick(void * parameter) {
             ToMat.display.update();
         }
         ToMat.touchBar.update();
+        ToMat.illumination.update();
         delay(20);
     }
 }
@@ -20,7 +21,6 @@ void TM::refreshTaskQuick(void * parameter) {
 void TM::refreshTaskSlow(void * parameter) {
     for(;;) {
         ToMat.power.update();
-        ToMat.illumination.update();
         ToMat.updateTemperature();
         delay(1000);
     }
@@ -56,7 +56,11 @@ bool ToMat_class::buttonRead(int buttonID) {
 
 void ToMat_class::updateTemperature() {
     sensors.requestTemperatures();
-    temperature = sensors.getTempCByIndex(0);
+    float newTemp = sensors.getTempCByIndex(0);
+    if(newTemp > -100.0) {
+        // Filter out nonsense measurements
+        temperature = newTemp;
+    }
 }
 
 float ToMat_class::getTemperature() {

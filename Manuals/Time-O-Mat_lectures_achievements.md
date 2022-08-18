@@ -24,11 +24,9 @@ void setup() {
 
 void loop() {
     ToMat.display.setLED(0, 5, blue);
-    ToMat.display.update();
     delay(500);
 
     ToMat.display.setLED(0, 5, black);
-    ToMat.display.update();
     delay(500);    
 }
 ```
@@ -89,7 +87,6 @@ void loop() {
     ToMat.display.setFront(black);
     x = (ToMat.illumination.getRaw(0)/205);
     ToMat.display.setLED(0, x, blue);
-    ToMat.display.update();
     printf("%d \n ", x);
     delay(20);
 }
@@ -122,7 +119,6 @@ void loop() {
     else {
         ToMat.display.setLED(1, 1, red);
     }
-    ToMat.display.update();
     delay(20);
 }
 ```
