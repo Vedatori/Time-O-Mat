@@ -9,9 +9,10 @@ Melody themeMelody("TEMPO=140 USECUTOFF=1 CUTOFFPERCENT=20 F5#/8 F5#/8 D5/8 B4/8
 
 void TM::refreshTaskQuick(void * parameter) {
     for(;;) {
-        //ToMat.display.update();
+        if(ToMat.getDisplayRefresh()) {
+            ToMat.display.update();
+        }
         ToMat.touchBar.update();
-        //delayMicroseconds(500);
         delay(20);
     }
 }
@@ -89,6 +90,7 @@ void ToMat_class::startWiFiCaptain(String name, String password) {
         begin();
     }
 
+    setDisplayRefresh(false);
     display.setText("----", red);
     display.update();
 
@@ -102,6 +104,10 @@ void ToMat_class::startWiFiCaptain(String name, String password) {
     setApCredentials(ssid_final, password);
     wifiCaptInit();
     connectionEnabled = true;
+
+    display.setText("    ", red);
+    display.update();
+    setDisplayRefresh(true);
 }
 
 void ToMat_class::checkConnection() {
@@ -163,6 +169,14 @@ void ToMat_class::commandSend(String type, String text) {
 
 void ToMat_class::commandDisp(String text) {
     commandSend("commandDisp", text);
+}
+
+void ToMat_class::setDisplayRefresh(bool state) {
+    displayRefreshActive = state;
+}
+
+bool ToMat_class::getDisplayRefresh() {
+    return displayRefreshActive;
 }
 
 ToMat_class ToMat;

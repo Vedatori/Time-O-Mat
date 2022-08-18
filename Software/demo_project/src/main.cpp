@@ -36,6 +36,5 @@ void loop() {
 
         ToMat.printDiagnostics();
     }
-    ToMat.display.update();
     delay(20);
 }

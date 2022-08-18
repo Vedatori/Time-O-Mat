@@ -34,6 +34,7 @@ class ToMat_class {
     uint32_t prevCommunicationTime = 0;
 
     float temperature = 0.0;
+    bool displayRefreshActive = false;
 
 public:
     Display_TM display;
@@ -58,6 +59,9 @@ public:
     void internCommandHandle();
     void commandSend(String type, String text);
     void commandDisp(String text);
+
+    void setDisplayRefresh(bool state);
+    bool getDisplayRefresh();
 };
 
 extern ToMat_class ToMat;

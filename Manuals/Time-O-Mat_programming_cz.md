@@ -147,8 +147,6 @@ Nyní napíšete svůj první vlastní program pro Time-O-Mat. Do šablony kódu
 Všimněte si, že při psaní vám VS Code napovídá. Stačí napsat `ToMat.` a uvidíte nabídku připravených funkcí z knihovny *Time-O-Mat*. Pokud se tak nestane, nabídku vyvoláte stisknutím *Ctrl + Space*.
 ![alt](SupportFiles/prog_hint.jpg)
 
-Dále dopíšeme příkaz `Tomat.display.update()`, který zajistí aktualizaci stavu LEDek.
-
 Nahrajte program do Time-O-Mat a počkejte, až se LED rozsvítí. Gratulujeme, toto byl váš první vlastní program pro Time-O-Mat :-)
 
 ## Výsledný kód
@@ -159,7 +157,6 @@ Nahrajte program do Time-O-Mat a počkejte, až se LED rozsvítí. Gratulujeme, 
 void setup() {
     ToMat.begin();
     ToMat.display.setLED(0, 0, white);
-    ToMat.display.update();
 }
 
 void loop() {}
@@ -181,7 +178,7 @@ Příklad: Tento program nerozsvítí LEDku.
 void setup() {
     ToMat.begin();
     ToMat.display.setLED(0, 0, white); // Toto je komentář
-    //ToMat.display.update(); tento řádek se neprovede
+    //ToMat.display.setLED(0, 0, black); tento řádek se neprovede
 
     /* Toto je 
     víceřádkový komentář. */
@@ -356,12 +353,10 @@ void setup() {
     ToMat.begin();
 
     ToMat.display.setLED(0, 0, white);
-    ToMat.display.update();
 
     delay(500);
 
     ToMat.display.setLED(0, 0, black);
-    ToMat.display.update();
 }
 
 void loop() {}
@@ -377,16 +372,12 @@ void setup() {
     ToMat.begin();
 
     ToMat.display.setLED(0, 0, white);
-    ToMat.display.update();
     delay(500);
     ToMat.display.setLED(0, 0, black);
-    ToMat.display.update();
     delay(500);
     ToMat.display.setLED(0, 0, white);
-    ToMat.display.update();
     delay(500);
     ToMat.display.setLED(0, 0, black);;
-    ToMat.display.update();
 }
 
 void loop() {}
@@ -406,10 +397,8 @@ V následném úseku kódu budeme blikat LEDkou dokud bude Time-O-Mat zapnutý:
 ```
 while(true){
     ToMat.display.setLED(0, 0, white);
-    ToMat.display.update();
     delay(500);
     ToMat.display.setLED(0, 0, black);
-    ToMat.display.update();
 }
 ```
 
@@ -430,10 +419,8 @@ Následující program ukazuje, jak bliknout 10x s LED číslo 1 pomocí cyklus 
 ```
 for(int pocet_bliku = 0; pocet_bliku < 10; pocet_bliku++){
     ToMat.display.setLED(0, 0, white);
-    ToMat.display.update();
     delay(500);
     ToMat.display.setLED(0, 0, black);
-    ToMat.display.update();
 }
 ```
 Vytvořili jsme proměnnou `pocet_bliku`, která obsahuje celé číslo 0. Dokud je hodnota této proměnné menší než 10, zvýší se její hodnota 1 a provede se kód uvnitř cyklu. Jakmile hodnota proměnné rovna 10, cyklus se ukončí a program pokračuje směrem dolů.
@@ -478,7 +465,6 @@ void setup() {
     ColorRGB cervena = {255, 0, 0};
     ColorHSV cervena = {0, 1, 1};
     ToMat.display.setLED(0, 0, cervena);
-    ToMat.display.update();
 }
 
 void loop() {}
@@ -503,7 +489,6 @@ void loop() {
     else {
         ToMat.display.setLED(0, 0, black);
     }
-    ToMat.display.update();
     delay(20);
 }
 ```
@@ -666,7 +651,6 @@ void loop() {
     else {
         ToMat.display.setLED(0, 0, black);
     }
-    ToMat.display.update();
     delay(20);
 }
 ```
@@ -692,8 +676,6 @@ void loop() {
     else {
         ToMat.display.setLED(0, 0, black);
     }
-
-    ToMat.display.update();
     delay(200);
 }
 ```
@@ -819,10 +801,8 @@ void setup() {
 void loop() {
     if(ToMat.commandGet() == "blink") {
         ToMat.display.setLED(0, 0, white);
-        ToMat.display.update();
         delay(500);
         ToMat.display.setLED(0, 0, black);
-        ToMat.display.update();
         ToMat.commandClear();  // nutné jinak bude v paměti pořád příkaz "blink" a LED bude pořád svítit
     }
     delay(100);
