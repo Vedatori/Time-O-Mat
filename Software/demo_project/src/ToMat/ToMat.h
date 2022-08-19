@@ -76,5 +76,6 @@ public:
 
 extern ToMat_class ToMat;
 extern Melody themeMelody;
+extern Melody themeMelodyFull;
 
 #endif // _TOMAT_
