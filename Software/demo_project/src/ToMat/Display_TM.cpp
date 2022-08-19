@@ -102,29 +102,32 @@ void Display_TM::update() {
     }
 
     for(uint8_t ledID = 0; ledID < LED_COUNT; ++ledID) {
+        int panelSide = ledID > 85;
+        ColorRGB dimmedColor = transformColorBrightness(desiredState[ledID], panelBrightness[panelSide]);
+
         switch(transitionType) {
             case Linear: {
-                float deviation = desiredState[ledID].red - currentState[ledID][0];
+                float deviation = dimmedColor.red - currentState[ledID][0];
                 if(abs(deviation) < (step + 1.0)) {
-                    currentState[ledID][0] = desiredState[ledID].red;
+                    currentState[ledID][0] = dimmedColor.red;
                 }
                 else {
                     int8_t sign = deviation > 0 ? 1 : -1;
                     currentState[ledID][0] += sign * step;
                 }
 
-                deviation = desiredState[ledID].green - currentState[ledID][1];
+                deviation = dimmedColor.green - currentState[ledID][1];
                 if(abs(deviation) < (step + 1.0)) {
-                    currentState[ledID][1] = desiredState[ledID].green;
+                    currentState[ledID][1] = dimmedColor.green;
                 }
                 else {
                     int8_t sign = deviation > 0 ? 1 : -1;
                     currentState[ledID][1] += sign * step;
                 }
 
-                deviation = desiredState[ledID].blue - currentState[ledID][2];
+                deviation = dimmedColor.blue - currentState[ledID][2];
                 if(abs(deviation) < (step + 1.0)) {
-                    currentState[ledID][2] = desiredState[ledID].blue;
+                    currentState[ledID][2] = dimmedColor.blue;
                 }
                 else {
                     int8_t sign = deviation > 0 ? 1 : -1;
@@ -134,9 +137,9 @@ void Display_TM::update() {
             case InfiniteImpulseResponse:
             case None:
             default:
-                currentState[ledID][0] = desiredState[ledID].red;
-                currentState[ledID][1] = desiredState[ledID].green;
-                currentState[ledID][2] = desiredState[ledID].blue;
+                currentState[ledID][0] = dimmedColor.red;
+                currentState[ledID][1] = dimmedColor.green;
+                currentState[ledID][2] = dimmedColor.blue;
         }
         uint32_t color = pixels.Color(round(currentState[ledID][0]), round(currentState[ledID][1]), round(currentState[ledID][2]));
         pixels.setPixelColor(ledID, color);
@@ -155,7 +158,6 @@ void Display_TM::setLED(int segmentID, int ledID, ColorRGB color) {
         return;
     
     int ledAbsoluteID = 0;
-    int ledSide = 0;    // 0-front, 1-back
 
     // 2 leftmost digits
     if(segmentID <= 1)
@@ -177,14 +179,13 @@ void Display_TM::setLED(int segmentID, int ledID, ColorRGB color) {
         if(ledID > 8)
             return;
         ledAbsoluteID = (segmentID - 1) * 21 + 2 + ledID;
-        ledSide = 1;
     }
 
     if(ledAbsoluteID < 0 || ledAbsoluteID > LED_COUNT) {
         return;
     }
     
-    desiredState[ledAbsoluteID] = transformColorBrightness(color, panelBrightness[ledSide]);
+    desiredState[ledAbsoluteID] = color;
 }
 void Display_TM::setLED(int digitIndex, int ledID, ColorHSV color) {
     ColorRGB colorRGB = HSVtoRGB(color);
