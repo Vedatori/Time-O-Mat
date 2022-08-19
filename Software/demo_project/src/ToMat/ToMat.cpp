@@ -52,7 +52,7 @@ void TM::refreshTaskSlow(void * parameter) {
                     softApDisableTime = millis();
                 }
             }
-            else {
+            else if(ToMat.getWifiCaptStarted()) {
                 softApEnable();
             }
 		}
@@ -160,6 +160,7 @@ void handleWeatherConfig(){
 }
 
 void ToMat_class::startWiFiCaptain(String name, String password) {
+    wifiCaptStarted = true;
     if(!beginCalled) {
         begin();
     }
@@ -185,6 +186,11 @@ void ToMat_class::startWiFiCaptain(String name, String password) {
     display.setText("    ", red);
     display.setUpdateActive(true);
     display.update();
+}
+
+
+bool ToMat_class::getWifiCaptStarted() {
+    return wifiCaptStarted;
 }
 
 void ToMat_class::checkConnection() {

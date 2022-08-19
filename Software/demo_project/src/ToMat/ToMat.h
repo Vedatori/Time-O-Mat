@@ -39,6 +39,7 @@ class ToMat_class {
     bool connectionActive = false;
     uint32_t prevCommunicationTime = 0;
     bool internetConnected = false;
+    bool wifiCaptStarted = false;
 
     float temperature = 0.0;
 
@@ -60,6 +61,7 @@ public:
     void printDiagnostics();
 
     void startWiFiCaptain(String name="", String password="");
+    bool getWifiCaptStarted();
     void checkConnection();
     void checkInternetConnected();
 	bool getInternetConnected();
