@@ -8,6 +8,16 @@
 
 #define WEATHER_FORECAST_SIZE 8 //3h step for 1 day
 
+namespace WEATHERAPI{
+
+enum WEATHERAPI_SET_MODE{
+	WA_SAVE,
+	WA_SET,
+	WA_DEFAULT
+};
+
+}
+
 class WeatherApi {
 private:
 	String apiKey = "";
@@ -19,15 +29,15 @@ private:
 
 	double positionLat = 0;
 	double positionLon = 0;
-	String positionName = "Not set";
+	String positionName = "";
 
 public:
 	void init();
 
-	void setKey(String key);
+	void setKey(String key, WEATHERAPI::WEATHERAPI_SET_MODE mode = WEATHERAPI::WA_SAVE);
 	String getKey() {return apiKey;}
 
-	void setPosition(double latitude, double longitude, String name);
+	void setPosition(double latitude, double longitude, String name, WEATHERAPI::WEATHERAPI_SET_MODE mode = WEATHERAPI::WA_SAVE);
 
 	void updateWeather();
 	void updateForecast();
