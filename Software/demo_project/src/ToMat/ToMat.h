@@ -11,6 +11,8 @@
 #include "Illumination_module.h"
 #include "WiFiCaptain.h"
 #include <piezo/piezo.h>
+#include <weather/weatherApi.h>
+#include <ESP32Ping.h>
 
 namespace TM {
 
@@ -23,6 +25,9 @@ const uint8_t BUZZER_CHANNEL = 3;
 const char STORAGE_NAMESPACE[] = "Time_o_mat";
 const uint16_t communicationTimeout = 1000;
 
+const char WEATHER_API_KEY[] = "bde361c7c969906b9a9571a8f4a14c06";
+const uint32_t INTERNET_UPDATE_PERIOD = 1000 * 60 * 15; // [ms]
+
 void refreshTaskQuick(void * param);
 void refreshTaskSlow(void * param);
 }
@@ -32,6 +37,7 @@ class ToMat_class {
     bool connectionEnabled = false;
     bool connectionActive = false;
     uint32_t prevCommunicationTime = 0;
+    bool internetConnected = false;
 
     float temperature = 0.0;
 
@@ -42,6 +48,8 @@ public:
     USB_C_power_module power;
     Illumination_module illumination;
     Piezo piezo;
+	WeatherApi weather;
+	
 
     void begin();
     bool buttonRead(int buttonID);
@@ -52,6 +60,8 @@ public:
 
     void startWiFiCaptain(String name="", String password="");
     void checkConnection();
+    void checkInternetConnected();
+	bool getInternetConnected();
     String commandGet();
     String commandGetIndexed(uint8_t index);
     void commandClear();
@@ -62,5 +72,6 @@ public:
 
 extern ToMat_class ToMat;
 extern Melody themeMelody;
+extern Melody themeMelodyFull;
 
 #endif // _TOMAT_

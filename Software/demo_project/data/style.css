@@ -95,6 +95,16 @@ input[type=text] {
     height: 2.5em;
     width: 10em;
 }
+input[type=number] {
+    background-color: white;
+    text-align:center;
+    border-radius: 0.5em;
+    border-width: 0px;
+    margin: 1px;
+    font-size: 1em;
+    height: 2.5em;
+    width: 10em;
+}
 input[type=submit] {
     background-color: #FFE640;
     text-align:center;

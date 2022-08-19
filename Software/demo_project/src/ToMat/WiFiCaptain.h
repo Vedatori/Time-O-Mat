@@ -3,11 +3,14 @@
 
 #include "Arduino.h"
 #include "WebSocketsServer.h"   //https://github.com/Links2004/arduinoWebSockets
+#include <WebServer.h>
 
 struct credentials {
     char ssid[33] = "";
     char password[65] = "";
 };
+
+extern WebServer webserver;
 
 void handleRoot();
 void handleStatus();
