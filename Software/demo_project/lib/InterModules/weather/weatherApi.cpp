@@ -19,23 +19,26 @@ void WeatherApi::init(){
 	if(preferences.isKey("apiKey")){
 		apiKey = preferences.getString("apiKey");
 	}
-	if(preferences.isKey("positionName")){
+	if(preferences.isKey("positionName")) {
 		positionLat = preferences.getDouble("positionLat");
 		positionLon = preferences.getDouble("positionLon");
 		positionName = preferences.getString("positionName");
+	}
+	else {
+		setPosition(50.36, 15.79, "Choteborky");
 	}
 }
 void WeatherApi::setKey(String key){
 	apiKey = key;
 	preferences.putString("apiKey", apiKey);
 }
-void WeatherApi::setPosition(double latitude, double longitude, String name){
+void WeatherApi::setPosition(double latitude, double longitude, String name) {
 	positionLat = latitude;
 	positionLon = longitude;
 	positionName = name;
-	preferences.putDouble("positionLat",positionLat);
-	preferences.putDouble("positionLon",positionLon);
-	preferences.putString("positionName",positionName);
+	preferences.putDouble("positionLat", positionLat);
+	preferences.putDouble("positionLon", positionLon);
+	preferences.putString("positionName", positionName);
 }
 
 

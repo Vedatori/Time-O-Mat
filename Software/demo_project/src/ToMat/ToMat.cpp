@@ -37,21 +37,20 @@ void TM::refreshTaskQuick(void * parameter) {
     }
 }
 
-uint32_t prevWeatherUpdate = 0;
-bool startUpWeatherUpdate = true;
 void TM::refreshTaskSlow(void * parameter) {
     for(;;) {
         ToMat.power.update();
         ToMat.updateTemperature();
 
-		if(((millis() - prevWeatherUpdate > TM::WEATHER_UPDATE) || startUpWeatherUpdate) && ToMat.pingInternet()){
-			startUpWeatherUpdate = false;
-			printf("Updating weather!\n");
+        static uint32_t internetUpdateTime = 0;
+		if((millis() - internetUpdateTime) > TM::INTERNET_UPDATE_PERIOD || internetUpdateTime == 0) {
+			ToMat.checkInternetConnected();
+            if(ToMat.getInternetConnected() == false) {
+                continue;
+            }
 			ToMat.weather.updateBothWF();
-
-			prevWeatherUpdate = millis();
+            internetUpdateTime = millis();
 		}
-
         delay(1000);
     }
 }
@@ -191,21 +190,18 @@ void ToMat_class::checkConnection() {
     }
 }
 
-uint32_t prevPingTime = 0;
-bool prevPing = false;
-bool ToMat_class::pingInternet(){
-	if(!WiFi.isConnected()){
-		prevPing = false;
-		return false;
-	}
-	if(millis() - prevPingTime < TM::PING_DELAY){
-		return prevPing;
-	}
 
-	prevPing = Ping.ping(IPAddress(8,8,8,8), 1);
+void ToMat_class::checkInternetConnected() {
+	if(!WiFi.isConnected()) {
+		internetConnected = false;
+	}
+    else {
+        internetConnected = Ping.ping(IPAddress(8, 8, 8, 8), 1);
+    }
+}
 
-	prevPingTime = millis();
-	return prevPing;
+bool ToMat_class::getInternetConnected() {
+    return internetConnected;
 }
 
 String ToMat_class::commandGet() {
