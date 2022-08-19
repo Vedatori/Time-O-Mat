@@ -19,6 +19,7 @@ public:
     float getPadRawIIR(int padID);
     bool getPadPressed(int padID);
     bool getPressed(int buttonID);
+    int getPressedIndex();
 };
 
 #endif // _TOUCHBAR_H_

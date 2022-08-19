@@ -63,3 +63,12 @@ bool TouchBar_TM::getPressed(int buttonID) {
     }
     return out;
 }
+
+int TouchBar_TM::getPressedIndex() {
+    for(int i = 0; i < 8; ++i) {
+        if(getPressed(i)) {
+            return i;
+        }
+    }
+    return -1;
+}
