@@ -20,7 +20,7 @@ class USB_C_power_module {
 public:
     void setMode(PowerMode mode);
     void update();
-    float getAmpLimit();
+    float getLimitA();
     String getVoltagesText();
 };
 

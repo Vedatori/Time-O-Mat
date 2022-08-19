@@ -10,7 +10,7 @@ void USB_C_power_module::update() {
     }
 }
 
-float USB_C_power_module::getAmpLimit() {
+float USB_C_power_module::getLimitA() {
     switch(currentMode) {
         case USB2_500mA:
             return 0.5;
