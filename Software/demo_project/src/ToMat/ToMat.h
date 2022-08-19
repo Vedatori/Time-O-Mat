@@ -50,7 +50,7 @@ public:
     USB_C_power_module power;
     Illumination_module illumination;
     Piezo piezo;
-	WeatherApi weatherApi;
+	WeatherApi weather;
 	
 
     void begin();

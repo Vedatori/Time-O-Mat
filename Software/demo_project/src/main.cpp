@@ -20,6 +20,10 @@ void loop() {
         if(ToMat.buttonRead(0)) {
             ESP.restart();
         }
+		if(ToMat.buttonRead(1)){
+			ToMat.weather.getWeather().printDebug();
+			while(ToMat.buttonRead(1));
+		}
         if(ToMat.buttonRead(2)) {
             ToMat.piezo.playMelody(themeMelody);
         }

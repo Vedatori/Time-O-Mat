@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="theme-color" content="#404040"/>
+		<title>TrackJet</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<style>
+			body {
+				overflow : hidden;
+			}
+			</style>
+	</head>
+	<body>
+		<div class = "wrapper">
+			<a href='/'><input type = "button" value = "Back to home page"/></a>
+			<form action="weatherSetup" method="post" class="box3" id="geoSet">
+				<input type = "number" step="0.0001" name = "geoLocatorLatitude" placeholder = "Latitude"/>
+				<input type = "number" step="0.0001" name = "geoLocatorLongitude" placeholder = "Longitude"/>
+				<input type = "submit" value = "Set location"/>
+			</form>
+
+			<form action="weatherSetup" method="post" class="box3" id="apikeySet">
+				<input type = "text" name = "apiKey" placeholder = "Api key"/>
+				<input type = "submit" value = "Set api key"/>
+			</form>
+
+		</div>
+	</body>
+</html>

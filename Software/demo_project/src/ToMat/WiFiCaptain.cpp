@@ -3,7 +3,6 @@
 #include <WiFi.h>
 #include <DNSServer.h>
 #include <WiFiClient.h>
-#include <WebServer.h>
 #include "Preferences.h"
 #include "WebSocketsServer.h"   //https://github.com/Links2004/arduinoWebSockets
 #include "SPIFFS.h"

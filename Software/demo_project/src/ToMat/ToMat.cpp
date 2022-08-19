@@ -2,6 +2,7 @@
 
 #include "OneWire.h"
 #include "DallasTemperature.h"
+#include "SPIFFS.h"
 
 OneWire oneWire(TM::ONE_WIRE_PIN);
 DallasTemperature sensors(&oneWire);
@@ -46,7 +47,7 @@ void TM::refreshTaskSlow(void * parameter) {
 		if(((millis() - prevWeatherUpdate > TM::WEATHER_UPDATE) || startUpWeatherUpdate) && ToMat.pingInternet()){
 			startUpWeatherUpdate = false;
 			printf("Updating weather!\n");
-			ToMat.weatherApi.updateBothWF();
+			ToMat.weather.updateBothWF();
 
 			prevWeatherUpdate = millis();
 		}
@@ -65,9 +66,9 @@ void ToMat_class::begin() {
     touchBar.begin();
     piezo.begin(TM::BUZZER_CHANNEL, TM::BUZZER_PIN);
 
-	weatherApi.init();
-	if(weatherApi.getKey() == ""){
-		weatherApi.setKey(TM::WEATHER_API_KEY);
+	weather.init();
+	if(weather.getKey() == ""){
+		weather.setKey(TM::WEATHER_API_KEY);
 	}
 
     for(int i = 0; i < 3; ++i) {
@@ -124,6 +125,31 @@ void ToMat_class::printDiagnostics() {
     printf("temp: %f \n", temperature);
 }
 
+void handleWeatherConfig(){
+	String msg = "";
+	if(webserver.hasArg("apiKey")){
+		ToMat.weather.setKey(webserver.arg("apiKey"));
+		msg = String("Api key set to: ") + ToMat.weather.getKey();
+	}else if(webserver.hasArg("geoLocatorLatitude")){
+		double latitude = webserver.arg("geoLocatorLatitude").toDouble();
+		double longitude = webserver.arg("geoLocatorLongitude").toDouble();
+		printf("%.10f %.10f",latitude, longitude);
+		ToMat.weather.setPosition(latitude, longitude, "None");
+		msg = String("Postion set to: ")+String(ToMat.weather.getPositionLatitude())+String(" ")+String(ToMat.weather.getPositionLongitude());
+	}else{
+		File f = SPIFFS.open("/weatherSetup.html", "r");
+    	webserver.streamFile(f, "text/html");
+		f.close();
+		return;
+	}
+	String Page;
+	Page += F("<html>\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\t\t<meta name=\"viewport\" content=\"width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0\">\n\t\t<meta name=\"theme-color\" content=\"#404040\"/>\n\t\t<title>TrackJet</title>\n\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n\t\t<style>\n\t\t\tbody {\n\t\t\t\toverflow : hidden;\n\t\t\t}\n\t\t\t</style>\n\t</head>\n\t<body>\n");
+	Page += F("<p><a href='/'><input type = 'button' value = 'Remote Control page'/></a></p>");
+	Page += msg;
+	Page +=	F("</body></html>");
+
+	webserver.send(200, "text/html", Page);
+}
 
 void ToMat_class::startWiFiCaptain(String name, String password) {
     if(!beginCalled) {
@@ -143,6 +169,9 @@ void ToMat_class::startWiFiCaptain(String name, String password) {
     }
     setApCredentials(ssid_final, password);
     wifiCaptInit();
+
+	webserver.on("/weatherSetup", handleWeatherConfig);
+
     connectionEnabled = true;
 
     display.setText("    ", red);
