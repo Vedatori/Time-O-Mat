@@ -20,11 +20,8 @@ void TM::refreshTaskQuick(void * parameter) {
 
 uint32_t prevWeatherUpdate = 0;
 bool startUpWeatherUpdate = true;
-uint32_t slowRefreshStart = 0;
 void TM::refreshTaskSlow(void * parameter) {
     for(;;) {
-		slowRefreshStart = millis();
-
         ToMat.power.update();
         ToMat.updateTemperature();
 
@@ -36,7 +33,7 @@ void TM::refreshTaskSlow(void * parameter) {
 			prevWeatherUpdate = millis();
 		}
 
-        delay(constrain(1000+slowRefreshStart-millis(), 1, 1000));
+        delay(1000);
     }
 }
 

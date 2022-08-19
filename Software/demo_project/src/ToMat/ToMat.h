@@ -26,9 +26,9 @@ const char STORAGE_NAMESPACE[] = "Time_o_mat";
 const uint16_t communicationTimeout = 1000;
 
 const char WEATHER_API_KEY[] = "bde361c7c969906b9a9571a8f4a14c06";
-const uint32_t WEATHER_UPDATE = 1000 * 60 * 1;
+const uint32_t WEATHER_UPDATE = 1000 * 60 * 15; // [ms]
 
-const uint32_t PING_DELAY = 5;
+const uint32_t PING_DELAY = 5000; //[ms]
 
 void refreshTaskQuick(void * param);
 void refreshTaskSlow(void * param);
