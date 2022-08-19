@@ -42,13 +42,15 @@ class Display_TM {
     static bool characterSet[51][21];
     static float currentState[LED_COUNT][3];    // {red, green, blue}
     static ColorRGB desiredState[LED_COUNT];
-    static float panelBrightness[2];                 // {front, back}
+    static float panelBrightness[2];            // {front, back}
     static TransitionType transitionType;
     static float transitionRate;
+    static bool updateActive;
 
 public:
     static void begin();
     static void update();
+    static void setUpdateActive(bool state);
 
     static void setLED(int segmentID, int ledID, ColorRGB color);
     static void setLED(int segmentID, int ledID, ColorHSV color);

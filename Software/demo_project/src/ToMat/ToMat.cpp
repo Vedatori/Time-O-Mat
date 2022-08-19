@@ -9,9 +9,7 @@ Melody themeMelody("TEMPO=140 USECUTOFF=1 CUTOFFPERCENT=20 F5#/8 F5#/8 D5/8 B4/8
 
 void TM::refreshTaskQuick(void * parameter) {
     for(;;) {
-        if(ToMat.getDisplayRefresh()) {
-            ToMat.display.update();
-        }
+        ToMat.display.update();
         ToMat.touchBar.update();
         ToMat.illumination.update();
         delay(20);
@@ -45,7 +43,7 @@ void ToMat_class::begin() {
     xTaskCreatePinnedToCore(TM::refreshTaskQuick, "refreshTaskQuick", 10000 , NULL, 3, NULL, 1);
     xTaskCreatePinnedToCore(TM::refreshTaskSlow, "refreshTaskSlow", 10000 , NULL, 0, NULL, 0);
 
-    displayRefreshActive = true;
+    display.setUpdateActive(true);
 }
 
 bool ToMat_class::buttonRead(int buttonID) {
@@ -96,9 +94,9 @@ void ToMat_class::startWiFiCaptain(String name, String password) {
         begin();
     }
 
-    setDisplayRefresh(false);
     display.setText("----", red);
     display.update();
+    display.setUpdateActive(false);
 
     String ssid_final = "ToMat-";
     if(name.isEmpty() || name == "<your_name>") {
@@ -112,8 +110,8 @@ void ToMat_class::startWiFiCaptain(String name, String password) {
     connectionEnabled = true;
 
     display.setText("    ", red);
+    display.setUpdateActive(true);
     display.update();
-    setDisplayRefresh(true);
 }
 
 void ToMat_class::checkConnection() {
@@ -175,14 +173,6 @@ void ToMat_class::commandSend(String type, String text) {
 
 void ToMat_class::commandDisp(String text) {
     commandSend("commandDisp", text);
-}
-
-void ToMat_class::setDisplayRefresh(bool state) {
-    displayRefreshActive = state;
-}
-
-bool ToMat_class::getDisplayRefresh() {
-    return displayRefreshActive;
 }
 
 ToMat_class ToMat;

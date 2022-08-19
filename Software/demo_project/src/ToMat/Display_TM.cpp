@@ -88,17 +88,23 @@ void Display_TM::begin() {
     setBrightnessFront(1.0);
     setBrightnessBack(1.0);
     update();
+    setUpdateActive(false);
 }
 
 void Display_TM::update() {
-    static int prevTime = millis();
+    int timeNow = millis();
+    static int timePrev = timeNow;
+    float step = transitionRate * (timeNow - timePrev) / 1000.0 * 255.0;
+    timePrev = timeNow;
+
+    if(updateActive == false) {
+        return;
+    }
+
     for(uint8_t ledID = 0; ledID < LED_COUNT; ++ledID) {
         switch(transitionType) {
             case Linear: {
-                float deviation;
-                float step = transitionRate * (millis() - prevTime) / 1000.0 * 255.0;
-
-                deviation = desiredState[ledID].red - currentState[ledID][0];
+                float deviation = desiredState[ledID].red - currentState[ledID][0];
                 if(abs(deviation) < (step + 1.0)) {
                     currentState[ledID][0] = desiredState[ledID].red;
                 }
@@ -136,7 +142,10 @@ void Display_TM::update() {
         pixels.setPixelColor(ledID, color);
     }
     pixels.show();
-    prevTime = millis();
+}
+
+void Display_TM::setUpdateActive(bool state) {
+    updateActive = state;
 }
 
 void Display_TM::setLED(int segmentID, int ledID, ColorRGB color) {
@@ -269,6 +278,7 @@ ColorRGB Display_TM::desiredState[LED_COUNT] = {black, };
 float Display_TM::panelBrightness[] = {1.0, 1.0};
 TransitionType Display_TM::transitionType = None;
 float Display_TM::transitionRate = 1.0;
+bool Display_TM::updateActive = true;
 uint8_t Display_TM::charToIndexMap[21] = {0, 1, 2, 17, 3, 16, 4, 15, 5, 18, 19, 20, 14, 6, 13, 7, 12, 8, 11, 10, 9};
 bool Display_TM::characterSet[51][21] = {
     {   // "("
