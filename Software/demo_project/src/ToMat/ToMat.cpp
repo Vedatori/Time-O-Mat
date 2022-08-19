@@ -41,14 +41,26 @@ void TM::refreshTaskSlow(void * parameter) {
         ToMat.updateTemperature();
 
         static uint32_t internetUpdateTime = 0;
+        static uint32_t softApDisableTime = 0;
+        static bool softApEnabled = true;
 		if((millis() - internetUpdateTime) > TM::INTERNET_UPDATE_PERIOD || internetUpdateTime == 0) {
 			ToMat.checkInternetConnected();
-            if(ToMat.getInternetConnected() == false) {
-                continue;
+            if(ToMat.getInternetConnected()) {
+			    ToMat.weather.updateBothWF();
+                internetUpdateTime = millis();
+                if(softApEnabled) {
+                    softApDisableTime = millis();
+                }
             }
-			ToMat.weather.updateBothWF();
-            internetUpdateTime = millis();
+            else {
+                softApEnable();
+            }
 		}
+        if(softApDisableTime != 0 && (millis() - softApDisableTime) > TM::SOFT_AP_DISABLE_TIMEOUT) {
+            softApDisableTime = 0;
+            softApEnabled = false;
+            softApDisable();
+        }
         delay(1000);
     }
 }

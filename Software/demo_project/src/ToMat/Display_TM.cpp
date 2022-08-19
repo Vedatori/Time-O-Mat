@@ -102,7 +102,7 @@ void Display_TM::update() {
     }
 
     for(uint8_t ledID = 0; ledID < LED_COUNT; ++ledID) {
-        int panelSide = ledID > 85;
+        int panelSide = ledID > 85; // {front, back}
         ColorRGB dimmedColor = transformColorBrightness(desiredState[ledID], panelBrightness[panelSide]);
 
         switch(transitionType) {
