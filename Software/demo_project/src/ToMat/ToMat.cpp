@@ -18,11 +18,25 @@ void TM::refreshTaskQuick(void * parameter) {
     }
 }
 
+uint32_t prevWeatherUpdate = 0;
+bool startUpWeatherUpdate = true;
+uint32_t slowRefreshStart = 0;
 void TM::refreshTaskSlow(void * parameter) {
     for(;;) {
+		slowRefreshStart = millis();
+
         ToMat.power.update();
         ToMat.updateTemperature();
-        delay(1000);
+
+		if(((millis() - prevWeatherUpdate > TM::WEATHER_UPDATE) || startUpWeatherUpdate) && ToMat.pingInternet()){
+			startUpWeatherUpdate = false;
+			printf("Updating weather!\n");
+			ToMat.weatherApi.updateBothWF();
+
+			prevWeatherUpdate = millis();
+		}
+
+        delay(constrain(1000+slowRefreshStart-millis(), 1, 1000));
     }
 }
 
@@ -35,6 +49,11 @@ void ToMat_class::begin() {
     time.begin();
     touchBar.begin();
     piezo.begin(TM::BUZZER_CHANNEL, TM::BUZZER_PIN);
+
+	weatherApi.init();
+	if(weatherApi.getKey() == ""){
+		weatherApi.setKey(TM::WEATHER_API_KEY);
+	}
 
     for(int i = 0; i < 3; ++i) {
         pinMode(TM::BUTTON_PIN[i], INPUT_PULLUP);
@@ -126,6 +145,23 @@ void ToMat_class::checkConnection() {
     else {
         connectionActive = true;
     }
+}
+
+uint32_t prevPingTime = 0;
+bool prevPing = false;
+bool ToMat_class::pingInternet(){
+	if(!WiFi.isConnected()){
+		prevPing = false;
+		return false;
+	}
+	if(millis() - prevPingTime < TM::PING_DELAY){
+		return prevPing;
+	}
+
+	prevPing = Ping.ping(IPAddress(8,8,8,8), 1);
+
+	prevPingTime = millis();
+	return prevPing;
 }
 
 String ToMat_class::commandGet() {

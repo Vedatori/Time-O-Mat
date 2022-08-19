@@ -5,7 +5,7 @@ int prevControlTime = 0;
 
 void setup() {
     ToMat.begin();
-    ToMat.startWiFiCaptain("<your_name>");
+    ToMat.startWiFiCaptain("HonzaV.");
 
     ToMat.display.setBrightnessFront(0.2);
     ToMat.display.setBrightnessBack(0.1);
@@ -21,7 +21,8 @@ void loop() {
             ESP.restart();
         }
         if(ToMat.buttonRead(2)) {
-            ToMat.piezo.playMelody(themeMelody);
+            ToMat.weatherApi.getWeather().printDebug();
+			while(ToMat.buttonRead(2));
         }
         
         String timeDisp = ToMat.time.getClockText();
@@ -34,7 +35,7 @@ void loop() {
             ToMat.display.setColon(black);
         colonState = !colonState;
 
-        ToMat.printDiagnostics();
+        //ToMat.printDiagnostics();
     }
     delay(20);
 }

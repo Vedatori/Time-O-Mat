@@ -11,6 +11,8 @@
 #include "Illumination_module.h"
 #include "WiFiCaptain.h"
 #include <piezo/piezo.h>
+#include <weather/weatherApi.h>
+#include <ESP32Ping.h>
 
 namespace TM {
 
@@ -22,6 +24,11 @@ const uint8_t BUZZER_CHANNEL = 3;
 
 const char STORAGE_NAMESPACE[] = "Time_o_mat";
 const uint16_t communicationTimeout = 1000;
+
+const char WEATHER_API_KEY[] = "bde361c7c969906b9a9571a8f4a14c06";
+const uint32_t WEATHER_UPDATE = 1000 * 60 * 1;
+
+const uint32_t PING_DELAY = 5;
 
 void refreshTaskQuick(void * param);
 void refreshTaskSlow(void * param);
@@ -43,6 +50,8 @@ public:
     USB_C_power_module power;
     Illumination_module illumination;
     Piezo piezo;
+	WeatherApi weatherApi;
+	
 
     void begin();
     bool buttonRead(int buttonID);
@@ -53,6 +62,7 @@ public:
 
     void startWiFiCaptain(String name="", String password="");
     void checkConnection();
+	bool pingInternet();
     String commandGet();
     String commandGetIndexed(uint8_t index);
     void commandClear();

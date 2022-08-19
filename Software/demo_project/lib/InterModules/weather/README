@@ -1,0 +1,70 @@
+Using https://openweathermap.org/
+Weather codes https://openweathermap.org/weather-conditions
+
+===== Weather =====
+
+// Returns different weather data
+float getTemperature(){return temperature;}
+float getTempFeelsLike(){return tempFeelsLike;}
+float getHumidity(){return humidity;} 
+float getPressure(){return pressure;}
+int getVisibility(){Serial.println(visibility); return visibility;}
+float getWindSpeed(){return windSpeed;}
+float getWindHeading(){return windHeading;}
+float getWindGust(){return windGust;}
+float getClouds(){return clouds;}
+float getPositionLongitude(){return positionLongitude;}
+float getPositionLatitude(){return positionLatitude;}
+String getWeatherString(){return weatherString;}
+String getWeatherDescription(){return weatherDescription;}
+uint32_t getTimeOfCalculation(){return timeOfCalculation;}
+int getTimeZone(){return timeZone;}
+uint32_t getSunrise(){return sunrise;}
+uint32_t getSunset(){return sunset;}
+String getCityName(){return cityName;}
+int getCityId(){return cityId;}
+String getCountryCode(){return countryCode;}
+float getRain(){return rain;}
+float getSnow(){return snow;}
+uint16_t getWeatherCode(){return weatherCode;}
+
+
+// Internally used
+void processCurrentWeather(JsonObject JSON);
+void processForecast(JsonObject JSON);
+
+// Dumps all weather data in human-readable format
+void dump(Stream &stream);
+
+
+
+===== WeatherApi =====
+
+// Must be called before using
+void init();
+
+// Sets the api key (needs to be called only once, the key is saved into flash)
+void setKey(String key);
+
+// Sets the position (needs to be called only once, the position is saved into flash)
+void setPosition(double latitude, double longitude, String name);
+
+// Updates the data from the api
+void updateWeather();
+void updateForecast();
+void updateBothWF();
+
+// Returns weather object
+Weather getWeather();
+Weather getForecast(int index);
+
+// Gets position
+String getPositionDisplayName() {return positionName;}
+double getPositionLatitude() {return positionLat;}
+double getPositionLongitude() {return positionLon;}
+
+// Converts (city) name to position
+bool geocodingByName(String name, String &retName, double &retLat, double &retLon);
+
+// Same as previous, however it alse saves the position
+bool geocodingByName(String name);
