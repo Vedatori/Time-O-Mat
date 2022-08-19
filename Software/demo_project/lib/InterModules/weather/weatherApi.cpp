@@ -44,7 +44,7 @@ void WeatherApi::updateWeather(){
 	String data = "";
 	int code = makeHttpRequest("http://api.openweathermap.org/data/2.5/weather?units=metric&lat="+String(positionLat)+"&lon="+String(positionLon)+"&appid="+String(apiKey), data);
 	if(code!=200){
-		printf("updateWeather failed, code %d: %s", code, data);
+		printf("updateWeather failed, code %d: %s", code, data.c_str());
 		return;
 	}
 
@@ -56,7 +56,7 @@ void WeatherApi::updateForecast(){
 	String data = "";
 	int code = makeHttpRequest("http://api.openweathermap.org/data/2.5/forecast?units=metric&lat="+String(positionLat)+"&lon="+String(positionLon)+"&appid="+String(apiKey)+"&cnt="+String(WEATHER_FORECAST_SIZE), data);
 	if(code!=200){
-		printf("updateForecast failed, code %d: %s", code, data);
+		printf("updateForecast failed, code %d: %s", code, data.c_str());
 		return;
 	}
 
