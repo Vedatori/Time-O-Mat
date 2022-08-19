@@ -76,9 +76,8 @@ void ToMat_class::begin() {
     piezo.begin(TM::BUZZER_CHANNEL, TM::BUZZER_PIN);
 
 	weather.init();
-	if(weather.getKey() == ""){
-		weather.setKey(TM::WEATHER_API_KEY);
-	}
+	weather.setKey(TM::WEATHER_API_KEY, WEATHERAPI::WA_DEFAULT);
+	weather.setPosition(50.36, 15.79, "Choteborky", WEATHERAPI::WA_DEFAULT);
 
     for(int i = 0; i < 3; ++i) {
         pinMode(TM::BUTTON_PIN[i], INPUT_PULLUP);

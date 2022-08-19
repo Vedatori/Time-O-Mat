@@ -24,21 +24,48 @@ void WeatherApi::init(){
 		positionLon = preferences.getDouble("positionLon");
 		positionName = preferences.getString("positionName");
 	}
-	else {
-		setPosition(50.36, 15.79, "Choteborky");
+}
+void WeatherApi::setKey(String key, WEATHERAPI::WEATHERAPI_SET_MODE mode){
+	switch(mode){
+		case WEATHERAPI::WA_DEFAULT:
+			if (apiKey == "") apiKey = key;
+			break;
+		case WEATHERAPI::WA_SET:
+			apiKey = key;
+			break;
+		case WEATHERAPI::WA_SAVE:
+			apiKey = key;
+			preferences.putString("apiKey", apiKey);
+			break;
 	}
+	
 }
-void WeatherApi::setKey(String key){
-	apiKey = key;
-	preferences.putString("apiKey", apiKey);
-}
-void WeatherApi::setPosition(double latitude, double longitude, String name) {
-	positionLat = latitude;
-	positionLon = longitude;
-	positionName = name;
-	preferences.putDouble("positionLat", positionLat);
-	preferences.putDouble("positionLon", positionLon);
-	preferences.putString("positionName", positionName);
+void WeatherApi::setPosition(double latitude, double longitude, String name, WEATHERAPI::WEATHERAPI_SET_MODE mode) {
+	switch (mode)
+	{
+	case WEATHERAPI::WA_DEFAULT:
+		if(positionLat == 0 && positionLon == 0 && positionName == ""){
+			positionLat = latitude;
+			positionLon = longitude;
+			positionName = name;
+		}
+		break;
+	case WEATHERAPI::WA_SET:
+		positionLat = latitude;
+		positionLon = longitude;
+		positionName = name;
+		break;
+	case WEATHERAPI::WA_SAVE:
+		positionLat = latitude;
+		positionLon = longitude;
+		positionName = name;
+		preferences.putDouble("positionLat", positionLat);
+		preferences.putDouble("positionLon", positionLon);
+		preferences.putString("positionName", positionName);
+		break;
+
+	}
+	
 }
 
 
