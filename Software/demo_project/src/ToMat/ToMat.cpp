@@ -46,13 +46,16 @@ void TM::refreshTaskSlow(void * parameter) {
 		if((millis() - internetUpdateTime) > TM::INTERNET_UPDATE_PERIOD || internetUpdateTime == 0) {
 			ToMat.checkInternetConnected();
             if(ToMat.getInternetConnected()) {
+				
 			    ToMat.weather.updateBothWF();
+				ToMat.time.updateTime();
+
                 internetUpdateTime = millis();
                 if(softApEnabled) {
                     softApDisableTime = millis();
                 }
             }
-            else if(ToMat.getWifiCaptStarted()) {
+            else if(ToMat.getWifiCaptStarted() && !softApEnabled) {
                 softApEnable();
             }
 		}

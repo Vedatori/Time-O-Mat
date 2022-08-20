@@ -14,8 +14,10 @@ const int daylightOffset_sec = 3600;
 
 class Time_module {
     struct tm time;
+	const uint32_t rtcGetTimeDelay = 300;
 public:
     void begin();
+	bool updateTime();
     struct tm getTime();
     String getClockText();
 };
