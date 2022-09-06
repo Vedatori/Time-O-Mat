@@ -5,6 +5,7 @@
 
 #define LED_PIN 16
 #define LED_COUNT 95
+#define RATE_MIN 0.1
 
 typedef struct colorRGB {
     uint8_t red;
@@ -43,8 +44,8 @@ class Display_TM {
     static float currentState[LED_COUNT][3];    // {red, green, blue}
     static ColorRGB desiredState[LED_COUNT];
     static float panelBrightness[2];            // {front, back}
-    static TransitionType transitionType;
-    static float transitionRate;
+    static TransitionType transitionType[2];    // {front, back}
+    static float transitionRate[2];             // {front, back} [seconds/fullRange]
     static bool updateActive;
 
 public:
@@ -72,7 +73,8 @@ public:
 
     static void setBrightnessFront(float brightness);
     static void setBrightnessBack(float brightness);
-    static void setTransition(TransitionType aTransitionType, float aTransitionRate);
+    static void setTransitionFront(TransitionType aTransitionType, float aTransitionRate);
+    static void setTransitionBack(TransitionType aTransitionType, float aTransitionRate);
 };
 
 #endif // _DISPLAY_H_

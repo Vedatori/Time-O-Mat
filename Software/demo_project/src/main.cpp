@@ -9,7 +9,8 @@ void setup() {
 
     ToMat.display.setBrightnessFront(0.2);
     ToMat.display.setBrightnessBack(0.1);
-    ToMat.display.setTransition(Linear, 0.5);
+    ToMat.display.setTransitionFront(Linear, 1.0);
+    ToMat.display.setTransitionBack(Linear, 1.0);
     ToMat.display.setBack(white);
 }
 

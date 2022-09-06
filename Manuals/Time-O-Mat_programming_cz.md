@@ -762,18 +762,20 @@ Konstrukce `ToMat.display.setBrightnessFront(float brightness);` nastaví jas v�
 
 Obdobně lze použít konstrukci `ToMat.display.setBrightnessBack(float brightness);` pro nastavení jasu zadního LED pásku.
 
-Konstrukce `setTransition(TransitionType aTransitionType, float aTransitionRate);` slouží k nastavení přechodových animací, např. pro nastavení plynulých přechodů mezi různými stavy rozsvícení. Jedná se o volání funkce s parametry v kulatých závorkách:
+Konstrukce `setTransitionFront(TransitionType aTransitionType, float aTransitionRate);` slouží k nastavení přechodových animací, např. pro nastavení plynulých přechodů mezi různými stavy rozsvícení. Jedná se o volání funkce s parametry v kulatých závorkách:
 * `aTransitionType` udává druh přechodové animace, např. `Linear`.
-* `aTransitionRate` udává rychlost přechodové animace, např. `0.5`.
+* `aTransitionRate` udává rychlost přechodové animace, např. `1.0`.
 
-Následující příklad nastaví jas předního displeje na `0.5`, plynulý přechod s rychlostí `0.5` a zobrazí červeně slovo `AHOJ` na předním displeji.
+Obdobně lze použít konstrukci `setTransitionBack(TransitionType aTransitionType, float aTransitionRate);` pro nastavení přechodových animací zadního LED pásku.
+
+Následující příklad nastaví jas předního displeje na `0.5`, plynulý přechod s rychlostí `2.0` a zobrazí červeně slovo `AHOJ` na předním displeji.
 ```
 #include "ToMat/ToMat.h"
 
 void setup() {
     ToMat.begin();
     ToMat.display.setBrightnessFront(0.5);
-    ToMat.display.setTransition(Liner, 0.5);
+    ToMat.display.setTransition(Liner, 2.0);
     ToMat.display.setText("AHOJ", red);
 }
 

@@ -94,7 +94,7 @@ void Display_TM::begin() {
 void Display_TM::update() {
     int timeNow = millis();
     static int timePrev = timeNow;
-    float step = transitionRate * (timeNow - timePrev) / 1000.0 * 255.0;
+    int timeDiff = timeNow - timePrev;
     timePrev = timeNow;
 
     if(updateActive == false) {
@@ -104,8 +104,9 @@ void Display_TM::update() {
     for(uint8_t ledID = 0; ledID < LED_COUNT; ++ledID) {
         int panelSide = ledID > 85; // {front, back}
         ColorRGB dimmedColor = transformColorBrightness(desiredState[ledID], panelBrightness[panelSide]);
+        float step = timeDiff / 1000.0 * 255.0 / transitionRate[panelSide];
 
-        switch(transitionType) {
+        switch(transitionType[panelSide]) {
             case Linear: {
                 float deviation = dimmedColor.red - currentState[ledID][0];
                 if(abs(deviation) < (step + 1.0)) {
@@ -269,16 +270,27 @@ void Display_TM::setBrightnessBack(float brightness) {
     panelBrightness[1] = constrain(brightness, 0.0, 1.0);
 }
 
-void Display_TM::setTransition(TransitionType aTransitionType, float aTransitionRate) {
-    transitionType = aTransitionType;
-    transitionRate = aTransitionRate;
+void Display_TM::setTransitionFront(TransitionType aTransitionType, float aTransitionRate) {
+    transitionType[0] = aTransitionType;
+    if(aTransitionRate < RATE_MIN) {
+        aTransitionRate = RATE_MIN;
+    }
+    transitionRate[0] = aTransitionRate;
+}
+
+void Display_TM::setTransitionBack(TransitionType aTransitionType, float aTransitionRate) {
+    transitionType[1] = aTransitionType;
+    if(aTransitionRate < RATE_MIN) {
+        aTransitionRate = RATE_MIN;
+    }
+    transitionRate[1] = aTransitionRate;
 }
 
 float Display_TM::currentState[LED_COUNT][3] = {0.0, };
 ColorRGB Display_TM::desiredState[LED_COUNT] = {black, };
 float Display_TM::panelBrightness[] = {1.0, 1.0};
-TransitionType Display_TM::transitionType = None;
-float Display_TM::transitionRate = 1.0;
+TransitionType Display_TM::transitionType[] = {None, None};
+float Display_TM::transitionRate[] = {1.0, 1.0};
 bool Display_TM::updateActive = true;
 uint8_t Display_TM::charToIndexMap[21] = {0, 1, 2, 17, 3, 16, 4, 15, 5, 18, 19, 20, 14, 6, 13, 7, 12, 8, 11, 10, 9};
 bool Display_TM::characterSet[51][21] = {
