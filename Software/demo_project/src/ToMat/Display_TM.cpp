@@ -17,6 +17,7 @@ SegmentSelector all = {1, 1, 1, 1, 1, 1};
 SegmentSelector frontlight = {1, 1, 1, 1, 1, 0};
 SegmentSelector backlight = {0, 0, 0, 0, 0, 1};
 SegmentSelector digits = {1, 1, 0, 1, 1, 0};
+SegmentSelector colon = {0, 0, 1, 0, 0, 0};
 
 ColorRGB transformColorBrightness(ColorRGB color, float brightness) {
 
