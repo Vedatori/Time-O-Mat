@@ -745,28 +745,52 @@ Funkce `millis()` nám vrací počet uplynulých milisekund od startu Time-O-Mat
 # <a name = displej>Displej a podsvícení</a>
 Pro ovládání LEDek na displeji a na zadním podsvícení je možné použít i schopnější funkce než `.setLED()`, která umí ovládat pouze jednu LEDku.
 
-Nastavit celý jeden digit z předního displeje je možné pomocí konstrukce `ToMat.display.setChar(int charID, char character, ColorRGB color);`. Jedná se o volání funkce s parametry v kulatých závorkách:
+Pro rosvícení celého segmentu ledek jedním příkazem je možné použít konstrukci `ToMat.display.setSegment(int segmentID, ColorRGB color);`. Jedná se o volání funkce s parametry v kulatých závorkách:
+* `segmentID` který segment (úsek LEDek) chceme ovládat. Odpovídají rozdělení jako u funkce `.setLED()`.
+* `color` udává, jakou barvou má daný segment svítit.
+
+Pro rozsvícení několika vybraných segmentů jedním příkazem použijeme konstrukci `ToMat.display.ssetSegments(SegmentSelector selector, ColorRGB color);`. Jedná se o volání funkce s parametry v kulatých závorkách:
+* `selector` který definuje skupinu segmentů, které mají svítit. 
+* `color` udává, jakou barvou mají dané segmenty svítit.
+
+Parametr `selector` zde nabývá následujících hodnot:
+* `all` - Svítí všechny LED.
+* `frontlight` - Svítí všechny LED na předním panelu.
+* `backlight` - Svítí všechny LED na zadním LED pásku.
+* `digits` - Svítí všechny LED v digitech.
+* `colon` - Svítí obě LED ve dvojtečce.
+
+Pro definování vlastní kombinace pro rozsvícení více segmentů jedním příkazem použijeme kontrukci podobnou vytváření proměnných `SegmentSelector vyber = {0, 0, 0, 0, 0, 0};` Ve výčtu hodnota `0` udává, že daný segment nemá být rozsvícen a hodnota `1`, že daný digit má být rozsvícen. Hodnoty jsou ve stejném pořadí segmentů, jako je použito ve funkci `.setLED()`. 
+
+Následující příklad nejdříve vybere 2 krajní digity s dvojtečkou a následně je rozsvítí červenou barvou.
+```
+#include "ToMat/ToMat.h"
+
+void setup() {
+    ToMat.begin();
+    SegmentSelector vyber = {1, 0, 1, 0, 1, 0};
+    ToMat.display.setSegments(vyber, red);
+}
+
+void loop() {}
+```
+
+Zobrazit znak na 1 digit z předního displeje je možné pomocí konstrukce `ToMat.display.setChar(int charID, char character, ColorRGB color);`. Jedná se o volání funkce s parametry v kulatých závorkách:
 * `charID` udává, který digit chceme ovládat. Jsou číslovány od 0 (vlevo) po 3 (vpravo).
 * `character` udává, jaké písmeno se má na digitu zobrazit. Hodnotou může být např. `"A"`.
 * `color` udává, jakou barvou má daná LED svítit.
 
-Pro ovládání dvojtečky slouží konstrukce `ToMat.display.setColon(ColorRGB color);`. Ta nastaví obě dvojtečky na barvu `color`.
-
 Konstrukce `ToMat.display.setText(String text, ColorRGB color);` slouží k nastavení všech 4 digitů na text definovaný v parametru `text` (typ String). Zobrazí se pouze první 4 písmena z parametru `text` a rozsvítí se barvou z parametru `color`.
 
-Konstrukce `ToMat.display.setFront(ColorRGB color);` rozsvítí všechny LEDky na předním panelu barvou `color`.
+Konstrukce `ToMat.display.setBrightness(SegmentSelector selector, float brightness);` nastaví jas všech LEDek na vybraných segmentech. Všechny následující příkazy nastavující barvu LEDek vybraných segmentů budou nastavovat barvu se sníženým jasem. Jedná se o volání funkce s parametry v kulatých závorkách:
+* `selector` udává výběr segmentů pro provedení nastavení.
+* `brightness` nastavuje hodnotu jasu v rozsahu 0 (nesvítí vůbec) po 1 (svítí naplno).
 
-Kontrukce `ToMat.display.setBack(ColorRGB color);` rozsvítí všechny LEDky na zadím LED pásku barvou `color`.
+Konstrukce `setTransition(SegmentSelector selector, TransitionType aTransitionType, float aTransitionRate);` slouží k nastavení přechodových animací, např. pro nastavení plynulých přechodů mezi různými stavy rozsvícení. Jedná se o volání funkce s parametry v kulatých závorkách:
+* `selector` udává výběr segmentů pro provedení nastavení.
+* `aTransitionType` udává druh přechodové animace, např. `linear`.
+* `aTransitionRate` udává časovou konstantu přechodové animace ve vteřinách, např. `1.0` odpovídá přechodu plného rozsahu lineární přechodem v trvání 1 vteřiny.
 
-Konstrukce `ToMat.display.setBrightnessFront(float brightness);` nastaví jas všech LEDek na předním panelu. Parametr `brightness` nastavuje hodnotu jasu v rozsahu 0 (nesvítí vůbec) po 1 (svítí naplno). Všechny následující příkazy nastavující jejich barvu předních LEDek budou nastavovat barvu se sníženým jasem.
-
-Obdobně lze použít konstrukci `ToMat.display.setBrightnessBack(float brightness);` pro nastavení jasu zadního LED pásku.
-
-Konstrukce `setTransitionFront(TransitionType aTransitionType, float aTransitionRate);` slouží k nastavení přechodových animací, např. pro nastavení plynulých přechodů mezi různými stavy rozsvícení. Jedná se o volání funkce s parametry v kulatých závorkách:
-* `aTransitionType` udává druh přechodové animace, např. `Linear`.
-* `aTransitionRate` udává rychlost přechodové animace, např. `1.0`.
-
-Obdobně lze použít konstrukci `setTransitionBack(TransitionType aTransitionType, float aTransitionRate);` pro nastavení přechodových animací zadního LED pásku.
 
 Následující příklad nastaví jas předního displeje na `0.5`, plynulý přechod s rychlostí `2.0` a zobrazí červeně slovo `AHOJ` na předním displeji.
 ```
@@ -774,8 +798,8 @@ Následující příklad nastaví jas předního displeje na `0.5`, plynulý př
 
 void setup() {
     ToMat.begin();
-    ToMat.display.setBrightnessFront(0.5);
-    ToMat.display.setTransition(Liner, 2.0);
+    ToMat.display.setBrightness(front, 0.5);
+    ToMat.display.setTransition(front, linear, 2.0);
     ToMat.display.setText("AHOJ", red);
 }
 

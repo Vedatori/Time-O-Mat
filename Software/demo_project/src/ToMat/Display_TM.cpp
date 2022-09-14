@@ -13,6 +13,11 @@ ColorRGB cyan = {0, 255, 255};
 ColorRGB magenta = {255, 0, 255};
 ColorRGB yellow = {255, 255, 0};
 
+SegmentSelector all = {1, 1, 1, 1, 1, 1};
+SegmentSelector frontlight = {1, 1, 1, 1, 1, 0};
+SegmentSelector backlight = {0, 0, 0, 0, 0, 1};
+SegmentSelector digits = {1, 1, 0, 1, 1, 0};
+
 ColorRGB transformColorBrightness(ColorRGB color, float brightness) {
 
     color.red = constrain(round(color.red * brightness), 0, 255);
@@ -83,10 +88,8 @@ ColorHSV RGBtoHSV(ColorRGB color) {
 
 void Display_TM::begin() {
     pixels.begin();
-    setFront(black);
-    setBack(black);
-    setBrightnessFront(1.0);
-    setBrightnessBack(1.0);
+    setSegments(all, black);
+    setBrightness(all, 1.0);
     update();
     setUpdateActive(false);
 }
@@ -102,12 +105,12 @@ void Display_TM::update() {
     }
 
     for(uint8_t ledID = 0; ledID < LED_COUNT; ++ledID) {
-        int panelSide = ledID > 85; // {front, back}
-        ColorRGB dimmedColor = transformColorBrightness(desiredState[ledID], panelBrightness[panelSide]);
-        float step = timeDiff / 1000.0 * 255.0 / transitionRate[panelSide];
+        int segmentID = getSegmentIndex(ledID);
+        ColorRGB dimmedColor = transformColorBrightness(desiredState[ledID], panelBrightness[segmentID]);
+        float step = timeDiff / 1000.0 * 255.0 / transitionRate[segmentID];
 
-        switch(transitionType[panelSide]) {
-            case Linear: {
+        switch(transitionType[segmentID]) {
+            case linear: {
                 float deviation = dimmedColor.red - currentState[ledID][0];
                 if(abs(deviation) < (step + 1.0)) {
                     currentState[ledID][0] = dimmedColor.red;
@@ -135,8 +138,8 @@ void Display_TM::update() {
                     currentState[ledID][2] += sign * step;
                 }
             } break;
-            case InfiniteImpulseResponse:
-            case None:
+            case infiniteImpulseResponse:
+            case none:
             default:
                 currentState[ledID][0] = dimmedColor.red;
                 currentState[ledID][1] = dimmedColor.green;
@@ -150,6 +153,44 @@ void Display_TM::update() {
 
 void Display_TM::setUpdateActive(bool state) {
     updateActive = state;
+}
+
+bool Display_TM::getSegmentSelected(SegmentSelector selector, int segmentID) {
+    switch(segmentID) {
+        case 0:
+            return selector.digitLeftLeft;
+        case 1:
+            return selector.digitCenterLeft;
+        case 2:
+            return selector.colon;
+        case 3:
+            return selector.digitCenterRight;
+        case 4:
+            return selector.digitRightRight;
+        case 5:
+            return selector.backlight;
+        default:
+            return false;
+    }
+}
+
+int Display_TM::getSegmentIndex(int ledID) {
+    if(ledID < 0)
+        return -1;
+    if(ledID < 21)
+        return 0;
+    if(ledID < 42)
+        return 1;
+    if(ledID < 44)
+        return 2;
+    if(ledID < 65)
+        return 3;
+    if(ledID < 86)
+        return 4;
+    if(ledID < 95)
+        return 5;
+    else
+        return -1;
 }
 
 void Display_TM::setLED(int segmentID, int ledID, ColorRGB color) {
@@ -188,6 +229,30 @@ void Display_TM::setLED(int segmentID, int ledID, ColorRGB color) {
     
     desiredState[ledAbsoluteID] = color;
 }
+
+void Display_TM::setSegment(int segmentID, ColorRGB color) {
+    for(int i = 0; i < 21; ++i) {
+        setLED(segmentID, i, color);
+    }
+}
+void Display_TM::setSegment(int segmentID, ColorHSV color) {
+    ColorRGB colorRGB = HSVtoRGB(color);
+    setSegment(segmentID, colorRGB);
+}
+
+void Display_TM::setSegments(SegmentSelector selector, ColorRGB color) {
+    for(int i = 0; i < 6; ++i) {
+        if(getSegmentSelected(selector, i) == true) {
+            setSegment(i, color);
+        }
+    }
+}
+
+void Display_TM::setSegments(SegmentSelector selector, ColorHSV color) {
+    ColorRGB colorRGB = HSVtoRGB(color);
+    setSegments(selector, colorRGB);
+} 
+
 void Display_TM::setLED(int digitIndex, int ledID, ColorHSV color) {
     ColorRGB colorRGB = HSVtoRGB(color);
     setLED(digitIndex, ledID, colorRGB);
@@ -222,15 +287,6 @@ void Display_TM::setChar(int charID, char character, ColorHSV color) {
     setChar(charID, character, colorRGB);
 }
 
-void Display_TM::setColon(ColorRGB color) {
-    setLED(2, 0, color);
-    setLED(2, 1, color);
-}
-void Display_TM::setColon(ColorHSV color) {
-    ColorRGB colorRGB = HSVtoRGB(color);
-    setColon(colorRGB);
-}
-
 void Display_TM::setText(String text, ColorRGB color) {
     for(uint8_t i = 0; i < 4; ++i) {
         setChar(i, text[i], color);
@@ -241,56 +297,32 @@ void Display_TM::setText(String text, ColorHSV color) {
     setText(text, colorRGB);
 }
 
-void Display_TM::setFront(ColorRGB color) {
-   setText("8888", color);
-   setColon(color);
-}
-
-void Display_TM::setFront(ColorHSV color) {
-   setText("8888", color);
-   setColon(color);
-}
-
-void Display_TM::setBack(ColorRGB color) {
-    for(int i = 0; i < 9; ++i) {
-        setLED(5, i, color);
+void Display_TM::setBrightness(SegmentSelector selector, float brightness) {
+    for(int i = 0; i < 6; ++i) {
+        if(getSegmentSelected(selector, i) == true) {
+            panelBrightness[i] = constrain(brightness, 0.0, 1.0);
+        }
     }
 }
 
-void Display_TM::setBack(ColorHSV color) {
-    ColorRGB colorRGB = HSVtoRGB(color);
-    setBack(colorRGB);
-}
-
-void Display_TM::setBrightnessFront(float brightness) {
-    panelBrightness[0] = constrain(brightness, 0.0, 1.0);
-}
-
-void Display_TM::setBrightnessBack(float brightness) {
-    panelBrightness[1] = constrain(brightness, 0.0, 1.0);
-}
-
-void Display_TM::setTransitionFront(TransitionType aTransitionType, float aTransitionRate) {
-    transitionType[0] = aTransitionType;
+void Display_TM::setTransition(SegmentSelector selector, TransitionType aTransitionType, float aTransitionRate) {
     if(aTransitionRate < RATE_MIN) {
         aTransitionRate = RATE_MIN;
     }
-    transitionRate[0] = aTransitionRate;
-}
 
-void Display_TM::setTransitionBack(TransitionType aTransitionType, float aTransitionRate) {
-    transitionType[1] = aTransitionType;
-    if(aTransitionRate < RATE_MIN) {
-        aTransitionRate = RATE_MIN;
+    for(int i = 0; i < 6; ++i) {
+        if(getSegmentSelected(selector, i) == true) {
+            transitionType[i] = aTransitionType;
+            transitionRate[i] = aTransitionRate;
+        }
     }
-    transitionRate[1] = aTransitionRate;
 }
 
 float Display_TM::currentState[LED_COUNT][3] = {0.0, };
 ColorRGB Display_TM::desiredState[LED_COUNT] = {black, };
-float Display_TM::panelBrightness[] = {1.0, 1.0};
-TransitionType Display_TM::transitionType[] = {None, None};
-float Display_TM::transitionRate[] = {1.0, 1.0};
+float Display_TM::panelBrightness[] = {1.0, };
+TransitionType Display_TM::transitionType[] = {none, };
+float Display_TM::transitionRate[] = {1.0, };
 bool Display_TM::updateActive = true;
 uint8_t Display_TM::charToIndexMap[21] = {0, 1, 2, 17, 3, 16, 4, 15, 5, 18, 19, 20, 14, 6, 13, 7, 12, 8, 11, 10, 9};
 bool Display_TM::characterSet[51][21] = {

@@ -7,11 +7,10 @@ void setup() {
     ToMat.begin();
     ToMat.startWiFiCaptain("<your_name>");
 
-    ToMat.display.setBrightnessFront(0.2);
-    ToMat.display.setBrightnessBack(0.1);
-    ToMat.display.setTransitionFront(Linear, 1.0);
-    ToMat.display.setTransitionBack(Linear, 1.0);
-    ToMat.display.setBack(white);
+    ToMat.display.setBrightness(frontlight, 0.2);
+    ToMat.display.setBrightness(backlight, 0.05);
+    ToMat.display.setTransition(all, linear, 1.0);
+    ToMat.display.setSegments(backlight, white);
 }
 
 void loop() {
@@ -34,9 +33,9 @@ void loop() {
 
         static bool colonState = 0;
         if(colonState)
-            ToMat.display.setColon(red);
+            ToMat.display.setSegments(colon, red);
         else
-            ToMat.display.setColon(black);
+            ToMat.display.setSegments(colon, black);
         colonState = !colonState;
 
         ToMat.printDiagnostics();
