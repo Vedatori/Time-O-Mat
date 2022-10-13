@@ -46,7 +46,6 @@ void TM::refreshTaskSlow(void * parameter) {
 		if((millis() - internetUpdateTime) > TM::INTERNET_UPDATE_PERIOD || internetUpdateTime == 0) {
 			ToMat.checkInternetConnected();
             if(ToMat.getInternetConnected()) {
-				
 			    ToMat.weather.updateBothWF();
 				ToMat.time.updateTime();
 
@@ -214,7 +213,10 @@ void ToMat_class::checkInternetConnected() {
 		internetConnected = false;
 	}
     else {
-        internetConnected = Ping.ping(IPAddress(8, 8, 8, 8), 1);
+        internetConnected = 
+            Ping.ping(IPAddress(8, 8, 8, 8), 1) ||
+            Ping.ping("google.com", 1) ||
+            Ping.ping("vedatori.com", 1);
     }
 }
 

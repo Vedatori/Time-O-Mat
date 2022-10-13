@@ -15,11 +15,11 @@ void Time_module::begin() {
 
 bool Time_module::updateTime() {
 	tm ntpTime;
-	if(!getLocalTime(&ntpTime)){
+	if(!getLocalTime(&ntpTime)) {
         printf("NTP time not available!\n");
 		return false;
     }
-	if(!rtc.write(&ntpTime)){
+	if(!rtc.write(&ntpTime)) {
 		printf("RTC time write failed!\n");
 		return false;
 	}
@@ -28,7 +28,7 @@ bool Time_module::updateTime() {
 
 struct tm Time_module::getTime() {
 	static uint32_t prevGetTime = 0;
-	if(prevGetTime!=0 && millis()-prevGetTime<rtcGetTimeDelay){
+	if(prevGetTime!=0 && millis()-prevGetTime<rtcGetTimeDelay) {
 		return time;
 	}
 	prevGetTime = millis();
@@ -37,6 +37,11 @@ struct tm Time_module::getTime() {
 		printf("RTC time read failed!");
 	}
     return time;
+}
+
+TimeSource Time_module::getTimeSource() {
+	TimeSource source = TimeInternet;
+	return source;
 }
 
 String Time_module::getClockText() {

@@ -5,6 +5,12 @@
 #include "sntp.h"
 #include "time.h"
 
+enum TimeSource {
+    TimeInternet,
+    TimeRTC,
+    TimeManual
+};
+
 const char ntpServer1[] = "pool.ntp.org";
 const char ntpServer2[] = "time.nist.gov";
 const long gmtOffset_sec = 3600;
@@ -19,6 +25,7 @@ public:
     void begin();
 	bool updateTime();
     struct tm getTime();
+    TimeSource getTimeSource();
     String getClockText();
 };
 

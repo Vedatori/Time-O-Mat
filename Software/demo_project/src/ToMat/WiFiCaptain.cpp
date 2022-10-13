@@ -74,7 +74,7 @@ void handleWifi() {
         "<!DOCTYPE html><html lang='en'><head>"
         "<meta name='theme-color' content='#404040' />"
         "<meta name='viewport' content='width=device-width'>"
-        "<title>Time-O-Mar</title>"
+        "<title>Time-O-Mat</title>"
         "<link rel='stylesheet' type='text/css' href='style.css'>"
         "<style>.textDiv {margin : 3vw;}</style>"
         "</head><body><div class='textDiv'>"
