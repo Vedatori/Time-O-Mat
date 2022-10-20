@@ -31,10 +31,12 @@ void TM::refreshTaskQuick(void * parameter) {
         ToMat.display.update();
         ToMat.touchBar.update();
         ToMat.illumination.update();
+		ToMat.time.updateRtc();
         delay(20);
     }
 }
 
+static bool forceUpdateNtp = false;
 void TM::refreshTaskSlow(void * parameter) {
     for(;;) {
         ToMat.power.update();
@@ -43,11 +45,22 @@ void TM::refreshTaskSlow(void * parameter) {
         static uint32_t internetUpdateTime = 0;
         static uint32_t softApDisableTime = 0;
         static bool softApEnabled = true;
+
+		
+		if(forceUpdateNtp){
+			forceUpdateNtp = !ToMat.time.updateNtp();
+		}
+
 		if((millis() - internetUpdateTime) > TM::INTERNET_UPDATE_PERIOD || internetUpdateTime == 0) {
 			ToMat.checkInternetConnected();
+
+			forceUpdateNtp = ToMat.getInternetConnected();
+
             if(ToMat.getInternetConnected()) {
 			    ToMat.weather.updateBothWF();
-				ToMat.time.updateTime();
+
+
+				
 
                 internetUpdateTime = millis();
                 if(softApEnabled) {
@@ -73,7 +86,10 @@ void ToMat_class::begin() {
     power.update();
     illumination.update();
     display.begin();
+
+	time.setTimeZone(3600, 3600, false); //Set default time zone
     time.begin();
+
     touchBar.begin();
     piezo.begin(TM::BUZZER_CHANNEL, TM::BUZZER_PIN);
 
@@ -161,6 +177,136 @@ void handleWeatherConfig(){
 	webserver.send(200, "text/html", Page);
 }
 
+void handleTimeSetup(){
+	if(webserver.hasArg("zoneOffset")){
+
+		ToMat.time.setTimeZone(webserver.arg("zoneOffset").toInt()*3600, webserver.arg("daylightOffset").toInt()*3600, true);
+	}else if(webserver.hasArg("maunalTime")){
+		ToMat.time.setOfflineMode(webserver.hasArg("offlineMode"), true);
+
+		char buff[17];
+		for(int i = 0; i < (sizeof(buff)/sizeof(buff[0])); i++){
+			buff[i] = 0;
+		}
+
+		int year = 0;
+		int month = 0;
+		int day = 0;
+		int hour = 0;
+		int minute = 0;
+		tm newTime;
+		webserver.arg("maunalTime").toCharArray(buff, sizeof(buff)/sizeof(buff[0]));
+		for(int i = 0; i < (sizeof(buff)/sizeof(buff[0])); i++){
+			if(buff[i] == 0){
+				break;
+			}
+			switch (i)
+			{
+			case 0:
+				year += 1000*(buff[i]-'0');
+				break;
+			case 1:
+				year += 100*(buff[i]-'0');
+				break;
+			case 2:
+				year += 10*(buff[i]-'0');
+				break;
+			case 3:
+				year += 1*(buff[i]-'0');
+				break;
+			case 4:
+				break;
+			case 5:
+				month += 10*(buff[i]-'0');
+				break;
+			case 6:
+				month += 1*(buff[i]-'0');
+				break;
+			case 7:
+				break;
+			case 8:
+				day += 10*(buff[i]-'0');
+				break;
+			case 9:
+				day += 1*(buff[i]-'0');
+				break;
+			case 10:
+				break;
+			case 11:
+				hour += 10*(buff[i]-'0');
+				break;
+			case 12:
+				hour += 1*(buff[i]-'0');
+				break;
+			case 13:
+				break;
+			case 14:
+				minute += 10*(buff[i]-'0');
+				break;
+			case 15:
+				minute += 1*(buff[i]-'0');
+				break;
+			
+			default:
+				break;
+			}
+			newTime.tm_hour = hour;
+			newTime.tm_min = minute;
+			newTime.tm_isdst = -1;
+			newTime.tm_mon = month - 1;
+			newTime.tm_sec = 0;
+			newTime.tm_year = year - 1900;
+			newTime.tm_mday = day;
+		}
+		time_t newEpoch = mktime(&newTime);
+		localtime_r(&newEpoch, &newTime);
+		//printf(asctime(&newTime));
+
+		if(ToMat.time.isOffline()){
+			ToMat.time.setOfflineLocalTime(newTime);
+		}
+		
+
+		forceUpdateNtp = true;
+	}
+
+
+
+	String msg = "";
+	msg += F("Local time: ");
+	msg += ToMat.time.getLocalTimeStamp();
+	msg += F("<br>Gmt time: ");
+	msg += ToMat.time.getGmtTimeStamp();
+	msg += F("<br>Time zone offset: ");
+	msg += String(ToMat.time.getTimeZoneOffset()/3600);
+	msg += F("<br>Daylight saving offset: ");
+	msg += String(ToMat.time.getDaylightOffset()/3600);
+	msg += F("<br>Is manual time enabled: ");
+	msg += String((ToMat.time.isOffline())? "YES" : "NO");
+	msg += F("<br>Time source: ");
+	switch (ToMat.time.getTimeSource())
+	{
+	case TS_Internet:
+		msg += String("Internet (NTP)");
+		break;
+	case TS_RTC:
+		msg += String("RTC (NTP not available)");
+		break;
+	case TS_Manual:
+		msg += String("Manual (RTC)");
+		break;
+	}
+
+	File f = SPIFFS.open("/timeSetup.html", "r");
+	String page = f.readString();
+	page += msg;
+	page += "</div></body></html>";
+
+
+	webserver.send(200, "text/html", page);
+	f.close();
+}
+
 void ToMat_class::startWiFiCaptain(String name, String password) {
     wifiCaptStarted = true;
     if(!beginCalled) {
@@ -182,6 +328,7 @@ void ToMat_class::startWiFiCaptain(String name, String password) {
     wifiCaptInit();
 
 	webserver.on("/weatherSetup", handleWeatherConfig);
+	webserver.on("/timeSetup", handleTimeSetup);
 
     connectionEnabled = true;
 

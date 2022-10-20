@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="theme-color" content="#404040"/>
+		<title>Time-O-Mat</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<style>
+			body {
+				overflow : hidden;
+			}
+			</style>
+	</head>
+	<body>
+		<div class = "wrapper">
+			
+			<a href='/'><input type = "button" value = "Back to home page"/></a>
+			<form action="timeSetup" method="post" class="box3" id="timeZoneSet">
+				<p>Zone offset and daylight saving offset is in hours. Set daylight saving offset to 0 to disable it.</p>
+				<input type = "number" step="0.0001" name = "zoneOffset" placeholder = "Time zone offset"/>
+				<input type = "number" step="0.0001" name = "daylightOffset" placeholder = "Daylight saving offset"/>
+				<input type = "submit" value = "Set time zone"/>
+			</form>
+			
+			<form action="timeSetup" method="post" class="box3" id="offlineModeSet">
+				<p>If you do not select <code>Enable manual time?</code>, the clock will synchronize using NTP and manual time argument will be ignored. </p>
+				<input type = "datetime-local" id="maunalTime" name = "maunalTime" placeholder = "Set manual time"/>
+				Enable manual time?
+				<input type = "checkbox" id="offlineMode" name = "offlineMode" placeholder="Offline mode">
+				<input type = "submit" value = "Set manual time"/>
+			</form>
+			
+
+<!-- If modifing this, also modify ToMat.cpp
+		</div>
+	</body>
+</html>
+-->
