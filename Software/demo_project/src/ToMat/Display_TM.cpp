@@ -27,6 +27,13 @@ ColorRGB transformColorBrightness(ColorRGB color, float brightness) {
     return color;
 }
 
+ColorRGB shiftColor(ColorRGB color, int red, int green, int blue) {
+    color.red = constrain(color.red + red, 0, 255);
+    color.green = constrain(color.green + green, 0, 255);
+    color.blue = constrain(color.blue + blue, 0, 255);
+    return color;
+}
+
 ColorRGB HSVtoRGB(ColorHSV color) {
     float H = constrain(color.hue, 0, 360);
     while(H < 0) {

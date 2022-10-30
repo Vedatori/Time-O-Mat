@@ -20,6 +20,8 @@ typedef struct colorHSV {
 } ColorHSV;
 
 ColorRGB transformColorBrightness(ColorRGB color, float brightness);
+ColorRGB shiftColor(ColorRGB color, int red, int green, int blue);
+
 ColorRGB HSVtoRGB(ColorHSV color);
 ColorHSV RGBtoHSV(ColorRGB color);
 

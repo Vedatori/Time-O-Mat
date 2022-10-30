@@ -96,10 +96,11 @@ Načte se opět hlavní stránka ovládání Time-O-Mat. Tímto je vypnuta inter
 
 <img src="SupportFiles/prog_web_softAP.png" width="400"/>
 
-<!-- Pro ovládání Time-O-Mat s demo programem můžete používat následující příkazy. Příkazy nejsou citlivé na velikost použitých písmen.
-* `beep` - Zapne buzzer na 0,5 vteřiny na frekvenci 1000Hz
-* `take on me` - Zahraje píseň *Take on me* 
-* `silence` - Zastaví přehrávání písně -->
+Demo program umožňuje nastavení Time-O-Mat také pouze pomocí fyzických tlačítek.
+* Nastavení času: Při přidržení tlačítka 0 na levé straně (nejdále od displeje) a dotýkání se 2 dotykových tlačítek nejvíce vlevo je možné nastavit čas po minutách dolů (levé) a nahoru (pravé). Po tomto nastavení se přestane synchronizovat čas s internetovým časem až do restartu.
+* Nastavení barvy displeje: Při přidržení tlačítka 0 na levé straně (nejdále od displeje) a dotýkání se zleva 3. a 4. dotykového tlačítka je možné nastavit červenou složku barvy displeje. Levým ubereme a pravým přidáme na intenzitě. Pro zelenou složku použijeme 5. a 6. dotykové tlačítko. Pro modrou složku použijeme 7. a 8. tlačítko.
+* Zahrání demo zvuku: Stiskem tlačítka 1 na levé straně (uprostřed) spustíme demo skladbu *Maniac*.
+* Reset: Stiskem tlačítka 2 na levé straně (nejblíže displeji) resetujeme Time-O-Mat.
 
 <!-- _________________________________________________________________ -->
 # <a name = novyProjekt>Nový projekt</a>

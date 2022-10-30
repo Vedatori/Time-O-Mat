@@ -31,6 +31,7 @@ void TM::refreshTaskQuick(void * parameter) {
         ToMat.display.update();
         ToMat.touchBar.update();
         ToMat.illumination.update();
+        ToMat.time.updateRTC();
         delay(20);
     }
 }
@@ -47,7 +48,7 @@ void TM::refreshTaskSlow(void * parameter) {
 			ToMat.checkInternetConnected();
             if(ToMat.getInternetConnected()) {
 			    ToMat.weather.updateBothWF();
-				ToMat.time.updateTime();
+				ToMat.time.updateNTP();
 
                 internetUpdateTime = millis();
                 if(softApEnabled) {
@@ -257,10 +258,10 @@ void ToMat_class::internCommandHandle() {
     else {
         counter = 0;
     }
-    if(ToMat.commandGetIndexed(0) == "reset" || ToMat.commandGetIndexed(0) == "restart") {
+    if(ToMat.commandGet() == "reset" || ToMat.commandGetIndexed(0) == "restart") {
         ESP.restart();
     }
-    else if(ToMat.commandGet() == "encoder calibrate") {
+    else if(ToMat.commandGetIndexed(0) == "set") {
         ToMat.commandClear();
     }
 }
