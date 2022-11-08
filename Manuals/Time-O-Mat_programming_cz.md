@@ -96,9 +96,10 @@ Načte se opět hlavní stránka ovládání Time-O-Mat. Tímto je vypnuta inter
 
 <img src="SupportFiles/prog_web_softAP.png" width="400"/>
 
-Demo program umožňuje nastavení Time-O-Mat také pouze pomocí fyzických tlačítek.
+Demo program umožňuje také nastavení Time-O-Mat.
 * Nastavení času: Při přidržení tlačítka 0 na levé straně (nejdále od displeje) a dotýkání se 2 dotykových tlačítek nejvíce vlevo je možné nastavit čas po minutách dolů (levé) a nahoru (pravé). Po tomto nastavení se přestane synchronizovat čas s internetovým časem až do restartu.
-* Nastavení barvy displeje: Při přidržení tlačítka 0 na levé straně (nejdále od displeje) a dotýkání se zleva 3. a 4. dotykového tlačítka je možné nastavit červenou složku barvy displeje. Levým ubereme a pravým přidáme na intenzitě. Pro zelenou složku použijeme 5. a 6. dotykové tlačítko. Pro modrou složku použijeme 7. a 8. tlačítko.
+* Nastavení barvy displeje pomocí tlačítek: Při přidržení tlačítka 0 na levé straně (nejdále od displeje) a dotýkání se zleva 3. a 4. dotykového tlačítka je možné nastavit červenou složku barvy displeje. Levým ubereme a pravým přidáme na intenzitě. Pro zelenou složku použijeme 5. a 6. dotykové tlačítko. Pro modrou složku použijeme 7. a 8. tlačítko.
+* Nastavení barvy displeje pomocí webového rozhraní: Barvu nastavíte zadáním příkazu rgb r g b (r, g, b odpovídá jednotlivým hodnotám rgb kódu zvolené barvy, například pro zelenou r=0, g=255 a b=0) do pole *Command entry* a potvrzení pomocí tlačítka *Enter*. 
 * Zahrání demo zvuku: Stiskem tlačítka 1 na levé straně (uprostřed) spustíme demo skladbu *Maniac*.
 * Reset: Stiskem tlačítka 2 na levé straně (nejblíže displeji) resetujeme Time-O-Mat.
 
