@@ -54,9 +54,9 @@ void loop() {
         }
         
         if(ToMat.commandGetIndexed(0) == "rgb") {
-            uint8_t r = ToMat.commandGetIndexed(1).toInt();
-            uint8_t g = ToMat.commandGetIndexed(2).toInt();
-            uint8_t b = ToMat.commandGetIndexed(3).toInt();
+            int r = ToMat.commandGetIndexed(1).toInt();
+            int g = ToMat.commandGetIndexed(2).toInt();
+            int b = ToMat.commandGetIndexed(3).toInt();
             displayColor = {r, g, b};
             ToMat.commandClear();
         }
