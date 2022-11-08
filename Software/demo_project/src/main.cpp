@@ -4,6 +4,9 @@ const int CONTROL_PERIOD = 500;
 int prevControlTime = 0;
 ColorRGB displayColor = red;
 ColorRGB backlightColor = white;
+uint8_t r = 0;
+uint8_t g = 0;
+uint8_t b = 0;
 
 void setup() {
     ToMat.begin();
@@ -52,7 +55,14 @@ void loop() {
         if(ToMat.buttonRead(2) && ToMat.touchBar.getPressed(7)) {
             displayColor = shiftColor(displayColor, 0, 0, colorStep);
         }
-
+        
+        if(ToMat.commandGetIndexed(0) == "rgb") {
+            r = ToMat.commandGetIndexed(1).toInt();
+            g = ToMat.commandGetIndexed(2).toInt();
+            b = ToMat.commandGetIndexed(3).toInt();
+            displayColor = {r, g, b};
+            ToMat.commandClear();
+        }
 
         float displayBrightness, backlightBrightness;
         float illumination = ToMat.illumination.getRaw(0) / 4095.0;
