@@ -58,13 +58,13 @@ Heslo musí mít minimálně 8 znaků, jinak nebude použito.
 
 Po otevření projektu bude VS Code chvíli pracovat. Pokud ještě pracuje, počkejte, dokud text na dolní liště nezmizí.
 
-![alt](SupportFiles/Prog_wait_for_load.png)
+![alt](SupportFiles/prog_wait_for_load.png)
 
 Připojte Time-O-Mat pomocí USB-C kabelu k PC.
 
 V dolní liště PlatformIO stiskněte šipku a tím nahrejte program do Time-O-Mat.
 
-[alt](SupportFiles/prog_upload.png)
+![alt](SupportFiles/prog_upload.png)
 
 Počkejte, až se dokončí nahrávání a zobrazí v dolním terminálu *SUCCESS*.
 
