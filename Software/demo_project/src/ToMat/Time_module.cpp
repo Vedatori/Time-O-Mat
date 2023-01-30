@@ -70,6 +70,13 @@ void Time_module::setTime(struct tm newTime) {
 	}
 }
 
+void Time_module::setTime(int hours, int minutes) {
+	struct tm newTime;
+	newTime.tm_hour = hours;
+	newTime.tm_min = minutes;
+	setTime(newTime);
+}
+
 void Time_module::shiftMinutes(int minutes) {
 	int newHours = time.tm_hour;
 	int newMinutes = time.tm_min + minutes;

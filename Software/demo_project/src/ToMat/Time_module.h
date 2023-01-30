@@ -28,6 +28,7 @@ public:
     struct tm getTime();
     String getClockText();
     void setTime(struct tm newTime);
+    void setTime(int hours, int minutes);
     void shiftMinutes(int minutes);
 };
 

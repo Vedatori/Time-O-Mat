@@ -258,12 +258,10 @@ void ToMat_class::internCommandHandle() {
     else {
         counter = 0;
     }
-    if(ToMat.commandGet() == "reset" || ToMat.commandGetIndexed(0) == "restart") {
+    if(ToMat.commandGet() == "reset" || ToMat.commandGet() == "restart") {
         ESP.restart();
     }
-    else if(ToMat.commandGetIndexed(0) == "set") {
-        ToMat.commandClear();
-    }
+    ToMat.commandClear();
 }
 
 void ToMat_class::commandSend(String type, String text) {

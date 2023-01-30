@@ -59,6 +59,12 @@ void loop() {
             displayColor.blue = ToMat.commandGetIndexed(3).toInt();
             ToMat.commandClear();
         }
+        if(ToMat.commandGetIndexed(0) == "settime") {
+            int hours = ToMat.commandGetIndexed(1).toInt();
+            int minutes = ToMat.commandGetIndexed(2).toInt();
+            ToMat.time.setTime(hours, minutes);
+            ToMat.commandClear();
+        }
 
         float displayBrightness, backlightBrightness;
         float illumination = ToMat.illumination.getRaw(0) / 4095.0;
