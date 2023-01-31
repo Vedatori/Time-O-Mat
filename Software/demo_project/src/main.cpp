@@ -93,10 +93,12 @@ void loop() {
         ToMat.display.setSegments(backlight, backlightColor);
 
         static bool colonState = 0;
-        if(colonState)
+        if(colonState) {
             ToMat.display.setSegments(colon, displayColor);
-        else
+        }
+        else {
             //ToMat.display.setSegments(colon, black);  // Uncomment to enable colon blinking
+        }
         colonState = !colonState;
 
         //ToMat.printDiagnostics();
