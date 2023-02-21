@@ -7,6 +7,12 @@
 #define LED_COUNT 95
 #define RATE_MIN 0.1
 
+enum TransitionType {
+    none = 0,
+    linear = 1,
+    infiniteImpulseResponse = 2
+};
+
 typedef struct colorRGB {
     uint8_t red;
     uint8_t green;
@@ -19,26 +25,30 @@ typedef struct colorHSV {
     float value;
 } ColorHSV;
 
-ColorRGB transformColorBrightness(ColorRGB color, float brightness);
-ColorRGB shiftColor(ColorRGB color, int red, int green, int blue);
-
-ColorRGB HSVtoRGB(ColorHSV color);
-ColorHSV RGBtoHSV(ColorRGB color);
-
-typedef struct segmentSelector {
+typedef struct panelSelector {
     bool digitLeftLeft;
     bool digitCenterLeft;
     bool colon;
     bool digitCenterRight;
     bool digitRightRight;
     bool backlight;
-} SegmentSelector;
+} PanelSelector;
 
-enum TransitionType {
-    none = 0,
-    linear = 1,
-    infiniteImpulseResponse = 2
-};
+typedef struct ledState {
+    ColorRGB targetColor;
+    float currentColor[3];             // {red, green, blue} - True displayed color
+    float brightness;               // [0.0-1.0]
+    TransitionType transitionType;
+    float transitionRate;           // [seconds/fullRange]
+} LedState;
+
+ColorRGB dimColor(ColorRGB color, float brightness);
+ColorRGB shiftColor(ColorRGB color, int red, int green, int blue);
+ColorRGB HSVtoRGB(ColorHSV color);
+ColorHSV RGBtoHSV(ColorRGB color);
+bool isPanelSelected(PanelSelector selector, int panelID);
+int getPanelIndex(int ledID);
+ColorRGB transformColor(LedState state, int timeStep);
 
 extern ColorRGB red;
 extern ColorRGB green;
@@ -48,38 +58,38 @@ extern ColorRGB magenta;
 extern ColorRGB yellow;
 extern ColorRGB black;
 extern ColorRGB white;
+extern ColorRGB pink;
+extern ColorRGB brown;
+extern ColorRGB salmon;
+extern ColorRGB orange;
+extern ColorRGB gold;
+extern ColorRGB tomato;
 
-extern SegmentSelector all;
-extern SegmentSelector frontlight;
-extern SegmentSelector backlight;
-extern SegmentSelector digits;
-extern SegmentSelector colon;
+extern PanelSelector all;
+extern PanelSelector frontlight;
+extern PanelSelector backlight;
+extern PanelSelector digits;
+extern PanelSelector colon;
 
 class Display_TM {
-    static uint8_t charToIndexMap[21];
-    static bool characterSet[51][21];
-    static float currentState[LED_COUNT][3];    // {red, green, blue}
-    static ColorRGB desiredState[LED_COUNT];
-    static float panelBrightness[6];            // {leftLeft, centerLeft, colon, centerRight, rightRight, backlight}
-    static TransitionType transitionType[6];
-    static float transitionRate[6];             // [seconds/fullRange]
-    static bool updateActive;
+    static LedState ledState[LED_COUNT];
+    static bool updateActive;                   // 0-not active, 1-active
+    static uint8_t charToIndexMap[21];          // Logical to physical LED index mapping for 1 digit
+    static bool characterSet[51][21];           // Symbol alphabet
 
 public:
     static void begin();
     static void update();
     static void setUpdateActive(bool state);
-    static bool getSegmentSelected(SegmentSelector selector, int segmentID);
-    static int getSegmentIndex(int ledID);
 
-    static void setLED(int segmentID, int ledID, ColorRGB color);
-    static void setLED(int segmentID, int ledID, ColorHSV color);
+    static void setLED(int panelID, int ledID, ColorRGB color);
+    static void setLED(int panelID, int ledID, ColorHSV color);
 
-    static void setSegment(int segmentID, ColorRGB color);
-    static void setSegment(int segmentID, ColorHSV color);
+    static void setPanel(int panelID, ColorRGB color);
+    static void setPanel(int panelID, ColorHSV color);
 
-    static void setSegments(SegmentSelector selector, ColorRGB color);
-    static void setSegments(SegmentSelector selector, ColorHSV color);
+    static void setPanels(PanelSelector selector, ColorRGB color);
+    static void setPanels(PanelSelector selector, ColorHSV color);
 
     static void setChar(int charID, char character, ColorRGB color);
     static void setChar(int charID, char character, ColorHSV color);
@@ -87,8 +97,8 @@ public:
     static void setText(String text, ColorRGB color);
     static void setText(String text, ColorHSV color);
 
-    static void setBrightness(SegmentSelector selector, float brightness);
-    static void setTransition(SegmentSelector selector, TransitionType aTransitionType, float aTransitionRate);
+    static void setBrightness(PanelSelector selector, float brightness);
+    static void setTransition(PanelSelector selector, TransitionType aTransitionType, float apanelTransRate);
 };
 
 #endif // _DISPLAY_H_

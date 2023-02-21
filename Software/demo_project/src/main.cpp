@@ -9,8 +9,7 @@ void setup() {
     ToMat.begin();
     ToMat.startWiFiCaptain("<your_name>");
 
-    ToMat.display.setTransition(all, linear, 3.0);
-    ToMat.display.setTransition(colon, linear, 1.0);
+    //ToMat.display.setTransition(all, linear, 3.0);
 }
 
 void loop() {
@@ -90,18 +89,9 @@ void loop() {
 
         String timeDisp = ToMat.time.getClockText();
         ToMat.display.setText(timeDisp, displayColor);
-        ToMat.display.setSegments(backlight, backlightColor);
+        ToMat.display.setPanels(backlight, backlightColor);
 
-        static bool colonState = 0;
-        if(colonState) {
-            ToMat.display.setSegments(colon, displayColor);
-        }
-        else {
-            //ToMat.display.setSegments(colon, black);  // Uncomment to enable colon blinking
-        }
-        colonState = !colonState;
-
-        //ToMat.printDiagnostics();
+        ToMat.printDiagnostics();
     }
     delay(20);
 }

@@ -4,23 +4,28 @@
 
 Adafruit_NeoPixel pixels(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
-ColorRGB black = {0, 0, 0};
-ColorRGB white = {255, 255, 255};
 ColorRGB red = {255, 0, 0};
 ColorRGB green = {0, 255, 0};
 ColorRGB blue = {0, 0, 255};
 ColorRGB cyan = {0, 255, 255};
 ColorRGB magenta = {255, 0, 255};
 ColorRGB yellow = {255, 255, 0};
+ColorRGB black = {0, 0, 0};
+ColorRGB white = {255, 255, 255};
+ColorRGB pink = {255, 192, 203};
+ColorRGB brown = {165, 42, 42};
+ColorRGB salmon = {250, 128, 114};
+ColorRGB orange = {255, 165, 0};
+ColorRGB gold = {255, 215, 0};
+ColorRGB tomato = {255, 99, 71};
 
-SegmentSelector all = {1, 1, 1, 1, 1, 1};
-SegmentSelector frontlight = {1, 1, 1, 1, 1, 0};
-SegmentSelector backlight = {0, 0, 0, 0, 0, 1};
-SegmentSelector digits = {1, 1, 0, 1, 1, 0};
-SegmentSelector colon = {0, 0, 1, 0, 0, 0};
+PanelSelector all = {1, 1, 1, 1, 1, 1};
+PanelSelector frontlight = {1, 1, 1, 1, 1, 0};
+PanelSelector backlight = {0, 0, 0, 0, 0, 1};
+PanelSelector digits = {1, 1, 0, 1, 1, 0};
+PanelSelector colon = {0, 0, 1, 0, 0, 0};
 
-ColorRGB transformColorBrightness(ColorRGB color, float brightness) {
-
+ColorRGB dimColor(ColorRGB color, float brightness) {
     color.red = constrain(round(color.red * brightness), 0, 255);
     color.green = constrain(round(color.green * brightness), 0, 255);
     color.blue = constrain(round(color.blue * brightness), 0, 255);
@@ -94,77 +99,8 @@ ColorHSV RGBtoHSV(ColorRGB color) {
     return colorHSV;
 }
 
-void Display_TM::begin() {
-    pixels.begin();
-    setSegments(all, black);
-    setBrightness(all, 1.0);
-    update();
-    setUpdateActive(false);
-}
-
-void Display_TM::update() {
-    int timeNow = millis();
-    static int timePrev = timeNow;
-    int timeDiff = timeNow - timePrev;
-    timePrev = timeNow;
-
-    if(updateActive == false) {
-        return;
-    }
-
-    for(uint8_t ledID = 0; ledID < LED_COUNT; ++ledID) {
-        int segmentID = getSegmentIndex(ledID);
-        ColorRGB dimmedColor = transformColorBrightness(desiredState[ledID], panelBrightness[segmentID]);
-        float step = timeDiff / 1000.0 * 255.0 / transitionRate[segmentID];
-
-        switch(transitionType[segmentID]) {
-            case linear: {
-                float deviation = dimmedColor.red - currentState[ledID][0];
-                if(abs(deviation) < (step + 1.0)) {
-                    currentState[ledID][0] = dimmedColor.red;
-                }
-                else {
-                    int8_t sign = deviation > 0 ? 1 : -1;
-                    currentState[ledID][0] += sign * step;
-                }
-
-                deviation = dimmedColor.green - currentState[ledID][1];
-                if(abs(deviation) < (step + 1.0)) {
-                    currentState[ledID][1] = dimmedColor.green;
-                }
-                else {
-                    int8_t sign = deviation > 0 ? 1 : -1;
-                    currentState[ledID][1] += sign * step;
-                }
-
-                deviation = dimmedColor.blue - currentState[ledID][2];
-                if(abs(deviation) < (step + 1.0)) {
-                    currentState[ledID][2] = dimmedColor.blue;
-                }
-                else {
-                    int8_t sign = deviation > 0 ? 1 : -1;
-                    currentState[ledID][2] += sign * step;
-                }
-            } break;
-            case infiniteImpulseResponse:
-            case none:
-            default:
-                currentState[ledID][0] = dimmedColor.red;
-                currentState[ledID][1] = dimmedColor.green;
-                currentState[ledID][2] = dimmedColor.blue;
-        }
-        uint32_t color = pixels.Color(round(currentState[ledID][0]), round(currentState[ledID][1]), round(currentState[ledID][2]));
-        pixels.setPixelColor(ledID, color);
-    }
-    pixels.show();
-}
-
-void Display_TM::setUpdateActive(bool state) {
-    updateActive = state;
-}
-
-bool Display_TM::getSegmentSelected(SegmentSelector selector, int segmentID) {
-    switch(segmentID) {
+bool isPanelSelected(PanelSelector selector, int panelID) {
+    switch(panelID) {
         case 0:
             return selector.digitLeftLeft;
         case 1:
@@ -182,7 +118,7 @@ bool Display_TM::getSegmentSelected(SegmentSelector selector, int segmentID) {
     }
 }
 
-int Display_TM::getSegmentIndex(int ledID) {
+int getPanelIndex(int ledID) {
     if(ledID < 0)
         return -1;
     if(ledID < 21)
@@ -201,8 +137,66 @@ int Display_TM::getSegmentIndex(int ledID) {
         return -1;
 }
 
-void Display_TM::setLED(int segmentID, int ledID, ColorRGB color) {
-    if(segmentID < 0 || segmentID > 5)
+ColorRGB transformColor(LedState state, int timeStep) {
+    ColorRGB dimmedColor = dimColor(state.targetColor, state.brightness);
+    float step = timeStep / 1000.0 * 255.0 / state.transitionRate;
+
+    switch(state.transitionType) {
+        case linear: {
+            float deviation = dimmedColor.red - state.currentColor[0];
+            if(abs(deviation) < (step + 1.0)) {
+                state.currentColor[0] = dimmedColor.red;
+            }
+            else {
+                int8_t sign = deviation > 0 ? 1 : -1;
+                state.currentColor[0] += sign * step;
+            }
+
+        } break;
+        case infiniteImpulseResponse:
+        case none:
+        default:
+            state.currentColor[0] = dimmedColor.red;
+    }
+    ColorRGB outColor = {
+        uint8_t(round(state.currentColor[0])),
+        uint8_t(round(state.currentColor[1])),
+        uint8_t(round(state.currentColor[2]))
+    };
+    return outColor;
+}
+
+void Display_TM::begin() {
+    pixels.begin();
+    setPanels(all, black);
+    setBrightness(all, 1.0);
+    update();
+}
+
+void Display_TM::update() {
+    int timeNow = millis();
+    static int timePrev = timeNow;
+    int timeStep = timeNow - timePrev;
+    timePrev = timeNow;
+
+    if(updateActive == false) {
+        return;
+    }
+
+    for(uint8_t ledID = 0; ledID < LED_COUNT; ++ledID) {
+        ColorRGB currentColor = transformColor(ledState[ledID], timeStep);
+        uint32_t color = pixels.Color(currentColor.red, currentColor.green, currentColor.blue);
+        pixels.setPixelColor(ledID, color);
+    }
+    pixels.show();
+}
+
+void Display_TM::setUpdateActive(bool state) {
+    updateActive = state;
+}
+
+void Display_TM::setLED(int panelID, int ledID, ColorRGB color) {
+    if(panelID < 0 || panelID > 5)
         return;
     if(ledID < 0 || ledID > 20)
         return;
@@ -210,55 +204,54 @@ void Display_TM::setLED(int segmentID, int ledID, ColorRGB color) {
     int ledAbsoluteID = 0;
 
     // 2 leftmost digits
-    if(segmentID <= 1)
-        ledAbsoluteID = segmentID * 21 + charToIndexMap[ledID];
+    if(panelID <= 1)
+        ledAbsoluteID = panelID * 21 + charToIndexMap[ledID];
 
     // Center colon
-    else if(segmentID == 2) {
+    else if(panelID == 2) {
         if(ledID > 1)
             return;
-        ledAbsoluteID = segmentID * 21 + ledID;
+        ledAbsoluteID = panelID * 21 + ledID;
     }
         
     // 2 rightmost digits
-    else if(segmentID <= 4)
-        ledAbsoluteID = (segmentID - 1) * 21 + 2 + charToIndexMap[ledID];
+    else if(panelID <= 4)
+        ledAbsoluteID = (panelID - 1) * 21 + 2 + charToIndexMap[ledID];
     
     // Backlight
     else {
         if(ledID > 8)
             return;
-        ledAbsoluteID = (segmentID - 1) * 21 + 2 + ledID;
+        ledAbsoluteID = (panelID - 1) * 21 + 2 + ledID;
     }
 
     if(ledAbsoluteID < 0 || ledAbsoluteID > LED_COUNT) {
         return;
     }
-    
-    desiredState[ledAbsoluteID] = color;
+    ledState[ledAbsoluteID].targetColor = color;
 }
 
-void Display_TM::setSegment(int segmentID, ColorRGB color) {
+void Display_TM::setPanel(int panelID, ColorRGB color) {
     for(int i = 0; i < 21; ++i) {
-        setLED(segmentID, i, color);
+        setLED(panelID, i, color);
     }
 }
-void Display_TM::setSegment(int segmentID, ColorHSV color) {
+void Display_TM::setPanel(int panelID, ColorHSV color) {
     ColorRGB colorRGB = HSVtoRGB(color);
-    setSegment(segmentID, colorRGB);
+    setPanel(panelID, colorRGB);
 }
 
-void Display_TM::setSegments(SegmentSelector selector, ColorRGB color) {
+void Display_TM::setPanels(PanelSelector selector, ColorRGB color) {
     for(int i = 0; i < 6; ++i) {
-        if(getSegmentSelected(selector, i) == true) {
-            setSegment(i, color);
+        if(isPanelSelected(selector, i) == true) {
+            setPanel(i, color);
         }
     }
 }
 
-void Display_TM::setSegments(SegmentSelector selector, ColorHSV color) {
+void Display_TM::setPanels(PanelSelector selector, ColorHSV color) {
     ColorRGB colorRGB = HSVtoRGB(color);
-    setSegments(selector, colorRGB);
+    setPanels(selector, colorRGB);
 } 
 
 void Display_TM::setLED(int digitIndex, int ledID, ColorHSV color) {
@@ -269,13 +262,13 @@ void Display_TM::setLED(int digitIndex, int ledID, ColorHSV color) {
 void Display_TM::setChar(int charID, char character, ColorRGB color) {
     if(charID < 0 || charID > 3)
         return;
-	int segmentID = charID;
-    if(segmentID >= 2)
-        ++segmentID;    // center colon segment offset
+	int panelID = charID;
+    if(panelID >= 2)
+        ++panelID;    // center colon panel offset
 	
 	if(character == ' '){
 		for(uint8_t i = 0; i < 21; ++i) {
-			setLED(segmentID, i, black);
+			setLED(panelID, i, black);
 		}
 	}
 
@@ -283,10 +276,10 @@ void Display_TM::setChar(int charID, char character, ColorRGB color) {
         return;
     for(uint8_t i = 0; i < 21; ++i) {
         if(characterSet[character - 40][i]) {
-            setLED(segmentID, i, color);
+            setLED(panelID, i, color);
         }
         else {
-            setLED(segmentID, i, black);
+            setLED(panelID, i, black);
         }
     }
 }
@@ -305,33 +298,29 @@ void Display_TM::setText(String text, ColorHSV color) {
     setText(text, colorRGB);
 }
 
-void Display_TM::setBrightness(SegmentSelector selector, float brightness) {
+void Display_TM::setBrightness(PanelSelector selector, float brightness) {
     for(int i = 0; i < 6; ++i) {
-        if(getSegmentSelected(selector, i) == true) {
-            panelBrightness[i] = constrain(brightness, 0.0, 1.0);
+        if(isPanelSelected(selector, i) == true) {
+            ledState[i].brightness = constrain(brightness, 0.0, 1.0);
         }
     }
 }
 
-void Display_TM::setTransition(SegmentSelector selector, TransitionType aTransitionType, float aTransitionRate) {
-    if(aTransitionRate < RATE_MIN) {
-        aTransitionRate = RATE_MIN;
+void Display_TM::setTransition(PanelSelector selector, TransitionType transition, float rate) {
+    if(rate < RATE_MIN) {
+        rate = RATE_MIN;
     }
 
     for(int i = 0; i < 6; ++i) {
-        if(getSegmentSelected(selector, i) == true) {
-            transitionType[i] = aTransitionType;
-            transitionRate[i] = aTransitionRate;
+        if(isPanelSelected(selector, i) == true) {
+            ledState[i].transitionType = transition;
+            ledState[i].transitionRate = rate;
         }
     }
 }
 
-float Display_TM::currentState[LED_COUNT][3] = {0.0, };
-ColorRGB Display_TM::desiredState[LED_COUNT] = {black, };
-float Display_TM::panelBrightness[] = {1.0, };
-TransitionType Display_TM::transitionType[] = {none, };
-float Display_TM::transitionRate[] = {1.0, };
-bool Display_TM::updateActive = true;
+LedState Display_TM::ledState[LED_COUNT] = {{{0, 0, 0}, {0.0, 0.0, 0.0}, 1.0, none, 1.0}, };
+bool Display_TM::updateActive = false;
 uint8_t Display_TM::charToIndexMap[21] = {0, 1, 2, 17, 3, 16, 4, 15, 5, 18, 19, 20, 14, 6, 13, 7, 12, 8, 11, 10, 9};
 bool Display_TM::characterSet[51][21] = {
     {   // "("
