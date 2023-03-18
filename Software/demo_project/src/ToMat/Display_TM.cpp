@@ -26,9 +26,12 @@ PanelSelector digits = {1, 1, 0, 1, 1, 0};
 PanelSelector colon = {0, 0, 1, 0, 0, 0};
 
 ColorRGB dimColor(ColorRGB color, float brightness) {
-    color.red = constrain(round(color.red * brightness), 0, 255);
-    color.green = constrain(round(color.green * brightness), 0, 255);
-    color.blue = constrain(round(color.blue * brightness), 0, 255);
+    brightness = constrain(brightness, 0.0, 1.0);
+
+    uint8_t * colorPtr = (uint8_t *)&color;
+    for(int i = 0; i < 3; ++i) {
+        colorPtr[i] = constrain(colorPtr[i] * brightness, 0, 255);
+    }
     return color;
 }
 
@@ -99,7 +102,7 @@ ColorHSV RGBtoHSV(ColorRGB color) {
     return colorHSV;
 }
 
-bool isPanelSelected(PanelSelector selector, int panelID) {
+bool Display_TM::isPanelSelected(PanelSelector selector, int panelID) {
     switch(panelID) {
         case 0:
             return selector.digitLeftLeft;
@@ -118,7 +121,7 @@ bool isPanelSelected(PanelSelector selector, int panelID) {
     }
 }
 
-int getPanelIndex(int ledID) {
+int Display_TM::getPanelID(int ledID) {
     if(ledID < 0)
         return -1;
     if(ledID < 21)
@@ -137,32 +140,73 @@ int getPanelIndex(int ledID) {
         return -1;
 }
 
-ColorRGB transformColor(LedState state, int timeStep) {
-    ColorRGB dimmedColor = dimColor(state.targetColor, state.brightness);
-    float step = timeStep / 1000.0 * 255.0 / state.transitionRate;
+int Display_TM::getLedAbsID(int panelID, int ledID) {
+    if(panelID < 0 || panelID > 5)
+        return -1;
+    if(ledID < 0 || ledID > 20)
+        return -1;
+    
+    int ledAbsoluteID = 0;
 
+    // 2 leftmost digits
+    if(panelID <= 1)
+        ledAbsoluteID = panelID * 21 + charToIndexMap[ledID];
+
+    // Center colon
+    else if(panelID == 2) {
+        if(ledID > 1)
+            return -1;
+        ledAbsoluteID = panelID * 21 + ledID;
+    }
+        
+    // 2 rightmost digits
+    else if(panelID <= 4)
+        ledAbsoluteID = (panelID - 1) * 21 + 2 + charToIndexMap[ledID];
+    
+    // Backlight
+    else {
+        if(ledID > 8)
+            return -1;
+        ledAbsoluteID = (panelID - 1) * 21 + 2 + ledID;
+    }
+
+    if(ledAbsoluteID < 0 || ledAbsoluteID > LED_COUNT) {
+        return -1;
+    }
+    return ledAbsoluteID;
+}
+
+ColorRGB Display_TM::updateLedState(LedState & state, int timeStep) {
+    ColorRGB color = dimColor(state.targetColor, state.brightness);
+    uint8_t * colorPtr = (uint8_t *)&color;
+    float step = timeStep / 1000.0 * 255.0 / state.transitionRate;
+    
     switch(state.transitionType) {
         case linear: {
-            float deviation = dimmedColor.red - state.currentColor[0];
-            if(abs(deviation) < (step + 1.0)) {
-                state.currentColor[0] = dimmedColor.red;
-            }
-            else {
-                int8_t sign = deviation > 0 ? 1 : -1;
-                state.currentColor[0] += sign * step;
+            for(int ledID = 0; ledID < 3; ++ledID) {
+                float deviation = colorPtr[ledID] - state.currentColor[ledID];
+                if(abs(deviation) < (step + 1.0)) {
+                    state.currentColor[ledID] = colorPtr[ledID];
+                }
+                else {
+                    int8_t sign = deviation > 0.0 ? 1 : -1;
+                    state.currentColor[ledID] += sign * step;
+                }
             }
 
         } break;
         case infiniteImpulseResponse:
         case none:
         default:
-            state.currentColor[0] = dimmedColor.red;
+            for(int ledID = 0; ledID < 3; ++ledID) {
+                state.currentColor[ledID] = colorPtr[ledID];
+            }
     }
-    ColorRGB outColor = {
-        uint8_t(round(state.currentColor[0])),
-        uint8_t(round(state.currentColor[1])),
-        uint8_t(round(state.currentColor[2]))
-    };
+    
+    ColorRGB outColor;
+    outColor.red = constrain(round(state.currentColor[0]), 0, 255);
+    outColor.green = constrain(round(state.currentColor[1]), 0, 255);
+    outColor.blue = constrain(round(state.currentColor[2]), 0, 255);
     return outColor;
 }
 
@@ -170,6 +214,7 @@ void Display_TM::begin() {
     pixels.begin();
     setPanels(all, black);
     setBrightness(all, 1.0);
+    setTransition(all, none, 1.0);
     update();
 }
 
@@ -184,7 +229,7 @@ void Display_TM::update() {
     }
 
     for(uint8_t ledID = 0; ledID < LED_COUNT; ++ledID) {
-        ColorRGB currentColor = transformColor(ledState[ledID], timeStep);
+        ColorRGB currentColor = updateLedState(ledState[ledID], timeStep);
         uint32_t color = pixels.Color(currentColor.red, currentColor.green, currentColor.blue);
         pixels.setPixelColor(ledID, color);
     }
@@ -196,39 +241,13 @@ void Display_TM::setUpdateActive(bool state) {
 }
 
 void Display_TM::setLED(int panelID, int ledID, ColorRGB color) {
-    if(panelID < 0 || panelID > 5)
-        return;
-    if(ledID < 0 || ledID > 20)
-        return;
-    
-    int ledAbsoluteID = 0;
+    int ledAbsID = getLedAbsID(panelID, ledID);
+    ledState[ledAbsID].targetColor = color;
+}
 
-    // 2 leftmost digits
-    if(panelID <= 1)
-        ledAbsoluteID = panelID * 21 + charToIndexMap[ledID];
-
-    // Center colon
-    else if(panelID == 2) {
-        if(ledID > 1)
-            return;
-        ledAbsoluteID = panelID * 21 + ledID;
-    }
-        
-    // 2 rightmost digits
-    else if(panelID <= 4)
-        ledAbsoluteID = (panelID - 1) * 21 + 2 + charToIndexMap[ledID];
-    
-    // Backlight
-    else {
-        if(ledID > 8)
-            return;
-        ledAbsoluteID = (panelID - 1) * 21 + 2 + ledID;
-    }
-
-    if(ledAbsoluteID < 0 || ledAbsoluteID > LED_COUNT) {
-        return;
-    }
-    ledState[ledAbsoluteID].targetColor = color;
+void Display_TM::setLED(int panelID, int ledID, ColorHSV color) {
+    ColorRGB colorRGB = HSVtoRGB(color);
+    setLED(panelID, ledID, colorRGB);
 }
 
 void Display_TM::setPanel(int panelID, ColorRGB color) {
@@ -253,11 +272,6 @@ void Display_TM::setPanels(PanelSelector selector, ColorHSV color) {
     ColorRGB colorRGB = HSVtoRGB(color);
     setPanels(selector, colorRGB);
 } 
-
-void Display_TM::setLED(int digitIndex, int ledID, ColorHSV color) {
-    ColorRGB colorRGB = HSVtoRGB(color);
-    setLED(digitIndex, ledID, colorRGB);
-}
 
 void Display_TM::setChar(int charID, char character, ColorRGB color) {
     if(charID < 0 || charID > 3)
@@ -299,9 +313,12 @@ void Display_TM::setText(String text, ColorHSV color) {
 }
 
 void Display_TM::setBrightness(PanelSelector selector, float brightness) {
-    for(int i = 0; i < 6; ++i) {
-        if(isPanelSelected(selector, i) == true) {
-            ledState[i].brightness = constrain(brightness, 0.0, 1.0);
+    brightness = constrain(brightness, 0.0, 1.0);
+
+    for(int ledID = 0; ledID < LED_COUNT; ++ledID) {
+        int panelID = getPanelID(ledID);
+        if(isPanelSelected(selector, panelID) == true) {
+            ledState[ledID].brightness = brightness;
         }
     }
 }
@@ -311,15 +328,16 @@ void Display_TM::setTransition(PanelSelector selector, TransitionType transition
         rate = RATE_MIN;
     }
 
-    for(int i = 0; i < 6; ++i) {
-        if(isPanelSelected(selector, i) == true) {
-            ledState[i].transitionType = transition;
-            ledState[i].transitionRate = rate;
+    for(int ledID = 0; ledID < LED_COUNT; ++ledID) {
+        int panelID = getPanelID(ledID);
+        if(isPanelSelected(selector, panelID) == true) {
+            ledState[ledID].transitionType = transition;
+            ledState[ledID].transitionRate = rate;
         }
     }
 }
 
-LedState Display_TM::ledState[LED_COUNT] = {{{0, 0, 0}, {0.0, 0.0, 0.0}, 1.0, none, 1.0}, };
+LedState Display_TM::ledState[LED_COUNT] = {0, };
 bool Display_TM::updateActive = false;
 uint8_t Display_TM::charToIndexMap[21] = {0, 1, 2, 17, 3, 16, 4, 15, 5, 18, 19, 20, 14, 6, 13, 7, 12, 8, 11, 10, 9};
 bool Display_TM::characterSet[51][21] = {

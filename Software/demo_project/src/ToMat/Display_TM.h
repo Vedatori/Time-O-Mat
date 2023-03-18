@@ -46,9 +46,6 @@ ColorRGB dimColor(ColorRGB color, float brightness);
 ColorRGB shiftColor(ColorRGB color, int red, int green, int blue);
 ColorRGB HSVtoRGB(ColorHSV color);
 ColorHSV RGBtoHSV(ColorRGB color);
-bool isPanelSelected(PanelSelector selector, int panelID);
-int getPanelIndex(int ledID);
-ColorRGB transformColor(LedState state, int timeStep);
 
 extern ColorRGB red;
 extern ColorRGB green;
@@ -76,6 +73,11 @@ class Display_TM {
     static bool updateActive;                   // 0-not active, 1-active
     static uint8_t charToIndexMap[21];          // Logical to physical LED index mapping for 1 digit
     static bool characterSet[51][21];           // Symbol alphabet
+
+    static bool isPanelSelected(PanelSelector selector, int panelID);
+    static int getPanelID(int ledID);
+    static int getLedAbsID(int panelID, int ledID);
+    static ColorRGB updateLedState(LedState & state, int timeStep);
 
 public:
     static void begin();
