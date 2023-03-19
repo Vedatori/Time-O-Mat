@@ -43,7 +43,7 @@ ColorRGB shiftColor(ColorRGB color, int red, int green, int blue) {
 }
 
 ColorRGB HSVtoRGB(ColorHSV color) {
-    float H = constrain(color.hue, 0, 360);
+    float H = color.hue;
     while(H < 0) {
         H += 360;
     }
@@ -97,8 +97,72 @@ ColorRGB HSVtoRGB(ColorHSV color) {
 }
 
 ColorHSV RGBtoHSV(ColorRGB color) {
-    // TODO
+    uint8_t * colorPtr = (uint8_t *)&color;
+    float colorNorm[3];
+    for(int colorID = 0; colorID < 3; ++colorID) {
+        colorNorm[colorID] = colorPtr[colorID] / 255.0;
+    }
+
+    int maxID = 0, minID = 0;  // 0-red, 1-green, 2-blue
+    float mMax = 0, mMin = 0;
+    if(colorNorm[0] >= colorNorm[1] && colorNorm[0] >= colorNorm[2]) {
+        mMax = colorNorm[0];
+        maxID = 0;
+    }
+    else if(colorNorm[1] >= colorNorm[0] && colorNorm[1] >= colorNorm[2]) {
+        mMax = colorNorm[1];
+        maxID = 1;
+    }
+    else {
+        mMax = colorNorm[2];
+        maxID = 2;
+    }
+    if(colorNorm[0] <= colorNorm[1] && colorNorm[0] <= colorNorm[2]) {
+        mMin = colorNorm[0];
+        minID = 0;
+    }
+    else if(colorNorm[1] <= colorNorm[0] && colorNorm[1] <= colorNorm[2]) {
+        mMin = colorNorm[1];
+        minID = 1;
+    }
+    else {
+        mMin = colorNorm[2];
+        minID = 2;
+    }
+
+    float c = mMax - mMin;
+    float colorTemp[3];
+    for(int colorID = 0; colorID < 3; ++colorID) {
+        colorTemp[colorID] = (mMax - colorNorm[colorID]) / c;
+    }
+    float hTemp = 0;
+    if(maxID == minID) {
+        hTemp = 0;
+    }
+    else if (maxID == 0) {
+        hTemp = colorTemp[2] - colorTemp[1];
+    }
+    else if (maxID == 1) {
+        hTemp = 2 + colorTemp[0] - colorTemp[2];
+    }
+    else if (maxID == 2) {
+        hTemp = 4 + colorTemp[1] - colorTemp[0];
+    }
+    while(hTemp < 0) {
+        hTemp += 6.0;
+    }
+    while(hTemp > 6.0) {
+        hTemp -= 6.0;
+    }
+
+    float hue = hTemp / 6 * 360;
+    float saturation = c / mMax;
+    float value = mMax;
+
     ColorHSV colorHSV;
+    colorHSV.hue = constrain(hue, 0, 360);
+    colorHSV.saturation = constrain(saturation, 0, 1);
+    colorHSV.value = constrain(value, 0, 1);
     return colorHSV;
 }
 
