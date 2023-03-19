@@ -183,14 +183,17 @@ ColorRGB Display_TM::updateLedState(LedState & state, int timeStep) {
     
     switch(state.transitionType) {
         case linear: {
+            float deviation[3];
             for(int ledID = 0; ledID < 3; ++ledID) {
-                float deviation = colorPtr[ledID] - state.currentColor[ledID];
-                if(abs(deviation) < (step + 1.0)) {
+                deviation[ledID] = colorPtr[ledID] - state.currentColor[ledID];
+            }
+            float devSize = pow(pow(deviation[0], 2) + pow(deviation[1], 2) + pow(deviation[2], 2), 0.5);
+            for(int ledID = 0; ledID < 3; ++ledID) {
+                if(abs(devSize) < (step + 1.0)) {
                     state.currentColor[ledID] = colorPtr[ledID];
                 }
                 else {
-                    int8_t sign = deviation > 0.0 ? 1 : -1;
-                    state.currentColor[ledID] += sign * step;
+                    state.currentColor[ledID] += deviation[ledID] / devSize * step;
                 }
             }
 
