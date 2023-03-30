@@ -243,31 +243,35 @@ int Display_TM::getLedAbsID(int panelID, int ledID) {
 ColorRGB Display_TM::updateLedState(LedState & state, int timeStep) {
     ColorRGB color = dimColor(state.targetColor, state.brightness);
     uint8_t * colorPtr = (uint8_t *)&color;
-    float step = timeStep / 1000.0 * 255.0 / state.transitionRate;
     
+    float deviation[3];
+    for(int ledID = 0; ledID < 3; ++ledID) {
+        deviation[ledID] = colorPtr[ledID] - state.currentColor[ledID];
+    }
+
+    float step = 0;
     switch(state.transitionType) {
         case linear: {
-            float deviation[3];
-            for(int ledID = 0; ledID < 3; ++ledID) {
-                deviation[ledID] = colorPtr[ledID] - state.currentColor[ledID];
-            }
-            float devSize = pow(pow(deviation[0], 2) + pow(deviation[1], 2) + pow(deviation[2], 2), 0.5);
-            for(int ledID = 0; ledID < 3; ++ledID) {
-                if(abs(devSize) < (step + 1.0)) {
-                    state.currentColor[ledID] = colorPtr[ledID];
-                }
-                else {
-                    state.currentColor[ledID] += deviation[ledID] / devSize * step;
-                }
-            }
-
+            step = timeStep / 1000.0 * 441.7 / state.transitionRate;
         } break;
-        case infiniteImpulseResponse:
+        case exponential: {
+            float currentColorSize = pow(pow(state.currentColor[0], 2) + pow(state.currentColor[1], 2) + pow(state.currentColor[2], 2), 0.5);
+            float beginStep = 0.01 * timeStep;
+            step = beginStep + currentColorSize * (pow(441.7 / beginStep, timeStep / 1000.0 / state.transitionRate) - 1.0);
+        } break;
         case none:
         default:
-            for(int ledID = 0; ledID < 3; ++ledID) {
-                state.currentColor[ledID] = colorPtr[ledID];
-            }
+            step = 441.7;    // Maximal step to cover full diagonal at once
+    }
+
+    float devSize = pow(pow(deviation[0], 2) + pow(deviation[1], 2) + pow(deviation[2], 2), 0.5);
+    for(int ledID = 0; ledID < 3; ++ledID) {
+        if(abs(devSize) < (step + 1.0)) {
+            state.currentColor[ledID] = colorPtr[ledID];
+        }
+        else {
+            state.currentColor[ledID] += deviation[ledID] / devSize * step;
+        }
     }
     
     ColorRGB outColor;

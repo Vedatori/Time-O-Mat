@@ -10,7 +10,7 @@
 enum TransitionType {
     none = 0,
     linear = 1,
-    infiniteImpulseResponse = 2
+    exponential = 2
 };
 
 typedef struct colorRGB {
