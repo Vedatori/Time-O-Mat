@@ -71,7 +71,8 @@ void TM::refreshTaskSlow(void * parameter) {
 void ToMat_class::begin() {
     beginCalled = true;
 
-    power.update();
+
+    power.begin(TM::CC_PIN[0], TM::CC_PIN[1]);
     illumination.update();
     display.begin();
     time.begin();
@@ -125,8 +126,8 @@ void ToMat_class::printDiagnostics() {
         printf("%d", touchBar.getPressed(i));
     }
 
-    printf(" %s", power.getVoltagesText().c_str());
-    printf("%s", illumination.getIlluminationText().c_str());
+    printf(" power: %s %.1fA ", power.getVoltagesText().c_str(), power.getLimitA());
+    printf("illum: %s", illumination.getIlluminationText().c_str());
 
     //printf("priority: %d ", uxTaskPriorityGet(NULL));
 

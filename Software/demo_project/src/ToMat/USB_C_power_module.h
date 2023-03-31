@@ -11,13 +11,13 @@ enum PowerMode {
     Automatic = 4
 };
 
-const int CC_PIN[2] = {36, 39};
-
 class USB_C_power_module {
+    int ccPins[2];
     float pinVoltage[2];
-    PowerMode currentMode = USB2_500mA; // By default lowest limit
+    PowerMode currentMode = USB2_500mA; // Default lowest limit
 
 public:
+    void begin(int pinA, int pinB);
     void setMode(PowerMode mode);
     void update();
     float getLimitA();

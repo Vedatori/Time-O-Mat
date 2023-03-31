@@ -17,8 +17,9 @@
 namespace TM {
 
 const int BUTTON_PIN[3] = {18, 19, 21};
-const uint8_t BUZZER_PIN = 17;
-const uint8_t ONE_WIRE_PIN = 22;
+const int BUZZER_PIN = 17;
+const int ONE_WIRE_PIN = 22;
+const int CC_PIN[2] = {36, 39};
 
 const uint8_t BUZZER_CHANNEL = 3;
 

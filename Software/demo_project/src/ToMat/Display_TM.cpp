@@ -251,15 +251,15 @@ ColorRGB Display_TM::updateLedState(LedState & state, int timeStep) {
 
     float step = 0;
     switch(state.transitionType) {
-        case linear: {
+        case Linear: {
             step = timeStep / 1000.0 * 441.7 / state.transitionRate;
         } break;
-        case exponential: {
+        case Exponential: {
             float currentColorSize = pow(pow(state.currentColor[0], 2) + pow(state.currentColor[1], 2) + pow(state.currentColor[2], 2), 0.5);
             float beginStep = 0.01 * timeStep;
             step = beginStep + currentColorSize * (pow(441.7 / beginStep, timeStep / 1000.0 / state.transitionRate) - 1.0);
         } break;
-        case none:
+        case None:
         default:
             step = 441.7;    // Maximal step to cover full diagonal at once
     }
@@ -286,7 +286,7 @@ void Display_TM::begin() {
     pixels.begin();
     setPanels(all, black);
     setBrightness(all, 1.0);
-    setTransition(all, none, 1.0);
+    setTransition(all, None, 1.0);
     update();
 }
 

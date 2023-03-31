@@ -7,8 +7,9 @@ ColorRGB backlightColor = white;
 
 void setup() {
     ToMat.begin();
+    ToMat.power.setMode(Automatic);
     ToMat.startWiFiCaptain("<your_name>");
-    ToMat.display.setTransition(all, exponential, 2.0);
+    ToMat.display.setTransition(all, Exponential, 2.0);
     ToMat.display.setPanels(colon, displayColor);
 }
 
@@ -91,7 +92,7 @@ void loop() {
         ToMat.display.setText(timeDisp, displayColor);
         ToMat.display.setPanels(backlight, backlightColor);
 
-        //ToMat.printDiagnostics();
+        ToMat.printDiagnostics();
     }
     delay(20);
 }
