@@ -266,13 +266,14 @@ ColorRGB Display_TM::updateLedState(LedState & state, int timeStep) {
 
     float devSize = pow(pow(deviation[0], 2) + pow(deviation[1], 2) + pow(deviation[2], 2), 0.5);
     for(int ledID = 0; ledID < 3; ++ledID) {
-        if(abs(devSize) < (step + 1.0)) {
+        if(devSize < (step + 0.1)) {
             state.currentColor[ledID] = colorPtr[ledID];
         }
         else {
             state.currentColor[ledID] += deviation[ledID] / devSize * step;
         }
     }
+    state.updateNeeded = (devSize > 0.1) ? true : false;
     
     ColorRGB outColor;
     outColor.red = constrain(round(state.currentColor[0]), 0, 255);
@@ -299,12 +300,16 @@ void Display_TM::update() {
         return;
     }
 
+    bool updateNeeded = false;
     for(uint8_t ledID = 0; ledID < LED_COUNT; ++ledID) {
         ColorRGB currentColor = updateLedState(ledState[ledID], timeStep);
         uint32_t color = pixels.Color(currentColor.red, currentColor.green, currentColor.blue);
         pixels.setPixelColor(ledID, color);
+        updateNeeded = updateNeeded || ledState[ledID].updateNeeded;
     }
-    pixels.show();
+    if(updateNeeded) {
+        pixels.show();
+    }
 }
 
 void Display_TM::setUpdateActive(bool state) {

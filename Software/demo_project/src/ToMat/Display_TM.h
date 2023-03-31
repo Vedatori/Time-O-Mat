@@ -36,10 +36,11 @@ typedef struct panelSelector {
 
 typedef struct ledState {
     ColorRGB targetColor;
-    float currentColor[3];             // {red, green, blue} - True displayed color
+    float currentColor[3];          // {red, green, blue} - True displayed color
     float brightness;               // [0.0-1.0]
     TransitionType transitionType;
     float transitionRate;           // [seconds/fullRange]
+    bool updateNeeded;
 } LedState;
 
 ColorRGB dimColor(ColorRGB color, float brightness);
