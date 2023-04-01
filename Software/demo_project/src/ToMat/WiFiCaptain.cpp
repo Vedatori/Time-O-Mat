@@ -23,8 +23,8 @@ DNSServer dnsServer;
 bool softApEnabled = 0;
 bool lastConnectionType = 1; // 1 - softAP, 0 - external wifi
 
-char commandBuffer[64];
-char sendCommandBuffer[64];
+char commandBuffer[128];
+char sendCommandBuffer[128];
 const uint8_t extWiFiConnectTimeout = 50;   //*100 ms
 
 bool clientConnectedCaptain[3] = {false, false, false};
@@ -314,7 +314,7 @@ void onWebSocketEvent(uint8_t client_num, WStype_t type, uint8_t * payload, size
 
         // Handle text messages from client
         case WStype_TEXT:{
-            const char delimiter[2] = ",";
+            const char delimiter[2] = "|";
             char *token;
             token = strtok((char *)payload, delimiter);
             char statusMsg[] = "statusRequest";

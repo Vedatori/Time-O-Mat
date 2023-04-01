@@ -118,8 +118,8 @@
 			function commandEnter(){
 				var command = document.getElementById("commandInput");
 				var commandText = command.value;
-				if(commandText.length < 32) {
-					doSend("command," + commandText);
+				if(commandText.length < 64) {
+					doSend("command|" + commandText);
 				}
 				command.value = "";
 			}

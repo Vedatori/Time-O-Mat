@@ -7,7 +7,11 @@
 
 const char ntpServer1[] = "pool.ntp.org";
 const char ntpServer2[] = "time.nist.gov";
-const char time_zone[] = "CET-1CEST,M3.5.0,M10.5.0/3";  // TimeZone rule for Europe/Prague including daylight adjustment rules
+const int minUpdatePeriodNTP = 1000 * 5;
+
+// Default time zone for Europe/Prague including daylight adjustment rules
+// Other time zones available at https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv
+const String defaultTimeZone = "CET-1CEST,M3.5.0,M10.5.0/3";
 
 enum TimeSource {
     TimeSource_internet,
@@ -17,11 +21,14 @@ enum TimeSource {
 
 class Time_module {
     struct tm time;
-	const uint32_t updatePeriodRTC = 500;   // [ms]
-    const uint32_t updatePeriodNTP = 1000;   // [ms]
+	const uint32_t updatePeriodRTC = 500;           // [ms]
+    bool updateNowNTP = false;                      // 0-wait for next scheduled NTP update period, 1-update in next updateNTP()
+    uint32_t updatePeriodNTP = minUpdatePeriodNTP;  // [ms]
     TimeSource timeSource = TimeSource_internet;
+    String timeZone = defaultTimeZone;
 public:
-    void begin();
+    void begin(int newUpdatePeriodNTP);
+    void setTimeZone(String timeZone);
 	void updateRTC();
     void updateNTP();
     TimeSource getTimeSource();

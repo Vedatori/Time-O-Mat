@@ -69,7 +69,6 @@ public:
     String commandGet();
     String commandGetIndexed(uint8_t index);
     void commandClear();
-    void internCommandHandle();
     void commandSend(String type, String text);
     void commandDisp(String text);
 };

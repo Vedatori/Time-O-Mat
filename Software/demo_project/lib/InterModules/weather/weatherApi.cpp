@@ -14,7 +14,7 @@ int makeHttpRequest(String url, String &out) {
 }
 
 
-void WeatherApi::init(){
+void WeatherApi::init(int newUpdatePeriod){
 	preferences.begin("weatherApi-owm");
 	if(preferences.isKey("apiKey")){
 		apiKey = preferences.getString("apiKey");
@@ -24,6 +24,7 @@ void WeatherApi::init(){
 		positionLon = preferences.getDouble("positionLon");
 		positionName = preferences.getString("positionName");
 	}
+	updatePeriod = (newUpdatePeriod > MIN_UPDATE_PERIOD) ? newUpdatePeriod : MIN_UPDATE_PERIOD;
 }
 void WeatherApi::setKey(String key, WEATHERAPI::WEATHERAPI_SET_MODE mode){
 	switch(mode){
@@ -70,26 +71,44 @@ void WeatherApi::setPosition(double latitude, double longitude, String name, WEA
 
 
 
-void WeatherApi::updateWeather(){
-	String data = "";
-	int code = makeHttpRequest("http://api.openweathermap.org/data/2.5/weather?units=metric&lat="+String(positionLat)+"&lon="+String(positionLon)+"&appid="+String(apiKey), data);
-	if(code!=200){
-		printf("updateWeather failed, code %d: %s", code, data.c_str());
-		return;
-	}
+void WeatherApi::updateWeather() {
+	static uint32_t prevUpdate = 0;
+	if(prevUpdate == 0 || (millis() - prevUpdate) > updatePeriod) {
+		prevUpdate = millis();
+		String data = "";
+		int code = makeHttpRequest("http://api.openweathermap.org/data/2.5/weather?units=metric&lat="+String(positionLat)+"&lon="+String(positionLon)+"&appid="+String(apiKey), data);
+		if(code!=200){
+			printf("updateWeather failed, code %d: %s", code, data.c_str());
+			return;
+		}
 
-	StaticJsonDocument<1024> jsonDoc;
-	deserializeJson(jsonDoc,data);
-	currentWeather.processCurrentWeather(jsonDoc.as<JsonObject>());
+		StaticJsonDocument<1024> jsonDoc;
+		deserializeJson(jsonDoc,data);
+		currentWeather.processCurrentWeather(jsonDoc.as<JsonObject>());
+	}
 }
-void WeatherApi::updateForecast(){
-	String data = "";
-	int code = makeHttpRequest("http://api.openweathermap.org/data/2.5/forecast?units=metric&lat="+String(positionLat)+"&lon="+String(positionLon)+"&appid="+String(apiKey)+"&cnt="+String(WEATHER_FORECAST_SIZE), data);
-	if(code!=200){
-		printf("updateForecast failed, code %d: %s", code, data.c_str());
-		return;
-	}
+void WeatherApi::updateForecast() {
+	static uint32_t prevUpdate = 0;
+	if(prevUpdate == 0 || (millis() - prevUpdate) > updatePeriod) {
+		prevUpdate = millis();
+		String data = "";
+		int code = makeHttpRequest("http://api.openweathermap.org/data/2.5/forecast?units=metric&lat="+String(positionLat)+"&lon="+String(positionLon)+"&appid="+String(apiKey)+"&cnt="+String(WEATHER_FORECAST_SIZE), data);
+		if(code!=200){
+			printf("updateForecast failed, code %d: %s", code, data.c_str());
+			return;
+		}
 
+		DynamicJsonDocument temp(WEATHER_FORECAST_SIZE*1024);
+		deserializeJson(temp, data);
+		int cnt = temp["cnt"].as<int>();
+
+		//serializeJsonPretty(temp, Serial);
+
+		for(int i = 0; i < cnt && i < WEATHER_FORECAST_SIZE; i++){
+			forecast[i].processForecast(temp.as<JsonObject>());
+			temp["list"].as<JsonArray>().remove(0);
+		}
+	}
 	
 	/*
 	DynamicJsonDocument temp(WEATHER_MAX_JSON_SIZE);
@@ -103,13 +122,7 @@ void WeatherApi::updateForecast(){
 	listFilter["list"] = true;
 	deserializeJson(list, data, DeserializationOption::Filter(listFilter));
 
-	
-
-
-
 	int cnt = temp["cnt"].as<int>();
-
-	
 
 	for(int i = 0; i < cnt && i < WEATHER_FORECAST_SIZE; i++){
 		temp["list"][0] = list["list"][i];
@@ -117,45 +130,22 @@ void WeatherApi::updateForecast(){
 		forecast[i].processForecast(temp.as<JsonObject>());
 	}
 	*/
-
-
-
-	DynamicJsonDocument temp(WEATHER_FORECAST_SIZE*1024);
-	deserializeJson(temp, data);
-	int cnt = temp["cnt"].as<int>();
-
-	//serializeJsonPretty(temp, Serial);
-
-	for(int i = 0; i < cnt && i < WEATHER_FORECAST_SIZE; i++){
-		forecast[i].processForecast(temp.as<JsonObject>());
-		temp["list"].as<JsonArray>().remove(0);
-	}
-
-	
-
-	
 }
 void WeatherApi::updateBothWF(){
 	updateWeather();
 	updateForecast();
 }
 
-
-
-
 Weather WeatherApi::getWeather(){
 	return currentWeather;
 }
+
 Weather WeatherApi::getForecast(int index){
 	if(index >= WEATHER_FORECAST_SIZE){
 		index = 0;
 	}
 	return forecast[index];
 }
-
-
-
-
 
 bool WeatherApi::geocodingByName(String name, String &retName, double &retLat, double &retLon){
 	String data = "";

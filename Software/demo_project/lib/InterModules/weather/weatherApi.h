@@ -7,6 +7,7 @@
 #include "weather.h"
 
 #define WEATHER_FORECAST_SIZE 8 //3h step for 1 day
+#define MIN_UPDATE_PERIOD 1000*60*5	//[ms] 
 
 namespace WEATHERAPI{
 
@@ -30,9 +31,10 @@ private:
 	double positionLat = 0;
 	double positionLon = 0;
 	String positionName = "";
+	int updatePeriod = MIN_UPDATE_PERIOD;
 
 public:
-	void init();
+	void init(int newUpdatePeriod);
 
 	void setKey(String key, WEATHERAPI::WEATHERAPI_SET_MODE mode = WEATHERAPI::WA_SAVE);
 	String getKey() {return apiKey;}

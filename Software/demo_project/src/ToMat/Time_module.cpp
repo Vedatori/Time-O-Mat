@@ -1,18 +1,35 @@
 #include "Time_module.h"
 #include <ErriezDS1302.h>
+#include "Preferences.h"
 
 #define RTC_CLK_PIN 25
 #define RTC_IO_PIN 23
 #define RTC_CE_PIN 13
 
 ErriezDS1302 rtc(RTC_CLK_PIN, RTC_IO_PIN, RTC_CE_PIN);
+Preferences timePreferences;
 
-void Time_module::begin() {
+void Time_module::begin(int newUpdatePeriodNTP) {
     configTime(0, 0, ntpServer1, ntpServer2);
-	setenv("TZ", time_zone, 1);
-	tzset();
+
+	timePreferences.begin("timeMod", false);
+	timeZone = timePreferences.getString("timeZone", defaultTimeZone);
+    timePreferences.end();
+	setTimeZone(timeZone);
+
 	rtc.begin();
 	rtc.clockEnable();
+
+	updatePeriodNTP = (newUpdatePeriodNTP > minUpdatePeriodNTP) ? newUpdatePeriodNTP : minUpdatePeriodNTP;
+}
+
+void Time_module::setTimeZone(String newTimeZone) {
+	setenv("TZ", newTimeZone.c_str(), 1);
+	tzset();
+	updateNowNTP = true;
+	timePreferences.begin("timeMod", false);
+	timePreferences.putString("timeZone", newTimeZone);
+    timePreferences.end();
 }
 
 void Time_module::updateNTP() {
@@ -20,25 +37,30 @@ void Time_module::updateNTP() {
 		return;
 	}
 
-	struct tm timeNTP;
-	if(getLocalTime(&timeNTP)) {
-		timeSource = TimeSource_internet;
-		time = timeNTP;
-		if(!rtc.write(&timeNTP)) {
-			printf("RTC time write failed!\n");
+	static uint32_t prevUpdateNTP = 0;
+	if(prevUpdateNTP == 0 || ((millis() - prevUpdateNTP) > updatePeriodNTP) || updateNowNTP) {
+		prevUpdateNTP = millis();
+		updateNowNTP = false;
+		struct tm timeNTP;
+		if(getLocalTime(&timeNTP)) {
+			timeSource = TimeSource_internet;
+			time = timeNTP;
+			if(!rtc.write(&timeNTP)) {
+				printf("RTC time write failed!\n");
+			}
+		}	
+		else {
+			timeSource = TimeSource_offline;
+			printf("NTP time not available!\n");
 		}
-	}	
-	else {
-		timeSource = TimeSource_offline;
-        printf("NTP time not available!\n");
-    }
+	}
 }
 
 void Time_module::updateRTC() {
-	struct tm timeRTC;
 	static uint32_t prevUpdateRTC = 0;
 	if(prevUpdateRTC == 0 || (millis() - prevUpdateRTC) > updatePeriodRTC) {
 		prevUpdateRTC = millis();
+		struct tm timeRTC;
 		if(rtc.read(&timeRTC)) {
 			time = timeRTC;
 		}

@@ -47,9 +47,6 @@ void TM::refreshTaskSlow(void * parameter) {
 		if((millis() - internetUpdateTime) > TM::INTERNET_UPDATE_PERIOD || internetUpdateTime == 0) {
 			ToMat.checkInternetConnected();
             if(ToMat.getInternetConnected()) {
-			    ToMat.weather.updateBothWF();
-				ToMat.time.updateNTP();
-
                 internetUpdateTime = millis();
                 if(softApEnabled) {
                     softApDisableTime = millis();
@@ -59,6 +56,10 @@ void TM::refreshTaskSlow(void * parameter) {
                 softApEnable();
             }
 		}
+        if(ToMat.getInternetConnected()) {
+            ToMat.time.updateNTP();
+            ToMat.weather.updateBothWF();
+        }
         if(softApDisableTime != 0 && (millis() - softApDisableTime) > TM::SOFT_AP_DISABLE_TIMEOUT) {
             softApDisableTime = 0;
             softApEnabled = false;
@@ -75,11 +76,11 @@ void ToMat_class::begin() {
     power.begin(TM::CC_PIN[0], TM::CC_PIN[1]);
     illumination.update();
     display.begin();
-    time.begin();
+    time.begin(1000 * 60 * 15);
     touchBar.begin();
     piezo.begin(TM::BUZZER_CHANNEL, TM::BUZZER_PIN);
 
-	weather.init();
+	weather.init(1000 * 60 * 15);
 	weather.setKey(TM::WEATHER_API_KEY, WEATHERAPI::WA_DEFAULT);
 	weather.setPosition(50.36, 15.79, "Choteborky", WEATHERAPI::WA_DEFAULT);
 
@@ -131,10 +132,13 @@ void ToMat_class::printDiagnostics() {
 
     //printf("priority: %d ", uxTaskPriorityGet(NULL));
 
+    printf("temp: %f ", temperature);
+
     String timeDisp = ToMat.time.getClockText();
     printf("time: %s ", timeDisp.c_str());
 
-    printf("temp: %f \n", temperature);
+    printf("weather: %s \n", ToMat.weather.getWeather().getWeatherString().c_str());
+
 }
 
 void handleWeatherConfig(){
@@ -248,21 +252,6 @@ String ToMat_class::commandGetIndexed(uint8_t index) {
 
 void ToMat_class::commandClear() {
     commandClearCaptain();
-}
-
-void ToMat_class::internCommandHandle() {
-    static uint8_t counter = 0;
-    if(counter < 20) {
-        counter++;
-        return;
-    }
-    else {
-        counter = 0;
-    }
-    if(ToMat.commandGet() == "reset" || ToMat.commandGet() == "restart") {
-        ESP.restart();
-    }
-    ToMat.commandClear();
 }
 
 void ToMat_class::commandSend(String type, String text) {

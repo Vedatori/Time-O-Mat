@@ -65,6 +65,10 @@ void loop() {
             ToMat.time.setTime(hours, minutes);
             ToMat.commandClear();
         }
+        if(ToMat.commandGetIndexed(0) == "setzone") {
+            ToMat.time.setTimeZone(ToMat.commandGetIndexed(1));
+            ToMat.commandClear();
+        }
 
         float displayBrightness, backlightBrightness;
         float illumination = ToMat.illumination.getRaw(0) / 4095.0;
