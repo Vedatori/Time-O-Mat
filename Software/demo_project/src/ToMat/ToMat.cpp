@@ -39,6 +39,7 @@ void TM::refreshTaskQuick(void * parameter) {
 void TM::refreshTaskSlow(void * parameter) {
     for(;;) {
         ToMat.power.update();
+        ToMat.display.setCurrentLimit(ToMat.power.getLimitA() - TM::idleCurrent);
         ToMat.updateTemperature();
 
         static uint32_t internetUpdateTime = 0;
@@ -76,6 +77,7 @@ void ToMat_class::begin() {
     power.begin(TM::CC_PIN[0], TM::CC_PIN[1]);
     illumination.update();
     display.begin();
+    display.setCurrentLimit(ToMat.power.getLimitA() - TM::idleCurrent);
     time.begin(1000 * 60 * 15);
     touchBar.begin();
     piezo.begin(TM::BUZZER_CHANNEL, TM::BUZZER_PIN);

@@ -36,7 +36,8 @@ typedef struct panelSelector {
 
 typedef struct ledState {
     ColorRGB targetColor;
-    float currentColor[3];          // {red, green, blue} - True displayed color
+    ColorRGB currentColor;
+    float currentColorF[3];          // {red, green, blue} - True displayed color
     float brightness;               // [0.0-1.0]
     TransitionType transitionType;
     float transitionRate;           // [seconds/fullRange]
@@ -72,6 +73,8 @@ extern PanelSelector colon;
 class Display_TM {
     static LedState ledState[LED_COUNT];
     static bool updateActive;                   // 0-not active, 1-active
+    static float currentLimit;                  // [A]
+    static float currentLimitRatio;
     static uint8_t charToIndexMap[21];          // Logical to physical LED index mapping for 1 digit
     static bool characterSet[51][21];           // Symbol alphabet
 
@@ -84,6 +87,8 @@ public:
     static void begin();
     static void update();
     static void setUpdateActive(bool state);
+    static void setCurrentLimit(float limit);
+    static float getCurrentLimitRatio();
 
     static void setLED(int panelID, int ledID, ColorRGB color);
     static void setLED(int panelID, int ledID, ColorHSV color);

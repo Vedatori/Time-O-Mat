@@ -246,7 +246,7 @@ ColorRGB Display_TM::updateLedState(LedState & state, int timeStep) {
     
     float deviation[3];
     for(int ledID = 0; ledID < 3; ++ledID) {
-        deviation[ledID] = colorPtr[ledID] - state.currentColor[ledID];
+        deviation[ledID] = colorPtr[ledID] - state.currentColorF[ledID];
     }
 
     float step = 0;
@@ -255,7 +255,7 @@ ColorRGB Display_TM::updateLedState(LedState & state, int timeStep) {
             step = timeStep / 1000.0 * 441.7 / state.transitionRate;
         } break;
         case Exponential: {
-            float currentColorSize = pow(pow(state.currentColor[0], 2) + pow(state.currentColor[1], 2) + pow(state.currentColor[2], 2), 0.5);
+            float currentColorSize = pow(pow(state.currentColorF[0], 2) + pow(state.currentColorF[1], 2) + pow(state.currentColorF[2], 2), 0.5);
             float beginStep = 0.01 * timeStep;
             step = beginStep + currentColorSize * (pow(441.7 / beginStep, timeStep / 1000.0 / state.transitionRate) - 1.0);
         } break;
@@ -267,19 +267,18 @@ ColorRGB Display_TM::updateLedState(LedState & state, int timeStep) {
     float devSize = pow(pow(deviation[0], 2) + pow(deviation[1], 2) + pow(deviation[2], 2), 0.5);
     for(int ledID = 0; ledID < 3; ++ledID) {
         if(devSize < (step + 0.1)) {
-            state.currentColor[ledID] = colorPtr[ledID];
+            state.currentColorF[ledID] = colorPtr[ledID];
         }
         else {
-            state.currentColor[ledID] += deviation[ledID] / devSize * step;
+            state.currentColorF[ledID] += deviation[ledID] / devSize * step;
         }
     }
-    state.updateNeeded = (devSize > 0.1) ? true : false;
+    state.updateNeeded = devSize > 0.1;
     
-    ColorRGB outColor;
-    outColor.red = constrain(round(state.currentColor[0]), 0, 255);
-    outColor.green = constrain(round(state.currentColor[1]), 0, 255);
-    outColor.blue = constrain(round(state.currentColor[2]), 0, 255);
-    return outColor;
+    state.currentColor.red = constrain(round(state.currentColorF[0]), 0, 255);
+    state.currentColor.green = constrain(round(state.currentColorF[1]), 0, 255);
+    state.currentColor.blue = constrain(round(state.currentColorF[2]), 0, 255);
+    return state.currentColor;
 }
 
 void Display_TM::begin() {
@@ -301,12 +300,25 @@ void Display_TM::update() {
     }
 
     bool updateNeeded = false;
+    int sumRGB = 0;
     for(uint8_t ledID = 0; ledID < LED_COUNT; ++ledID) {
         ColorRGB currentColor = updateLedState(ledState[ledID], timeStep);
-        uint32_t color = pixels.Color(currentColor.red, currentColor.green, currentColor.blue);
-        pixels.setPixelColor(ledID, color);
+        sumRGB += (currentColor.red + currentColor.green + currentColor.blue);
         updateNeeded = updateNeeded || ledState[ledID].updateNeeded;
     }
+
+    if(sumRGB <= 0) {
+        sumRGB = 1; // prevent zero division
+    }
+    float ratio = currentLimit / (float(sumRGB) / 255.0 / float(LED_COUNT) * 1.12);
+    currentLimitRatio = constrain(ratio, 0.0, 1.0);
+    
+    for(uint8_t ledID = 0; ledID < LED_COUNT; ++ledID) {
+        ColorRGB powerLimitColor = dimColor(ledState[ledID].currentColor, currentLimitRatio);
+        uint32_t color = pixels.Color(powerLimitColor.red, powerLimitColor.green, powerLimitColor.blue);
+        pixels.setPixelColor(ledID, color);
+    }
+
     if(updateNeeded) {
         pixels.show();
     }
@@ -314,6 +326,16 @@ void Display_TM::update() {
 
 void Display_TM::setUpdateActive(bool state) {
     updateActive = state;
+}
+
+void Display_TM::setCurrentLimit(float limit) {
+    limit = constrain(limit, 0.0, 3.0);
+
+    currentLimit = limit;
+}
+
+float Display_TM::getCurrentLimitRatio() {
+    return currentLimitRatio;
 }
 
 void Display_TM::setLED(int panelID, int ledID, ColorRGB color) {
@@ -415,6 +437,8 @@ void Display_TM::setTransition(PanelSelector selector, TransitionType transition
 
 LedState Display_TM::ledState[LED_COUNT] = {0, };
 bool Display_TM::updateActive = false;
+float Display_TM::currentLimit = 3.0;
+float Display_TM::currentLimitRatio = 1.0;
 uint8_t Display_TM::charToIndexMap[21] = {0, 1, 2, 17, 3, 16, 4, 15, 5, 18, 19, 20, 14, 6, 13, 7, 12, 8, 11, 10, 9};
 bool Display_TM::characterSet[51][21] = {
     {   // "("

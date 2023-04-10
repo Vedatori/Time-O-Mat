@@ -7,7 +7,7 @@
 
 const char ntpServer1[] = "pool.ntp.org";
 const char ntpServer2[] = "time.nist.gov";
-const int minUpdatePeriodNTP = 1000 * 5;
+const int minUpdatePeriodNTP = 1000 * 60 * 5;   // [ms]
 
 // Default time zone for Europe/Prague including daylight adjustment rules
 // Other time zones available at https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv

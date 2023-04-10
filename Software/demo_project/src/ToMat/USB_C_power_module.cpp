@@ -29,7 +29,7 @@ float USB_C_power_module::getLimitA() {
         case Automatic: {
             float minV = (pinVoltage[0] < pinVoltage[1]) ? pinVoltage[0] : pinVoltage[1];
             float maxV = (pinVoltage[0] > pinVoltage[1]) ? pinVoltage[0] : pinVoltage[1];
-            if(minV > 0.1) {
+            if(minV > 0.1 || maxV < 0.1) {
                 // Error, return minimal limit
                 return 0.5;
             }
