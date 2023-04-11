@@ -252,12 +252,12 @@ ColorRGB Display_TM::updateLedState(LedState & state, int timeStep) {
     float step = 0;
     switch(state.transitionType) {
         case Linear: {
-            step = timeStep / 1000.0 * 441.7 / state.transitionRate;
+            step = timeStep / 1000.0 * 441.7 / state.transitionTime;
         } break;
         case Exponential: {
             float currentColorSize = pow(pow(state.currentColorF[0], 2) + pow(state.currentColorF[1], 2) + pow(state.currentColorF[2], 2), 0.5);
             float beginStep = 0.01 * timeStep;
-            step = beginStep + currentColorSize * (pow(441.7 / beginStep, timeStep / 1000.0 / state.transitionRate) - 1.0);
+            step = beginStep + currentColorSize * (pow(441.7 / beginStep, timeStep / 1000.0 / state.transitionTime) - 1.0);
         } break;
         case None:
         default:
@@ -312,7 +312,7 @@ void Display_TM::update() {
     }
     float ratio = currentLimit / (float(sumRGB) / 255.0 / float(LED_COUNT) * 1.12);
     currentLimitRatio = constrain(ratio, 0.0, 1.0);
-    
+
     for(uint8_t ledID = 0; ledID < LED_COUNT; ++ledID) {
         ColorRGB powerLimitColor = dimColor(ledState[ledID].currentColor, currentLimitRatio);
         uint32_t color = pixels.Color(powerLimitColor.red, powerLimitColor.green, powerLimitColor.blue);
@@ -430,7 +430,7 @@ void Display_TM::setTransition(PanelSelector selector, TransitionType transition
         int panelID = getPanelID(ledID);
         if(isPanelSelected(selector, panelID) == true) {
             ledState[ledID].transitionType = transition;
-            ledState[ledID].transitionRate = rate;
+            ledState[ledID].transitionTime = rate;
         }
     }
 }

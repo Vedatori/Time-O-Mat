@@ -14,7 +14,7 @@ enum PowerMode {
 class USB_C_power_module {
     int ccPins[2];
     float pinVoltage[2];
-    PowerMode currentMode = Automatic; // Default lowest limit
+    PowerMode currentMode = Automatic;
 
 public:
     void begin(int pinA, int pinB);

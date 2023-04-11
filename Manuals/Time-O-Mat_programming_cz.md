@@ -6,8 +6,8 @@ ___
 # Obsah
 * [Vývojové prostředí](#IDE)
 * [Nahrání připraveného programu - kontrola](#kontrola)
-* [Nový projekt](#novyProjekt)
-* [První program](#prvniProgram)
+* [Nový projekt](#novyprojekt)
+* [První program](#prvniprogram)
 * [Komentáře](#komentare)
 * [Proměnné](#promenne)
 * [Podmínky](#podminky)
@@ -105,7 +105,7 @@ Demo program umožňuje také nastavení Time-O-Mat.
 * Reset: Stiskem tlačítka 2 na levé straně (nejblíže displeji) resetujeme Time-O-Mat.
 
 <!-- _________________________________________________________________ -->
-# <a name = novyProjekt>Nový projekt</a>
+# <a name = novyprojekt>Nový projekt</a>
 
 Vytvoříme nový projekt a nahrajeme program do Time-O-Mat.
 
@@ -145,7 +145,7 @@ Počkejte až se dokončí nahrávání a zobrazí v dolním terminálu *SUCCESS
 ![alt](SupportFiles/prog_success.png)
 
 <!-- _________________________________________________________________ -->
-# <a name = prvniProgram>První program</a>
+# <a name = prvniprogram>První program</a>
 
 Nyní napíšete svůj první vlastní program pro Time-O-Mat. Do šablony kódu na konec funkce *setup* připiště příkaz `ToMat.display.setLED(0, 0, white);`, tedy nad uzavírací závorku }. Tento příkaz vydá požadavek, aby se na digitu číslo 0 rozsvítila LED číslo 0 bílou barvou.
 
@@ -791,9 +791,8 @@ Konstrukce `ToMat.display.setBrightness(SegmentSelector selector, float brightne
 
 Konstrukce `setTransition(SegmentSelector selector, TransitionType aTransitionType, float aTransitionRate);` slouží k nastavení přechodových animací, např. pro nastavení plynulých přechodů mezi různými stavy rozsvícení. Jedná se o volání funkce s parametry v kulatých závorkách:
 * `selector` udává výběr segmentů pro provedení nastavení.
-* `aTransitionType` udává druh přechodové animace, např. `linear`.
-* `aTransitionRate` udává časovou konstantu přechodové animace ve vteřinách, např. `1.0` odpovídá přechodu plného rozsahu lineární přechodem v trvání 1 vteřiny.
-
+* `aTransitionType` udává druh přechodové animace. Možnosti jsou `Linear` a `Exponential`, kde 2. varianta je vizuálně přirozenější.
+* `aTransitionTime` udává dobu trvání přechodové animace ve vteřinách. Např. `1.0` odpovídá přechodu plného rozsahu z tmy až do plného bílého svitu přechodem trvajícím 1 vteřinu.
 
 Následující příklad nastaví jas předního displeje na `0.5`, plynulý přechod s rychlostí `2.0` a zobrazí červeně slovo `AHOJ` na předním displeji.
 ```
@@ -808,6 +807,15 @@ void setup() {
 
 void loop() {}
 ```
+
+Jas LED je shora omezen maximálním elektrickým proudem, který je možné udebírat z USB nabíječky. Proto nemusí být vždy možné dosáhnout plného jasu všech LED. USB-C nabíječky umožňují automatické zjištění maximálního dodávaného proudu, což Time-O-Mat podporuje. V standardním nastavení je zjišťování proudového limitu nabíječky automatické. Režim omezení odebíraného proudu je však možné nastavit i manuálně pomocí funkce `ToMat.power.setMode(PowerMode mode)`, kde parametr `mode` nabývá hodnot:
+* `USB2_500mA` - Omezení proudu na 500mA
+* `USB3_900mA` - Omezení proudu na 900mA
+* `Medium_1500mA` - Omezení proudu na 1500mA
+* `High_3000mA` - Omezení proudu na 3000mA
+* `Automatic` - Automatické nastavení
+
+Tuto funkci stačí zavolat pouze jednou a to umístěním do funkce `setup()`.
 
 <!-- _________________________________________________________________ -->
 # <a name = wifi>WiFi</a>

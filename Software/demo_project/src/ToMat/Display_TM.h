@@ -40,7 +40,7 @@ typedef struct ledState {
     float currentColorF[3];          // {red, green, blue} - True displayed color
     float brightness;               // [0.0-1.0]
     TransitionType transitionType;
-    float transitionRate;           // [seconds/fullRange]
+    float transitionTime;           // [seconds/fullRange]
     bool updateNeeded;
 } LedState;
 
