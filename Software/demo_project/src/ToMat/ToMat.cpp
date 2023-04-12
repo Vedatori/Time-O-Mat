@@ -119,6 +119,39 @@ float ToMat_class::getTemperature() {
     return temperature;
 }
 
+float ToMat_class::autoBrightnessFront(float illumination) {
+    float brightness = 0.0;
+    if(illumination > 0.7) {
+        brightness = (illumination - 0.7) / 0.3 * 0.8 + 0.2;
+    }
+    else if(illumination > 0.5) {
+        brightness = (illumination - 0.5) / 0.2 * 0.15 + 0.05;
+    }
+    else if(illumination > 0.2) {
+        brightness = (illumination - 0.2) / 0.3 * 0.046 + 0.004;
+    }
+    else {
+        brightness = 0.004;
+    }
+    return brightness;
+}
+float ToMat_class::autoBrightnessBack(float illumination) {
+    float brightness = 0.0;
+    if(illumination > 0.7) {
+        brightness = 0.0;
+    }
+    else if(illumination > 0.5) {
+        brightness = -(illumination - 0.5) / 0.2 * 0.1 + 0.1;
+    }
+    else if(illumination > 0.2) {
+        brightness = (illumination - 0.2) / 0.3 * 0.1;
+    }
+    else {
+        brightness = 0.0;
+    }
+    return brightness;
+}
+
 void ToMat_class::printDiagnostics() {
     for(int i = 0; i <= 2; ++i) {
         printf("btn%d: %d ", i, buttonRead(i));

@@ -9,6 +9,7 @@ class Illumination_module {
     int rawData[2];
 public:
     void update();
+    float get(int photoresID);
     int getRaw(int photoresID);
     String getIlluminationText();
 };
