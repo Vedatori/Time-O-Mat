@@ -5,7 +5,8 @@ V tomto návodu se budeme zabývat programováním mikrokontroléru (mikropočí
 ___
 # Obsah
 * [Vývojové prostředí](#IDE)
-* [Nahrání připraveného programu - kontrola](#kontrola)
+* [Nahrání demo programu - kontrola](#kontrola)
+* [Ovládání demo programu](#ovladani)
 * [Nový projekt](#novyprojekt)
 * [První program](#prvniprogram)
 * [Komentáře](#komentare)
@@ -33,7 +34,7 @@ Pro programování Time-O-Mat je použito vývojové prostředí [Visual Studio 
 ![alt](SupportFiles/prog_install_PlatformIO.png)
 
 <!-- _________________________________________________________________ -->
-# <a name = kontrola>Nahrání připraveného programu - kontrola</a>
+# <a name = kontrola>Nahrání demo programu - kontrola</a>
 
 V této části nahrajete do Time-O-Mat připravený program pro jeho otestování. Program umožňuje připojení Time-O-Mat k WiFi a zobrazení aktuálního času.
 
@@ -97,12 +98,28 @@ Načte se opět hlavní stránka ovládání Time-O-Mat. Tímto je vypnuta inter
 <img src="SupportFiles/prog_web_softAP.png" width="400"/>
 
 Demo program umožňuje také nastavení Time-O-Mat.
-* Nastavení času pomocí tlačítek: Při přidržení tlačítka 0 na levé straně (nejdále od displeje) a dotýkání se 2 dotykových tlačítek nejvíce vlevo je možné nastavit čas po minutách dolů (levé) a nahoru (pravé). Po tomto nastavení se přestane synchronizovat čas s internetovým časem až do restartu.
-* Nastavení času pomocí webového rozhraní: Čas je možné nastavit i zadáním příkazu do webového rozhraní, do pole *Command entry*. Příkaz je ve tvaru `settime HH MM`. Parametry `HH` a `MM` odpovídají hodinám a minutám. Například pro nastavení času 12:34 použijeme příkaz `settime 12 34`. Příkaz odešleme stiskem tlačítka *Enter*.
-* Nastavení barvy displeje pomocí tlačítek: Při přidržení tlačítka 0 na levé straně (nejdále od displeje) a dotýkání se zleva 3. a 4. dotykového tlačítka je možné nastavit červenou složku barvy displeje. Levým ubereme a pravým přidáme na intenzitě. Pro zelenou složku použijeme 5. a 6. dotykové tlačítko. Pro modrou složku použijeme 7. a 8. tlačítko.
-* Nastavení barvy displeje pomocí webového rozhraní: Barvu displeje je možné nastavit i zadáním příkazu do webového rozhraní, do pole *Command entry*. Příkaz je ve tvaru `rgb R G B`. Parametry `R`, `G` a `B` odpovídají jednotlivým hodnotám RGB kódu zvolené barvy v rozsahu 0-255. Například pro nastavení zelené barvy použijeme příkaz `rgb 0 255 0`. Příkaz odešleme stiskem tlačítka *Enter*.
-* Zahrání demo zvuku: Stiskem tlačítka 1 na levé straně (uprostřed) spustíme demo skladbu *Maniac*.
+* Nastavení času pomocí tlačítek: 
+* Nastavení času pomocí webového rozhraní: 
+* Nastavení barvy displeje pomocí tlačítek: 
+* Nastavení barvy displeje pomocí webového rozhraní: 
+* 
+* 
+
+<!-- _________________________________________________________________ -->
+# <a name = ovladani>Ovládání demo programu</a>
+
+Time-O-Mat je možné skrze právě nahraný demo program uživatelsky ovládat a nastavovat jeho parametry. Jedná se o uživatelské funkce Time-O-Mat SW knihovny, které jsou zpravidla nastaveny v hlavním souboru *main.cpp*. Zde je také možné je jednoduše měnit a přizpůsobovat si funkčnost Time-O-Matu. Demo program je možné ovládat násedujícími způsoby:
+
+## Fyzická tlačítka a dotyková lišta
+* Nastavení času: Při přidržení tlačítka 0 na levé straně (nejdále od displeje) a dotýkání se 2 dotykových tlačítek nejvíce vlevo je možné nastavit čas po minutách dolů (levé) a nahoru (pravé). Po tomto nastavení se přestane synchronizovat čas s internetovým časem až do restartu.
+* Nastavení barvy displeje: Při přidržení tlačítka 0 na levé straně (nejdále od displeje) a dotýkání se zleva 3. a 4. dotykového tlačítka je možné nastavit červenou složku barvy displeje. Levým ubereme a pravým přidáme na intenzitě. Pro zelenou složku použijeme 5. a 6. dotykové tlačítko. Pro modrou složku použijeme 7. a 8. tlačítko.
+* Zahrání táborové znělky: Stiskem tlačítka 1 na levé straně (uprostřed) spustíme demo skladbu *Maniac*.
 * Reset: Stiskem tlačítka 2 na levé straně (nejblíže displeji) resetujeme Time-O-Mat.
+
+## Webové rozhraní
+* Nastavení času: Do pole *Command entry* zadáme příkaz je ve tvaru `settime HH MM`. Parametry `HH` a `MM` odpovídají hodinám a minutám. Například pro nastavení času 12:34 použijeme příkaz `settime 12 34`. Příkaz odešleme stiskem tlačítka *Enter*.
+* Nastavení časové zóny: Do pole *Command entry* zadáme příkaz je ve tvaru `setzone X`. Parametr `X` je textový řetězec (kód) popisující danou časovou zónu. [Seznam časových zón a jejich kódů je zde](https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv). Například pro nastavení české časové zóny včetně časových posuvů použijeme příkaz `setzone CET-1CEST,M3.5.0,M10.5.0/3`. Změna času po úspěšné změně časové zóny se za dostupného internetu projeví okamžitě. Pozor, v případě zadání nesprávného kódu časové zóny bude automatická sychronizace času vypnuta (neprobíhá kontrola validnosti zadaného kódu).
+* Nastavení barvy displeje: Do pole *Command entry* zadáme příkaz je ve tvaru `rgb R G B`. Parametry `R`, `G` a `B` odpovídají jednotlivým hodnotám RGB kódu zvolené barvy v rozsahu 0-255. Například pro nastavení zelené barvy použijeme příkaz `rgb 0 255 0`. Příkaz odešleme stiskem tlačítka *Enter*.
 
 <!-- _________________________________________________________________ -->
 # <a name = novyprojekt>Nový projekt</a>
