@@ -6,8 +6,12 @@ void USB_C_power_module::begin(int pinA, int pinB) {
     update();
 }
 
-void USB_C_power_module::setMode(PowerMode mode) {
-    currentMode = mode;
+void USB_C_power_module::setMode(PowerMode newMode) {
+    mode = newMode;
+}
+
+PowerMode USB_C_power_module::getMode() {
+    return mode;
 }
 
 void USB_C_power_module::update() {
@@ -17,7 +21,7 @@ void USB_C_power_module::update() {
 }
 
 float USB_C_power_module::getLimitA() {
-    switch(currentMode) {
+    switch(mode) {
         case USB2_500mA:
             return 0.5;
         case USB3_900mA:
@@ -42,7 +46,7 @@ float USB_C_power_module::getLimitA() {
             return 0.9;
         }
         default:
-            currentMode = USB2_500mA;
+            mode = USB2_500mA;
             return 0.5;
     }
 }

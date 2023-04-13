@@ -80,7 +80,7 @@ void loop() {
     String timeDisp = ToMat.time.getClockText();
     ToMat.display.setText(timeDisp, displayColor);
 
-    //ToMat.printDiagnostics();
+    ToMat.printDiagnostics();
 
     delay(500);
 }

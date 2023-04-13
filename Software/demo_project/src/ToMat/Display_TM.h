@@ -5,7 +5,8 @@
 
 #define LED_PIN 16
 #define LED_COUNT 95
-#define RATE_MIN 0.1
+#define MIN_TRANS_T 0.1
+#define TRANS_END_THR 0.1
 
 enum TransitionType {
     None = 0,

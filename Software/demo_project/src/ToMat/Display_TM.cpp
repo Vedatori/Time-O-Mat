@@ -256,7 +256,7 @@ ColorRGB Display_TM::updateLedState(LedState & state, int timeStep) {
         } break;
         case Exponential: {
             float currentColorSize = pow(pow(state.currentColorF[0], 2) + pow(state.currentColorF[1], 2) + pow(state.currentColorF[2], 2), 0.5);
-            float beginStep = 0.01 * timeStep;
+            float beginStep = 0.015 * timeStep;
             step = beginStep + currentColorSize * (pow(441.7 / beginStep, timeStep / 1000.0 / state.transitionTime) - 1.0);
         } break;
         case None:
@@ -266,14 +266,14 @@ ColorRGB Display_TM::updateLedState(LedState & state, int timeStep) {
 
     float devSize = pow(pow(deviation[0], 2) + pow(deviation[1], 2) + pow(deviation[2], 2), 0.5);
     for(int ledID = 0; ledID < 3; ++ledID) {
-        if(devSize < (step + 0.1)) {
+        if(devSize < (step + TRANS_END_THR)) {
             state.currentColorF[ledID] = colorPtr[ledID];
         }
         else {
             state.currentColorF[ledID] += deviation[ledID] / devSize * step;
         }
     }
-    state.updateNeeded = devSize > 0.1;
+    state.updateNeeded = devSize > TRANS_END_THR;
     
     state.currentColor.red = constrain(round(state.currentColorF[0]), 0, 255);
     state.currentColor.green = constrain(round(state.currentColorF[1]), 0, 255);
@@ -422,8 +422,8 @@ void Display_TM::setBrightness(PanelSelector selector, float brightness) {
 }
 
 void Display_TM::setTransition(PanelSelector selector, TransitionType transition, float rate) {
-    if(rate < RATE_MIN) {
-        rate = RATE_MIN;
+    if(rate < MIN_TRANS_T) {
+        rate = MIN_TRANS_T;
     }
 
     for(int ledID = 0; ledID < LED_COUNT; ++ledID) {
