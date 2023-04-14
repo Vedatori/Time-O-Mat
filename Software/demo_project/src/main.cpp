@@ -7,7 +7,6 @@ void setup() {
     ToMat.startWiFiCaptain("<your_name>");
     ToMat.display.setTransition(all, Exponential, 2.0);
     ToMat.display.setBrightness(all, 0.0);
-    ToMat.display.setPanels(colon, displayColor);
     ToMat.display.setPanels(backlight, white);
 }
 
@@ -51,7 +50,7 @@ void loop() {
         displayColor = shiftColor(displayColor, 0, 0, colorStep);
     }
     
-    // Handle WiFi commands
+    // Handle WebApp commands
     if(ToMat.commandGetIndexed(0) == "rgb") {
         displayColor.red = ToMat.commandGetIndexed(1).toInt();
         displayColor.green = ToMat.commandGetIndexed(2).toInt();
@@ -79,6 +78,7 @@ void loop() {
     // Update displayed time
     String timeDisp = ToMat.time.getClockText();
     ToMat.display.setText(timeDisp, displayColor);
+    ToMat.display.setPanels(colon, displayColor);
 
     ToMat.printDiagnostics();
 
