@@ -1,13 +1,42 @@
 #include "ToMat/ToMat.h"
+#include "PubSubClient.h"
 
 ColorRGB displayColor = red;
+ColorRGB backgroundColor = black;
+
+WiFiClient wifiClient;
+PubSubClient mqttClient(wifiClient);
+const char* mqtt_server = "192.168.0.127";
+
+void callback(char* topic, byte* message, unsigned int length) {
+    String messageTemp;
+    for (int i = 0; i < length; i++) {
+        Serial.print((char)message[i]);
+        messageTemp += (char)message[i];
+    }
+    printf("MQTT topic: %s message: %s ", topic, messageTemp.c_str());
+
+    if(String(topic) == "tomatSetRGB") {
+        uint8_t r, g, b;
+        if(sscanf(messageTemp.c_str(), "%d,%d,%d", &r, &g, &b) == 3) {
+            backgroundColor = {r, g, b};
+        }
+    }
+}
 
 void setup() {
     ToMat.begin();
     ToMat.startWiFiCaptain("<your_name>");
     ToMat.display.setTransition(all, Exponential, 2.0);
-    ToMat.display.setBrightness(all, 0.0);
-    ToMat.display.setPanels(backlight, white);
+    ToMat.display.setBrightness(frontlight, 0.0);
+
+    delay(5000);
+    mqttClient.setServer(mqtt_server, 1883);
+    mqttClient.setCallback(callback);
+    mqttClient.connect("ToMat");
+    printf("mqttClient: %d\n", mqttClient.connected());
+    mqttClient.subscribe("tomatSetRGB");
+    mqttClient.publish("tomatOn", "true");
 }
 
 void loop() {
@@ -73,7 +102,9 @@ void loop() {
     float brightnessFront = ToMat.autoBrightnessFront(illumination);
     float brightnessBack = ToMat.autoBrightnessBack(illumination);
     ToMat.display.setBrightness(frontlight, brightnessFront);
-    ToMat.display.setBrightness(backlight, brightnessBack);
+    
+    // Update backlight
+    ToMat.display.setPanels(backlight, backgroundColor);
 
     // Update displayed time
     String timeDisp = ToMat.time.getClockText();
@@ -82,5 +113,13 @@ void loop() {
 
     ToMat.printDiagnostics();
 
+    if(ToMat.buttonRead(2)) {
+        backgroundColor = red;
+        char buffer[16];
+        sprintf(buffer, "%d,%d,%d", backgroundColor.red, backgroundColor.green, backgroundColor.blue);
+        mqttClient.publish("tomatGetRGB", buffer);
+    }
+
+    mqttClient.loop();
     delay(500);
 }
