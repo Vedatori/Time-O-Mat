@@ -27,6 +27,7 @@ const char STORAGE_NAMESPACE[] = "Time_o_mat";
 const uint16_t communicationTimeout = 1000;
 
 const char WEATHER_API_KEY[] = "bde361c7c969906b9a9571a8f4a14c06";
+const uint32_t WIFI_UPDATE_PERIOD = 1000 * 60 * 1;      // [ms]
 const uint32_t INTERNET_UPDATE_PERIOD = 1000 * 60 * 15; // [ms]
 const uint32_t SOFT_AP_DISABLE_TIMEOUT = 1000 * 60 * 5; // [ms]
 const float idleCurrent = 0.1; // [A]

@@ -132,15 +132,15 @@ void handleWifiSave() {
     Serial.println("wifi save");
     webserver.arg("n").toCharArray(aCredentials.ssid, sizeof(aCredentials.ssid) - 1);
     webserver.arg("p").toCharArray(aCredentials.password, sizeof(aCredentials.password) - 1);
-    stationCredentials = aCredentials;
     webserver.sendHeader("Location", "wifi", true);
     webserver.sendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     webserver.sendHeader("Pragma", "no-cache");
     webserver.sendHeader("Expires", "-1");
     webserver.send(302, "text/plain", "");    // Empty content inhibits Content-length header so we have to close the socket ourselves.
     webserver.client().stop(); // Stop is needed because we sent no content length
+    stationCredentials = aCredentials;
     saveCredentials(aCredentials);
-    connectWifiAsClient(aCredentials);
+    connectWifiAsClient();
 }
 
 void handleNotFound() {
@@ -175,9 +175,9 @@ void softApDisable() {
     }
 }
 
-void connectWifiAsClient(const credentials aCredentials) {
+void connectWifiAsClient() {
     WiFi.disconnect();
-    WiFi.begin(aCredentials.ssid, aCredentials.password);
+    WiFi.begin(stationCredentials.ssid, stationCredentials.password);
     for(uint8_t i = 0; i < extWiFiConnectTimeout; ++i) {
         delay(100);
         if(WiFi.status() == WL_CONNECTED) {
@@ -256,7 +256,7 @@ void wifiCaptInit() {
     loadCredentials();
 
     if(strlen(stationCredentials.ssid) > 0) {
-        connectWifiAsClient(stationCredentials);
+        connectWifiAsClient();
     }
 
     webSocket.begin();

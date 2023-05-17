@@ -23,7 +23,7 @@ void handleWifiSave();
 void handleNotFound();
 void softApEnable();
 void softApDisable();
-void connectWifiAsClient(const credentials aCredentials);
+void connectWifiAsClient();
 void loadCredentials();
 void saveCredentials(const credentials aCredentials);
 void wifiCaptInit();

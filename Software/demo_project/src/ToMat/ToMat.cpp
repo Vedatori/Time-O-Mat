@@ -42,19 +42,31 @@ void TM::refreshTaskSlow(void * parameter) {
         ToMat.display.setCurrentLimit(ToMat.power.getLimitA() - TM::idleCurrent);
         ToMat.updateTemperature();
 
+        static uint32_t wifiUpdateTime = 0;
         static uint32_t internetUpdateTime = 0;
         static uint32_t softApDisableTime = 0;
         static bool softApEnabled = true;
+        if((millis() - wifiUpdateTime) > TM::WIFI_UPDATE_PERIOD || wifiUpdateTime == 0) {
+            if(!WiFi.isConnected()) {
+                if(!softApEnabled) {
+                    softApEnable();
+                    softApEnabled = true;
+                }
+                connectWifiAsClient();
+                internetUpdateTime = 0;
+            }
+        }
 		if((millis() - internetUpdateTime) > TM::INTERNET_UPDATE_PERIOD || internetUpdateTime == 0) {
 			ToMat.checkInternetConnected();
             if(ToMat.getInternetConnected()) {
                 internetUpdateTime = millis();
-                if(softApEnabled) {
+                if(softApEnabled && softApDisableTime == 0) {
                     softApDisableTime = millis();
                 }
             }
             else if(ToMat.getWifiCaptStarted() && !softApEnabled) {
                 softApEnable();
+                softApEnabled = true;
             }
 		}
         if(ToMat.getInternetConnected()) {
@@ -62,9 +74,9 @@ void TM::refreshTaskSlow(void * parameter) {
             ToMat.weather.updateBothWF();
         }
         if(softApDisableTime != 0 && (millis() - softApDisableTime) > TM::SOFT_AP_DISABLE_TIMEOUT) {
-            softApDisableTime = 0;
-            softApEnabled = false;
             softApDisable();
+            softApEnabled = false;
+            softApDisableTime = 0;
         }
         delay(1000);
     }
