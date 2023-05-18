@@ -1,13 +1,14 @@
 #include "ToMat/ToMat.h"
 
-ColorRGB displayColor = red;
+ColorRGB frontColor = red;
+ColorRGB backColor = {255, 180, 85};
 
 void setup() {
     ToMat.begin();
     ToMat.startWiFiCaptain("<your_name>");
     ToMat.display.setTransition(all, Exponential, 2.0);
     ToMat.display.setBrightness(all, 0.0);
-    ToMat.display.setPanels(backlight, white);
+    ToMat.display.setPanels(backlight, backColor);
 }
 
 void loop() {
@@ -30,31 +31,31 @@ void loop() {
     // Handle manual color control
     int colorStep = 20;
     if(ToMat.buttonRead(2) && ToMat.touchBar.getPressed(2)) {
-        displayColor = shiftColor(displayColor, -colorStep, 0, 0);
+        frontColor = shiftColor(frontColor, -colorStep, 0, 0);
     }
     if(ToMat.buttonRead(2) && ToMat.touchBar.getPressed(3)) {
-        displayColor = shiftColor(displayColor, colorStep, 0, 0);
+        frontColor = shiftColor(frontColor, colorStep, 0, 0);
     }
 
     if(ToMat.buttonRead(2) && ToMat.touchBar.getPressed(4)) {
-        displayColor = shiftColor(displayColor, 0, -colorStep, 0);
+        frontColor = shiftColor(frontColor, 0, -colorStep, 0);
     }
     if(ToMat.buttonRead(2) && ToMat.touchBar.getPressed(5)) {
-        displayColor = shiftColor(displayColor, 0, colorStep, 0);
+        frontColor = shiftColor(frontColor, 0, colorStep, 0);
     }
 
     if(ToMat.buttonRead(2) && ToMat.touchBar.getPressed(6)) {
-        displayColor = shiftColor(displayColor, 0, 0, -colorStep);
+        frontColor = shiftColor(frontColor, 0, 0, -colorStep);
     }
     if(ToMat.buttonRead(2) && ToMat.touchBar.getPressed(7)) {
-        displayColor = shiftColor(displayColor, 0, 0, colorStep);
+        frontColor = shiftColor(frontColor, 0, 0, colorStep);
     }
     
     // Handle WebApp commands
     if(ToMat.commandGetIndexed(0) == "rgb") {
-        displayColor.red = ToMat.commandGetIndexed(1).toInt();
-        displayColor.green = ToMat.commandGetIndexed(2).toInt();
-        displayColor.blue = ToMat.commandGetIndexed(3).toInt();
+        frontColor.red = ToMat.commandGetIndexed(1).toInt();
+        frontColor.green = ToMat.commandGetIndexed(2).toInt();
+        frontColor.blue = ToMat.commandGetIndexed(3).toInt();
         ToMat.commandClear();
     }
     if(ToMat.commandGetIndexed(0) == "settime") {
@@ -77,8 +78,8 @@ void loop() {
 
     // Update displayed time
     String timeDisp = ToMat.time.getClockText();
-    ToMat.display.setText(timeDisp, displayColor);
-    ToMat.display.setPanels(colon, displayColor);
+    ToMat.display.setText(timeDisp, frontColor);
+    ToMat.display.setPanels(colon, frontColor);
 
     ToMat.printDiagnostics();
 
