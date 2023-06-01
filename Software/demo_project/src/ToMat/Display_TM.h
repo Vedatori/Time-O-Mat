@@ -14,6 +14,15 @@ enum TransitionType {
     Exponential = 2
 };
 
+enum TextMode {
+    TextMode_textColor_otherBlack = 0,
+    TextMode_textColor_otherOmit = 1,
+    TextMode_textBlack_otherColor = 2,
+    TextMode_textBlack_otherOmit = 3,
+    TextMode_textOmit_otherColor = 4,
+    TextMode_textOmit_otherBlack = 5
+};
+
 typedef struct colorRGB {
     uint8_t red;
     uint8_t green;
@@ -77,7 +86,7 @@ class Display_TM {
     static float currentLimit;                  // [A]
     static float currentLimitRatio;
     static uint8_t charToIndexMap[21];          // Logical to physical LED index mapping for 1 digit
-    static bool characterSet[51][21];           // Symbol alphabet
+    static bool characterSet[52][21];           // Symbol alphabet
 
     static bool isPanelSelected(PanelSelector selector, int panelID);
     static int getPanelID(int ledID);
@@ -100,11 +109,11 @@ public:
     static void setPanels(PanelSelector selector, ColorRGB color);
     static void setPanels(PanelSelector selector, ColorHSV color);
 
-    static void setChar(int charID, char character, ColorRGB color);
-    static void setChar(int charID, char character, ColorHSV color);
+    static void setChar(int charID, char character, ColorRGB color, TextMode mode = TextMode_textColor_otherBlack);
+    static void setChar(int charID, char character, ColorHSV color, TextMode mode = TextMode_textColor_otherBlack);
 
-    static void setText(String text, ColorRGB color);
-    static void setText(String text, ColorHSV color);
+    static void setText(String text, ColorRGB color, TextMode mode = TextMode_textColor_otherBlack);
+    static void setText(String text, ColorHSV color, TextMode mode = TextMode_textColor_otherBlack);
 
     static void setBrightness(PanelSelector selector, float brightness);
     static void setTransition(PanelSelector selector, TransitionType aTransitionType, float apanelTransRate);

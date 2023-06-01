@@ -371,43 +371,54 @@ void Display_TM::setPanels(PanelSelector selector, ColorHSV color) {
     setPanels(selector, colorRGB);
 } 
 
-void Display_TM::setChar(int charID, char character, ColorRGB color) {
+void Display_TM::setChar(int charID, char character, ColorRGB color, TextMode mode) {
     if(charID < 0 || charID > 3)
         return;
 	int panelID = charID;
     if(panelID >= 2)
         ++panelID;    // center colon panel offset
 	
-	if(character == ' '){
-		for(uint8_t i = 0; i < 21; ++i) {
-			setLED(panelID, i, black);
-		}
-	}
-
-    if((character < 40 || character > 91))
+    int alphabetID = 0;
+    if(character == ' ') {
+        alphabetID = 0;
+    }
+    else if(character >= 40 && character <= 90) {
+        alphabetID = character - 39;
+    }
+    else {
         return;
+    }
+
     for(uint8_t i = 0; i < 21; ++i) {
-        if(characterSet[character - 40][i]) {
-            setLED(panelID, i, color);
+        if(characterSet[alphabetID][i]) {
+            if(mode == TextMode_textColor_otherBlack || mode == TextMode_textColor_otherOmit)
+                setLED(panelID, i, color);
+            else if(mode == TextMode_textBlack_otherColor || mode == TextMode_textBlack_otherOmit)
+                setLED(panelID, i, black);
         }
         else {
-            setLED(panelID, i, black);
+            if(mode == TextMode_textBlack_otherColor || mode == TextMode_textOmit_otherColor)
+                setLED(panelID, i, color);
+            else if(mode == TextMode_textColor_otherBlack || mode == TextMode_textOmit_otherBlack)
+                setLED(panelID, i, black);
         }
     }
 }
-void Display_TM::setChar(int charID, char character, ColorHSV color) {
+
+void Display_TM::setChar(int charID, char character, ColorHSV color, TextMode mode) {
     ColorRGB colorRGB = HSVtoRGB(color);
-    setChar(charID, character, colorRGB);
+    setChar(charID, character, colorRGB, mode);
 }
 
-void Display_TM::setText(String text, ColorRGB color) {
+void Display_TM::setText(String text, ColorRGB color, TextMode mode) {
     for(uint8_t i = 0; i < 4; ++i) {
-        setChar(i, text[i], color);
+        setChar(i, text[i], color, mode);
     }
 }
-void Display_TM::setText(String text, ColorHSV color) {
+
+void Display_TM::setText(String text, ColorHSV color, TextMode mode) {
     ColorRGB colorRGB = HSVtoRGB(color);
-    setText(text, colorRGB);
+    setText(text, colorRGB, mode);
 }
 
 void Display_TM::setBrightness(PanelSelector selector, float brightness) {
@@ -440,7 +451,18 @@ bool Display_TM::updateActive = false;
 float Display_TM::currentLimit = 3.0;
 float Display_TM::currentLimitRatio = 1.0;
 uint8_t Display_TM::charToIndexMap[21] = {0, 1, 2, 17, 3, 16, 4, 15, 5, 18, 19, 20, 14, 6, 13, 7, 12, 8, 11, 10, 9};
-bool Display_TM::characterSet[51][21] = {
+bool Display_TM::characterSet[52][21] = {
+    {   // " "
+           0, 0, 0,
+        0,          0,
+        0,          0,
+        0,          0,
+           0, 0, 0,
+        0,          0,
+        0,          0,
+        0,          0,
+           0, 0, 0,
+    },
     {   // "("
            1, 0, 0,
         1,          0,

@@ -802,6 +802,14 @@ Zobrazit znak na 1 digit z předního displeje je možné pomocí konstrukce `To
 
 Konstrukce `ToMat.display.setText(String text, ColorRGB color);` slouží k nastavení všech 4 digitů na text definovaný v parametru `text` (typ String). Zobrazí se pouze první 4 písmena z parametru `text` a rozsvítí se barvou z parametru `color`.
 
+Funkce `setChar()` i `setText` v základním volání zajístí, že je písmeno nebo text rozsvícen zvolenou barvou a okolní LED jsou zhasnuty. Toto chování je možné změnit pomocí volitelného parametru `mode` při volání `ToMat.display.setChar(int charID, char character, ColorRGB color, TextMode mode);` a obdobně pro funkci `setText`. Parametr `mode` je možné nastavit na následující hodnoty:
+* `TextMode_textColor_otherBlack` - Standardní nastavení: text nastaven na zvolenou barvu, okolmní LED zhasnuty
+* `TextMode_textColor_otherOmit` - Text nastaven na zvolenou barvu, okolní LED ponechány v původním stavu
+* `TextMode_textBlack_otherColor` - Text zhasnut, okolní LED nastaveny na zvolenou barvu
+* `TextMode_textBlack_otherOmit` - Text zhasnut na, okolní LED ponechány v původním stavu
+* `TextMode_textOmit_otherColor` - Text ponechán v původním stavu, okolní LED nastaveny na zvolenou barvu
+* `TextMode_textOmit_otherBlack` - Text ponechán v původním stavu, okolní LED zhasnuty
+
 Konstrukce `ToMat.display.setBrightness(SegmentSelector selector, float brightness);` nastaví jas všech LEDek na vybraných segmentech. Všechny následující příkazy nastavující barvu LEDek vybraných segmentů budou nastavovat barvu se sníženým jasem. Jedná se o volání funkce s parametry v kulatých závorkách:
 * `selector` udává výběr segmentů pro provedení nastavení.
 * `brightness` nastavuje hodnotu jasu v rozsahu 0 (nesvítí vůbec) po 1 (svítí naplno).
