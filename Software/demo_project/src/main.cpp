@@ -78,6 +78,9 @@ void loop() {
 
     // Update displayed time
     String timeDisp = ToMat.time.getClockText();
+    if(timeDisp[0] == '0') {
+        timeDisp[0] = ' ';
+    }
     ToMat.display.setText(timeDisp, frontColor);
     ToMat.display.setPanels(colon, frontColor);
 
