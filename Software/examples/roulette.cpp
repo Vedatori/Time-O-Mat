@@ -28,7 +28,7 @@ void setup() {
     ToMat.display.setBrightness(frontlight, 0.2);
     ToMat.display.setBrightness(backlight, 0.3);
     //ToMat.display.setTransition(Linear, 0.05);
-    ToMat.display.setSegments(backlight, white);
+    ToMat.display.setPanels(backlight, white);
 }
 
 void loop() {
@@ -39,27 +39,27 @@ void loop() {
             if(ToMat.buttonRead(2)) {
                 state = 1;
                 currDelay = 5;
-                ToMat.display.setTransition(all, none, 1);
-                ToMat.display.setSegments(colon, black);
-                ToMat.display.setSegments(backlight, green);
+                ToMat.display.setTransition(all, None, 1);
+                ToMat.display.setPanels(colon, black);
+                ToMat.display.setPanels(backlight, green);
             }
         }
         else if(state == 1) {
             if(ToMat.touchBar.getPressedIndex() >= 0) {
                 state = 2;
-                ToMat.display.setSegments(backlight, blue);
+                ToMat.display.setPanels(backlight, blue);
             }
 
         }
         else if(state == 2) {
             currDelay = currDelay * 1.1;
             if(currDelay > 250) {
-                ToMat.display.setTransition(all, linear, currDelay/700.0);
+                ToMat.display.setTransition(all, Linear, currDelay/700.0);
             }
             if(currDelay > 1000) {
                 state = 0;
-                ToMat.display.setSegments(colon, red);
-                ToMat.display.setSegments(backlight, white);
+                ToMat.display.setPanels(colon, red);
+                ToMat.display.setPanels(backlight, white);
             }
 
         }
